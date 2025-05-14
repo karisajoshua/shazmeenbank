@@ -1,56 +1,25 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import VideoHero from "@/components/VideoHero";
+import LogoCarousel from "@/components/LogoCarousel";
 
 const Index = () => {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-20 md:py-28">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Transform Your Mindset. Master Your Future.
-              </h1>
-              <p className="text-xl md:text-2xl text-shazmeen-gray">
-                Courses, coaching, and community designed to help you grow — inside and out.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link to="/courses">
-                  <Button className="btn-primary text-lg w-full sm:w-auto">Start Learning</Button>
-                </Link>
-                <Link to="/bookings">
-                  <Button variant="outline" className="border-2 border-shazmeen-white text-shazmeen-white hover:bg-shazmeen-white hover:text-shazmeen-dark transition-all rounded-xl px-5 py-2.5 font-bold text-lg w-full sm:w-auto">
-                    Book a Session
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="relative animate-fade-in">
-              <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Woman learning and growing"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-shazmeen-blush text-shazmeen-dark p-4 rounded-xl shadow-lg">
-                <p className="font-bold">Over 10,000+ women empowered</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Video Background */}
+      <VideoHero />
+
+      {/* Logo Carousel */}
+      <LogoCarousel />
 
       {/* Features Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-4">How We Help You Grow</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-4">How Shazmeen Bank Helps You Grow</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive suite of resources designed to transform your mindset and help you achieve your goals.
+              My comprehensive suite of resources designed to transform your mindset and help you achieve your personal and financial goals.
             </p>
           </div>
 
@@ -81,7 +50,7 @@ const Index = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-shazmeen-dark mb-2">1:1 Coaching Sessions</h3>
-              <p className="text-gray-700">Personalized guidance to help you navigate challenges and reach your goals.</p>
+              <p className="text-gray-700">Personalized guidance from Shazmeen to help you navigate challenges and reach your goals.</p>
             </div>
 
             {/* Feature 3 */}
@@ -98,7 +67,7 @@ const Index = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-shazmeen-dark mb-2">Inspiring Podcasts</h3>
-              <p className="text-gray-700">Conversations that shift perspectives and provide actionable insights.</p>
+              <p className="text-gray-700">Shazmeen's conversations that shift perspectives and provide actionable insights.</p>
             </div>
 
             {/* Feature 4 */}
@@ -111,7 +80,7 @@ const Index = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-shazmeen-dark mb-2">Free Downloads & Newsletter</h3>
-              <p className="text-gray-700">Weekly tips, tools, and resources to support your personal growth journey.</p>
+              <p className="text-gray-700">Weekly tips and resources from Shazmeen Bank to support your personal growth journey.</p>
             </div>
           </div>
         </div>
