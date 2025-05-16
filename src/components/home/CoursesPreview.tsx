@@ -11,21 +11,21 @@ const CourseCard = ({ title, description, level, duration, imageSrc, slug }: {
   slug: string;
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-      <div className="h-48 overflow-hidden">
+    <div className="premium-card shadow-premium overflow-hidden card-hover">
+      <div className="h-52 overflow-hidden">
         <img
           src={imageSrc}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
       </div>
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-2">
-          <span className="bg-shazmeen-blush text-shazmeen-dark text-xs font-bold px-3 py-1 rounded-full">{level}</span>
+      <div className="p-8">
+        <div className="flex justify-between items-center mb-3">
+          <span className="bg-shazmeen-blush text-shazmeen-dark text-xs font-bold px-4 py-1 rounded-full">{level}</span>
           <span className="text-sm text-gray-500">{duration}</span>
         </div>
-        <h3 className="text-xl font-bold text-shazmeen-dark mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl heading-elegant font-bold text-shazmeen-dark mb-3">{title}</h3>
+        <p className="text-gray-600 mb-6">{description}</p>
         <Link to={`/courses/${slug}`}>
           <Button className="w-full btn-primary">Enroll Now</Button>
         </Link>
@@ -63,19 +63,20 @@ const CoursesPreview = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-shazmeen-gray bg-opacity-30">
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-16">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-2">Featured Courses</h2>
+            <h2 className="text-3xl md:text-4xl heading-elegant font-bold text-shazmeen-dark mb-2">Featured Courses</h2>
             <p className="text-xl text-gray-600">Self-paced programs built for real transformation.</p>
+            <div className="w-20 h-1 bg-shazmeen-red mt-4 hidden md:block"></div>
           </div>
-          <Link to="/courses" className="mt-4 md:mt-0">
+          <Link to="/courses" className="mt-6 md:mt-0">
             <Button className="btn-primary">View All Courses</Button>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {featuredCourses.map((course) => (
             <CourseCard 
               key={course.slug}

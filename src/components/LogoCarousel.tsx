@@ -15,19 +15,19 @@ const LogoCarousel = () => {
   ];
 
   return (
-    <div className="bg-shazmeen-gray py-8">
+    <div className="bg-gradient-to-r from-shazmeen-gray to-white py-12 border-y border-gray-100">
       <div className="container-custom">
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <p className="text-shazmeen-dark text-lg font-medium">Shazmeen Bank has been featured in</p>
         </div>
       </div>
       
-      <div className="overflow-hidden">
-        <div className="flex animate-scrolling-logos">
+      <div className="overflow-hidden relative">
+        <div className="flex animate-scrolling-logos opacity-80">
           {/* Double the logos to create seamless loop */}
           {[...featuredLogos, ...featuredLogos].map((logo, index) => (
-            <div key={index} className="mx-6 flex-shrink-0">
-              <img src={logo.logo} alt={`${logo.name} Logo`} className="h-12" />
+            <div key={index} className="mx-8 flex-shrink-0">
+              <img src={logo.logo} alt={`${logo.name} Logo`} className="h-14" />
             </div>
           ))}
         </div>

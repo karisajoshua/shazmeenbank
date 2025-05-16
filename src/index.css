@@ -78,32 +78,56 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-shazmeen-gray text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-shazmeen-red text-shazmeen-white hover:bg-opacity-90 transition-all duration-200 rounded-xl px-5 py-2.5 font-bold;
+    @apply bg-shazmeen-red text-shazmeen-white shadow-button hover:bg-opacity-90 hover:shadow-premium-hover transition-all duration-300 rounded-xl px-5 py-3 font-bold;
   }
   
   .btn-secondary {
-    @apply bg-shazmeen-dark text-shazmeen-white hover:bg-opacity-90 transition-all duration-200 rounded-xl px-5 py-2.5 font-bold;
+    @apply bg-shazmeen-dark text-shazmeen-white hover:bg-opacity-90 hover:shadow-premium-hover transition-all duration-300 rounded-xl px-5 py-3 font-bold;
   }
   
   .btn-outline {
-    @apply border-2 border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-shazmeen-white transition-all duration-200 rounded-xl px-5 py-2.5 font-bold;
+    @apply border-2 border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-shazmeen-white hover:shadow-button transition-all duration-300 rounded-xl px-5 py-3 font-bold;
   }
 
   .card-hover {
-    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-premium-hover;
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
   .container-custom {
     @apply container px-4 mx-auto;
+  }
+
+  .premium-card {
+    @apply bg-white rounded-xl shadow-premium overflow-hidden;
+  }
+
+  .heading-elegant {
+    @apply font-serif leading-tight;
+  }
+  
+  .heading-bold {
+    @apply font-serif font-bold leading-tight;
+  }
+  
+  .heading-accent {
+    @apply text-shazmeen-red;
+  }
+  
+  .heading-subtle {
+    @apply text-shazmeen-blush;
   }
 }
