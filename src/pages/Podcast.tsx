@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -212,7 +211,7 @@ const podcastEpisodes = [
     title: "What an Unhealthy Relationship Really Looks Like (You might be in one)",
     date: "February 22, 2022",
     image: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//lovebetter.jpg",
-    description: "We talk a lot about toxic love, but what does an unhealthy relationship actually look like in real life? In this episode, I'm diving deep into the signs of unhealthy relationships that often go unnoticed, minimized, or even mistaken for "just relationship struggles." We'll explore how unhealthy dynamics show up emotionally, mentally, and physically… and why so many of us stay even when we know something doesn't feel right.",
+    description: "We talk a lot about toxic love, but what does an unhealthy relationship actually look like in real life? In this episode, I'm diving deep into the signs of unhealthy relationships that often go unnoticed, minimized, or even mistaken for 'just relationship struggles.' We'll explore how unhealthy dynamics show up emotionally, mentally, and physically… and why so many of us stay even when we know something doesn't feel right.",
     topics: [
       "What healthy vs. unhealthy love really looks like",
       "Why you might be attracted to familiar patterns",
@@ -227,7 +226,7 @@ const podcastEpisodes = [
     title: "Traits of Anxious Attachment: What It Really Looks Like in Relationships",
     date: "February 22, 2022",
     image: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//lovebetter.jpg",
-    description: "When we begin to understand the traits around our attachment styles, the coins really begin to drop and so much begins to make sense on how we love, almost that you will stop feeling like something is wrong with you or judging yourself for wanting more or feeling like you just do not understand why you cant be "normal" the way your partner wants you to be. Why is there this lingering feeling in your heart always feeling like something is just not quite right! you are not alone. When i began to heal my anxious attachment I felt like I was giving myself the hug I always needed!",
+    description: "When we begin to understand the traits around our attachment styles, the coins really begin to drop and so much begins to make sense on how we love, almost that you will stop feeling like something is wrong with you or judging yourself for wanting more or feeling like you just do not understand why you cant be 'normal' the way your partner wants you to be. Why is there this lingering feeling in your heart always feeling like something is just not quite right! you are not alone. When i began to heal my anxious attachment I felt like I was giving myself the hug I always needed!",
     topics: [
       "What anxious attachment really sounds and feels like",
       "The traits that show up in everyday connection",
@@ -298,7 +297,7 @@ const podcastEpisodes = [
     title: "The Moment That Changed Everything: Love, Trust & Secrets",
     date: "August 12, 2021",
     image: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//lovebetter.jpg",
-    description: "This episode took a lot of vulnerability yet almost two years into healing to be able to share. I share because so many of you are silently hoping for a bette relationship and many of you write to me and ask me how do i just "love better". This episode covers, pain, shame, guilt, confusion, wonder, loss and self discovery.",
+    description: "This episode took a lot of vulnerability yet almost two years into healing to be able to share. I share because so many of you are silently hoping for a bette relationship and many of you write to me and ask me how do i just 'love better'. This episode covers, pain, shame, guilt, confusion, wonder, loss and self discovery.",
     topics: [
       "Being brave about your relationship journey",
       "The importance of honesty with yourself",
