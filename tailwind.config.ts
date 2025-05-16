@@ -134,8 +134,14 @@ export default {
 					'0%': { transform: 'scale(1)' },
 					'100%': { transform: 'scale(1.03)' }
 				},
-				// New animation for fading in and scrolling logos
+				// Modified animation for fading in and scrolling logos with slower movement
 				'fade-and-scroll': {
+					'0%': { opacity: '0.3', transform: 'translateX(0)' },
+					'10%': { opacity: '0.8' },
+					'100%': { opacity: '0.8', transform: 'translateX(-50%)' }
+				},
+				// New slower animation for the logo carousel
+				'slow-scroll': {
 					'0%': { opacity: '0.3', transform: 'translateX(0)' },
 					'10%': { opacity: '0.8' },
 					'100%': { opacity: '0.8', transform: 'translateX(-50%)' }
@@ -148,8 +154,10 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'scrolling-logos': 'scrolling 20s linear infinite',
 				'hover-scale': 'scale-subtle 0.3s ease-out forwards',
-				// Add the new animation
-				'fade-and-scroll': 'fade-and-scroll 25s linear infinite'
+				// Updated animation duration from 25s to 60s to make it slower
+				'fade-and-scroll': 'fade-and-scroll 60s linear infinite',
+				// New slower animation with a 90s duration
+				'slow-scroll': 'slow-scroll 90s linear infinite'
 			}
 		}
 	},

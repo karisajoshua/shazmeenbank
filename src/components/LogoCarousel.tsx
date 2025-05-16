@@ -34,7 +34,7 @@ const LogoCarousel = () => {
       </div>
       
       <div className="overflow-hidden relative">
-        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-80 animate-fade-and-scroll' : 'opacity-0'}`}>
+        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-80 animate-slow-scroll' : 'opacity-0'}`}>
           {/* Double the logos to create seamless loop */}
           {[...featuredLogos, ...featuredLogos].map((logo, index) => (
             <div key={index} className="mx-8 flex-shrink-0">
