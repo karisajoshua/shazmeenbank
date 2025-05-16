@@ -3,13 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { PodcastEpisode } from "@/types/podcast";
 
 interface PodcastPlayerProps {
-  episode: {
-    id: number;
-    title: string;
-    audioUrl: string;
-  };
+  episode: PodcastEpisode;
 }
 
 const PodcastPlayer = ({ episode }: PodcastPlayerProps) => {
