@@ -1,26 +1,24 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Download } from "lucide-react";
+import { Share2, Download, Play } from "lucide-react";
 import PodcastPlayer from "@/components/podcast/PodcastPlayer";
-
-interface Episode {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-  description: string;
-  topics?: string[];
-  audioUrl: string;
-}
+import PodcastPopupPlayer from "@/components/podcast/PodcastPopupPlayer";
+import { PodcastEpisode } from "@/types/podcast";
 
 interface FeaturedEpisodeProps {
-  episode: Episode;
+  episode: PodcastEpisode;
   isPlaying: boolean;
   onTogglePlay: () => void;
 }
 
 const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodeProps) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handlePlayClick = () => {
+    setIsPopupOpen(true);
+  };
+
   return (
     <section className="py-16 bg-gradient-soft">
       <div className="container-custom">
@@ -36,9 +34,9 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                 <div className="mt-4 flex gap-2">
                   <Button 
                     className="w-full bg-shazmeen-red hover:bg-opacity-90"
-                    onClick={onTogglePlay}
+                    onClick={handlePlayClick}
                   >
-                    {isPlaying ? "Pause" : "Play"} Episode
+                    <Play size={16} className="mr-2" /> Play Episode
                   </Button>
                 </div>
                 <div className="mt-3 flex gap-2 justify-between">
@@ -78,6 +76,12 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
           </div>
         </div>
       </div>
+
+      <PodcastPopupPlayer 
+        episode={isPopupOpen ? episode : null}
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
     </section>
   );
 };

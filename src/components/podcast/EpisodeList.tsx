@@ -1,22 +1,27 @@
 
+import { useState } from "react";
 import PodcastEpisodeCard from "@/components/podcast/PodcastEpisodeCard";
-
-interface Episode {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-  description: string;
-  topics?: string[];
-  audioUrl: string;
-}
+import PodcastPopupPlayer from "@/components/podcast/PodcastPopupPlayer";
+import { PodcastEpisode } from "@/types/podcast";
 
 interface EpisodeListProps {
-  episodes: Episode[];
-  onPlayEpisode: (episode: Episode) => void;
+  episodes: PodcastEpisode[];
+  onPlayEpisode: (episode: PodcastEpisode) => void;
 }
 
 const EpisodeList = ({ episodes, onPlayEpisode }: EpisodeListProps) => {
+  const [popupEpisode, setPopupEpisode] = useState<PodcastEpisode | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handlePlayEpisode = (episode: PodcastEpisode) => {
+    setPopupEpisode(episode);
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="container-custom">
@@ -27,11 +32,17 @@ const EpisodeList = ({ episodes, onPlayEpisode }: EpisodeListProps) => {
             <PodcastEpisodeCard 
               key={index}
               episode={episode}
-              onPlay={() => onPlayEpisode(episode)}
+              onPlay={() => handlePlayEpisode(episode)}
             />
           ))}
         </div>
       </div>
+
+      <PodcastPopupPlayer 
+        episode={popupEpisode}
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+      />
     </section>
   );
 };
