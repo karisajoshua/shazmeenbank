@@ -133,6 +133,12 @@ export default {
 				'scale-subtle': {
 					'0%': { transform: 'scale(1)' },
 					'100%': { transform: 'scale(1.03)' }
+				},
+				// New animation for fading in and scrolling logos
+				'fade-and-scroll': {
+					'0%': { opacity: '0.3', transform: 'translateX(0)' },
+					'10%': { opacity: '0.8' },
+					'100%': { opacity: '0.8', transform: 'translateX(-50%)' }
 				}
 			},
 			animation: {
@@ -141,7 +147,9 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'scrolling-logos': 'scrolling 20s linear infinite',
-				'hover-scale': 'scale-subtle 0.3s ease-out forwards'
+				'hover-scale': 'scale-subtle 0.3s ease-out forwards',
+				// Add the new animation
+				'fade-and-scroll': 'fade-and-scroll 25s linear infinite'
 			}
 		}
 	},

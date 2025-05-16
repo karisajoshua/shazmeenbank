@@ -1,7 +1,9 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const LogoCarousel = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   // Mock featured platforms - replace with actual logos
   const featuredLogos = [
     { name: "Forbes", logo: "https://placehold.co/120x60?text=Forbes" },
@@ -14,6 +16,15 @@ const LogoCarousel = () => {
     { name: "CNBC", logo: "https://placehold.co/120x60?text=CNBC" }
   ];
 
+  useEffect(() => {
+    // Show logos after a short delay for better visual effect
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="bg-gradient-to-r from-shazmeen-gray to-white py-12 border-y border-gray-100">
       <div className="container-custom">
@@ -23,7 +34,7 @@ const LogoCarousel = () => {
       </div>
       
       <div className="overflow-hidden relative">
-        <div className="flex animate-scrolling-logos opacity-80">
+        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-80 animate-fade-and-scroll' : 'opacity-0'}`}>
           {/* Double the logos to create seamless loop */}
           {[...featuredLogos, ...featuredLogos].map((logo, index) => (
             <div key={index} className="mx-8 flex-shrink-0">
