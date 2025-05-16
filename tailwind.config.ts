@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,13 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for Shazmeen Bank
+				// Updated colors for Shazmeen Bank based on client's palette
 				shazmeen: {
-					dark: "#091C2F",
-					red: "#D61C1F", 
-					blush: "#FDE8E9",
-					gray: "#E4E6EB",
-					white: "#FFFFFF"
+					dark: "#000000",     // Black
+					red: "#FD0061",      // Deep pink/magenta
+					blush: "#F1888E",    // Light pink
+					gray: "#DBCABD",     // Light beige
+					white: "#FFFFFF",     // Keeping white
+					secondary: "#FAAAAE" // Medium pink
 				}
 			},
 			fontFamily: {

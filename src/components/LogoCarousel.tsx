@@ -15,7 +15,7 @@ const LogoCarousel = () => {
   ];
 
   return (
-    <div className="bg-shazmeen-white py-8">
+    <div className="bg-shazmeen-gray py-8">
       <div className="container-custom">
         <div className="text-center mb-6">
           <p className="text-shazmeen-dark text-lg font-medium">Shazmeen Bank has been featured in</p>
