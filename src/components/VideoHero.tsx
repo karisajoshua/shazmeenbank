@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
 const VideoHero = () => {
-  return (
-    <section className="relative overflow-hidden min-h-[90vh]">
+  return <section className="relative overflow-hidden min-h-[90vh]">
       {/* Video background with overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
@@ -20,7 +17,7 @@ const VideoHero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-shazmeen-white">
-              Transform Your <span className="text-shazmeen-blush">Mindset</span>.<br/>
+              Transform Your <span className="text-shazmeen-blush">Mindset</span>.<br />
               Master Your <span className="text-shazmeen-red">Future</span>.
             </h1>
             <p className="text-xl md:text-2xl text-shazmeen-gray font-light">
@@ -31,7 +28,7 @@ const VideoHero = () => {
                 <Button className="btn-primary text-lg w-full sm:w-auto px-8 py-4">Start Learning</Button>
               </Link>
               <Link to="/bookings">
-                <Button variant="outline" className="border-2 border-shazmeen-white text-shazmeen-white hover:bg-shazmeen-white hover:text-shazmeen-dark transition-all rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto">
+                <Button variant="outline" className="border-2 border-shazmeen-white hover:bg-shazmeen-white transition-all rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto text-gray-950">
                   Book a Session
                 </Button>
               </Link>
@@ -40,8 +37,6 @@ const VideoHero = () => {
           <div className="hidden md:block"> {/* Just spacing for layout - video is in background */} </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default VideoHero;
