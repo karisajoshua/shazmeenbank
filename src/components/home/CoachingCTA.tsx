@@ -39,7 +39,7 @@ const CoachingCTA = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-premium-hover">
               <img 
-                src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank3.jpg" 
                 alt="1:1 Coaching Session"
                 className="object-cover w-full h-full"
               />
