@@ -1,22 +1,12 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
 const VideoHero = () => {
-  return (
-    <section className="relative overflow-hidden min-h-[90vh]">
+  return <section className="relative overflow-hidden min-h-[90vh]">
       {/* Video background with overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          className="object-cover w-full h-full" 
-          poster="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        >
+        <video autoPlay muted loop playsInline className="object-cover w-full h-full" poster="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
           <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-working-on-her-laptop-at-home-746-large.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -38,10 +28,7 @@ const VideoHero = () => {
                 <Button className="btn-primary text-lg w-full sm:w-auto px-8 py-4">Start Learning</Button>
               </Link>
               <Link to="/bookings">
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-shazmeen-white hover:bg-shazmeen-white transition-all rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto text-white hover:text-shazmeen-dark"
-                >
+                <Button variant="outline" className="border-2 border-shazmeen-white hover:bg-shazmeen-white transition-all rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto text-gray-900">
                   Book a Session
                 </Button>
               </Link>
@@ -50,8 +37,6 @@ const VideoHero = () => {
           <div className="hidden md:block"> {/* Just spacing for layout - video is in background */} </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default VideoHero;
