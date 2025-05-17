@@ -1,12 +1,9 @@
-
 import { CheckCircle } from "lucide-react";
-
 const FeaturesSection = () => {
-  return (
-    <section className="section-padding bg-white">
+  return <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl heading-elegant text-shazmeen-dark mb-4">How Shazmeen Bank Helps You Grow</h2>
+          <h2 className="text-3xl md:text-4xl heading-elegant text-shazmeen-dark mb-4">How I Will Helps You Grow</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             My comprehensive suite of resources designed to transform your mindset and help you achieve your personal and financial goals.
           </p>
@@ -74,8 +71,6 @@ const FeaturesSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FeaturesSection;
