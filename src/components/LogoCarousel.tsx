@@ -4,16 +4,21 @@ import React, { useEffect, useState } from "react";
 const LogoCarousel = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Mock featured platforms - replace with actual logos
+  // Real featured platform logos from Supabase
   const featuredLogos = [
-    { name: "Forbes", logo: "https://placehold.co/120x60?text=Forbes" },
-    { name: "BusinessWeek", logo: "https://placehold.co/120x60?text=BusinessWeek" },
-    { name: "Entrepreneur", logo: "https://placehold.co/120x60?text=Entrepreneur" },
-    { name: "Fortune", logo: "https://placehold.co/120x60?text=Fortune" },
-    { name: "Inc", logo: "https://placehold.co/120x60?text=Inc" },
-    { name: "Wall Street Journal", logo: "https://placehold.co/120x60?text=WSJ" },
-    { name: "Bloomberg", logo: "https://placehold.co/120x60?text=Bloomberg" },
-    { name: "CNBC", logo: "https://placehold.co/120x60?text=CNBC" }
+    { name: "BBC", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/bbc.jpg" },
+    { name: "Choice", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/choice.jpg" },
+    { name: "Citizen", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/citizen.jpg" },
+    { name: "Ebru", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ebru.jpg" },
+    { name: "Engage", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/engage.png" },
+    { name: "K24", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/k24.jpg" },
+    { name: "KTN", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ktn.jpg" },
+    { name: "NRG Radio", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/nrgRadio.jpg" },
+    { name: "NRG Vent", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/nrgVent.jpg" },
+    { name: "NTV", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ntv.jpg" },
+    { name: "Star", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/star.jpg" },
+    { name: "Switch", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/switch.jpg" },
+    { name: "Tuko", logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/tuko.png" }
   ];
 
   useEffect(() => {
@@ -26,7 +31,7 @@ const LogoCarousel = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-shazmeen-gray to-white py-12 border-y border-gray-100">
+    <div className="bg-white py-12 border-y border-gray-100">
       <div className="container-custom">
         <div className="text-center mb-8">
           <p className="text-shazmeen-dark text-lg font-medium">Shazmeen Bank has been featured in</p>
@@ -34,11 +39,16 @@ const LogoCarousel = () => {
       </div>
       
       <div className="overflow-hidden relative">
-        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-80 animate-slow-scroll' : 'opacity-0'}`}>
-          {/* Double the logos to create seamless loop */}
+        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-100 animate-slow-scroll' : 'opacity-0'}`}>
+          {/* Double the logos to create seamless loop - using a much slower animation */}
           {[...featuredLogos, ...featuredLogos].map((logo, index) => (
             <div key={index} className="mx-8 flex-shrink-0">
-              <img src={logo.logo} alt={`${logo.name} Logo`} className="h-14" />
+              <img 
+                src={logo.logo} 
+                alt={`${logo.name} Logo`} 
+                className="h-16 object-contain" 
+                style={{ maxWidth: "180px" }}
+              />
             </div>
           ))}
         </div>

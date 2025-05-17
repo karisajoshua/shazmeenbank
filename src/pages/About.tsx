@@ -1,43 +1,111 @@
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   return (
     <>
-      {/* Header Section */}
+      {/* Header Section with Mission Statement */}
       <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">About Shazmeen Bank</h1>
-            <p className="text-xl text-shazmeen-gray">
-              Our mission is to empower women to transform their mindset and master their future.
+            <p className="text-2xl font-serif italic text-shazmeen-red mt-4">
+              ON A MISSION TO CHANGE LIVES
+            </p>
+            <p className="text-xl text-shazmeen-gray mt-6">
+              DEDICATING MY LIFE TO SERVING THOSE SEEKING TO EXCEL IN EVERY AREA OF THEIR LIVES.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="section-padding">
+      {/* Personal Story Section */}
+      <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
             <div>
-              <h2 className="text-3xl font-bold text-shazmeen-dark mb-6">Our Story</h2>
+              <h2 className="text-3xl font-bold text-shazmeen-dark mb-6 heading-elegant">Hey Friend,</h2>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  Shazmeen Bank was founded with a clear vision: to create a space where women could access the tools, resources, and community needed to transform their mindset and achieve their full potential.
+                  Thank you for taking the time out to drop in and learn more about me.
                 </p>
                 <p>
-                  What started as a small coaching practice has grown into a comprehensive platform offering courses, coaching, podcasts, and resources designed specifically for women on a journey of growth.
+                  My name is Shazmeen Hussein Bank. My first name means queen of land. My second name is after a great man, who stood against oppression and suppression for humanity. And my last name is so you may learn to bank on and trust me.
                 </p>
                 <p>
-                  Today, we've empowered over 10,000 women to break through limitations, build confidence, and create lives and businesses aligned with their values and purpose.
+                  What would be typical is for me to write a long list of accolades in order for you to be impressed by me, follow or even reach out for my services.
+                </p>
+                <p>
+                  But I want you to get to know me. The real me. Not all my accomplishments. My certificates will not inspire you, but my hope is that my journey and who I am, will do so.
+                </p>
+                <p className="text-shazmeen-red font-serif italic text-xl">
+                  "Helping those that feel oppressed by others or even themselves, find freedom within, is my life's mission."
                 </p>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl">
+            <div className="rounded-2xl overflow-hidden shadow-premium">
               <img 
-                src="https://images.unsplash.com/photo-1573497620053-ea5300f8f38f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                alt="Our founder story" 
+                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank1.jpg" 
+                alt="Shazmeen Bank" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
+            <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-premium">
+              <img 
+                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank2.jpg" 
+                alt="Shazmeen Bank" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="space-y-4 text-gray-700">
+                <p>
+                  I grew up in Nairobi, Kenya and I have been blessed to have spent the last 10 years in this field of self help and growth. It has taught and humbled me about how I look at life.
+                </p>
+                <p>
+                  I have had the privilege to travel, grow and learn from the best in the industry. I have spent millions on training and courses, just so I could have the best knowledge at my fingertips, in order to better serve those around me.
+                </p>
+                <p>
+                  My journey to helping those around me began when I was 18 years old and faced with my first decision - to have my son or abort him and go about living the life I had envisioned as a teenager. I chose to have my son, against all odds and got married within a week. To learn how the journey went, I ask you to watch my engage talk.
+                </p>
+                <p className="text-shazmeen-red font-serif italic text-xl">
+                  "With a little courage and faith, your destiny awaits."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="space-y-4 text-gray-700">
+                <p>
+                  But my direction of being a property developing executive, came to an end when I realised I was in deep pain and depression and the traditional ways of therapy and counselling were not helping me at all.
+                </p>
+                <p>
+                  I remember laying in bed one night, crying, saying to myself there must be so many people out there also hurting, feeling lost and wanting so much more from life. I was inspired in my pain to seek the deeper meaning about what I had grown through. I knew that my story was so much more powerful than I was making it, and I had to find a way to heal. To re-discover myself.
+                </p>
+                <p>
+                  And so the first step was taken when I enrolled in a course to help myself. But I was not proud of my certification. I was proud that I got myself out of deep depression and onto a path that made me excited to wake up again.
+                </p>
+                <p>
+                  But covid awakened a new bloom inside of me. I realised that I wanted to help so many more people than the ones that could afford it, and so I began on Radio, and the TV and then worked it up to a podcast and then got my own shows.
+                </p>
+                <p>
+                  I was moved so deeply by how much people want to grow, heal and just need someone to listen to them. And this has now changed the course of what I want to do. I have spent the last year teaching absolutely for free. Helping as many people as i can absolutely for free. This is where I have found my fulfillment. Inspiring those that felt so unseen and hidden. To show them they deserve to shine and grow and attain all their heart desires.
+                </p>
+                <p>
+                  So this is me, right now at least, as of September 2021. I know our paths will cross and, may, I inspire you, just as you will me.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-premium">
+              <img 
+                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank3.jpg" 
+                alt="Shazmeen Bank" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -45,145 +113,47 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Approach */}
-      <section className="section-padding bg-shazmeen-blush">
+      {/* Media Features Section */}
+      <section className="section-padding bg-shazmeen-blush/10">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Our Approach</h2>
+            <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Media Appearances</h2>
             <p className="text-gray-700 max-w-3xl mx-auto">
-              At Shazmeen Bank, we believe in a holistic approach to growth that integrates mindset work with practical strategies.
+              Shazmeen Bank has been featured on numerous television shows, radio programs, and media outlets,
+              sharing insights on personal growth, relationships, and mindset transformation.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-shazmeen-red mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark mb-2">Learn</h3>
-              <p className="text-gray-700">
-                Access expert-led courses designed to give you the knowledge and tools needed for transformation.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <Card className="shadow-premium transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-shazmeen-dark mb-4">Television & Radio</h3>
+                <p className="text-gray-700 mb-4">
+                  Shazmeen has been a regular guest and host on numerous shows, providing expert insights
+                  on relationships, personal development, and mindset transformation.
+                </p>
+                <p className="text-shazmeen-red font-medium">
+                  Featured on: NTV, KTN, Citizen TV, K24, BBC, Radio Africa Group
+                </p>
+              </CardContent>
+            </Card>
             
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-shazmeen-red mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 17a10 10 0 1 1-20 0"></path>
-                  <path d="M8 17s.5-2 2-3c.7-.7 1.7-1 3-1s2.3.3 3 1c1.5 1 2 3 2 3"></path>
-                  <path d="M9 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-                  <path d="M17 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark mb-2">Grow</h3>
-              <p className="text-gray-700">
-                Implement strategies and build habits that create sustainable growth in all areas of your life.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-shazmeen-red mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z"></path>
-                  <line x1="16" y1="8" x2="2" y2="22"></line>
-                  <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark mb-2">Transform</h3>
-              <p className="text-gray-700">
-                Experience profound shifts in your mindset that allow you to create lasting change and impact.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Meet Our Team</h2>
-            <p className="text-gray-700 max-w-3xl mx-auto">
-              Our diverse team of experts is passionate about helping women reach their full potential.
-            </p>
+            <Card className="shadow-premium transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-shazmeen-dark mb-4">Speaking Engagements</h3>
+                <p className="text-gray-700 mb-4">
+                  From intimate workshops to large conferences, Shazmeen has spoken to audiences across
+                  Kenya and internationally about personal growth and transformation.
+                </p>
+                <p className="text-shazmeen-red font-medium">
+                  Notable events: Engage Talks, Corporate Leadership Seminars, University Lectures
+                </p>
+              </CardContent>
+            </Card>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Team Member 1 */}
-            <div className="text-center">
-              <div className="mb-4 relative">
-                <div className="aspect-w-1 aspect-h-1 rounded-full overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1573497620053-ea5300f8f38f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
-                    alt="Sarah Johnson" 
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark">Sarah Johnson</h3>
-              <p className="text-shazmeen-red mb-2">Founder & CEO</p>
-              <p className="text-gray-600 text-sm">
-                Financial coach with a passion for helping women build wealth and independence.
-              </p>
-            </div>
-            
-            {/* Team Member 2 */}
-            <div className="text-center">
-              <div className="mb-4 relative">
-                <div className="aspect-w-1 aspect-h-1 rounded-full overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
-                    alt="Michael Chen" 
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark">Michael Chen</h3>
-              <p className="text-shazmeen-red mb-2">Leadership Coach</p>
-              <p className="text-gray-600 text-sm">
-                Specializes in helping professionals advance through authentic leadership.
-              </p>
-            </div>
-            
-            {/* Team Member 3 */}
-            <div className="text-center">
-              <div className="mb-4 relative">
-                <div className="aspect-w-1 aspect-h-1 rounded-full overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80" 
-                    alt="Priya Patel" 
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark">Priya Patel</h3>
-              <p className="text-shazmeen-red mb-2">Business Coach</p>
-              <p className="text-gray-600 text-sm">
-                Entrepreneur who helps women build sustainable businesses aligned with their values.
-              </p>
-            </div>
-            
-            {/* Team Member 4 */}
-            <div className="text-center">
-              <div className="mb-4 relative">
-                <div className="aspect-w-1 aspect-h-1 rounded-full overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
-                    alt="David Williams" 
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-shazmeen-dark">David Williams</h3>
-              <p className="text-shazmeen-red mb-2">Mindset Coach</p>
-              <p className="text-gray-600 text-sm">
-                Helps clients overcome limiting beliefs for peak productivity and balance.
-              </p>
-            </div>
+          <div className="text-center">
+            <Button className="btn-primary">Watch Media Appearances</Button>
           </div>
         </div>
       </section>
@@ -194,7 +164,7 @@ const About = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey?</h2>
             <p className="text-xl text-shazmeen-gray mb-8">
-              Join thousands of women who have transformed their mindset and mastered their future with Shazmeen Bank.
+              Join thousands of people who have transformed their mindset and mastered their future with Shazmeen Bank.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button className="btn-primary">Start Learning</Button>
