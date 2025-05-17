@@ -3,43 +3,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, Star, User } from "lucide-react";
 
-// Mock coaches data
+// Shazmeen's coaching data
 const coaches = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    specialization: "Financial Coaching",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80",
-    rating: 4.9,
-    reviews: 124,
-    bio: "Sarah is a certified financial coach with 10 years of experience helping women build wealth and financial independence."
-  },
-  {
-    id: 2,
-    name: "Michael Chen",
-    specialization: "Leadership & Career Development",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    rating: 4.8,
-    reviews: 98,
-    bio: "Michael specializes in helping professionals advance their careers through authentic leadership development."
-  },
-  {
-    id: 3,
-    name: "Priya Patel",
-    specialization: "Business & Entrepreneurship",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80",
+    name: "Shazmeen Bank",
+    specialization: "Relationship & Self-Worth Coach",
+    image: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//lovebetter.jpg",
     rating: 5.0,
-    reviews: 75,
-    bio: "Priya has founded three successful businesses and now coaches aspiring entrepreneurs to build sustainable companies."
-  },
-  {
-    id: 4,
-    name: "David Williams",
-    specialization: "Mindset & Productivity",
-    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    rating: 4.7,
-    reviews: 110,
-    bio: "David helps clients overcome limiting beliefs and develop systems for peak productivity and work-life balance."
+    reviews: 124,
+    bio: "Shazmeen Bank is an expert relationship coach specializing in helping you build healthy relationships and discover your authentic self. With years of experience and her popular podcast 'Love Better', Shazmeen guides you through healing attachment wounds and creating meaningful connections."
   }
 ];
 
@@ -119,9 +92,9 @@ const Bookings = () => {
       <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Book Your 1:1 Coaching Session</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Book Your 1:1 Coaching Session with Shazmeen</h1>
             <p className="text-xl text-shazmeen-gray">
-              Get personalized guidance from our expert coaches to help you achieve your goals.
+              Get personalized guidance to transform your relationships and discover your authentic self.
             </p>
           </div>
         </div>
@@ -137,7 +110,7 @@ const Bookings = () => {
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${bookingStep >= 1 ? 'bg-shazmeen-red text-white' : 'bg-gray-200'}`}>
                   <User size={20} />
                 </div>
-                <span className="font-semibold">Select Coach</span>
+                <span className="font-semibold">About Shazmeen</span>
               </div>
               <div className="hidden md:block w-16 h-0.5 bg-gray-300"></div>
               <div className={`flex items-center ${bookingStep >= 2 ? 'text-shazmeen-red' : 'text-gray-400'}`}>
@@ -177,34 +150,78 @@ const Bookings = () => {
           ) : (
             <>
               {bookingStep === 1 && (
-                // Step 1: Select Coach
+                // Step 1: About Shazmeen
                 <div>
-                  <h2 className="text-2xl font-bold text-shazmeen-dark text-center mb-8">Choose your coach</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <h2 className="text-2xl font-bold text-shazmeen-dark text-center mb-8">About Your Coach</h2>
+                  <div className="max-w-4xl mx-auto">
                     {coaches.map(coach => (
                       <div 
                         key={coach.id} 
-                        className={`bg-white p-6 rounded-xl shadow-md cursor-pointer transition-all hover:shadow-lg ${selectedCoach === coach.id ? 'ring-2 ring-shazmeen-red' : ''}`}
-                        onClick={() => handleCoachSelect(coach.id)}
+                        className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all"
                       >
-                        <div className="flex items-start space-x-4">
-                          <img 
-                            src={coach.image} 
-                            alt={coach.name}
-                            className="w-24 h-24 object-cover rounded-full"
-                          />
-                          <div>
-                            <h3 className="text-xl font-bold text-shazmeen-dark">{coach.name}</h3>
-                            <p className="text-shazmeen-red font-medium mb-1">{coach.specialization}</p>
-                            <div className="flex items-center mb-2">
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                              <span className="text-sm ml-1">{coach.rating} ({coach.reviews} reviews)</span>
+                        <div className="md:flex items-start space-y-6 md:space-y-0">
+                          <div className="md:w-1/3 flex justify-center">
+                            <img 
+                              src={coach.image} 
+                              alt={coach.name}
+                              className="w-48 h-48 object-cover rounded-full"
+                            />
+                          </div>
+                          <div className="md:w-2/3">
+                            <h3 className="text-2xl font-bold text-shazmeen-dark mb-2">{coach.name}</h3>
+                            <p className="text-shazmeen-red font-medium text-lg mb-2">{coach.specialization}</p>
+                            <div className="flex items-center mb-4">
+                              <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                              <span className="ml-1 font-medium">{coach.rating} ({coach.reviews} reviews)</span>
                             </div>
-                            <p className="text-gray-600 text-sm">{coach.bio}</p>
+                            <p className="text-gray-700 mb-6 text-lg leading-relaxed">{coach.bio}</p>
+                            <div>
+                              <Button className="btn-primary px-8 py-2" onClick={() => handleCoachSelect(coach.id)}>
+                                Book a Session with Shazmeen
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     ))}
+                  </div>
+                  
+                  <div className="mt-16">
+                    <h3 className="text-2xl font-bold text-shazmeen-dark text-center mb-8">What to Expect in Your Session</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div className="w-16 h-16 bg-shazmeen-blush rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-shazmeen-red">
+                            <path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path>
+                            <polyline points="15 3 15 9 21 9"></polyline>
+                          </svg>
+                        </div>
+                        <h4 className="text-lg font-bold text-shazmeen-dark mb-2">Personalized Plan</h4>
+                        <p className="text-gray-600">Receive a customized action plan tailored specifically to your relationship needs and goals.</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div className="w-16 h-16 bg-shazmeen-blush rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-shazmeen-red">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                        </div>
+                        <h4 className="text-lg font-bold text-shazmeen-dark mb-2">Expert Guidance</h4>
+                        <p className="text-gray-600">Learn practical strategies to heal attachment wounds and create healthier relationships.</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div className="w-16 h-16 bg-shazmeen-blush rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-shazmeen-red">
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                          </svg>
+                        </div>
+                        <h4 className="text-lg font-bold text-shazmeen-dark mb-2">Transformative Results</h4>
+                        <p className="text-gray-600">Walk away with clarity, confidence, and actionable steps to transform your relationships.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -220,7 +237,7 @@ const Bookings = () => {
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                       </svg>
-                      Back to coaches
+                      Back to coach information
                     </button>
                     
                     <div className="flex items-center">
@@ -362,7 +379,7 @@ const Bookings = () => {
                     <textarea 
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                       rows={4}
-                      placeholder="Let your coach know what topics you'd like to discuss in this session..."
+                      placeholder="Let Shazmeen know what topics you'd like to discuss in this session..."
                     ></textarea>
                   </div>
                   

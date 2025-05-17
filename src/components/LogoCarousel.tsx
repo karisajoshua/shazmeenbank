@@ -39,7 +39,7 @@ const LogoCarousel = () => {
       </div>
       
       <div className="overflow-hidden relative">
-        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-100 animate-slow-scroll' : 'opacity-0'}`}>
+        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-100 animate-super-slow-scroll' : 'opacity-0'}`}>
           {/* Double the logos to create seamless loop - using a much slower animation */}
           {[...featuredLogos, ...featuredLogos].map((logo, index) => (
             <div key={index} className="mx-8 flex-shrink-0">
@@ -53,6 +53,21 @@ const LogoCarousel = () => {
           ))}
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes super-slow-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-super-slow-scroll {
+          animation: super-slow-scroll 90s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

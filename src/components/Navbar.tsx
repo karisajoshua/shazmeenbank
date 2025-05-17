@@ -47,7 +47,6 @@ const Navbar = () => {
             <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Bookings</Link>
             <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Podcast</Link>
             <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Blog</Link>
-            <Link to="/newsletter" className={`transition-all duration-300 ${isActive('/newsletter') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Newsletter</Link>
             <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>About</Link>
             <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Contact</Link>
           </div>
@@ -79,7 +78,6 @@ const Navbar = () => {
               <Link to="/bookings" className={`px-4 py-2 rounded-md ${isActive('/bookings') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Bookings</Link>
               <Link to="/podcast" className={`px-4 py-2 rounded-md ${isActive('/podcast') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Podcast</Link>
               <Link to="/blog" className={`px-4 py-2 rounded-md ${isActive('/blog') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Blog</Link>
-              <Link to="/newsletter" className={`px-4 py-2 rounded-md ${isActive('/newsletter') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Newsletter</Link>
               <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>About</Link>
               <Link to="/contact" className={`px-4 py-2 rounded-md ${isActive('/contact') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Contact</Link>
               

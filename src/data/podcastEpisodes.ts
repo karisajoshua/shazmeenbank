@@ -15,7 +15,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "And can this relationship workout?",
       "HOW DO YOU LOVE YOURSELF BETTER"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16934066-what-an-unhealthy-relationship-really-looks-like-you-might-be-in-one"
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "How these patterns often start in childhood",
       "Why it's not your fault—and how awareness is the first step toward change"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16895982-traits-of-anxious-attachment-what-it-really-looks-like-in-relationships"
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "What kind of upbringing leads to each style (this will hit home)",
       "Why your attachment style is fluid—not fixed—and how you can move toward secure love"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16878392-the-4-attachment-styles-and-how-they-secretly-shape-every-relationship-you-have"
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "The hidden childhood patterns that shape your adult relationships",
       "Why anxious attachment makes you chase people who pull away"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16827716-hooked-on-hurt-the-truth-about-trauma-bonds-toxic-love"
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "Why leaving is so hard—and why that doesn't mean you're weak or broken",
       "Releasing the shame—how to shift from self-blame to self-compassion so you can move forward"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16790462-why-walking-away-feels-impossible-the-hidden-shame-of-toxic-love"
   },
   {
     id: 6,
@@ -86,7 +86,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "How avoidants retreat and why anxious partners feel abandoned",
       "The cycle that keeps this dynamic going—and how to break free"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16790384-the-anxious-avoidant-trap-why-we-chase-why-they-run"
   },
   {
     id: 7,
@@ -100,7 +100,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
       "Discovering what you truly desire in relationships",
       "Finding freedom through vulnerability"
     ],
-    audioUrl: "#"
+    audioUrl: "https://www.buzzsprout.com/2463969/episodes/16762345-the-moment-that-changed-everything-love-trust-secrets"
   },
   {
     id: 8,
