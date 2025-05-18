@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
 const MediaFeatures = () => {
-  return (
-    <section className="section-padding bg-shazmeen-blush/10">
+  return <section className="section-padding bg-shazmeen-white">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Media Appearances</h2>
@@ -47,8 +44,6 @@ const MediaFeatures = () => {
           <Button className="btn-primary">Watch Media Appearances</Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default MediaFeatures;
