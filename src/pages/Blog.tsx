@@ -1,9 +1,6 @@
-
 import { Button } from "@/components/ui/button";
-
 const Blog = () => {
-  return (
-    <>
+  return <>
       {/* Header Section */}
       <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
         <div className="container-custom">
@@ -17,7 +14,7 @@ const Blog = () => {
       </section>
 
       {/* Coming Soon Message */}
-      <section className="section-padding">
+      <section className="section-padding bg-shazmeen-white">
         <div className="container-custom">
           <div className="text-center py-20">
             <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Blog Coming Soon!</h2>
@@ -29,8 +26,6 @@ const Blog = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Blog;
