@@ -10,9 +10,7 @@ const CoachingCTA = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="text-3xl md:text-4xl heading-elegant font-bold">Ready for personalized guidance?</h2>
-            <p className="text-xl text-gray-600">
-              Book a 1:1 coaching session with our expert coaches to get tailored advice for your unique situation.
-            </p>
+            <p className="text-xl text-gray-600">Book a 1:1 coaching session with me to get tailored advice for your unique situation.</p>
             <div className="space-y-5">
               <div className="flex items-center">
                 <CheckCircle className="text-shazmeen-red mr-3" size={24} />
