@@ -2,67 +2,68 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
 
 // Mock course data
 const courseData = [
   {
     id: 1,
-    title: "Financial Mindset Mastery",
-    description: "Transform your relationship with money and build wealth with purpose.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Attachment Healing Journey",
+    description: "Learn how to recognize and heal insecure attachment patterns for healthier relationships.",
+    image: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
     level: "Beginner",
     duration: "8 weeks",
-    category: "Finance"
+    category: "Relationships"
   },
   {
     id: 2,
-    title: "Leadership for Women",
-    description: "Develop your authentic leadership style and excel in any environment.",
-    image: "https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    title: "Breaking Trauma Bonds",
+    description: "Recognize, understand and break free from toxic relationship patterns.",
+    image: "https://images.unsplash.com/photo-1519834484944-d587de5abed5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     level: "Intermediate",
     duration: "6 weeks",
-    category: "Leadership"
+    category: "Self-Growth"
   },
   {
     id: 3,
-    title: "Entrepreneurship Essentials",
-    description: "Build a sustainable business aligned with your values and purpose.",
-    image: "https://images.unsplash.com/photo-1564121211835-e88c852648ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    title: "Secure Love Blueprint",
+    description: "Build lasting, healthy relationships through emotional intelligence and secure attachment.",
+    image: "https://images.unsplash.com/photo-1516589091380-5d8e87df6999?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     level: "Advanced",
     duration: "10 weeks",
-    category: "Business"
+    category: "Relationships"
   },
   {
     id: 4,
-    title: "Mindful Productivity",
-    description: "Achieve more with less stress using mindfulness techniques.",
+    title: "Emotional Intelligence Mastery",
+    description: "Develop your ability to understand, use, and manage your emotions positively.",
     image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     level: "Beginner",
     duration: "4 weeks",
-    category: "Productivity"
+    category: "Self-Growth"
   },
   {
     id: 5,
-    title: "Personal Brand Building",
-    description: "Create an authentic personal brand that attracts opportunities.",
+    title: "Boundaries & Self-Worth",
+    description: "Learn to establish healthy boundaries and build your self-esteem for better relationships.",
     image: "https://images.unsplash.com/photo-1587614382346-4ec70e388259?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     level: "Intermediate",
     duration: "6 weeks",
-    category: "Marketing"
+    category: "Self-Growth"
   },
   {
     id: 6,
-    title: "Negotiation Skills",
-    description: "Master the art of negotiation for better outcomes in work and life.",
+    title: "Communication in Relationships",
+    description: "Master effective communication techniques for deeper connection and understanding.",
     image: "https://images.unsplash.com/photo-1573164574472-797cdf4a583a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
     level: "Advanced",
     duration: "5 weeks",
-    category: "Business"
+    category: "Relationships"
   }
 ];
 
 // Available filters
-const categories = ["All", "Finance", "Leadership", "Business", "Productivity", "Marketing"];
+const categories = ["All", "Relationships", "Self-Growth"];
 const levels = ["All", "Beginner", "Intermediate", "Advanced"];
 const durations = ["All", "4 weeks", "5 weeks", "6 weeks", "8 weeks", "10 weeks"];
 
@@ -71,6 +72,8 @@ const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [selectedDuration, setSelectedDuration] = useState("All");
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<any>(null);
 
   // Filter courses based on search and filters
   const filteredCourses = courseData.filter(course => {
@@ -83,6 +86,11 @@ const Courses = () => {
     return matchesSearch && matchesCategory && matchesLevel && matchesDuration;
   });
 
+  const handleEnrollClick = (course: any) => {
+    setSelectedCourse(course);
+    setIsWaitlistOpen(true);
+  };
+
   return (
     <>
       {/* Header Section */}
@@ -91,14 +99,14 @@ const Courses = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Self-paced programs built for real transformation</h1>
             <p className="text-xl text-shazmeen-gray">
-              Discover courses designed to help you grow personally and professionally.
+              Discover courses designed to help you grow personally and in your relationships.
             </p>
           </div>
         </div>
       </section>
 
       {/* Search and Filters */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-8 bg-white">
         <div className="container-custom">
           {/* Search */}
           <div className="relative mb-8">
@@ -162,7 +170,7 @@ const Courses = () => {
       </section>
 
       {/* Courses Grid */}
-      <section className="section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           {filteredCourses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -184,7 +192,12 @@ const Courses = () => {
                     </div>
                     <h3 className="text-xl font-bold text-shazmeen-dark mb-2">{course.title}</h3>
                     <p className="text-gray-600 mb-4">{course.description}</p>
-                    <Button className="w-full btn-primary">Enroll Now</Button>
+                    <Button 
+                      className="w-full btn-primary"
+                      onClick={() => handleEnrollClick(course)}
+                    >
+                      Enroll Now
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -211,17 +224,26 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-shazmeen-blush">
+      <section className="section-padding bg-white border-t border-gray-200">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-4">Not sure which course is right for you?</h2>
             <p className="text-xl text-gray-700 mb-8">
-              Book a free consultation call with one of our coaches to get personalized recommendations.
+              Book a free consultation call with Shazmeen to get personalized recommendations.
             </p>
             <Button className="btn-primary">Book a Free Call</Button>
           </div>
         </div>
       </section>
+
+      {/* Course Waitlist Popup */}
+      {isWaitlistOpen && (
+        <CourseWaitlistPopup 
+          isOpen={isWaitlistOpen} 
+          onClose={() => setIsWaitlistOpen(false)} 
+          course={selectedCourse}
+        />
+      )}
     </>
   );
 };

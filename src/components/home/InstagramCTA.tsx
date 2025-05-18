@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const InstagramCTA = () => {
   return (
-    <section className="section-padding bg-gradient-soft">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl heading-elegant font-bold text-shazmeen-dark mb-6">Want a free mindset guide?</h2>

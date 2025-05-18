@@ -8,6 +8,13 @@ import ExitIntentPopup from "./popups/ExitIntentPopup";
 const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <div className="flex justify-center bg-white py-2 border-b border-gray-100">
+        <img 
+          src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" 
+          alt="Shazmeen Bank Logo" 
+          className="h-16 object-contain"
+        />
+      </div>
       <Navbar />
       <main className="flex-grow">
         <Outlet />

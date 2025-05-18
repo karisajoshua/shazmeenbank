@@ -5,15 +5,15 @@ import { CheckCircle } from "lucide-react";
 
 const CoachingCTA = () => {
   return (
-    <section className="section-padding bg-gradient-to-r from-shazmeen-dark to-gray-900 text-shazmeen-white relative overflow-hidden">
+    <section className="section-padding bg-white text-shazmeen-dark relative overflow-hidden">
       {/* Premium decorative element */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-shazmeen-red/20 to-transparent opacity-30"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-shazmeen-red/5 to-transparent opacity-30"></div>
       
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="text-3xl md:text-4xl heading-elegant font-bold">Ready for personalized guidance?</h2>
-            <p className="text-xl text-shazmeen-gray">
+            <p className="text-xl text-gray-600">
               Book a 1:1 coaching session with our expert coaches to get tailored advice for your unique situation.
             </p>
             <div className="space-y-5">
@@ -44,7 +44,7 @@ const CoachingCTA = () => {
                 className="object-cover w-full h-full"
               />
               {/* Premium decorative element */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-shazmeen-red rounded-full opacity-20"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-shazmeen-red rounded-full opacity-10"></div>
             </div>
           </div>
         </div>
