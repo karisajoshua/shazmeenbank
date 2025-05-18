@@ -1,11 +1,8 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-
 const CoachingCTA = () => {
-  return (
-    <section className="section-padding bg-white text-shazmeen-dark relative overflow-hidden">
+  return <section className="section-padding bg-white text-shazmeen-dark relative overflow-hidden">
       {/* Premium decorative element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-shazmeen-red/5 to-transparent opacity-30"></div>
       
@@ -27,7 +24,7 @@ const CoachingCTA = () => {
               </div>
               <div className="flex items-center">
                 <CheckCircle className="text-shazmeen-red mr-3" size={24} />
-                <span className="text-lg">Expert guidance from experienced coaches</span>
+                <span className="text-lg">Expert guidance from an experience coach</span>
               </div>
             </div>
             <div className="pt-6">
@@ -38,19 +35,13 @@ const CoachingCTA = () => {
           </div>
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-premium-hover">
-              <img 
-                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank3.jpg" 
-                alt="1:1 Coaching Session"
-                className="object-cover w-full h-full"
-              />
+              <img src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank3.jpg" alt="1:1 Coaching Session" className="object-cover w-full h-full" />
               {/* Premium decorative element */}
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-shazmeen-red rounded-full opacity-10"></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CoachingCTA;
