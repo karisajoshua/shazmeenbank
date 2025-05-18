@@ -20,7 +20,7 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
   };
 
   return (
-    <section className="py-16 bg-gradient-soft">
+    <section className="py-16 bg-white">
       <div className="container-custom">
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl shadow-premium p-6 md:p-8">

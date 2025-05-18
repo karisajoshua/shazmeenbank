@@ -1,7 +1,7 @@
 
 const SocialConnect = () => {
   return (
-    <section className="py-16 bg-shazmeen-gray">
+    <section className="py-16 bg-white">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 font-serif text-shazmeen-dark">Connect With Shazmeen</h2>
@@ -24,7 +24,7 @@ const SocialConnect = () => {
               href="https://www.shazmeenbank.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-white text-shazmeen-dark py-4 px-6 rounded-lg hover:opacity-90 transition-all"
+              className="flex items-center justify-center gap-2 bg-shazmeen-dark text-white py-4 px-6 rounded-lg hover:opacity-90 transition-all"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 19.93C7.05 19.44 4 16.08 4 12C4 11.38 4.08 10.79 4.21 10.21L9 15V16C9 17.1 9.9 18 11 18V19.93ZM16.9 15.39C16.64 14.58 15.9 14 15 14H14V11C14 10.45 13.55 10 13 10H7V8H10C10.55 8 11 7.55 11 7V6H13C14.1 6 15 5.1 15 4V3.89C17.71 4.8 19.73 7.21 19.98 10.08L16.9 7H15V9L16.9 15.39Z" fill="currentColor"/>

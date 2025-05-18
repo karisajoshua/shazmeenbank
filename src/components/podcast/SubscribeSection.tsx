@@ -19,7 +19,7 @@ const SubscribeSection = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-shazmeen-red to-shazmeen-blush text-white">
+    <section className="py-16 bg-white text-shazmeen-dark">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">Never Miss an Episode</h2>
@@ -41,16 +41,16 @@ const SubscribeSection = () => {
             </Button>
           </div>
           <div className="max-w-md mx-auto mt-10">
-            <p className="text-white mb-4">Get episode updates directly to your inbox</p>
+            <p className="text-shazmeen-dark mb-4">Get episode updates directly to your inbox</p>
             <form onSubmit={handleSubscribe} className="flex gap-2">
               <input 
                 type="email" 
                 placeholder="Your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} 
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-shazmeen-dark text-gray-900"
+                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-shazmeen-dark text-gray-900"
               />
-              <Button type="submit" className="bg-shazmeen-dark hover:bg-black">
+              <Button type="submit" className="bg-shazmeen-dark hover:bg-black text-white">
                 Subscribe
               </Button>
             </form>
