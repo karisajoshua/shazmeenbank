@@ -32,11 +32,16 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-white py-4 border-b border-gray-100'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
+          {/* Logo and brand name */}
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" 
+              alt="Shazmeen Bank Logo" 
+              className="h-12 object-contain"
+            />
             <span className="text-2xl font-serif font-bold text-shazmeen-dark">Shazmeen Bank</span>
           </Link>
 
