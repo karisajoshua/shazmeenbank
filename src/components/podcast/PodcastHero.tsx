@@ -13,7 +13,7 @@ const PodcastHero = () => {
               <Headphones size={20} />
               Subscribe to Podcast
             </Button>
-            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-gray-50">
+            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-gray-900">
               Explore Episodes
             </Button>
           </div>
