@@ -102,7 +102,7 @@ const Bookings = () => {
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${bookingStep >= 1 ? 'bg-shazmeen-red text-white' : 'bg-gray-200'}`}>
                   <User size={20} />
                 </div>
-                <span className="font-semibold">About Shazmeen</span>
+                <span className="font-semibold">About Me</span>
               </div>
               <div className="hidden md:block w-16 h-0.5 bg-gray-300"></div>
               <div className={`flex items-center ${bookingStep >= 2 ? 'text-shazmeen-red' : 'text-gray-400'}`}>
