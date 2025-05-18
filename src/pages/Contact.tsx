@@ -1,7 +1,5 @@
-
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,26 +7,24 @@ const Contact = () => {
     subject: "",
     message: ""
   });
-  
   const [submitted, setSubmitted] = useState(false);
-  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     setSubmitted(true);
     // In a real app this would send the data to a backend
   };
-
-  return (
-    <>
+  return <>
       {/* Header Section */}
       <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
         <div className="container-custom">
@@ -42,7 +38,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-shazmeen-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Info */}
@@ -130,8 +126,7 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div>
-              {submitted ? (
-                <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-md">
+              {submitted ? <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-md">
                   <div className="flex">
                     <div className="flex-shrink-0">
                       <svg className="h-8 w-8 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -150,55 +145,28 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <>
+                </div> : <>
                   <h2 className="text-3xl font-bold text-shazmeen-dark mb-6">Send Us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                         Your Name
                       </label>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
+                      <input id="name" name="name" type="text" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="Enter your name" value={formData.name} onChange={handleChange} />
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                         Email Address
                       </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
+                      <input id="email" name="email" type="email" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
                     </div>
                     
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                         Subject
                       </label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
-                        value={formData.subject}
-                        onChange={handleChange}
-                      >
+                      <select id="subject" name="subject" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" value={formData.subject} onChange={handleChange}>
                         <option value="">Select a subject</option>
                         <option value="Course Inquiry">Course Inquiry</option>
                         <option value="Coaching Session">Coaching Session</option>
@@ -212,24 +180,14 @@ const Contact = () => {
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                         Message
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={6}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
-                        placeholder="How can we help you?"
-                        value={formData.message}
-                        onChange={handleChange}
-                      ></textarea>
+                      <textarea id="message" name="message" rows={6} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="How can we help you?" value={formData.message} onChange={handleChange}></textarea>
                     </div>
                     
                     <Button type="submit" className="btn-primary w-full">
                       Send Message
                     </Button>
                   </form>
-                </>
-              )}
+                </>}
             </div>
           </div>
         </div>
@@ -244,8 +202,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Contact;
