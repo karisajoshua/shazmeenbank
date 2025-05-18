@@ -151,7 +151,7 @@ const Bookings = () => {
                           </div>
                           <div className="md:w-2/3">
                             <h3 className="text-2xl font-bold text-shazmeen-dark mb-2">{coach.name}</h3>
-                            <p className="text-shazmeen-red font-medium text-lg mb-2">{coach.specialization}</p>
+                            <p className="font-medium text-lg mb-2 text-shazmeen-secondary">{coach.specialization}</p>
                             <div className="flex items-center mb-4">
                               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                               <span className="ml-1 font-medium">{coach.rating} ({coach.reviews} reviews)</span>
