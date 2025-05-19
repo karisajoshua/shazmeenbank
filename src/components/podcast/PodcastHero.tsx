@@ -1,10 +1,12 @@
+
 import { Button } from "@/components/ui/button";
 import { Headphones } from "lucide-react";
+
 const PodcastHero = () => {
   return <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16 md:py-24">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 heading-elegant font-serif">Love Better</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 heading-elegant font-serif">Love Better</h1>
           <p className="text-xl text-shazmeen-gray mt-4 max-w-2xl mx-auto">
             Exploring relationships, attachment, and the journey to secure love with Shazmeen Bank
           </p>
@@ -13,7 +15,7 @@ const PodcastHero = () => {
               <Headphones size={20} />
               Subscribe to Podcast
             </Button>
-            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-gray-900">
+            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-white">
               Explore Episodes
             </Button>
           </div>
@@ -21,4 +23,5 @@ const PodcastHero = () => {
       </div>
     </section>;
 };
+
 export default PodcastHero;

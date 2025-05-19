@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Star, User } from "lucide-react";
+import { Calendar, Clock, Star, User, Check, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // Shazmeen's coaching data
 const coaches = [{
@@ -54,6 +55,9 @@ const Bookings = () => {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [bookingStep, setBookingStep] = useState(1);
   const [bookingComplete, setBookingComplete] = useState(false);
+  const [showDiscountOffer, setShowDiscountOffer] = useState(false);
+  const [multiSessionBooked, setMultiSessionBooked] = useState(false);
+  
   const handleCoachSelect = (coachId: number) => {
     setSelectedCoach(coachId);
     setBookingStep(2);
@@ -70,6 +74,14 @@ const Bookings = () => {
   const handleBookSession = () => {
     // In a real app, this would submit the booking to an API
     setBookingComplete(true);
+    // Show the discount offer after a short delay
+    setTimeout(() => {
+      setShowDiscountOffer(true);
+    }, 1000);
+  };
+  const handleBookMultipleSessions = () => {
+    setMultiSessionBooked(true);
+    setShowDiscountOffer(false);
   };
   const resetBooking = () => {
     setSelectedCoach(null);
@@ -77,6 +89,8 @@ const Bookings = () => {
     setSelectedTime(null);
     setBookingStep(1);
     setBookingComplete(false);
+    setShowDiscountOffer(false);
+    setMultiSessionBooked(false);
   };
   const selectedCoachData = selectedCoach ? coaches.find(coach => coach.id === selectedCoach) : null;
   return <>
@@ -329,6 +343,201 @@ const Bookings = () => {
             </>}
         </div>
       </section>
+      
+      {/* Special Offer Dialog */}
+      <Dialog open={showDiscountOffer} onOpenChange={setShowDiscountOffer}>
+        <DialogContent className="sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center text-shazmeen-dark">
+              Special Offer: 30% Off When You Book a Package!
+            </DialogTitle>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setShowDiscountOffer(false)}
+              className="absolute right-2 top-2"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </DialogHeader>
+          
+          {multiSessionBooked ? (
+            <div className="py-6 text-center">
+              <div className="mb-6 text-shazmeen-dark flex justify-center">
+                <Check size={60} className="text-green-500" />
+              </div>
+              <h3 className="text-xl font-bold text-shazmeen-dark mb-3">Package Booked Successfully!</h3>
+              <p className="text-gray-600 mb-4">
+                You've saved 30% on your 3-session package. You'll receive a confirmation email with all the details.
+              </p>
+              <Button className="btn-primary" onClick={() => {
+                setMultiSessionBooked(false);
+                setShowDiscountOffer(false);
+              }}>
+                Return to Bookings
+              </Button>
+            </div>
+          ) : (
+            <div className="py-4">
+              <div className="bg-shazmeen-blush/30 p-4 rounded-lg mb-6 border-l-4 border-shazmeen-red">
+                <p className="text-shazmeen-dark font-medium">
+                  Congratulations! Your session has been booked successfully.
+                </p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl border border-gray-200 mb-6">
+                <h3 className="text-lg font-bold text-shazmeen-dark mb-4">
+                  Book 3 More Sessions Now and Save 30%
+                </h3>
+                <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
+                  <span className="text-gray-600">Single Session Price</span>
+                  <span className="font-semibold">$150.00</span>
+                </div>
+                <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
+                  <span className="text-gray-600">3-Session Package</span>
+                  <span className="font-semibold">$450.00</span>
+                </div>
+                <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
+                  <span className="text-green-600 font-medium">30% Discount</span>
+                  <span className="text-green-600 font-medium">-$135.00</span>
+                </div>
+                <div className="flex items-center justify-between text-lg">
+                  <span className="font-semibold text-shazmeen-dark">You Pay</span>
+                  <span className="font-bold text-shazmeen-dark">$315.00</span>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="text-lg font-bold text-shazmeen-dark mb-2">Why Book a Package?</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start">
+                    <Check size={20} className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Save 30% on your coaching investment</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check size={20} className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Guarantee your spot in Shazmeen's calendar</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check size={20} className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Build momentum with consistent coaching</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check size={20} className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>See more significant transformations in your relationships</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="flex flex-col space-y-3">
+                <Button className="btn-primary py-6 text-lg" onClick={handleBookMultipleSessions}>
+                  Book 3-Session Package (Save 30%)
+                </Button>
+                <Button variant="outline" className="btn-outline" onClick={() => setShowDiscountOffer(false)}>
+                  No thanks, just keep my single session
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+      
+      {/* Coach Recommendations */}
+      {bookingComplete && !showDiscountOffer && !multiSessionBooked && (
+        <div className="container-custom mt-12 mb-20">
+          <h2 className="text-2xl font-bold text-shazmeen-dark mb-6">Our Coaches</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden text-center p-6">
+              <img 
+                src="https://images.unsplash.com/photo-1573497620053-ea5300f8f38f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
+                alt="Sarah Johnson" 
+                className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+              />
+              <h3 className="font-bold text-shazmeen-dark">Sarah Johnson</h3>
+              <p className="text-shazmeen-red mb-2">Financial Coaching</p>
+              <div className="flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span className="text-sm ml-1">5.0</span>
+              </div>
+              <Button className="w-full btn-primary">Book a Session</Button>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden text-center p-6">
+              <img 
+                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80" 
+                alt="Priya Patel" 
+                className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+              />
+              <h3 className="font-bold text-shazmeen-dark">Priya Patel</h3>
+              <p className="text-shazmeen-red mb-2">Business Coaching</p>
+              <div className="flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span className="text-sm ml-1">5.0</span>
+              </div>
+              <Button className="w-full btn-primary">Book a Session</Button>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden text-center p-6">
+              <img 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
+                alt="Michael Chen" 
+                className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+              />
+              <h3 className="font-bold text-shazmeen-dark">Michael Chen</h3>
+              <p className="text-shazmeen-red mb-2">Leadership Coaching</p>
+              <div className="flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span className="text-sm ml-1">4.8</span>
+              </div>
+              <Button className="w-full btn-primary">Book a Session</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </>;
 };
+
 export default Bookings;

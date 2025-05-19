@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -21,34 +22,41 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
   const isActive = (path: string) => location.pathname === path;
-  return <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-white py-4 border-b border-gray-100'}`}>
+  
+  return <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo and brand name */}
           <Link to="/" className="flex items-center gap-3">
-            <img src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" alt="Shazmeen Bank Logo" className="h-16 object-contain" />
-            <span className="text-2xl font-serif font-bold text-shazmeen-dark"></span>
+            {isScrolled ? (
+              <img src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" alt="Shazmeen Bank Logo" className="h-16 object-contain" />
+            ) : (
+              <img src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//SB.png" alt="Shazmeen Bank Logo" className="h-16 object-contain" />
+            )}
+            <span className={`text-2xl font-serif font-bold ${isScrolled ? 'text-shazmeen-dark' : 'text-white'}`}></span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`transition-all duration-300 ${isActive('/') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Home</Link>
-            <Link to="/courses" className={`transition-all duration-300 ${isActive('/courses') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Courses</Link>
-            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Bookings</Link>
-            <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Podcast</Link>
-            <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Blog</Link>
-            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>About</Link>
-            <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:text-shazmeen-red'}`}>Contact</Link>
+            <Link to="/" className={`transition-all duration-300 ${isActive('/') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Home</Link>
+            <Link to="/courses" className={`transition-all duration-300 ${isActive('/courses') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Courses</Link>
+            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Bookings</Link>
+            <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Podcast</Link>
+            <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Blog</Link>
+            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>About</Link>
+            <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Contact</Link>
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="outline" className="btn-outline">Login</Button>
+              <Button variant="outline" className={`${isScrolled ? 'btn-outline' : 'border-white text-white hover:bg-white hover:bg-opacity-10'}`}>Login</Button>
             </Link>
             <Link to="/register">
               <Button className="btn-primary">Sign Up</Button>
@@ -57,7 +65,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-shazmeen-dark p-2">
+            <button onClick={toggleMenu} className={`${isScrolled ? 'text-shazmeen-dark' : 'text-white'} p-2`}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
