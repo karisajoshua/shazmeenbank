@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,23 +21,16 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
   const isActive = (path: string) => location.pathname === path;
-  
   return <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo and brand name */}
           <Link to="/" className="flex items-center gap-3">
-            <img 
-              src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//SB.png" 
-              alt="Shazmeen Bank Logo" 
-              className="h-16 object-contain" 
-            />
+            <img alt="Shazmeen Bank Logo" className="h-16 object-contain" src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" />
             <span className={`text-2xl font-serif font-bold ${isScrolled ? 'text-shazmeen-dark' : 'text-white'}`}></span>
           </Link>
 
@@ -73,8 +64,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden animate-fade-in bg-white py-6 absolute top-full left-0 right-0 shadow-premium">
+        {isMenuOpen && <div className="md:hidden animate-fade-in bg-white py-6 absolute top-full left-0 right-0 shadow-premium">
             <div className="flex flex-col space-y-4 px-4">
               <Link to="/" className={`px-4 py-2 rounded-md ${isActive('/') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Home</Link>
               <Link to="/courses" className={`px-4 py-2 rounded-md ${isActive('/courses') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Courses</Link>
@@ -93,10 +83,8 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
     </nav>;
 };
-
 export default Navbar;
