@@ -68,6 +68,9 @@ const Footer = () => {
           <p className="text-center text-shazmeen-gray">
             &copy; {new Date().getFullYear()} Shazmeen Bank. All rights reserved.
           </p>
+          <p className="text-center text-shazmeen-gray mt-2">
+            Powered by Texcortech Systems
+          </p>
         </div>
       </div>
     </footer>

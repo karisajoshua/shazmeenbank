@@ -1,5 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -8,25 +10,26 @@ const Contact = () => {
     message: ""
   });
   const [submitted, setSubmitted] = useState(false);
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     setSubmitted(true);
     // In a real app this would send the data to a backend
   };
-  return <>
+  
+  return (
+    <>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
+      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-24 pt-32">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
@@ -53,18 +56,10 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <p className="font-semibold text-lg text-shazmeen-dark mb-1">Call Us</p>
-                  <a href="tel:+1234567890" className="text-shazmeen-red hover:underline">
-                    +1 (234) 567-890
-                  </a>
-                </div>
-                
-                <div>
                   <p className="font-semibold text-lg text-shazmeen-dark mb-1">Office Location</p>
                   <address className="not-italic text-gray-700">
-                    123 Growth Street<br />
-                    San Francisco, CA 94107<br />
-                    United States
+                    Dubai<br />
+                    United Arab Emirates
                   </address>
                 </div>
                 
@@ -126,7 +121,8 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div>
-              {submitted ? <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-md">
+              {submitted ? (
+                <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-md">
                   <div className="flex">
                     <div className="flex-shrink-0">
                       <svg className="h-8 w-8 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -145,7 +141,9 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                </div> : <>
+                </div>
+              ) : (
+                <>
                   <h2 className="text-3xl font-bold text-shazmeen-dark mb-6">Send Us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -187,21 +185,14 @@ const Contact = () => {
                       Send Message
                     </Button>
                   </form>
-                </>}
+                </>
+              )}
             </div>
           </div>
         </div>
       </section>
-
-      {/* Map Section */}
-      <section className="py-12">
-        <div className="aspect-w-16 aspect-h-7 bg-gray-200 min-h-[400px]">
-          {/* Replace with actual map integration */}
-          <div className="flex items-center justify-center text-gray-400">
-            <p>Map will be displayed here</p>
-          </div>
-        </div>
-      </section>
-    </>;
+    </>
+  );
 };
+
 export default Contact;

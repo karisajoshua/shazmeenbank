@@ -11,7 +11,6 @@ import DateTimeSelector from "@/components/bookings/DateTimeSelector";
 import BookingConfirmation from "@/components/bookings/BookingConfirmation";
 import BookingComplete from "@/components/bookings/BookingComplete";
 import DiscountOffer from "@/components/bookings/DiscountOffer";
-import CoachRecommendations from "@/components/bookings/CoachRecommendations";
 
 const timeSlots = generateTimeSlots();
 
@@ -157,11 +156,6 @@ const Bookings = () => {
           />
         </DialogContent>
       </Dialog>
-      
-      {/* Coach Recommendations */}
-      {bookingComplete && !showDiscountOffer && !multiSessionBooked && (
-        <CoachRecommendations />
-      )}
     </>
   );
 };
