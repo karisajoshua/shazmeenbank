@@ -1,7 +1,5 @@
-
 import { Button } from "@/components/ui/button";
 import { Headphones } from "lucide-react";
-
 const PodcastHero = () => {
   return <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16 md:py-24">
       <div className="container-custom">
@@ -15,7 +13,7 @@ const PodcastHero = () => {
               <Headphones size={20} />
               Subscribe to Podcast
             </Button>
-            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-white">
+            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-gray-900">
               Explore Episodes
             </Button>
           </div>
@@ -23,5 +21,4 @@ const PodcastHero = () => {
       </div>
     </section>;
 };
-
 export default PodcastHero;
