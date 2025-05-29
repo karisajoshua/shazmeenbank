@@ -1,10 +1,7 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
-
 const FreeTools = () => {
-  return (
-    <section className="section-padding bg-gradient-to-r from-shazmeen-dark/5 to-shazmeen-blush/10">
+  return <section className="section-padding bg-gradient-to-r from-shazmeen-dark/5 to-shazmeen-blush/10 bg-white">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
@@ -18,8 +15,6 @@ const FreeTools = () => {
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FreeTools;
