@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 const FreeTools = () => {
-  return (
-    <section className="section-padding bg-white">
+  return <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
@@ -15,14 +12,12 @@ const FreeTools = () => {
             Start where you are—with no pressure. These free downloads are created to help you reconnect with yourself, reflect on what you truly need, and take your next step forward.
           </p>
           <Link to="/free-resources">
-            <Button className="border-2 border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg">
+            <Button className="border-2 border-shazmeen-dark hover:bg-shazmeen-dark transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg text-shazmeen-white">
               Access Free Resources
             </Button>
           </Link>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FreeTools;
