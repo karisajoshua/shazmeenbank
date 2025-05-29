@@ -1,10 +1,14 @@
 
 import VideoHero from "@/components/VideoHero";
 import LogoCarousel from "@/components/LogoCarousel";
-import FeaturesSection from "@/components/home/FeaturesSection";
-import CoursesPreview from "@/components/home/CoursesPreview";
-import CoachingCTA from "@/components/home/CoachingCTA";
-import InstagramCTA from "@/components/home/InstagramCTA";
+import HowIHelp from "@/components/home/HowIHelp";
+import CoursesTransformation from "@/components/home/CoursesTransformation";
+import PodcastSection from "@/components/home/PodcastSection";
+import FreeTools from "@/components/home/FreeTools";
+import CouplesCoaching from "@/components/home/CouplesCoaching";
+import CoachingSection from "@/components/home/CoachingSection";
+import NewsletterReset from "@/components/home/NewsletterReset";
+import ClosingMessage from "@/components/home/ClosingMessage";
 
 const Index = () => {
   return (
@@ -15,17 +19,29 @@ const Index = () => {
       {/* Logo Carousel */}
       <LogoCarousel />
 
-      {/* Features Section */}
-      <FeaturesSection />
+      {/* How I Help You Grow Section */}
+      <HowIHelp />
 
-      {/* Courses Preview */}
-      <CoursesPreview />
+      {/* Courses for Transformation */}
+      <CoursesTransformation />
 
-      {/* Coaching CTA Section */}
-      <CoachingCTA />
+      {/* Couples Coaching */}
+      <CouplesCoaching />
 
-      {/* Instagram Free Guide CTA */}
-      <InstagramCTA />
+      {/* The Love Better Podcast */}
+      <PodcastSection />
+
+      {/* Free Tools */}
+      <FreeTools />
+
+      {/* Coaching Section */}
+      <CoachingSection />
+
+      {/* Newsletter Reset */}
+      <NewsletterReset />
+
+      {/* Closing Message with Social Links */}
+      <ClosingMessage />
     </>
   );
 };
