@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +18,7 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import Waitlist from "./pages/Waitlist";
+import FreeResources from "./pages/FreeResources";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -40,6 +42,7 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="dashboard/*" element={<Dashboard />} />
               <Route path="waitlist" element={<Waitlist />} />
+              <Route path="free-resources" element={<FreeResources />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

@@ -41,14 +41,13 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Button 
                 onClick={onWaitlistClick}
-                className="btn-primary text-lg w-full sm:w-auto px-8 py-4"
+                className="bg-white text-shazmeen-dark hover:bg-gray-100 shadow-lg text-lg w-full sm:w-auto px-8 py-4 rounded-xl font-bold transition-all duration-300"
               >
                 Unlearn. Rebuild. Love Better.
               </Button>
               <Link to="/bookings">
                 <Button 
-                  variant="outline" 
-                  className="border-2 border-shazmeen-white hover:bg-shazmeen-white transition-all rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto text-gray-900"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-shazmeen-dark transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto"
                 >
                   Begin 1:1 healing
                 </Button>

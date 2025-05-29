@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const FreeTools = () => {
   return (
@@ -13,9 +14,11 @@ const FreeTools = () => {
           <p className="text-xl text-gray-700 mb-10 leading-relaxed">
             Start where you are—with no pressure. These free downloads are created to help you reconnect with yourself, reflect on what you truly need, and take your next step forward.
           </p>
-          <Button className="btn-outline text-lg px-8 py-4">
-            Access Free Resources
-          </Button>
+          <Link to="/free-resources">
+            <Button className="border-2 border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg">
+              Access Free Resources
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

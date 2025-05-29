@@ -2,7 +2,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
-const NewsletterReset = () => {
+interface NewsletterResetProps {
+  onNewsletterClick: () => void;
+}
+
+const NewsletterReset = ({ onNewsletterClick }: NewsletterResetProps) => {
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
@@ -13,7 +17,10 @@ const NewsletterReset = () => {
           <p className="text-xl text-gray-700 mb-10 leading-relaxed">
             Real talk, healing prompts, and soulful check-ins straight to your inbox. Think of it as your weekly moment to reflect, reconnect, and grow.
           </p>
-          <Button className="btn-outline text-lg px-8 py-4">
+          <Button 
+            onClick={onNewsletterClick}
+            className="border-2 border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg"
+          >
             Subscribe to Newsletter
           </Button>
         </div>

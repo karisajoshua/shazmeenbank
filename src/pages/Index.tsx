@@ -11,9 +11,11 @@ import CoachingSection from "@/components/home/CoachingSection";
 import NewsletterReset from "@/components/home/NewsletterReset";
 import ClosingMessage from "@/components/home/ClosingMessage";
 import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
+import NewsletterSignupPopup from "@/components/popups/NewsletterSignupPopup";
 
 const Index = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   const handleWaitlistClick = () => {
     setIsWaitlistOpen(true);
@@ -21,6 +23,14 @@ const Index = () => {
 
   const handleCloseWaitlist = () => {
     setIsWaitlistOpen(false);
+  };
+
+  const handleNewsletterClick = () => {
+    setIsNewsletterOpen(true);
+  };
+
+  const handleCloseNewsletter = () => {
+    setIsNewsletterOpen(false);
   };
 
   return (
@@ -50,7 +60,7 @@ const Index = () => {
       <CoachingSection />
 
       {/* Newsletter Reset */}
-      <NewsletterReset />
+      <NewsletterReset onNewsletterClick={handleNewsletterClick} />
 
       {/* Closing Message with Social Links */}
       <ClosingMessage />
@@ -63,6 +73,12 @@ const Index = () => {
           title: "Unlearn. Rebuild. Love Better.",
           description: "Transform your attachment patterns and step into your worth"
         }}
+      />
+
+      {/* Newsletter Popup */}
+      <NewsletterSignupPopup
+        isOpen={isNewsletterOpen}
+        onClose={handleCloseNewsletter}
       />
     </>
   );
