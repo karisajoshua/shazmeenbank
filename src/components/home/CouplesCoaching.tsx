@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 const CouplesCoaching = () => {
-  return (
-    <section className="section-padding bg-white">
+  return <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -22,16 +19,10 @@ const CouplesCoaching = () => {
             </Link>
           </div>
           <div className="lg:order-first">
-            <img 
-              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=400&fit=crop" 
-              alt="Couples coaching session" 
-              className="w-full h-80 object-cover rounded-xl shadow-premium"
-            />
+            <img alt="Couples coaching session" className="w-full h-80 object-cover rounded-xl shadow-premium" src="https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//shaz.jpeg" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CouplesCoaching;
