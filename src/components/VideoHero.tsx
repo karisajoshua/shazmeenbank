@@ -3,23 +3,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const VideoHero = () => {
+interface VideoHeroProps {
+  onWaitlistClick: () => void;
+}
+
+const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   return (
     <section className="relative overflow-hidden min-h-[100vh]">
-      {/* Video background with overlay */}
+      {/* Background image with overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          className="object-cover w-full h-full" 
-          poster="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//Screen%20Shot%202025-05-17%20at%2015.22.14.png"
-        >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-working-on-her-laptop-at-home-746-large.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div 
+          className="absolute inset-0 bg-cover bg-right bg-no-repeat w-full h-full"
+          style={{
+            backgroundImage: `url('https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//shaz.jpeg')`
+          }}
+        ></div>
       </div>
 
       {/* Content */}
@@ -40,11 +39,12 @@ const VideoHero = () => {
               Not just in relationships, but in your career, boundaries, and self-expression. Healing your attachment wounds are about becoming even more whole as a person, not just for your relationships.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
-              <Link to="/waitlist">
-                <Button className="btn-primary text-lg w-full sm:w-auto px-8 py-4">
-                  Unlearn. Rebuild. Love Better.
-                </Button>
-              </Link>
+              <Button 
+                onClick={onWaitlistClick}
+                className="btn-primary text-lg w-full sm:w-auto px-8 py-4"
+              >
+                Unlearn. Rebuild. Love Better.
+              </Button>
               <Link to="/bookings">
                 <Button 
                   variant="outline" 
@@ -56,7 +56,7 @@ const VideoHero = () => {
             </div>
           </div>
           <div className="hidden md:block">
-            {/* Just spacing for layout - video is in background */}
+            {/* Just spacing for layout - image is in background */}
           </div>
         </div>
       </div>

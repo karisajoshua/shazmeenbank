@@ -22,8 +22,8 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, you would send this data to your server
-    console.log("Added to waitlist:", { name, email, course: course?.title });
+    // In a real app, you would send this data to info@shazmeenbank.com
+    console.log("Added to waitlist:", { name, email, course: course?.title, sendTo: "info@shazmeenbank.com" });
     
     // Show success message
     toast({
@@ -40,43 +40,42 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl max-w-md w-full shadow-xl relative overflow-hidden">
+      <div className="bg-white rounded-xl max-w-4xl w-full shadow-xl relative overflow-hidden">
         <button 
           onClick={onClose}
-          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
           aria-label="Close"
         >
           <X size={24} />
         </button>
 
-        <div className="flex flex-col">
-          {/* Top image */}
-          <div className="relative h-48 overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {/* Left side - Image */}
+          <div className="md:w-1/2 h-64 md:h-auto">
             <img 
-              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" 
-              alt="Shazmeen Bank teaching" 
+              src="https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//Screen%20Shot%202025-05-30%20at%2002.21.33.png" 
+              alt="Shazmeen Bank" 
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-              <div className="p-6">
-                <img 
-                  src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" 
-                  alt="Shazmeen Bank Logo" 
-                  className="h-12 mb-2"
-                />
-              </div>
-            </div>
           </div>
 
-          {/* Content */}
-          <div className="p-6">
+          {/* Right side - Content */}
+          <div className="md:w-1/2 p-8 flex flex-col justify-center">
             {!isSubmitted ? (
               <>
+                <div className="mb-6">
+                  <img 
+                    src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" 
+                    alt="Shazmeen Bank Logo" 
+                    className="h-12 mb-4"
+                  />
+                </div>
+                
                 <h3 className="text-2xl font-bold text-shazmeen-dark mb-2">
                   Join the Waitlist
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  {course?.title} is coming soon! Be the first to know when enrollment opens.
+                <p className="text-gray-600 mb-6">
+                  Be the first to know when enrollment opens and get exclusive early bird pricing.
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -89,7 +88,7 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                       placeholder="Enter your name"
                       required
                     />
@@ -104,13 +103,13 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                       placeholder="Enter your email"
                       required
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full btn-primary">
+                  <Button type="submit" className="w-full btn-primary text-lg py-3">
                     Join Waitlist
                   </Button>
                 </form>
@@ -124,7 +123,7 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
                 </div>
                 <h3 className="text-2xl font-bold text-shazmeen-dark mb-2">Thank You!</h3>
                 <p className="text-gray-600 mb-4">
-                  You're on the waitlist for {course?.title}. We'll notify you when enrollment opens.
+                  You're on the waitlist. We'll notify you when enrollment opens with exclusive early bird pricing.
                 </p>
                 <Button onClick={onClose} className="btn-primary">
                   Close

@@ -1,8 +1,11 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
 const CoachingSection = () => {
-  return <section className="section-padding bg-gradient-to-r from-shazmeen-secondary/10 to-shazmeen-blush/20 bg-white">
+  return (
+    <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
@@ -18,6 +21,8 @@ const CoachingSection = () => {
           </Link>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default CoachingSection;

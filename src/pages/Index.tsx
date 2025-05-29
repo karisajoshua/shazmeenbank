@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import VideoHero from "@/components/VideoHero";
 import LogoCarousel from "@/components/LogoCarousel";
 import HowIHelp from "@/components/home/HowIHelp";
@@ -9,12 +10,23 @@ import CouplesCoaching from "@/components/home/CouplesCoaching";
 import CoachingSection from "@/components/home/CoachingSection";
 import NewsletterReset from "@/components/home/NewsletterReset";
 import ClosingMessage from "@/components/home/ClosingMessage";
+import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
 
 const Index = () => {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
+  const handleWaitlistClick = () => {
+    setIsWaitlistOpen(true);
+  };
+
+  const handleCloseWaitlist = () => {
+    setIsWaitlistOpen(false);
+  };
+
   return (
     <>
-      {/* Hero Section with Video Background */}
-      <VideoHero />
+      {/* Hero Section with Background Image */}
+      <VideoHero onWaitlistClick={handleWaitlistClick} />
 
       {/* Logo Carousel */}
       <LogoCarousel />
@@ -23,7 +35,7 @@ const Index = () => {
       <HowIHelp />
 
       {/* Courses for Transformation */}
-      <CoursesTransformation />
+      <CoursesTransformation onWaitlistClick={handleWaitlistClick} />
 
       {/* Couples Coaching */}
       <CouplesCoaching />
@@ -42,6 +54,16 @@ const Index = () => {
 
       {/* Closing Message with Social Links */}
       <ClosingMessage />
+
+      {/* Waitlist Popup */}
+      <CourseWaitlistPopup
+        isOpen={isWaitlistOpen}
+        onClose={handleCloseWaitlist}
+        course={{
+          title: "Unlearn. Rebuild. Love Better.",
+          description: "Transform your attachment patterns and step into your worth"
+        }}
+      />
     </>
   );
 };
