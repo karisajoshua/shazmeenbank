@@ -1,24 +1,29 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Heart, Brain } from "lucide-react";
+
 const FreeResources = () => {
-  const resources = [{
-    title: "Attachment Style Assessment",
-    description: "Discover your attachment style and learn how it impacts your relationships. A comprehensive guide to understanding your patterns.",
-    icon: Heart,
-    downloadUrl: "#"
-  }, {
-    title: "Self-Worth Reflection Journal",
-    description: "30 powerful prompts to help you reconnect with your inner voice and build unshakeable self-confidence.",
-    icon: BookOpen,
-    downloadUrl: "#"
-  }, {
-    title: "Boundary Setting Toolkit",
-    description: "Scripts, strategies, and exercises to help you set healthy boundaries in all areas of your life.",
-    icon: Brain,
-    downloadUrl: "#"
-  }];
-  return <div className="min-h-screen bg-white">
+  const resources = [
+    {
+      title: "Attachment Style Assessment",
+      description: "Discover your attachment style and learn how it impacts your relationships. A comprehensive guide to understanding your patterns.",
+      icon: Heart,
+      downloadUrl: "#"
+    }, {
+      title: "Self-Worth Reflection Journal",
+      description: "30 powerful prompts to help you reconnect with your inner voice and build unshakeable self-confidence.",
+      icon: BookOpen,
+      downloadUrl: "#"
+    }, {
+      title: "Boundary Setting Toolkit",
+      description: "Scripts, strategies, and exercises to help you set healthy boundaries in all areas of your life.",
+      icon: Brain,
+      downloadUrl: "#"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-white py-20">
         <div className="container-custom">
@@ -38,8 +43,9 @@ const FreeResources = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {resources.map((resource, index) => {
-            const IconComponent = resource.icon;
-            return <div key={index} className="bg-white rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300">
+              const IconComponent = resource.icon;
+              return (
+                <div key={index} className="bg-white rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300">
                   <div className="mb-6">
                     <div className="w-16 h-16 bg-shazmeen-blush/20 rounded-full flex items-center justify-center mb-4">
                       <IconComponent className="w-8 h-8 text-shazmeen-red" />
@@ -55,14 +61,15 @@ const FreeResources = () => {
                     <Download className="w-4 h-4 mr-2" />
                     Download Free
                   </Button>
-                </div>;
-          })}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-shazmeen-blush/10 to-shazmeen-gray/10 bg-shazmeen-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-6 font-serif">
@@ -75,13 +82,15 @@ const FreeResources = () => {
               <Button className="bg-shazmeen-dark text-white hover:bg-opacity-90 transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg">
                 View Courses
               </Button>
-              <Button className="border-2 border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg">
+              <Button className="border-2 border-shazmeen-dark text-shazmeen-dark bg-white hover:bg-shazmeen-dark hover:text-white transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg">
                 Book 1:1 Coaching
               </Button>
             </div>
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default FreeResources;
