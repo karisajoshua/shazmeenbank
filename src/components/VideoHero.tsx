@@ -14,7 +14,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-right bg-no-repeat w-full h-full"
+          className="absolute inset-0 bg-cover bg-[center_right_25%] bg-no-repeat w-full h-full"
           style={{
             backgroundImage: `url('https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//shaz.jpeg')`
           }}
