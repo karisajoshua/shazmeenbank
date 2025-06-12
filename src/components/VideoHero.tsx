@@ -38,18 +38,25 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
             <p className="text-xl md:text-2xl text-shazmeen-gray font-light leading-relaxed">
               Not just in relationships, but in your career, boundaries, and self-expression. Healing your attachment wounds are about becoming even more whole as a person, not just for your relationships.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 onClick={onWaitlistClick}
-                className="bg-white text-shazmeen-dark hover:bg-gray-100 shadow-lg text-lg w-full sm:w-auto px-8 py-4 rounded-xl font-bold transition-all duration-300"
+                className="bg-white text-shazmeen-dark hover:bg-gray-100 shadow-lg text-lg w-full sm:w-auto px-6 py-4 rounded-xl font-bold transition-all duration-300"
               >
                 Unlearn. Rebuild. Love Better.
               </Button>
               <Link to="/bookings">
                 <Button 
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-shazmeen-dark transition-all duration-300 rounded-xl px-8 py-4 font-bold text-lg w-full sm:w-auto"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-shazmeen-dark transition-all duration-300 rounded-xl px-6 py-4 font-bold text-lg w-full sm:w-auto"
                 >
                   Begin 1:1 healing
+                </Button>
+              </Link>
+              <Link to="/bookings">
+                <Button 
+                  className="bg-shazmeen-red border-2 border-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-6 py-4 font-bold text-lg w-full sm:w-auto"
+                >
+                  Couples coaching
                 </Button>
               </Link>
             </div>
