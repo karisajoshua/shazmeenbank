@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo and brand name */}
           <Link to="/" className="flex items-center gap-3">
-            <img alt="Shazmeen Bank Logo" className="h-16 object-contain" src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" />
+            <img alt="Shazmeen Bank Logo" className="h-20 object-contain" src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" />
             <span className={`text-2xl font-serif font-bold ${isScrolled ? 'text-shazmeen-dark' : 'text-white'}`}></span>
           </Link>
 
