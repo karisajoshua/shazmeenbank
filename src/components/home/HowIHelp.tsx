@@ -4,20 +4,20 @@ import React from "react";
 const HowIHelp = () => {
   const helpAreas = [
     {
-      title: "Regulate Your Nervous System",
-      description: "I'll teach you how to reconnect with your body and calm the anxiety that drives reactive patterns—so you can stop living in survival mode and start living from self-trust."
+      title: "For Couples: From Conflict to Connection",
+      description: "I help couples break free from painful cycles of disconnection by teaching you how to communicate in ways that create openness rather than defensiveness. Together, we work on moving from a \"conflict mind\" into a \"compassionate heart.\" You'll learn how to understand your partner's attachment style, hold space for each other's pain and deepest needs, and ask for what you long for in ways that invite love instead of resistance. This is about building the kind of relationship where you both feel safe, seen, and deeply connected again—a relationship you want to keep coming home to."
     },
     {
-      title: "Break Emotional Cycles",
-      description: "Together, we'll unpack the root of your anxious patterns and why you're drawn to unavailable or unfulfilling love. You'll learn to stop chasing and start choosing from a secure place."
+      title: "Healing Anxious Attachment",
+      description: "If you feel stuck in overthinking, people-pleasing, or fearing abandonment, this work will help you find your center again. You'll learn how to hold space for your emotions without being overwhelmed by them, heal your core wounds, and feel safe in your own body. I'll guide you in building boundaries that honor your needs, stepping into your voice with strength and compassion, and moving from self-abandonment to self-trust. As you grow more secure within yourself, you'll naturally bring more stability and love into your relationships—even with an avoidant partner."
     },
     {
-      title: "Rebuild Your Self-Worth",
-      description: "You'll learn how to validate yourself, set boundaries, and stop people-pleasing—not just in relationships, but in every area of your life. I promise you when you step into your true self, a level of self confidence will become your shadow."
+      title: "Healing Through Breakup or Divorce",
+      description: "Ending a relationship can feel like losing the ground beneath you. The sadness, shame, and grief can sit heavy for a long time, and it's easy to feel lost in the darkness. Together, we'll create space for you to process your pain with compassion and care. I'll help you validate your emotions, honor your sorrow, and slowly rebuild your life piece by piece. Healing doesn't mean rushing through the pain—it means learning to hold it with love as you begin creating a new world around yourself, one that feels steady, whole, and full of possibility."
     },
     {
-      title: "Reconnect With Your Voice and Vision",
-      description: "As a Master life coach, I also help you get clear on your identity beyond relationships. Who are you when you're not performing for love? We explore your purpose, your passions, and the life you're meant to lead—securely and unapologetically."
+      title: "Life Coaching: Finding Your North Star",
+      description: "As your life coach, I'll help you realign with what truly matters to you and guide you back to your sense of purpose. Whether it's reclaiming your self-worth, following through on the goals you've been putting off, or rediscovering your voice outside of relationships, this is about reconnecting with your inner compass. Together, we'll get clear on the vision you hold for your life, and I'll support you in taking the steps to bring that vision to life with confidence, clarity, and joy."
     }
   ];
 
@@ -26,13 +26,13 @@ const HowIHelp = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
-            How I Help You Grow
+            Your Path to Healing & Growth
           </h2>
           <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Healing anxious attachment isn't just about love—it's about who you become in the process. My work combines relationship healing, nervous system regulation, and life coaching so you can finally feel grounded, worthy, and in control of your story.
+            Healing isn't about becoming someone new—it's about returning to yourself. Whether you're here as a couple wanting to reconnect, as someone navigating anxious attachment, moving through the heartbreak of divorce, or simply searching for your North Star again, this is your path to healing and growth.
           </p>
           <p className="text-lg text-gray-600 mt-4 max-w-4xl mx-auto">
-            Whether you're stuck in anxious loops, constantly overthinking, or giving too much in love, here's how I support your growth, whether you do the course or take on sessions with me.
+            Here's how I can support you along the way.
           </p>
         </div>
         

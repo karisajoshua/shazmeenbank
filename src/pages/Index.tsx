@@ -6,7 +6,8 @@ import HowIHelp from "@/components/home/HowIHelp";
 import CoursesTransformation from "@/components/home/CoursesTransformation";
 import PodcastSection from "@/components/home/PodcastSection";
 import FreeTools from "@/components/home/FreeTools";
-import CouplesCoaching from "@/components/home/CouplesCoaching";
+import NewWayToLove from "@/components/home/NewWayToLove";
+import ExpandedCouplesCoaching from "@/components/home/ExpandedCouplesCoaching";
 import CoachingSection from "@/components/home/CoachingSection";
 import NewsletterReset from "@/components/home/NewsletterReset";
 import ClosingMessage from "@/components/home/ClosingMessage";
@@ -41,14 +42,17 @@ const Index = () => {
       {/* Logo Carousel */}
       <LogoCarousel />
 
-      {/* How I Help You Grow Section */}
+      {/* Your Path to Healing & Growth Section */}
       <HowIHelp />
 
       {/* Courses for Transformation */}
       <CoursesTransformation onWaitlistClick={handleWaitlistClick} />
 
-      {/* Couples Coaching */}
-      <CouplesCoaching />
+      {/* A New Way to Love - Anxious Attachment */}
+      <NewWayToLove />
+
+      {/* Expanded Couples Coaching */}
+      <ExpandedCouplesCoaching />
 
       {/* The Love Better Podcast */}
       <PodcastSection />
@@ -56,7 +60,7 @@ const Index = () => {
       {/* Free Tools */}
       <FreeTools />
 
-      {/* Coaching Section */}
+      {/* Enhanced Coaching Section */}
       <CoachingSection />
 
       {/* Newsletter Reset */}
