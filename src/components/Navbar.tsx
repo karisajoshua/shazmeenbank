@@ -56,7 +56,7 @@ const Navbar = () => {
             <Link to="/login">
               <Button 
                 variant="outline" 
-                className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
+                className={`${isScrolled ? 'border-shazmeen-dark text-black hover:bg-shazmeen-dark hover:text-white' : 'border-white text-black hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
               >
                 Login
               </Button>
