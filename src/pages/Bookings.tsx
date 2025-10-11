@@ -8,9 +8,9 @@ const services = [
     id: 1,
     title: "Secure Self Session",
     price: "$375",
-    duration: "60 minutes",
-    description: "For individuals seeking clarity, emotional regulation, and personalized guidance for a current relationship or healing journey.",
-    subtitle: "60-min private session to help you process, regulate, and realign",
+    duration: "60 minutes on Zoom",
+    description: "This private 1:1 session is designed for individuals who want to feel grounded, emotionally regulated, and clear in love and in life. Whether you're navigating a relationship, healing from one, or reconnecting with yourself, this session helps you process what's heavy and return to your center with clarity and compassion.\n\nThrough personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
+    subtitle: "Book your Secure Self Session—and start coming home to yourself.",
     icon: Heart,
     features: [
       "Personal healing guidance",
@@ -23,33 +23,40 @@ const services = [
     id: 2,
     title: "Couples Coaching",
     price: "$510", 
-    duration: "75 minutes",
-    description: "For partners committed to moving through conflict, improving communication, and rebuilding safety together.",
-    subtitle: "75-min guided session for deeper connection and conflict navigation",
+    duration: "75 minutes on Zoom",
+    description: "This session is for partners who are ready to rebuild safety, improve communication, and navigate conflict with more understanding and empathy. Whether you're struggling with recurring arguments, emotional disconnection, or mismatched needs, this guided 75-minute session helps you both uncover what's really happening beneath the surface.\n\nWe'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
+    subtitle: "Book your Couples Coaching Session and start building the relationship you both long to come home to.",
     icon: Users,
     features: [
-      "Conflict resolution tools",
-      "Communication improvement",
-      "Safety rebuilding",
-      "Attachment understanding"
+      "Conflict resolution and repair tools",
+      "Emotional safety rebuilding techniques",
+      "Communication clarity & empathy training",
+      "Attachment understanding & integration practices"
     ]
   },
   {
     id: 3,
     title: "The Resolution Method",
     price: "$3,375",
-    duration: "9 weeks",
-    description: "Feeling on the edge of divorce or a break up? These sessions are for couples ready to completely shift how they experience conflict & have their needs met while understanding how to approach each others attachment style — with weekly structure, emotional rewiring, and practical skill-building led by a certified conflict resolution facilitator, while also understanding how to approach each other more securely attached.",
-    subtitle: "This program is a commitment to each other with a promise of learning how to lead in a safe environment.",
-    additionalInfo: "Weekly 75minute coaching + tools to completely shift how you relate to conflict",
+    duration: "9 Weeks",
+    description: "Feeling on the edge of divorce or a breakup? The Resolution Method is a 9-week immersive program designed for couples ready to completely transform how they experience conflict, communication, and connection. Together, we'll unravel the emotional patterns that keep you stuck and rebuild a foundation of safety, trust, and mutual understanding.\n\nEach week, you'll learn how to recognize your attachment triggers, regulate during conflict, and lead difficult conversations with compassion instead of defense. With weekly structure, emotional rewiring, and practical skill-building, you'll begin to experience a new dynamic—one where both partners feel seen, valued, and capable of creating change.\n\nLed by Shazmeen Bank, Certified Conflict-Resolution Facilitator, this program provides a safe space for both of you to heal, grow, and learn how to lead your relationship forward securely, consciously, and with love.",
+    subtitle: "Book The Resolution Method and learn how to lead your relationship through repair, not rupture.",
+    additionalInfo: "9 weekly 75-minute coaching sessions",
     icon: Clock,
     features: [
-      "9 weekly 75-minute sessions",
-      "Conflict transformation tools",
-      "Attachment style guidance", 
-      "Emotional rewiring techniques",
-      "Certified facilitation",
-      "Comprehensive relationship restructuring"
+      "Workbook",
+      "9 weekly 75-minute coaching sessions",
+      "Conflict transformation & repair tools",
+      "Emotional rewiring & nervous system regulation techniques",
+      "Understanding Avoidant and Anxious attachment styles—and how to work with both dynamics",
+      "Learning to hold space for each other's pain, fears, and deepest yearnings",
+      "Shifting from 'conflict mind' to 'loving heart,' where compassion leads every hard conversation",
+      "Writing a new shared vision for your relationship and creating the roadmap to live it",
+      "Discovering the four truths that anchor and sustain your partnership",
+      "Developing new ways to communicate through tough conversations without defensiveness or shutdown",
+      "Learning how to ask for what you need—and feel safe being seen in it",
+      "Practicing vulnerable sharing in a space that feels emotionally secure",
+      "Becoming a master at leading your relationship back to safety, connection, and love"
     ],
     isIntensive: true
   }
@@ -75,7 +82,10 @@ const Bookings = () => {
               Whether you're navigating your own healing or working through challenges in your relationship, you're in the right place.
             </p>
             <p className="text-xl text-shazmeen-gray leading-relaxed mt-4">
-              Book a 1:1 or couples session to explore patterns, improve communication, and build emotional safety, heal through conflict — with clarity, compassion, and real tools that create change.
+              In our sessions—whether 1:1 or as a couple—we'll explore the patterns beneath your reactions, strengthen communication, and build emotional safety that allows healing to unfold naturally. You'll learn to move through conflict with clarity, compassion, and understanding, while finding new ways of feeling and thinking that already live within you.
+            </p>
+            <p className="text-xl text-shazmeen-gray leading-relaxed mt-4">
+              These sessions move at your pace. They're a space for inner child healing, nervous system regulation, and gentle self-discovery. My role is to guide you just a few degrees closer to your own wisdom and truth. Because everything you're searching for is already within you.
             </p>
           </div>
         </div>
