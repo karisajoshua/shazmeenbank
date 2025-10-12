@@ -1,46 +1,87 @@
-
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
-// Mock course data
-const courseData = [
-  {
-    id: 1,
-    title: "Financial Mindset Mastery",
-    description: "Transform your relationship with money and build wealth with purpose.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-    progress: 25,
-    modules: 8,
-    modulesCompleted: 2,
-    status: "active"
-  },
-  {
-    id: 2,
-    title: "Leadership for Women",
-    description: "Develop your authentic leadership style and excel in any environment.",
-    image: "https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    progress: 50,
-    modules: 6,
-    modulesCompleted: 3,
-    status: "active"
-  },
-  {
-    id: 3,
-    title: "Entrepreneurship Essentials",
-    description: "Build a sustainable business aligned with your values and purpose.",
-    image: "https://images.unsplash.com/photo-1564121211835-e88c852648ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    progress: 100,
-    modules: 10,
-    modulesCompleted: 10,
-    status: "completed"
-  }
-];
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  total_modules: number;
+}
+
+interface UserCourse {
+  id: string;
+  course_id: string;
+  progress: number;
+  modules_completed: number;
+  status: string;
+  courses: Course;
+}
 
 const MyCourses = () => {
   const [activeTab, setActiveTab] = useState("active");
+  const [userCourses, setUserCourses] = useState<UserCourse[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchUserCourses();
+
+    // Set up real-time subscription
+    const channel = supabase
+      .channel('user_courses_changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'user_courses'
+        },
+        () => {
+          fetchUserCourses();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const fetchUserCourses = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('user_courses')
+        .select(`
+          *,
+          courses (*)
+        `)
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+      setUserCourses(data || []);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load courses",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   
   // Filter courses based on active tab
-  const filteredCourses = courseData.filter(course => course.status ===  activeTab);
+  const filteredCourses = userCourses.filter(enrollment => enrollment.status === activeTab);
 
   return (
     <div>
@@ -72,7 +113,11 @@ const MyCourses = () => {
       
       {/* Courses List */}
       <div className="space-y-6">
-        {filteredCourses.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12 bg-white rounded-xl">
+            <p className="text-gray-500">Loading courses...</p>
+          </div>
+        ) : filteredCourses.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-xl">
             <h3 className="text-xl font-semibold text-shazmeen-dark mb-2">
               {activeTab === "active" ? "No courses in progress" : "No completed courses"}
@@ -85,30 +130,30 @@ const MyCourses = () => {
             <Button className="btn-primary">Browse Courses</Button>
           </div>
         ) : (
-          filteredCourses.map(course => (
-            <div key={course.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
+          filteredCourses.map(enrollment => (
+            <div key={enrollment.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/3 h-48 md:h-auto">
                   <img 
-                    src={course.image} 
-                    alt={course.title}
+                    src={enrollment.courses.image} 
+                    alt={enrollment.courses.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6 md:w-2/3">
-                  <h2 className="text-xl font-bold text-shazmeen-dark mb-2">{course.title}</h2>
-                  <p className="text-gray-600 mb-4">{course.description}</p>
+                  <h2 className="text-xl font-bold text-shazmeen-dark mb-2">{enrollment.courses.title}</h2>
+                  <p className="text-gray-600 mb-4">{enrollment.courses.description}</p>
                   
-                  {course.status === "active" ? (
+                  {enrollment.status === "active" ? (
                     <div className="mb-6">
                       <div className="flex justify-between text-sm text-gray-500 mb-2">
-                        <span>Module {course.modulesCompleted} of {course.modules} completed</span>
-                        <span>{course.progress}% Complete</span>
+                        <span>Module {enrollment.modules_completed} of {enrollment.courses.total_modules} completed</span>
+                        <span>{enrollment.progress}% Complete</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div 
                           className="bg-shazmeen-red h-2.5 rounded-full" 
-                          style={{ width: `${course.progress}%` }}
+                          style={{ width: `${enrollment.progress}%` }}
                         ></div>
                       </div>
                     </div>
@@ -124,7 +169,7 @@ const MyCourses = () => {
                   )}
                   
                   <div className="flex space-x-3">
-                    {course.status === "active" ? (
+                    {enrollment.status === "active" ? (
                       <Button className="btn-primary">Continue Course</Button>
                     ) : (
                       <Button className="btn-primary">View Certificate</Button>
