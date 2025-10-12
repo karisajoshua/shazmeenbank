@@ -34,14 +34,14 @@ const ClosingMessage = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button variant="outline" className="border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-white flex items-center gap-2" asChild>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/shazmeenbank/" target="_blank" rel="noopener noreferrer">
                   <Instagram size={20} />
                   Follow on Instagram
                 </a>
               </Button>
               
               <Button variant="outline" className="border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-white flex items-center gap-2" asChild>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@shazmeen_bank" target="_blank" rel="noopener noreferrer">
                   <Music size={20} />
                   Follow on TikTok
                 </a>

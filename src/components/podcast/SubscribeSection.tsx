@@ -36,8 +36,10 @@ const SubscribeSection = () => {
             <Button size="lg" className="bg-[#5000B9] hover:bg-opacity-90">
               Google Podcasts
             </Button>
-            <Button size="lg" className="bg-[#F43E37] hover:bg-opacity-90">
-              YouTube
+            <Button size="lg" className="bg-[#F43E37] hover:bg-opacity-90" asChild>
+              <a href="https://www.youtube.com/channel/UCYYSYmYSMPi8YZ3TjHl4JGg" target="_blank" rel="noopener noreferrer">
+                YouTube
+              </a>
             </Button>
           </div>
           <div className="max-w-md mx-auto mt-10">
