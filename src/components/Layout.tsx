@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import NewsletterPopup from "./popups/NewsletterPopup";
 import ExitIntentPopup from "./popups/ExitIntentPopup";
-import FloatingSocialIcons from "./FloatingSocialIcons";
 
 const Layout = () => {
   return (
@@ -18,9 +17,6 @@ const Layout = () => {
       {/* Popups */}
       <NewsletterPopup />
       <ExitIntentPopup />
-      
-      {/* Floating Social Icons */}
-      <FloatingSocialIcons />
     </div>
   );
 };
