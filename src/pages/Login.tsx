@@ -9,8 +9,7 @@ const Login = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would authenticate with a backend
-    console.log("Login attempt with:", { email, password });
+    // TODO: Implement Supabase authentication
   };
   
   return (

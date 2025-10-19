@@ -9,8 +9,7 @@ const ForgotPassword = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send a reset password link
-    console.log("Reset password for:", email);
+    // TODO: Implement password reset with Supabase
     setSubmitted(true);
   };
   

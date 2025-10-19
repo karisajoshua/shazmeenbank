@@ -21,8 +21,7 @@ const Register = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would register with a backend
-    console.log("Registration attempt with:", formData);
+    // TODO: Implement Supabase authentication
   };
   
   return (
