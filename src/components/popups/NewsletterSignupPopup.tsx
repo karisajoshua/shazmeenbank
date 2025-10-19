@@ -18,8 +18,7 @@ const NewsletterSignupPopup = ({ isOpen, onClose }: NewsletterSignupPopupProps) 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, you would send this data to info@shazmeenbank.com
-    console.log("Newsletter signup:", { name, email, sendTo: "info@shazmeenbank.com" });
+    // TODO: Send newsletter subscription to info@shazmeenbank.com
     
     // Show success message
     toast({

@@ -14,8 +14,7 @@ const Waitlist = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, you would send this data to your server
-    console.log("Added to waitlist:", { name, email });
+    // TODO: Send waitlist data to backend
     
     // Show success message
     toast({
