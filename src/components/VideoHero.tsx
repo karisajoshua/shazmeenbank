@@ -7,9 +7,9 @@ interface VideoHeroProps {
 const VideoHero = ({
   onWaitlistClick
 }: VideoHeroProps) => {
-  return <section className="relative overflow-hidden min-h-[100vh] -mt-[104px]">
+  return <section className="relative overflow-hidden min-h-[100vh]">
       {/* Background image with overlay */}
-      <div className="absolute inset-0 w-full h-full -top-[104px] bottom-0">
+      <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
         <div className="absolute inset-0 bg-cover bg-right bg-top bg-no-repeat w-full h-full" style={{
         backgroundImage: `url('https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//shaz.jpeg')`
@@ -17,7 +17,7 @@ const VideoHero = ({
       </div>
 
       {/* Content */}
-      <div className="container-custom relative z-20 py-28 md:py-36 flex items-center min-h-[100vh] pt-[130px] md:pt-[150px]">
+      <div className="container-custom relative z-20 py-28 md:py-36 flex items-center min-h-[100vh]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center pt-16">
           <div className="space-y-8 animate-fade-in">
             <div className="mb-8">
