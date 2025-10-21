@@ -9,11 +9,22 @@ const PodcastHero = () => {
             Exploring relationships, attachment, and the journey to secure love with Shazmeen Bank
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
-            <Button className="bg-shazmeen-red hover:bg-opacity-90 text-white flex gap-2 items-center" size="lg">
-              <Headphones size={20} />
-              Subscribe to Podcast
+            <Button 
+              className="bg-shazmeen-red hover:bg-opacity-90 text-white flex gap-2 items-center" 
+              size="lg"
+              asChild
+            >
+              <a href="https://open.spotify.com/show/4LmFLH1z6wSBnqwl3rY8wY" target="_blank" rel="noopener noreferrer">
+                <Headphones size={20} />
+                Subscribe on Spotify
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-white hover:bg-white hover:bg-opacity-10 text-gray-900">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-white hover:bg-white hover:bg-opacity-10 text-gray-900"
+              onClick={() => document.getElementById('episodes')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Explore Episodes
             </Button>
           </div>

@@ -2,8 +2,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { PodcastEpisode } from "@/types/podcast";
-import PodcastPlayer from "@/components/podcast/PodcastPlayer";
-import { Headphones, Clock, Calendar, Tag, X } from "lucide-react";
+import { Headphones, Clock, Calendar, X } from "lucide-react";
 
 interface PodcastPopupPlayerProps {
   episode: PodcastEpisode | null;
@@ -88,17 +87,37 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
           </div>
         </div>
         
-        <div className="mt-6 border-t border-gray-100 pt-6">
-          <div className="flex items-center mb-4">
-            <Headphones className="h-5 w-5 text-shazmeen-red mr-2" />
-            <h3 className="text-lg font-medium">Listen Now</h3>
+        {episode.spotifyUrl ? (
+          <div className="mt-6 border-t border-gray-100 pt-6">
+            <div className="flex items-center mb-4">
+              <Headphones className="h-5 w-5 text-shazmeen-red mr-2" />
+              <h3 className="text-lg font-medium">Listen on Spotify</h3>
+            </div>
+            <iframe 
+              src={episode.spotifyUrl}
+              width="100%"
+              height="232"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              className="rounded-lg"
+              title={`Spotify player for ${episode.title}`}
+            />
           </div>
-          <PodcastPlayer episode={episode} />
-        </div>
+        ) : (
+          <div className="mt-6 text-center text-gray-500 py-8">
+            Episode player coming soon
+          </div>
+        )}
         
         <div className="mt-4 text-center">
-          <Button className="bg-shazmeen-red hover:bg-opacity-90 text-white">
-            Subscribe to Podcast
+          <Button 
+            className="bg-shazmeen-red hover:bg-opacity-90 text-white"
+            asChild
+          >
+            <a href="https://open.spotify.com/show/4LmFLH1z6wSBnqwl3rY8wY" target="_blank" rel="noopener noreferrer">
+              Subscribe on Spotify
+            </a>
           </Button>
         </div>
       </DialogContent>

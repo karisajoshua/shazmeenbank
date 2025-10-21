@@ -23,7 +23,7 @@ const EpisodeList = ({ episodes, onPlayEpisode }: EpisodeListProps) => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section id="episodes" className="py-16 bg-white">
       <div className="container-custom">
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center font-serif">Latest Episodes</h2>
         

@@ -6,5 +6,6 @@ export interface PodcastEpisode {
   image: string;
   description: string;
   topics?: string[];
-  audioUrl: string;
+  audioUrl?: string;
+  spotifyUrl?: string;
 }
