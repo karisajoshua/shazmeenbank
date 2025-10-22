@@ -15,7 +15,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
   
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[900px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-serif">{episode.title}</DialogTitle>
           <Button 
@@ -87,22 +87,46 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
           </div>
         </div>
         
-        {episode.spotifyUrl ? (
+        {(episode.spotifyUrl || episode.applePodcastUrl) ? (
           <div className="mt-6 border-t border-gray-100 pt-6">
             <div className="flex items-center mb-4">
               <Headphones className="h-5 w-5 text-shazmeen-red mr-2" />
-              <h3 className="text-lg font-medium">Listen on Spotify</h3>
+              <h3 className="text-lg font-medium">Listen Now</h3>
             </div>
-            <iframe 
-              src={episode.spotifyUrl}
-              width="100%"
-              height="232"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              className="rounded-lg"
-              title={`Spotify player for ${episode.title}`}
-            />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {episode.spotifyUrl && (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Spotify</p>
+                  <iframe 
+                    src={episode.spotifyUrl}
+                    width="100%"
+                    height="232"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-lg"
+                    title={`Spotify player for ${episode.title}`}
+                  />
+                </div>
+              )}
+              
+              {episode.applePodcastUrl && (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Apple Podcasts</p>
+                  <iframe 
+                    src={episode.applePodcastUrl}
+                    width="100%"
+                    height="232"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-lg"
+                    title={`Apple Podcasts player for ${episode.title}`}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         ) : (
           <div className="mt-6 text-center text-gray-500 py-8">
@@ -110,13 +134,21 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
           </div>
         )}
         
-        <div className="mt-4 text-center">
+        <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
           <Button 
-            className="bg-shazmeen-red hover:bg-opacity-90 text-white"
+            className="bg-[#1DB954] hover:bg-[#1ed760] text-white"
             asChild
           >
             <a href="https://open.spotify.com/show/4LmFLH1z6wSBnqwl3rY8wY" target="_blank" rel="noopener noreferrer">
               Subscribe on Spotify
+            </a>
+          </Button>
+          <Button 
+            className="bg-[#FA243C] hover:bg-[#fc4d61] text-white"
+            asChild
+          >
+            <a href="https://podcasts.apple.com/us/podcast/love-better-live-better-podcast/id1804503086" target="_blank" rel="noopener noreferrer">
+              Subscribe on Apple Podcasts
             </a>
           </Button>
         </div>

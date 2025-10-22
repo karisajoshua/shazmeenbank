@@ -8,4 +8,5 @@ export interface PodcastEpisode {
   topics?: string[];
   audioUrl?: string;
   spotifyUrl?: string;
+  applePodcastUrl?: string;
 }
