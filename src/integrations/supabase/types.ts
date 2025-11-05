@@ -14,6 +14,105 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author_id: string | null
+          content: string
+          created_at: string | null
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          meta_description: string | null
+          published_at: string | null
+          slug: string
+          status: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          content: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          meta_description?: string | null
+          published_at?: string | null
+          slug: string
+          status?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          content?: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          meta_description?: string | null
+          published_at?: string | null
+          slug?: string
+          status?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      booking_services: {
+        Row: {
+          additional_info: string | null
+          created_at: string | null
+          description: string
+          display_order: number
+          duration: string
+          features: string[]
+          icon: string | null
+          id: string
+          is_active: boolean | null
+          is_intensive: boolean | null
+          price: number
+          subtitle: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          additional_info?: string | null
+          created_at?: string | null
+          description: string
+          display_order: number
+          duration: string
+          features: string[]
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          is_intensive?: boolean | null
+          price: number
+          subtitle?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          additional_info?: string | null
+          created_at?: string | null
+          description?: string
+          display_order?: number
+          duration?: string
+          features?: string[]
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          is_intensive?: boolean | null
+          price?: number
+          subtitle?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       bookings: {
         Row: {
           booking_date: string
@@ -23,6 +122,7 @@ export type Database = {
           duration: number | null
           id: string
           notes: string | null
+          service_id: string | null
           status: string | null
           updated_at: string | null
           user_id: string
@@ -35,6 +135,7 @@ export type Database = {
           duration?: number | null
           id?: string
           notes?: string | null
+          service_id?: string | null
           status?: string | null
           updated_at?: string | null
           user_id: string
@@ -47,6 +148,7 @@ export type Database = {
           duration?: number | null
           id?: string
           notes?: string | null
+          service_id?: string | null
           status?: string | null
           updated_at?: string | null
           user_id?: string
@@ -57,6 +159,13 @@ export type Database = {
             columns: ["coach_id"]
             isOneToOne: false
             referencedRelation: "coaches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "booking_services"
             referencedColumns: ["id"]
           },
         ]
@@ -130,6 +239,78 @@ export type Database = {
         }
         Relationships: []
       }
+      podcast_episodes: {
+        Row: {
+          apple_podcast_url: string | null
+          created_at: string | null
+          description: string | null
+          episode_number: number
+          id: string
+          image_url: string | null
+          publish_date: string
+          spotify_url: string | null
+          status: string | null
+          title: string
+          topics: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          apple_podcast_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          episode_number: number
+          id?: string
+          image_url?: string | null
+          publish_date: string
+          spotify_url?: string | null
+          status?: string | null
+          title: string
+          topics?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          apple_podcast_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          episode_number?: number
+          id?: string
+          image_url?: string | null
+          publish_date?: string
+          spotify_url?: string | null
+          status?: string | null
+          title?: string
+          topics?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       user_courses: {
         Row: {
           completed_at: string | null
@@ -174,15 +355,42 @@ export type Database = {
           },
         ]
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -309,6 +517,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const

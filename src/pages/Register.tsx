@@ -1,7 +1,10 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +13,15 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const { signUp, user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -19,9 +31,36 @@ const Register = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement Supabase authentication
+
+    // Validation
+    if (formData.password.length < 8) {
+      toast.error('Password must be at least 8 characters');
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    setIsLoading(true);
+
+    const { error } = await signUp(formData.email, formData.password, formData.name);
+
+    if (error) {
+      if (error.message.includes('User already registered')) {
+        toast.error('An account with this email already exists');
+      } else {
+        toast.error(error.message);
+      }
+    } else {
+      toast.success('Account created successfully! Welcome!');
+      navigate('/');
+    }
+
+    setIsLoading(false);
   };
   
   return (
@@ -127,8 +166,16 @@ const Register = () => {
             <Button
               type="submit"
               className="w-full btn-primary py-3 text-lg"
+              disabled={isLoading}
             >
-              Create Account
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Creating account...
+                </>
+              ) : (
+                'Create Account'
+              )}
             </Button>
           </div>
         </form>
