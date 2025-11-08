@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signIn, user } = useAuth();
+  const { signIn, user, isAdmin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,19 +24,35 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const { error } = await signIn(email, password);
+    const result = await signIn(email, password);
 
-    if (error) {
-      if (error.message.includes('Invalid login credentials')) {
+    if (result.error) {
+      if (result.error.message.includes('Invalid login credentials')) {
         toast.error('Invalid email or password');
-      } else if (error.message.includes('Email not confirmed')) {
+      } else if (result.error.message.includes('Email not confirmed')) {
         toast.error('Please confirm your email address');
       } else {
-        toast.error(error.message);
+        toast.error(result.error.message);
       }
     } else {
       toast.success('Welcome back!');
-      navigate('/');
+      // Check admin status and redirect accordingly
+      if (result.data?.user) {
+        const { data: roleData } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', result.data.user.id)
+          .eq('role', 'admin')
+          .single();
+        
+        if (roleData) {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
+      } else {
+        navigate('/');
+      }
     }
 
     setIsLoading(false);

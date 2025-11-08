@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, LogOut } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
@@ -60,12 +60,6 @@ const Navbar = () => {
             <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Blog</Link>
             <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>About</Link>
             <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Contact</Link>
-            {isAdmin && (
-              <Link to="/admin" className={`transition-all duration-300 flex items-center gap-1 ${isActive('/admin') || location.pathname.startsWith('/admin') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>
-                <Shield size={16} />
-                Admin
-              </Link>
-            )}
           </div>
 
           {/* CTA Buttons */}
@@ -127,12 +121,6 @@ const Navbar = () => {
               <Link to="/blog" className={`px-4 py-2 rounded-md ${isActive('/blog') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Blog</Link>
               <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>About</Link>
               <Link to="/contact" className={`px-4 py-2 rounded-md ${isActive('/contact') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Contact</Link>
-              {isAdmin && (
-                <Link to="/admin" className={`px-4 py-2 rounded-md flex items-center gap-2 ${isActive('/admin') || location.pathname.startsWith('/admin') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>
-                  <Shield size={16} />
-                  Admin Dashboard
-                </Link>
-              )}
               
               <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
                 {user ? (
