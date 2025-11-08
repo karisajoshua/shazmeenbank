@@ -11,6 +11,7 @@ import Courses from "./pages/Courses";
 import Bookings from "./pages/Bookings";
 import Podcast from "./pages/Podcast";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
@@ -41,6 +42,7 @@ function App() {
                 <Route path="bookings" element={<Bookings />} />
                 <Route path="podcast" element={<Podcast />} />
                 <Route path="blog" element={<Blog />} />
+                <Route path="blog/:slug" element={<BlogPost />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="dashboard/*" element={<Dashboard />} />

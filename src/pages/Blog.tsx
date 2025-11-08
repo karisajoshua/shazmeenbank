@@ -1,31 +1,55 @@
-import { Button } from "@/components/ui/button";
-const Blog = () => {
-  return <>
-      {/* Header Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Insights, Stories & Strategy</h1>
-            <p className="text-xl text-shazmeen-gray">
-              Explore our collection of articles designed to help you grow personally and professionally.
-            </p>
-          </div>
-        </div>
-      </section>
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+import BlogHero from '@/components/blog/BlogHero';
+import FeaturedPost from '@/components/blog/FeaturedPost';
+import BlogGrid from '@/components/blog/BlogGrid';
 
-      {/* Coming Soon Message */}
-      <section className="section-padding bg-shazmeen-white">
-        <div className="container-custom">
-          <div className="text-center py-20">
-            <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Blog Coming Soon!</h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              We're working on bringing you valuable content that will inspire and guide you on your journey.
-              Our blog will be launching soon with articles on mindset, growth, and transformation.
-            </p>
-            <Button className="btn-primary">Subscribe for Updates</Button>
-          </div>
+const Blog = () => {
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ['published-blog-posts'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false });
+
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const featuredPost = posts?.[0];
+  const otherPosts = posts?.slice(1) || [];
+
+  return (
+    <>
+      <BlogHero />
+      
+      {isLoading ? (
+        <div className="py-20 text-center">
+          <p className="text-muted-foreground">Loading articles...</p>
         </div>
-      </section>
-    </>;
+      ) : posts?.length === 0 ? (
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-4">Blog Coming Soon!</h2>
+              <p className="text-xl text-muted-foreground">
+                We're working on bringing you valuable content that will inspire and guide you on your journey.
+                Our blog will be launching soon with articles on mindset, growth, and transformation.
+              </p>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <>
+          {featuredPost && <FeaturedPost post={featuredPost} />}
+          {otherPosts.length > 0 && <BlogGrid posts={otherPosts} />}
+        </>
+      )}
+    </>
+  );
 };
+
 export default Blog;
