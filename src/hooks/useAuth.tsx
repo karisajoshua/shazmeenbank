@@ -23,16 +23,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
+
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
+        console.log('Auth state changed:', event, session?.user?.email);
+        if (!mounted) return;
+        
         setSession(session);
         setUser(session?.user ?? null);
         
         // Check admin status when session changes
         if (session?.user) {
-          setTimeout(() => {
-            checkAdminStatus(session.user.id);
+          setTimeout(async () => {
+            if (mounted) {
+              await checkAdminStatus(session.user.id);
+            }
           }, 0);
         } else {
           setIsAdmin(false);
@@ -41,21 +48,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
 
     // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        checkAdminStatus(session.user.id);
+    const initAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!mounted) return;
+        
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          await checkAdminStatus(session.user.id);
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
       }
-      setIsLoading(false);
-    });
+    };
 
-    return () => subscription.unsubscribe();
+    initAuth();
+
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const checkAdminStatus = async (userId: string) => {
     try {
+      console.log('Checking admin status for user:', userId);
       const { data, error } = await supabase
         .from('user_roles')
         .select('role')
@@ -64,7 +87,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         .maybeSingle();
 
       if (error) throw error;
-      setIsAdmin(!!data);
+      const adminStatus = !!data;
+      console.log('Admin status result:', adminStatus);
+      setIsAdmin(adminStatus);
     } catch (error) {
       console.error('Error checking admin status:', error);
       setIsAdmin(false);
