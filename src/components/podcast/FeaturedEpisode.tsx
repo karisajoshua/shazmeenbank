@@ -27,7 +27,7 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
                 <img 
-                  src={episode.image} 
+                  src={episode.image_url || 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=400'} 
                   alt={episode.title} 
                   className="rounded-xl w-full h-auto shadow-md"
                 />
@@ -49,7 +49,7 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                 </div>
               </div>
               <div className="md:col-span-2">
-                <span className="text-sm text-gray-500">{episode.date}</span>
+                <span className="text-sm text-gray-500">{new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 <h2 className="text-2xl md:text-3xl font-bold mt-1 font-serif text-shazmeen-dark">
                   {episode.title}
                 </h2>

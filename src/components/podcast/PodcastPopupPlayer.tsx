@@ -30,7 +30,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
         
         <div className="flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-6 pt-4">
           <img 
-            src={episode.image} 
+            src={episode.image_url || 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=400'} 
             alt={episode.title} 
             className="w-full md:w-48 h-auto object-cover rounded-md"
           />
@@ -38,7 +38,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             <div className="flex items-center space-x-4 text-sm text-gray-500">
               <span className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1" />
-                {episode.date}
+                {new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </span>
               <span className="flex items-center">
                 <Clock className="h-4 w-4 mr-1" />
@@ -87,7 +87,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
           </div>
         </div>
         
-        {(episode.spotifyUrl || episode.applePodcastUrl) ? (
+        {(episode.spotify_url || episode.apple_podcast_url) ? (
           <div className="mt-6 border-t border-gray-100 pt-6">
             <div className="flex items-center mb-4">
               <Headphones className="h-5 w-5 text-shazmeen-red mr-2" />
@@ -95,11 +95,11 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {episode.spotifyUrl && (
+              {episode.spotify_url && (
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-gray-700">Spotify</p>
                   <iframe 
-                    src={episode.spotifyUrl}
+                    src={episode.spotify_url}
                     width="100%"
                     height="232"
                     frameBorder="0"
@@ -111,11 +111,11 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
                 </div>
               )}
               
-              {episode.applePodcastUrl && (
+              {episode.apple_podcast_url && (
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-gray-700">Apple Podcasts</p>
                   <iframe 
-                    src={episode.applePodcastUrl}
+                    src={episode.apple_podcast_url}
                     width="100%"
                     height="232"
                     frameBorder="0"

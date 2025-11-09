@@ -94,10 +94,10 @@ const PodcastPlayer = ({ episode }: PodcastPlayerProps) => {
 
   return (
     <div className="bg-gray-100 rounded-lg p-4 shadow-inner">
-      {/* Hidden audio element */}
+      {/* Hidden audio element - no audio URL in database yet */}
       <audio 
         ref={audioRef}
-        src={episode.audioUrl} 
+        src="" 
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
         onDurationChange={() => setDuration(audioRef.current?.duration || 0)}
