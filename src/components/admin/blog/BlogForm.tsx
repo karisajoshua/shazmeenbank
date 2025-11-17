@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
 import { blogFormSchema, type BlogFormValues } from './BlogFormSchema';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 
 interface BlogFormProps {
   postId?: string;
@@ -162,7 +163,11 @@ export const BlogForm = ({ postId, onBack, onSuccess }: BlogFormProps) => {
 
         <div>
           <Label htmlFor="content">Content *</Label>
-          <Textarea id="content" {...register('content')} rows={12} />
+          <RichTextEditor
+            value={watch('content')}
+            onChange={(value) => setValue('content', value)}
+            placeholder="Write your blog content here..."
+          />
           {errors.content && <p className="text-sm text-destructive mt-1">{errors.content.message}</p>}
         </div>
 
