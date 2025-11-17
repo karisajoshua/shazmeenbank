@@ -117,9 +117,10 @@ const BlogPost = () => {
               </div>
             )}
 
-            <div className="prose prose-lg max-w-none">
-              <div className="whitespace-pre-wrap">{post.content}</div>
-            </div>
+            <div 
+              className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
             <div className="pt-8 border-t flex justify-between items-center">
               <Button onClick={handleShare} variant="outline" className="gap-2">
