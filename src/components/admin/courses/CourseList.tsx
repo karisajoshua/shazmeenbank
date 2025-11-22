@@ -45,9 +45,13 @@ export const CourseList = ({ onEdit, onCreateNew }: CourseListProps) => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+      console.log('Fetched courses:', data);
       return data;
     },
   });
+
+  console.log('Courses state:', courses);
+  console.log('Is loading:', isLoading);
 
   const filteredCourses = courses?.filter((course) => {
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase());
