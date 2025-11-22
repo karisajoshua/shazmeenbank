@@ -25,17 +25,27 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <Routes>
-        <Route index element={<AdminDashboard />} />
-        <Route path="blog/*" element={<BlogManagement />} />
-        <Route path="podcasts/*" element={<PodcastManagement />} />
-        <Route path="courses/*" element={<CoursesManagement />} />
-        <Route path="bookings" element={<BookingsManagement />} />
-        <Route path="services/*" element={<ServicesManagement />} />
-        <Route path="coaches/*" element={<CoachesManagement />} />
-        <Route path="*" element={<Navigate to="/admin" replace />} />
-      </Routes>
+    <div className="min-h-screen bg-background flex flex-col">
+      <div className="flex-grow">
+        <Routes>
+          <Route index element={<AdminDashboard />} />
+          <Route path="blog/*" element={<BlogManagement />} />
+          <Route path="podcasts/*" element={<PodcastManagement />} />
+          <Route path="courses/*" element={<CoursesManagement />} />
+          <Route path="bookings" element={<BookingsManagement />} />
+          <Route path="services/*" element={<ServicesManagement />} />
+          <Route path="coaches/*" element={<CoachesManagement />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
+        </Routes>
+      </div>
+      
+      <footer className="border-t bg-muted/30 py-4 mt-auto">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            Powered by <span className="font-semibold text-foreground">Texcortech Systems</span>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
