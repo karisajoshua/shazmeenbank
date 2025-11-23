@@ -1,6 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const CourseCard = ({
   title,
@@ -42,32 +43,36 @@ const CourseCard = ({
 };
 
 const CoursesPreview = () => {
-  const featuredCourses = [
-    {
-      title: "Attachment Healing Journey",
-      description: "Learn how to recognize and heal insecure attachment patterns for healthier relationships.",
-      level: "Beginner",
-      duration: "8 weeks",
-      imageSrc: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      slug: "attachment-healing-journey"
+  const { data: courses, isLoading } = useQuery({
+    queryKey: ['published-courses-preview'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('courses')
+        .select('*')
+        .eq('status', 'published')
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      return data;
     },
-    {
-      title: "Breaking Trauma Bonds",
-      description: "Recognize, understand and break free from toxic relationship patterns.",
-      level: "Intermediate",
-      duration: "6 weeks",
-      imageSrc: "https://images.unsplash.com/photo-1519834484944-d587de5abed5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      slug: "breaking-trauma-bonds"
-    },
-    {
-      title: "Secure Love Blueprint",
-      description: "Build lasting, healthy relationships through emotional intelligence and secure attachment.",
-      level: "Advanced",
-      duration: "10 weeks",
-      imageSrc: "https://images.unsplash.com/photo-1516589091380-5d8e87df6999?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      slug: "secure-love-blueprint"
-    }
-  ];
+  });
+
+  if (isLoading) {
+    return (
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center py-12">
+            <p className="text-gray-600">Loading courses...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!courses || courses.length === 0) {
+    return null; // Don't show section if no courses
+  }
 
   return (
     <section className="section-padding bg-white">
@@ -84,15 +89,15 @@ const CoursesPreview = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {featuredCourses.map(course => (
+          {courses.map(course => (
             <CourseCard 
-              key={course.slug} 
+              key={course.id} 
               title={course.title} 
-              description={course.description} 
-              level={course.level} 
-              duration={course.duration} 
-              imageSrc={course.imageSrc} 
-              slug={course.slug} 
+              description={course.description || ''} 
+              level="Self-paced" 
+              duration={`${course.total_modules} modules`} 
+              imageSrc={course.image || 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800'} 
+              slug={course.id} 
             />
           ))}
         </div>
