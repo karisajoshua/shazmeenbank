@@ -22,6 +22,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import Waitlist from "./pages/Waitlist";
 import FreeResources from "./pages/FreeResources";
+import Videos from "./pages/Videos";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ function App() {
                 <Route path="courses" element={<Courses />} />
                 <Route path="bookings" element={<Bookings />} />
                 <Route path="podcast" element={<Podcast />} />
+                <Route path="videos" element={<Videos />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:slug" element={<BlogPost />} />
                 <Route path="about" element={<About />} />
