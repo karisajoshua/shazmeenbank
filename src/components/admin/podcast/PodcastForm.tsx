@@ -266,9 +266,9 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
               name="spotify_url"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Spotify URL (Optional)</FormLabel>
+                  <FormLabel>Spotify Embed URL (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="https://open.spotify.com/..." {...field} />
+                    <Input placeholder="https://open.spotify.com/embed/episode/..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -280,9 +280,9 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
               name="apple_podcast_url"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Apple Podcast URL (Optional)</FormLabel>
+                  <FormLabel>Apple Podcast Embed URL (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="https://podcasts.apple.com/..." {...field} />
+                    <Input placeholder="https://embed.podcasts.apple.com/..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
