@@ -7,9 +7,12 @@ import MyBookings from "../components/dashboard/MyBookings";
 import SavedPodcasts from "../components/dashboard/SavedPodcasts";
 import NewsletterPreferences from "../components/dashboard/NewsletterPreferences";
 import DashboardHome from "../components/dashboard/DashboardHome";
-import { Menu } from "lucide-react";
+import { Menu, Loader2 } from "lucide-react";
+import { useRequireAuth, useAuth } from "@/hooks/useAuth";
 
 const Dashboard = () => {
+  const { isLoading } = useRequireAuth('/login');
+  const { user, signOut } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,12 +31,29 @@ const Dashboard = () => {
     return location.pathname === route || location.pathname === `${route}/`;
   };
 
-  // Mock user data
-  const user = {
-    name: "Jane Doe",
-    email: "jane.doe@example.com",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/");
   };
+
+  // Show loading state while checking auth
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-shazmeen-red" />
+      </div>
+    );
+  }
+
+  // Don't render if no user (useRequireAuth will redirect)
+  if (!user) {
+    return null;
+  }
+
+  // Get user display info from auth
+  const userName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
+  const userEmail = user.email || '';
+  const userAvatar = user.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=random`;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -48,7 +68,7 @@ const Dashboard = () => {
           </button>
           <div className="font-bold text-xl">Dashboard</div>
           <div className="w-10 h-10 rounded-full overflow-hidden">
-            <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+            <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -64,11 +84,11 @@ const Dashboard = () => {
           <div className="p-4 border-b">
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
-                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
               </div>
               <div>
-                <h3 className="font-semibold">{user.name}</h3>
-                <p className="text-xs text-gray-500">{user.email}</p>
+                <h3 className="font-semibold">{userName}</h3>
+                <p className="text-xs text-gray-500">{userEmail}</p>
               </div>
             </div>
           </div>
@@ -146,10 +166,7 @@ const Dashboard = () => {
               <Button
                 variant="outline"
                 className="w-full border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-white"
-                onClick={() => {
-                  // In real app, this would log out the user
-                  navigate("/");
-                }}
+                onClick={handleLogout}
               >
                 Log Out
               </Button>
@@ -170,11 +187,11 @@ const Dashboard = () => {
           <div className="p-6 border-b">
             <div className="flex items-center">
               <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg">{user.name}</h3>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <h3 className="font-semibold text-lg">{userName}</h3>
+                <p className="text-sm text-gray-500">{userEmail}</p>
               </div>
             </div>
           </div>
@@ -247,10 +264,7 @@ const Dashboard = () => {
               <Button
                 variant="outline"
                 className="w-full border-shazmeen-red text-shazmeen-red hover:bg-shazmeen-red hover:text-white"
-                onClick={() => {
-                  // In real app, this would log out the user
-                  navigate("/");
-                }}
+                onClick={handleLogout}
               >
                 Log Out
               </Button>
