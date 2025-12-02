@@ -6,6 +6,7 @@ import { ArrowLeft, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
+import DOMPurify from 'dompurify';
 
 const estimateReadTime = (content: string): number => {
   const wordsPerMinute = 200;
@@ -119,7 +120,7 @@ const BlogPost = () => {
 
             <div 
               className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
             />
 
             <div className="pt-8 border-t flex justify-between items-center">
