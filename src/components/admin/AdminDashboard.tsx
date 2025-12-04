@@ -11,7 +11,7 @@ import {
   Heart,
   Users,
   TrendingUp,
-  PlusCircle
+  Image as ImageIcon
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -54,6 +54,7 @@ const AdminDashboard = () => {
     { title: 'Add Podcast', href: '/admin/podcasts/new', icon: Mic2, color: 'text-purple-600' },
     { title: 'Create Course', href: '/admin/courses/new', icon: GraduationCap, color: 'text-green-600' },
     { title: 'Add Service', href: '/admin/services/new', icon: Heart, color: 'text-pink-600' },
+    { title: 'Upload Media', href: '/admin/media', icon: ImageIcon, color: 'text-cyan-600' },
   ];
 
   const managementCards = [
@@ -105,6 +106,14 @@ const AdminDashboard = () => {
       description: 'Manage coach profiles',
       color: 'text-indigo-600 bg-indigo-50'
     },
+    { 
+      title: 'Media Library', 
+      count: null, 
+      href: '/admin/media', 
+      icon: ImageIcon,
+      description: 'Upload images and copy URLs',
+      color: 'text-cyan-600 bg-cyan-50'
+    },
   ];
 
   return (
@@ -125,7 +134,7 @@ const AdminDashboard = () => {
       {/* Quick Actions */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {quickActions.map((action) => (
             <Button 
               key={action.href}
@@ -153,14 +162,18 @@ const AdminDashboard = () => {
                   <div className={`p-3 rounded-lg ${card.color}`}>
                     <card.icon className="h-6 w-6" />
                   </div>
-                  <span className="text-3xl font-bold">{card.count}</span>
+                  {card.count !== null && (
+                    <span className="text-3xl font-bold">{card.count}</span>
+                  )}
                 </div>
                 <CardTitle className="mt-4">{card.title}</CardTitle>
                 <CardDescription>{card.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <Button asChild variant="outline" className="w-full">
-                  <Link to={card.href}>Manage {card.title}</Link>
+                  <Link to={card.href}>
+                    {card.title === 'Media Library' ? 'Open Media Library' : `Manage ${card.title}`}
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

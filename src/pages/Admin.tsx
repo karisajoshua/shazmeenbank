@@ -7,6 +7,7 @@ import CoursesManagement from '@/components/admin/CoursesManagement';
 import BookingsManagement from '@/components/admin/BookingsManagement';
 import ServicesManagement from '@/components/admin/ServicesManagement';
 import CoachesManagement from '@/components/admin/CoachesManagement';
+import MediaLibrary from '@/components/admin/MediaLibrary';
 import { Loader2 } from 'lucide-react';
 
 const Admin = () => {
@@ -35,6 +36,7 @@ const Admin = () => {
           <Route path="bookings" element={<BookingsManagement />} />
           <Route path="services/*" element={<ServicesManagement />} />
           <Route path="coaches/*" element={<CoachesManagement />} />
+          <Route path="media" element={<MediaLibrary />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </div>
