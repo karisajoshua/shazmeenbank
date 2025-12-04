@@ -26,7 +26,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-[100vh] -mt-20 pt-20">
+    <section className="relative overflow-hidden h-screen w-full min-h-[100vh]">
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
@@ -44,16 +44,9 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       </div>
 
       {/* Content */}
-      <div className="container-custom relative z-20 py-28 md:py-36 flex items-center min-h-[100vh]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center pt-16">
+      <div className="container-custom relative z-20 h-full flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in">
-            <div className="mb-8">
-              <img
-                src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png"
-                alt="Shazmeen Bank Logo"
-                className="h-24 object-contain mb-4"
-              />
-            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-shazmeen-white">
               If you've landed here, you're ready to{" "}
               <span className="text-shazmeen-blush">heal</span>, take{" "}
