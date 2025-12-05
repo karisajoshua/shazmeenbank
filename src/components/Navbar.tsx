@@ -70,7 +70,7 @@ const Navbar = () => {
                 <Link to="/dashboard">
                   <Button 
                     variant="outline" 
-                    className={`${isScrolled ? 'border-shazmeen-dark text-black hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
+                    className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
                   >
                     Dashboard
                   </Button>
@@ -78,7 +78,7 @@ const Navbar = () => {
                 <Button 
                   onClick={handleSignOut}
                   variant="outline"
-                  className={`${isScrolled ? 'border-shazmeen-dark text-black hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold flex items-center gap-2`}
+                  className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold flex items-center gap-2`}
                 >
                   <LogOut size={16} />
                   Sign Out
@@ -89,13 +89,13 @@ const Navbar = () => {
                 <Link to="/login">
                   <Button 
                     variant="outline" 
-                    className={`${isScrolled ? 'border-shazmeen-dark text-black hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
+                    className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
                   >
                     Login
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button className="bg-shazmeen-dark text-white hover:bg-opacity-90 transition-all duration-300 rounded-xl px-5 py-3 font-bold">
+                  <Button className="bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-5 py-3 font-bold">
                     Sign Up
                   </Button>
                 </Link>

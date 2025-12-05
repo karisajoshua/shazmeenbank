@@ -26,17 +26,17 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden h-screen w-full min-h-[100vh] -mt-20 pt-20">
+<section className="relative overflow-hidden h-screen w-full min-h-[100vh]">
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/90 via-shazmeen-dark/70 to-shazmeen-dark/40 z-10"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
             key={currentVideoIndex}
             src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex]}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex]}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=0`}
             title="Background Video"
-            className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{ minWidth: '100%', minHeight: '100%' }}
+            className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover"
+            style={{ minWidth: '177.78vh', minHeight: '100%' }}
             allow="autoplay; encrypted-media"
             allowFullScreen={false}
           />
@@ -44,7 +44,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       </div>
 
       {/* Content */}
-      <div className="container-custom relative z-20 h-full flex items-center">
+      <div className="container-custom relative z-20 h-full flex items-center pt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-shazmeen-white">

@@ -58,14 +58,14 @@ const Videos = () => {
           
           {/* YouTube Channel Embed */}
           <div className="max-w-6xl mx-auto">
-            <div className="relative w-full overflow-hidden rounded-2xl shadow-premium bg-white">
-              <div className="aspect-[16/10] md:aspect-[16/9]">
+            <div className="relative w-full overflow-hidden rounded-2xl shadow-premium bg-shazmeen-dark">
+              <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=UU-JYSYmYSMPi8YZ3TjHl4JGg&autoplay=0"
+                  src="https://www.youtube.com/embed?listType=user_uploads&list=shazmeenbank"
                   title="Shazmeen Bank YouTube Channel"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="w-full h-full"
+                  className="w-full h-full border-0"
                 />
               </div>
             </div>
@@ -78,8 +78,6 @@ const Videos = () => {
                 { id: "PDhK4FqbROE", title: "My Marriage, Divorce and Love again" },
                 { id: "OyK1-tnqOqw", title: "Life and relationship coach who divorced then remarried" },
                 { id: "i5LAj8zyVpQ", title: "Do this to make Your Relationship Work" },
-                { id: "1ihO__bAwVs", title: "19 warning signs your friendship may turn into an affair" },
-                { id: "p8N7RcOnBvA", title: "Why Doesn't the Unfaithful See What They Are in Danger of Losing" },
                 { id: "Mea1aggNDVU", title: "A WORD OF ENCOURAGEMENT BY SHAZMEEN BANK" },
                 { id: "naPvHOhqdqA", title: "Trauma bonded relationships" },
                 { id: "s1OPbgwjz5g", title: "7 Things ONLY Fearful Avoidants Will Understand" },
