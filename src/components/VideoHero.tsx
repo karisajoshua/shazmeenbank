@@ -26,7 +26,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden h-screen w-full min-h-[100vh]">
+    <section className="relative overflow-hidden h-screen w-full min-h-[100vh] -mt-20 pt-20">
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/95 via-shazmeen-dark/80 to-transparent z-10"></div>
