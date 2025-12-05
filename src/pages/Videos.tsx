@@ -1,88 +1,8 @@
 import { Helmet } from "react-helmet";
-import { Youtube } from "lucide-react";
+import { Youtube, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface Video {
-  id: string;
-  title: string;
-  category: "my-story" | "relationship-wisdom" | "attachment-healing";
-}
-
-const videos: Video[] = [
-  // My Story
-  {
-    id: "R7AglaXRgWA",
-    title: "I divorced my husband and married him again",
-    category: "my-story"
-  },
-  {
-    id: "PDhK4FqbROE",
-    title: "My Marriage, Divorce and Love again",
-    category: "my-story"
-  },
-  {
-    id: "OyK1-tnqOqw",
-    title: "Life and relationship coach who divorced then remarried",
-    category: "my-story"
-  },
-  // Relationship Wisdom
-  {
-    id: "i5LAj8zyVpQ",
-    title: "Do this to make Your Relationship Work",
-    category: "relationship-wisdom"
-  },
-  {
-    id: "1ihO__bAwVs",
-    title: "19 warning signs your friendship may turn into an affair",
-    category: "relationship-wisdom"
-  },
-  {
-    id: "p8N7RcOnBvA",
-    title: "Why Doesn't the Unfaithful See What They Are in Danger of Losing",
-    category: "relationship-wisdom"
-  },
-  // Attachment & Healing
-  {
-    id: "Mea1aggNDVU",
-    title: "A WORD OF ENCOURAGEMENT BY SHAZMEEN BANK IN YOUR JOBLESSNESS",
-    category: "attachment-healing"
-  },
-  {
-    id: "naPvHOhqdqA",
-    title: "Trauma bonded relationships #attachmentstyle",
-    category: "attachment-healing"
-  },
-  {
-    id: "s1OPbgwjz5g",
-    title: "7 Things ONLY Fearful Avoidants Will Understand ❤️❤️‍🩹",
-    category: "attachment-healing"
-  }
-];
-
 const Videos = () => {
-  const myStoryVideos = videos.filter(v => v.category === "my-story");
-  const relationshipVideos = videos.filter(v => v.category === "relationship-wisdom");
-  const attachmentVideos = videos.filter(v => v.category === "attachment-healing");
-
-  const VideoCard = ({ video }: { video: Video }) => (
-    <div className="group animate-fade-in">
-      <div className="relative overflow-hidden rounded-xl shadow-elegant hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
-        <div className="aspect-video">
-          <iframe
-            src={`https://www.youtube.com/embed/${video.id}`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          />
-        </div>
-      </div>
-      <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-shazmeen-red transition-colors duration-300">
-        {video.title}
-      </h3>
-    </div>
-  );
-
   return (
     <>
       <Helmet>
@@ -103,69 +23,85 @@ const Videos = () => {
             <h1 className="text-4xl md:text-6xl font-serif font-bold text-shazmeen-dark mb-6">
               Watch & Learn
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Relationship insights, personal stories, and coaching wisdom
             </p>
+            <a 
+              href="https://www.youtube.com/@shazmeenbank/videos" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button 
+                size="lg" 
+                className="bg-shazmeen-red hover:bg-shazmeen-red/90 text-white rounded-xl px-8 py-6 text-lg font-bold shadow-elegant"
+              >
+                <Youtube className="mr-2" />
+                Visit My YouTube Channel
+                <ExternalLink className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* My Story Section */}
+      {/* Embedded YouTube Channel Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-shazmeen-dark mb-4">
-              My Story
+              Latest Videos
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The journey of divorce, healing, and remarriage
+              Browse all my videos directly from YouTube
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {myStoryVideos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Relationship Wisdom Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-shazmeen-blush/20 to-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-shazmeen-dark mb-4">
-              Relationship Wisdom
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Practical guidance for building stronger connections
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {relationshipVideos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Attachment & Healing Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-shazmeen-dark mb-4">
-              Attachment & Healing
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Understanding trauma bonds and attachment patterns
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {attachmentVideos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
+          {/* YouTube Channel Embed */}
+          <div className="max-w-6xl mx-auto">
+            <div className="relative w-full overflow-hidden rounded-2xl shadow-premium bg-white">
+              <div className="aspect-[16/10] md:aspect-[16/9]">
+                <iframe
+                  src="https://www.youtube.com/embed/videoseries?list=UU-JYSYmYSMPi8YZ3TjHl4JGg&autoplay=0"
+                  title="Shazmeen Bank YouTube Channel"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
+            
+            {/* Video Grid from Channel */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Featured Videos */}
+              {[
+                { id: "R7AglaXRgWA", title: "I divorced my husband and married him again" },
+                { id: "PDhK4FqbROE", title: "My Marriage, Divorce and Love again" },
+                { id: "OyK1-tnqOqw", title: "Life and relationship coach who divorced then remarried" },
+                { id: "i5LAj8zyVpQ", title: "Do this to make Your Relationship Work" },
+                { id: "1ihO__bAwVs", title: "19 warning signs your friendship may turn into an affair" },
+                { id: "p8N7RcOnBvA", title: "Why Doesn't the Unfaithful See What They Are in Danger of Losing" },
+                { id: "Mea1aggNDVU", title: "A WORD OF ENCOURAGEMENT BY SHAZMEEN BANK" },
+                { id: "naPvHOhqdqA", title: "Trauma bonded relationships" },
+                { id: "s1OPbgwjz5g", title: "7 Things ONLY Fearful Avoidants Will Understand" },
+              ].map((video) => (
+                <div key={video.id} className="group animate-fade-in">
+                  <div className="relative overflow-hidden rounded-xl shadow-elegant hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div className="aspect-video">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${video.id}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-shazmeen-red transition-colors duration-300 line-clamp-2">
+                    {video.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -181,7 +117,7 @@ const Videos = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://www.youtube.com/@ShazmeenBank" 
+              href="https://www.youtube.com/@shazmeenbank/videos" 
               target="_blank" 
               rel="noopener noreferrer"
             >
