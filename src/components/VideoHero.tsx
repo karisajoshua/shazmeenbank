@@ -5,13 +5,11 @@ interface VideoHeroProps {
 }
 
 const YOUTUBE_VIDEOS = [
-  "F2mP7WR_OE8",
-  "utgshwR_648",
-  "jiRr_6S1TFE",
   "GzcxHbcF7GA",
-  "cIVsH7_UL9c",
-  "hO5xv71M-BY",
-  "MrJ8XN94oz8",
+  "b1HTpgTWPxs",
+  "at3bHuNlBqI",
+  "eCiX5xoVjsE",
+  "3Re8Vo-i1fA",
 ];
 
 const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
@@ -35,8 +33,17 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
             key={currentVideoIndex}
             src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex]}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex]}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=0`}
             title="Background Video"
-            className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover"
-            style={{ minWidth: '177.78vh', minHeight: '100%' }}
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ 
+              width: '100vw',
+              height: '56.25vw',
+              minHeight: '100vh',
+              minWidth: '177.78vh',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}
             allow="autoplay; encrypted-media"
             allowFullScreen={false}
           />
