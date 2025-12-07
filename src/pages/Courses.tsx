@@ -32,7 +32,7 @@ const Courses = () => {
   return (
     <>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-16">
+      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white pt-28 pb-16">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Self-paced programs built for real transformation</h1>

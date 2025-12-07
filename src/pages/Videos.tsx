@@ -81,6 +81,15 @@ const Videos = () => {
                 { id: "Mea1aggNDVU", title: "A WORD OF ENCOURAGEMENT BY SHAZMEEN BANK" },
                 { id: "naPvHOhqdqA", title: "Trauma bonded relationships" },
                 { id: "s1OPbgwjz5g", title: "7 Things ONLY Fearful Avoidants Will Understand" },
+                { id: "mMxPrGCIY_4", title: "Why Walking Away From a Trauma-Bonded Relationship Feels Impossible" },
+                { id: "pSgvZwtZ99o", title: "Why Walking Away Feels Impossible: The Hidden Shame of Toxic Love" },
+                { id: "AdXFrQSUYJg", title: "How Avoidant Partners Can Love Someone with Anxious Attachment" },
+                { id: "bstdFTZHuco", title: "The Push-Pull Trap: How to Heal Anxious & Avoidant Relationships That Trigger You" },
+                { id: "64Wo0t-4lEg", title: "Betrayal & Infidelity Q&A: The Pain, the Healing, and the Hard Truths" },
+                { id: "dEKLVr_mpRE", title: "Betrayal & Infidelity Q&A: Why It Hurts So Much and How to Move Forward" },
+                { id: "_a_f9NJ8Ydc", title: "Q&A — On Breakups, Healing & Finding Yourself Again" },
+                { id: "EhzPLbSqI3k", title: "Why Does My Partner Always Pull Away In Our Relationship?" },
+                { id: "J_bF1Gdl9Z8", title: "Why You Can't Leave a Toxic Relationship (Even When You Want To)" },
               ].map((video) => (
                 <div key={video.id} className="group animate-fade-in">
                   <div className="relative overflow-hidden rounded-xl shadow-elegant hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
