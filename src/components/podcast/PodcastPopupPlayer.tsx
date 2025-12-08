@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { PodcastEpisode } from "@/types/podcast";
-import { Headphones, Clock, Calendar, X } from "lucide-react";
+import { Headphones, Clock, Calendar, X, Youtube } from "lucide-react";
 
 interface PodcastPopupPlayerProps {
   episode: PodcastEpisode | null;
@@ -135,6 +135,17 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
         )}
         
         <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+          {episode.youtube_url && (
+            <Button 
+              className="bg-red-600 hover:bg-red-700 text-white"
+              asChild
+            >
+              <a href={episode.youtube_url} target="_blank" rel="noopener noreferrer">
+                <Youtube className="h-4 w-4 mr-2" />
+                Watch on YouTube
+              </a>
+            </Button>
+          )}
           <Button 
             className="bg-[#1DB954] hover:bg-[#1ed760] text-white"
             asChild

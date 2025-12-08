@@ -253,6 +253,7 @@ export type Database = {
           title: string
           topics: string[] | null
           updated_at: string | null
+          youtube_url: string | null
         }
         Insert: {
           apple_podcast_url?: string | null
@@ -267,6 +268,7 @@ export type Database = {
           title: string
           topics?: string[] | null
           updated_at?: string | null
+          youtube_url?: string | null
         }
         Update: {
           apple_podcast_url?: string | null
@@ -281,6 +283,7 @@ export type Database = {
           title?: string
           topics?: string[] | null
           updated_at?: string | null
+          youtube_url?: string | null
         }
         Relationships: []
       }
