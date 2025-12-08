@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+import { Play, Youtube } from "lucide-react";
 import { PodcastEpisode } from "@/types/podcast";
 
 interface PodcastEpisodeCardProps {
@@ -28,13 +28,24 @@ const PodcastEpisodeCard = ({ episode, onPlay }: PodcastEpisodeCardProps) => {
           {episode.description}
         </p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex flex-col gap-2">
         <Button 
           onClick={onPlay}
           className="w-full bg-shazmeen-dark hover:bg-black"
         >
           <Play size={16} className="mr-2" /> Listen Now
         </Button>
+        {episode.youtube_url && (
+          <Button 
+            variant="outline" 
+            className="w-full border-red-600 text-red-600 hover:bg-red-50"
+            asChild
+          >
+            <a href={episode.youtube_url} target="_blank" rel="noopener noreferrer">
+              <Youtube size={16} className="mr-2" /> Watch on YouTube
+            </a>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

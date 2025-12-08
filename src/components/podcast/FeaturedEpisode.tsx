@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Download, Play } from "lucide-react";
+import { Share2, Download, Play, Youtube } from "lucide-react";
 import PodcastPlayer from "@/components/podcast/PodcastPlayer";
 import PodcastPopupPlayer from "@/components/podcast/PodcastPopupPlayer";
 import { PodcastEpisode } from "@/types/podcast";
@@ -39,6 +39,19 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                     <Play size={16} className="mr-2" /> Play Episode
                   </Button>
                 </div>
+                {episode.youtube_url && (
+                  <div className="mt-3">
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-red-600 text-red-600 hover:bg-red-50"
+                      asChild
+                    >
+                      <a href={episode.youtube_url} target="_blank" rel="noopener noreferrer">
+                        <Youtube size={16} className="mr-2" /> Watch on YouTube
+                      </a>
+                    </Button>
+                  </div>
+                )}
                 <div className="mt-3 flex gap-2 justify-between">
                   <Button variant="outline" size="sm" className="flex-1">
                     <Share2 size={16} className="mr-1" /> Share

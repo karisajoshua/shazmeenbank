@@ -70,6 +70,7 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
       image_url: '',
       spotify_url: '',
       apple_podcast_url: '',
+      youtube_url: '',
       topics: [],
       status: 'draft',
     },
@@ -85,6 +86,7 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
         image_url: existingEpisode.image_url || '',
         spotify_url: existingEpisode.spotify_url || '',
         apple_podcast_url: existingEpisode.apple_podcast_url || '',
+        youtube_url: existingEpisode.youtube_url || '',
         topics: existingEpisode.topics || [],
         status: existingEpisode.status as 'published' | 'draft',
       });
@@ -103,6 +105,7 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
         image_url: values.image_url || null,
         spotify_url: values.spotify_url || null,
         apple_podcast_url: values.apple_podcast_url || null,
+        youtube_url: values.youtube_url || null,
         topics: values.topics,
         status: values.status,
       };
@@ -283,6 +286,20 @@ export const PodcastForm = ({ episodeId, onBack, onSuccess }: PodcastFormProps) 
                   <FormLabel>Apple Podcast Embed URL (Optional)</FormLabel>
                   <FormControl>
                     <Input placeholder="https://embed.podcasts.apple.com/..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="youtube_url"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>YouTube URL (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="https://www.youtube.com/watch?v=..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
