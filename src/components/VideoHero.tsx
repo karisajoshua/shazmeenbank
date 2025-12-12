@@ -5,11 +5,13 @@ interface VideoHeroProps {
 }
 
 const YOUTUBE_VIDEOS = [
-  "GzcxHbcF7GA",
-  "b1HTpgTWPxs",
-  "at3bHuNlBqI",
-  "eCiX5xoVjsE",
-  "3Re8Vo-i1fA",
+  { id: "R7AglaXRgWA", start: 65 },   // 1:05
+  { id: "I4SUKJKLNTI", start: 305 },  // 5:05
+  { id: "PDhK4FqbROE", start: 20 },   // 0:20
+  { id: "Mea1aggNDVU", start: 10 },   // 0:10
+  { id: "OyK1-tnqOqw", start: 65 },   // 1:05
+  { id: "Y3Lyo7qLx1o", start: 98 },   // 1:38
+  { id: "NrRXPRmGpbw", start: 61 },   // 1:01
 ];
 
 const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
@@ -31,7 +33,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
             key={currentVideoIndex}
-            src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex]}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex]}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=0`}
+            src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex].id}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex].id}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=${YOUTUBE_VIDEOS[currentVideoIndex].start}`}
             title="Background Video"
             className="absolute inset-0 w-full h-full pointer-events-none"
             style={{ 
