@@ -29,7 +29,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
 <section className="relative overflow-hidden h-screen w-full min-h-[100vh]">
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/90 via-shazmeen-dark/70 to-shazmeen-dark/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/70 via-shazmeen-dark/40 to-transparent z-10"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
             key={currentVideoIndex}
@@ -54,30 +54,19 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
 
       {/* Content */}
       <div className="container-custom relative z-20 h-full flex items-center pt-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-shazmeen-white">
+        <div className="max-w-xl">
+          <div className="space-y-4 animate-fade-in bg-shazmeen-dark/60 backdrop-blur-sm p-6 rounded-xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight text-shazmeen-white">
               If you've landed here, you're ready to{" "}
               <span className="text-shazmeen-blush">heal</span>, take{" "}
               <span className="text-shazmeen-secondary">responsibility</span> and
               begin again
             </h1>
-            <p className="text-xl md:text-2xl text-shazmeen-gray font-light leading-relaxed">
-              Maybe you're rebuilding after a breakup or divorce, maybe you're
-              learning to navigate conflict, or maybe you're carrying the deep
-              wounds of betrayal and infidelity. Wherever you are, this is the
-              place to unpack, understand, and begin again.
+            <p className="text-base md:text-lg text-shazmeen-gray font-light leading-relaxed">
+              Maybe you're rebuilding after a breakup or divorce, learning to
+              navigate conflict, or carrying the deep wounds of betrayal. This is
+              the place to unpack, understand, and begin again.
             </p>
-            <p className="text-lg text-shazmeen-gray font-light leading-relaxed mt-4">
-              You might be here to heal your attachment style, to learn how to
-              resolve conflict with more ease, or to grow into the version of
-              yourself that feels secure, steady, and whole—in your work, your
-              friendships, and your relationships. Because conflict is not
-              something to fear; it is a doorway into another person's soul.
-            </p>
-          </div>
-          <div className="hidden md:block">
-            {/* Just spacing for layout - video is in background */}
           </div>
         </div>
       </div>
