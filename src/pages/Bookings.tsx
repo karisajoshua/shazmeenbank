@@ -1,7 +1,13 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Clock, Users, Heart } from "lucide-react";
+import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Import images
+import heroBackground from "@/assets/bookings/hero-bg.jpg";
+import secureSessionImg from "@/assets/bookings/secure-self-session.jpg";
+import couplesCoachingImg from "@/assets/bookings/couples-coaching.jpg";
+import resolutionMethodImg from "@/assets/bookings/resolution-method.jpg";
 
 const services = [
   {
@@ -9,9 +15,12 @@ const services = [
     title: "Secure Self Session",
     price: "$375",
     duration: "60 minutes on Zoom",
-    description: "This private 1:1 session is designed for individuals who want to feel grounded, emotionally regulated, and clear in love and in life. Whether you're navigating a relationship, healing from one, or reconnecting with yourself, this session helps you process what's heavy and return to your center with clarity and compassion.\n\nThrough personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
+    description: "This private 1:1 session is designed for individuals who want to feel grounded, emotionally regulated, and clear in love and in life. Whether you're navigating a relationship, healing from one, or reconnecting with yourself, this session helps you process what's heavy and return to your center with clarity and compassion.",
+    fullDescription: "Through personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
     subtitle: "Book your Secure Self Session—and start coming home to yourself.",
     icon: Heart,
+    image: secureSessionImg,
+    accent: "from-rose-500/20 to-amber-500/20",
     features: [
       "Personal healing guidance",
       "Emotional regulation tools", 
@@ -24,9 +33,12 @@ const services = [
     title: "Couples Coaching",
     price: "$510", 
     duration: "75 minutes on Zoom",
-    description: "This session is for partners who are ready to rebuild safety, improve communication, and navigate conflict with more understanding and empathy. Whether you're struggling with recurring arguments, emotional disconnection, or mismatched needs, this guided 75-minute session helps you both uncover what's really happening beneath the surface.\n\nWe'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
+    description: "This session is for partners who are ready to rebuild safety, improve communication, and navigate conflict with more understanding and empathy. Whether you're struggling with recurring arguments, emotional disconnection, or mismatched needs, this guided 75-minute session helps you both uncover what's really happening beneath the surface.",
+    fullDescription: "We'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
     subtitle: "Book your Couples Coaching Session and start building the relationship you both long to come home to.",
     icon: Users,
+    image: couplesCoachingImg,
+    accent: "from-purple-500/20 to-pink-500/20",
     features: [
       "Conflict resolution and repair tools",
       "Emotional safety rebuilding techniques",
@@ -39,24 +51,26 @@ const services = [
     title: "The Resolution Method",
     price: "$3,375",
     duration: "9 Weeks",
-    description: "Feeling on the edge of divorce or a breakup? The Resolution Method is a 9-week immersive program designed for couples ready to completely transform how they experience conflict, communication, and connection. Together, we'll unravel the emotional patterns that keep you stuck and rebuild a foundation of safety, trust, and mutual understanding.\n\nEach week, you'll learn how to recognize your attachment triggers, regulate during conflict, and lead difficult conversations with compassion instead of defense. With weekly structure, emotional rewiring, and practical skill-building, you'll begin to experience a new dynamic—one where both partners feel seen, valued, and capable of creating change.\n\nLed by Shazmeen Bank, Certified Conflict-Resolution Facilitator, this program provides a safe space for both of you to heal, grow, and learn how to lead your relationship forward securely, consciously, and with love.",
+    description: "Feeling on the edge of divorce or a breakup? The Resolution Method is a 9-week immersive program designed for couples ready to completely transform how they experience conflict, communication, and connection.",
+    fullDescription: "Each week, you'll learn how to recognize your attachment triggers, regulate during conflict, and lead difficult conversations with compassion instead of defense. With weekly structure, emotional rewiring, and practical skill-building, you'll begin to experience a new dynamic—one where both partners feel seen, valued, and capable of creating change.",
     subtitle: "Book The Resolution Method and learn how to lead your relationship through repair, not rupture.",
-    additionalInfo: "9 weekly 75-minute coaching sessions",
+    additionalInfo: "Led by Shazmeen Bank, Certified Conflict-Resolution Facilitator",
     icon: Clock,
+    image: resolutionMethodImg,
+    accent: "from-teal-500/20 to-emerald-500/20",
     features: [
-      "Workbook",
+      "Workbook included",
       "9 weekly 75-minute coaching sessions",
       "Conflict transformation & repair tools",
-      "Emotional rewiring & nervous system regulation techniques",
-      "Understanding Avoidant and Anxious attachment styles—and how to work with both dynamics",
-      "Learning to hold space for each other's pain, fears, and deepest yearnings",
-      "Shifting from 'conflict mind' to 'loving heart,' where compassion leads every hard conversation",
-      "Writing a new shared vision for your relationship and creating the roadmap to live it",
-      "Discovering the four truths that anchor and sustain your partnership",
-      "Developing new ways to communicate through tough conversations without defensiveness or shutdown",
-      "Learning how to ask for what you need—and feel safe being seen in it",
-      "Practicing vulnerable sharing in a space that feels emotionally secure",
-      "Becoming a master at leading your relationship back to safety, connection, and love"
+      "Emotional rewiring & nervous system regulation",
+      "Understanding Avoidant and Anxious attachment styles",
+      "Holding space for each other's pain, fears, and yearnings",
+      "Shifting from 'conflict mind' to 'loving heart'",
+      "Writing a new shared vision for your relationship",
+      "Developing new communication strategies",
+      "Learning how to ask for what you need safely",
+      "Practicing vulnerable sharing",
+      "Becoming a master at leading back to safety & love"
     ],
     isIntensive: true
   }
@@ -64,105 +78,220 @@ const services = [
 
 const Bookings = () => {
   const [selectedService, setSelectedService] = useState<number | null>(null);
+  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const handleBookService = (serviceId: number) => {
     setSelectedService(serviceId);
-    // In a real app, this would redirect to booking/payment
     console.log(`Booking service ${serviceId}`);
   };
 
   return (
     <>
-      {/* Header Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-24 pt-32">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Book a Session</h1>
-            <p className="text-xl text-shazmeen-gray leading-relaxed">
-              Whether you're navigating your own healing or working through challenges in your relationship, you're in the right place.
+      {/* Hero Section with Background */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/80 via-shazmeen-dark/60 to-shazmeen-dark/90" />
+        
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-shazmeen-red/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
+        
+        <div className="relative container-custom text-center py-32 pt-40">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-shazmeen-red/20 text-shazmeen-red mb-6">
+              <Sparkles className="w-4 h-4" />
+              Begin Your Transformation
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Book a Healing Session
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Whether you're navigating your own healing or working through challenges in your relationship, 
+              you're in the right place. These sessions move at your pace—a space for inner child healing, 
+              nervous system regulation, and gentle self-discovery.
             </p>
-            <p className="text-xl text-shazmeen-gray leading-relaxed mt-4">
-              In our sessions—whether 1:1 or as a couple—we'll explore the patterns beneath your reactions, strengthen communication, and build emotional safety that allows healing to unfold naturally. You'll learn to move through conflict with clarity, compassion, and understanding, while finding new ways of feeling and thinking that already live within you.
-            </p>
-            <p className="text-xl text-shazmeen-gray leading-relaxed mt-4">
-              These sessions move at your pace. They're a space for inner child healing, nervous system regulation, and gentle self-discovery. My role is to guide you just a few degrees closer to your own wisdom and truth. Because everything you're searching for is already within you.
-            </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-white">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
-          <div className="space-y-8">
-            {services.map(service => {
+          <div className="space-y-24">
+            {services.map((service, index) => {
               const IconComponent = service.icon;
+              const isEven = index % 2 === 0;
+              const isExpanded = expandedService === service.id;
+              
               return (
-                <div key={service.id} className={`bg-white rounded-xl shadow-lg overflow-hidden border-2 ${service.isIntensive ? 'border-shazmeen-red' : 'border-gray-100'}`}>
-                  <div className="p-8">
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 bg-shazmeen-red/10 rounded-full flex items-center justify-center mr-4">
-                          <IconComponent className="w-6 h-6 text-shazmeen-red" />
-                        </div>
-                        <div>
-                          <h2 className="text-2xl md:text-3xl font-bold text-shazmeen-dark">{service.title}</h2>
-                          <p className="text-gray-600 mt-1">{service.duration}</p>
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`relative ${service.isIntensive ? 'pt-8' : ''}`}
+                >
+                  {/* Intensive badge */}
+                  {service.isIntensive && (
+                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10">
+                      <span className="bg-gradient-to-r from-shazmeen-red to-rose-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                        ✨ Signature Program
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                    {/* Image Section */}
+                    <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500`} />
+                      <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                        <img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        
+                        {/* Price overlay */}
+                        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                          <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg">
+                            <p className="text-sm text-gray-600">{service.duration}</p>
+                            <p className="text-2xl font-bold text-shazmeen-dark">{service.price}</p>
+                          </div>
+                          <div className="w-14 h-14 bg-shazmeen-red rounded-full flex items-center justify-center shadow-lg">
+                            <IconComponent className="w-7 h-7 text-white" />
+                          </div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-bold text-shazmeen-red">{service.price}</div>
-                        {service.isIntensive && (
-                          <div className="text-sm text-gray-500">9 weekly sessions</div>
+                    </div>
+                    
+                    {/* Content Section */}
+                    <div className={`${!isEven ? 'lg:order-1' : ''}`}>
+                      <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-4">
+                        {service.title}
+                      </h2>
+                      
+                      <p className="text-gray-600 leading-relaxed mb-4">
+                        {service.description}
+                      </p>
+                      
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="mb-4"
+                        >
+                          <p className="text-gray-600 leading-relaxed mb-4">
+                            {service.fullDescription}
+                          </p>
+                          {service.additionalInfo && (
+                            <p className="text-shazmeen-red font-medium italic mb-4">
+                              {service.additionalInfo}
+                            </p>
+                          )}
+                        </motion.div>
+                      )}
+                      
+                      <button
+                        onClick={() => setExpandedService(isExpanded ? null : service.id)}
+                        className="text-shazmeen-red font-medium mb-6 hover:underline inline-flex items-center gap-1"
+                      >
+                        {isExpanded ? 'Show less' : 'Read more'}
+                        <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                      </button>
+                      
+                      <p className="text-shazmeen-dark font-semibold italic mb-6 border-l-4 border-shazmeen-red pl-4">
+                        {service.subtitle}
+                      </p>
+                      
+                      {/* Features Grid */}
+                      <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+                        <h3 className="font-semibold text-shazmeen-dark mb-4 flex items-center gap-2">
+                          <Sparkles className="w-5 h-5 text-shazmeen-red" />
+                          What's Included
+                        </h3>
+                        <div className={`grid ${service.features.length > 6 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'} gap-3`}>
+                          {service.features.slice(0, isExpanded ? undefined : 4).map((feature, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <Check className="w-3 h-3 text-green-600" />
+                              </div>
+                              <span className="text-gray-700 text-sm">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                        {service.features.length > 4 && !isExpanded && (
+                          <p className="text-sm text-shazmeen-red mt-3">
+                            +{service.features.length - 4} more benefits included
+                          </p>
                         )}
                       </div>
+                      
+                      <Button 
+                        className="btn-primary px-8 py-6 text-lg group"
+                        onClick={() => handleBookService(service.id)}
+                      >
+                        Book {service.title}
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
                     </div>
-
-                    <p className="text-gray-700 mb-4 leading-relaxed">{service.description}</p>
-                    <p className="text-shazmeen-dark font-medium mb-4">{service.subtitle}</p>
-                    
-                    {service.additionalInfo && (
-                      <p className="text-gray-600 mb-6 italic">{service.additionalInfo}</p>
-                    )}
-
-                    <div className="mb-8">
-                      <h3 className="font-semibold text-shazmeen-dark mb-4">What's Included:</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {service.features.map((feature, index) => (
-                          <div key={index} className="flex items-center">
-                            <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                            <span className="text-gray-700">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Button 
-                      className="btn-primary px-8 py-4 text-lg"
-                      onClick={() => handleBookService(service.id)}
-                    >
-                      Book {service.title}
-                    </Button>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Additional Info Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
+      {/* Bottom CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-shazmeen-dark via-[#1a2d43] to-shazmeen-dark relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-shazmeen-red/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="container-custom relative">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-shazmeen-dark mb-6">Ready to Begin Your Healing Journey?</h2>
-            <p className="text-gray-700 mb-8 leading-relaxed">
-              All sessions are conducted with compassion, clarity, and practical tools that create real change. 
-              Choose the option that feels right for where you are in your journey.
-            </p>
-            <p className="text-sm text-gray-600">
-              Have questions? Email us at <a href="mailto:info@shazmeenbank.com" className="text-shazmeen-red hover:underline">info@shazmeenbank.com</a>
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Begin Your Healing Journey?
+              </h2>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                All sessions are conducted with compassion, clarity, and practical tools that create real change. 
+                Choose the option that feels right for where you are in your journey.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <Check className="w-5 h-5 text-green-400" />
+                  <span>Zoom sessions available worldwide</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <Check className="w-5 h-5 text-green-400" />
+                  <span>Personalized approach</span>
+                </div>
+              </div>
+              
+              <p className="text-sm text-gray-400">
+                Have questions? Email us at{" "}
+                <a href="mailto:shazmeen@shazmeenbank.com" className="text-shazmeen-red hover:underline">
+                  shazmeen@shazmeenbank.com
+                </a>
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
