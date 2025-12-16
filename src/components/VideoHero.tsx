@@ -4,14 +4,15 @@ interface VideoHeroProps {
   onWaitlistClick: () => void;
 }
 
+// Media House Videos featuring Shazmeen Bank
 const YOUTUBE_VIDEOS = [
-  { id: "R7AglaXRgWA", start: 65 },   // 1:05
-  { id: "I4SUKJKLNTI", start: 305 },  // 5:05
-  { id: "PDhK4FqbROE", start: 20 },   // 0:20
-  { id: "Mea1aggNDVU", start: 10 },   // 0:10
-  { id: "OyK1-tnqOqw", start: 65 },   // 1:05
-  { id: "Y3Lyo7qLx1o", start: 98 },   // 1:38
-  { id: "NrRXPRmGpbw", start: 61 },   // 1:01
+  { id: "XfRcyB6_hGA", start: 163 },  // 2:43 - Citizen TV Kenya
+  { id: "guHf0pIWXWA", start: 235 },  // 3:55 - Spice FM Kenya
+  { id: "OyK1-tnqOqw", start: 343 },  // 5:43 - TV47 Kenya
+  { id: "PDhK4FqbROE", start: 21 },   // 0:21 - Engage Talk
+  { id: "at3bHuNlBqI", start: 261 },  // 4:21 - Switch TV
+  { id: "R7AglaXRgWA", start: 627 },  // 10:27 - Tuko Kenya
+  { id: "ZPcSLA24B6Y", start: 159 },  // 2:39 - NRG TV
 ];
 
 const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
