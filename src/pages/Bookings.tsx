@@ -19,7 +19,7 @@ const services = [
     fullDescription: "Through personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
     subtitle: "Book your Secure Self Session—and start coming home to yourself.",
     icon: Heart,
-    image: secureSessionImg,
+    image: https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765557751118-tpyf5g.png,
     accent: "from-rose-500/20 to-amber-500/20",
     features: [
       "Personal healing guidance",
