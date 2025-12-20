@@ -1,17 +1,6 @@
 import { Helmet } from "react-helmet";
-import { Youtube, ExternalLink, Tv, Heart, Brain, Users, MessageCircle, Sparkles } from "lucide-react";
+import { Youtube, ExternalLink, Heart, Brain, Users, MessageCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// Media House Appearances
-const MEDIA_HOUSE_VIDEOS = [
-  { id: "XfRcyB6_hGA", title: "Citizen TV Kenya", start: 163, end: 227 },
-  { id: "guHf0pIWXWA", title: "Spice FM Kenya", start: 235, end: 392 },
-  { id: "OyK1-tnqOqw", title: "TV47 Kenya", start: 343, end: 402 },
-  { id: "PDhK4FqbROE", title: "Engage Talk", start: 21, end: 1007 },
-  { id: "at3bHuNlBqI", title: "Switch TV", start: 261, end: 311 },
-  { id: "R7AglaXRgWA", title: "Tuko Kenya", start: 627, end: 681 },
-  { id: "ZPcSLA24B6Y", title: "NRG TV", start: 159, end: 202 },
-];
 
 // Organized by category
 const VIDEO_CATEGORIES = [
@@ -170,46 +159,6 @@ const Videos = () => {
         </div>
       </section>
 
-      {/* Media House Appearances Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-shazmeen-dark to-shazmeen-dark/95">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4">
-              <Tv className="w-8 h-8 text-white" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
-              As Seen On TV & Radio
-            </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              Featured appearances on major media houses across Kenya
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {MEDIA_HOUSE_VIDEOS.map((video) => (
-              <div key={video.id} className="group animate-fade-in">
-                <div className="relative overflow-hidden rounded-xl shadow-elegant hover:shadow-premium transition-all duration-300 transform hover:-translate-y-2 bg-white/5 backdrop-blur-sm border border-white/10">
-                  <div className="aspect-video">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.id}?start=${video.start}`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <span className="inline-block px-3 py-1 rounded-full bg-shazmeen-red/20 text-shazmeen-blush text-sm font-medium">
-                      {video.title}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Video Categories */}
       {VIDEO_CATEGORIES.map((category, categoryIndex) => (
         <section 
@@ -239,6 +188,7 @@ const Videos = () => {
                         title={video.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
+                        loading="lazy"
                         className="w-full h-full"
                       />
                     </div>
