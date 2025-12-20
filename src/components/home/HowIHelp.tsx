@@ -1,6 +1,9 @@
-
 import React from "react";
 import { Heart, Brain, Compass, Star } from "lucide-react";
+import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
+import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
+import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
+import shazmeenMarathon from "@/assets/about/shazmeen-marathon-stats.png";
 
 const HowIHelp = () => {
   const helpAreas = [
@@ -10,7 +13,8 @@ const HowIHelp = () => {
       icon: Heart,
       gradient: "from-rose-500/20 via-pink-400/10 to-transparent",
       iconColor: "text-rose-500",
-      borderColor: "border-rose-200"
+      borderColor: "border-rose-200",
+      image: shazmeenHeart,
     },
     {
       title: "Healing Anxious Attachment",
@@ -18,7 +22,8 @@ const HowIHelp = () => {
       icon: Brain,
       gradient: "from-violet-500/20 via-purple-400/10 to-transparent",
       iconColor: "text-violet-500",
-      borderColor: "border-violet-200"
+      borderColor: "border-violet-200",
+      image: shazmeenMedalTogether,
     },
     {
       title: "Healing Through Breakup or Divorce",
@@ -26,7 +31,8 @@ const HowIHelp = () => {
       icon: Compass,
       gradient: "from-amber-500/20 via-orange-400/10 to-transparent",
       iconColor: "text-amber-500",
-      borderColor: "border-amber-200"
+      borderColor: "border-amber-200",
+      image: shazmeenMedal,
     },
     {
       title: "Life Coaching: Finding Your North Star",
@@ -34,7 +40,8 @@ const HowIHelp = () => {
       icon: Star,
       gradient: "from-emerald-500/20 via-teal-400/10 to-transparent",
       iconColor: "text-emerald-500",
-      borderColor: "border-emerald-200"
+      borderColor: "border-emerald-200",
+      image: shazmeenMarathon,
     }
   ];
 
@@ -45,15 +52,12 @@ const HowIHelp = () => {
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
             Your Path to Healing & Growth
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Healing isn't about becoming someone new—it's about returning to yourself. Whether you're here as a couple wanting to reconnect, as someone navigating anxious attachment, moving through the heartbreak of divorce, or simply searching for your North Star again, this is your path to healing and growth.
-          </p>
-          <p className="text-lg text-gray-600 mt-4 max-w-4xl mx-auto">
-            Here's how I can support you along the way.
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Whether you're here as a couple wanting to reconnect, navigating anxious attachment, or searching for your North Star again, this is your path to healing.
           </p>
         </div>
         
-        <div className="max-w-6xl mx-auto space-y-8">
+        <div className="max-w-6xl mx-auto space-y-16">
           {helpAreas.map((area, index) => {
             const Icon = area.icon;
             const isEven = index % 2 === 0;
@@ -63,16 +67,20 @@ const HowIHelp = () => {
                 key={index} 
                 className={`relative flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 group`}
               >
-                {/* Decorative blob */}
-                <div className={`absolute ${isEven ? '-left-20' : '-right-20'} top-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial ${area.gradient} rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-500 hidden lg:block`} />
-                
-                {/* Icon container */}
-                <div className={`relative flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-[2rem] bg-gradient-to-br ${area.gradient} border-2 ${area.borderColor} flex items-center justify-center transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
-                  <Icon className={`w-16 h-16 md:w-20 md:h-20 ${area.iconColor} group-hover:scale-110 transition-transform duration-300`} />
-                  
-                  {/* Floating dots decoration */}
-                  <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full ${area.iconColor} bg-current opacity-60`} />
-                  <div className={`absolute -bottom-1 -left-1 w-3 h-3 rounded-full ${area.iconColor} bg-current opacity-40`} />
+                {/* Image Section */}
+                <div className="relative flex-shrink-0 w-full md:w-80 lg:w-96">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${area.gradient} rounded-3xl transform ${isEven ? 'rotate-3' : '-rotate-3'} group-hover:rotate-0 transition-all duration-500`} />
+                  <div className="relative overflow-hidden rounded-3xl shadow-premium">
+                    <img 
+                      src={area.image} 
+                      alt={area.title}
+                      className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Icon overlay */}
+                    <div className={`absolute bottom-4 ${isEven ? 'right-4' : 'left-4'} w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg`}>
+                      <Icon className={`w-7 h-7 ${area.iconColor}`} />
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Content card */}

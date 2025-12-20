@@ -209,30 +209,42 @@ export type Database = {
       courses: {
         Row: {
           created_at: string | null
+          cta_text: string | null
           description: string | null
+          duration_text: string | null
           id: string
           image: string | null
+          learning_outcomes: string[] | null
           status: string | null
+          subtitle: string | null
           title: string
           total_modules: number | null
           updated_at: string | null
         }
         Insert: {
           created_at?: string | null
+          cta_text?: string | null
           description?: string | null
+          duration_text?: string | null
           id?: string
           image?: string | null
+          learning_outcomes?: string[] | null
           status?: string | null
+          subtitle?: string | null
           title: string
           total_modules?: number | null
           updated_at?: string | null
         }
         Update: {
           created_at?: string | null
+          cta_text?: string | null
           description?: string | null
+          duration_text?: string | null
           id?: string
           image?: string | null
+          learning_outcomes?: string[] | null
           status?: string | null
+          subtitle?: string | null
           title?: string
           total_modules?: number | null
           updated_at?: string | null
