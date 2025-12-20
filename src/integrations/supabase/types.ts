@@ -115,39 +115,60 @@ export type Database = {
       }
       bookings: {
         Row: {
+          approved_at: string | null
           booking_date: string
           booking_time: string
+          client_email: string | null
+          client_name: string | null
           coach_id: string | null
           created_at: string | null
           duration: number | null
           id: string
           notes: string | null
+          payment_instructions_sent_at: string | null
+          payment_status: Database["public"]["Enums"]["payment_status"] | null
+          rejected_at: string | null
+          rejection_reason: string | null
           service_id: string | null
           status: string | null
           updated_at: string | null
           user_id: string
         }
         Insert: {
+          approved_at?: string | null
           booking_date: string
           booking_time: string
+          client_email?: string | null
+          client_name?: string | null
           coach_id?: string | null
           created_at?: string | null
           duration?: number | null
           id?: string
           notes?: string | null
+          payment_instructions_sent_at?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          rejected_at?: string | null
+          rejection_reason?: string | null
           service_id?: string | null
           status?: string | null
           updated_at?: string | null
           user_id: string
         }
         Update: {
+          approved_at?: string | null
           booking_date?: string
           booking_time?: string
+          client_email?: string | null
+          client_name?: string | null
           coach_id?: string | null
           created_at?: string | null
           duration?: number | null
           id?: string
           notes?: string | null
+          payment_instructions_sent_at?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          rejected_at?: string | null
+          rejection_reason?: string | null
           service_id?: string | null
           status?: string | null
           updated_at?: string | null
@@ -166,6 +187,47 @@ export type Database = {
             columns: ["service_id"]
             isOneToOne: false
             referencedRelation: "booking_services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      coach_availability: {
+        Row: {
+          available_date: string
+          coach_id: string | null
+          created_at: string | null
+          id: string
+          is_available: boolean | null
+          notes: string | null
+          time_slots: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          available_date: string
+          coach_id?: string | null
+          created_at?: string | null
+          id?: string
+          is_available?: boolean | null
+          notes?: string | null
+          time_slots?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          available_date?: string
+          coach_id?: string | null
+          created_at?: string | null
+          id?: string
+          is_available?: boolean | null
+          notes?: string | null
+          time_slots?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "coach_availability_coach_id_fkey"
+            columns: ["coach_id"]
+            isOneToOne: false
+            referencedRelation: "coaches"
             referencedColumns: ["id"]
           },
         ]
@@ -205,6 +267,41 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      course_waitlist: {
+        Row: {
+          course_id: string | null
+          course_title: string
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+        }
+        Insert: {
+          course_id?: string | null
+          course_title: string
+          created_at?: string | null
+          email: string
+          id?: string
+          name: string
+        }
+        Update: {
+          course_id?: string | null
+          course_title?: string
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_waitlist_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       courses: {
         Row: {
@@ -406,6 +503,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      payment_status:
+        | "pending"
+        | "payment_instructions_sent"
+        | "paid"
+        | "approved"
+        | "rejected"
+        | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -534,6 +638,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      payment_status: [
+        "pending",
+        "payment_instructions_sent",
+        "paid",
+        "approved",
+        "rejected",
+        "cancelled",
+      ],
     },
   },
 } as const

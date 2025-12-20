@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import BookingModal from "@/components/bookings/BookingModal";
 
 // Import images from gallery
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
@@ -79,12 +80,13 @@ const services = [
 ];
 
 const Bookings = () => {
-  const [selectedService, setSelectedService] = useState<number | null>(null);
   const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
-  const handleBookService = (serviceId: number) => {
-    setSelectedService(serviceId);
-    console.log(`Booking service ${serviceId}`);
+  const handleBookService = (service: typeof services[0]) => {
+    setSelectedService(service);
+    setBookingModalOpen(true);
   };
 
   return (
@@ -240,12 +242,75 @@ const Bookings = () => {
                       
                       <Button 
                         className="btn-primary px-8 py-6 text-lg group"
-                        onClick={() => handleBookService(service.id)}
+                        onClick={() => handleBookService(service)}
                       >
                         Book {service.title}
                         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-shazmeen-dark via-[#1a2d43] to-shazmeen-dark relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-shazmeen-red/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="container-custom relative">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Begin Your Healing Journey?
+              </h2>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                All sessions are conducted with compassion, clarity, and practical tools that create real change. 
+                Choose the option that feels right for where you are in your journey.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <Check className="w-5 h-5 text-green-400" />
+                  <span>Zoom sessions available worldwide</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <Check className="w-5 h-5 text-green-400" />
+                  <span>Personalized approach</span>
+                </div>
+              </div>
+              
+              <p className="text-sm text-gray-400">
+                Have questions? Email us at{" "}
+                <a href="mailto:shazmeen@shazmeenbank.com" className="text-shazmeen-red hover:underline">
+                  shazmeen@shazmeenbank.com
+                </a>
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        service={selectedService}
+      />
+    </>
+  );
+};
+
+export default Bookings;
                   </div>
                 </motion.div>
               );

@@ -5,6 +5,7 @@ import BlogManagement from '@/components/admin/BlogManagement';
 import PodcastManagement from '@/components/admin/PodcastManagement';
 import CoursesManagement from '@/components/admin/CoursesManagement';
 import BookingsManagement from '@/components/admin/BookingsManagement';
+import WaitlistManagement from '@/components/admin/WaitlistManagement';
 import ServicesManagement from '@/components/admin/ServicesManagement';
 import CoachesManagement from '@/components/admin/CoachesManagement';
 import MediaLibrary from '@/components/admin/MediaLibrary';
@@ -34,6 +35,7 @@ const Admin = () => {
           <Route path="podcasts/*" element={<PodcastManagement />} />
           <Route path="courses/*" element={<CoursesManagement />} />
           <Route path="bookings" element={<BookingsManagement />} />
+          <Route path="waitlist" element={<WaitlistManagement />} />
           <Route path="services/*" element={<ServicesManagement />} />
           <Route path="coaches/*" element={<CoachesManagement />} />
           <Route path="media" element={<MediaLibrary />} />

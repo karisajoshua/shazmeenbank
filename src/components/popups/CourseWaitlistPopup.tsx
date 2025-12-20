@@ -1,5 +1,6 @@
-
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -8,6 +9,7 @@ type CourseWaitlistPopupProps = {
   isOpen: boolean;
   onClose: () => void;
   course: {
+    id?: string;
     title: string;
     description: string;
   } | null;
@@ -19,21 +21,38 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
+  const joinWaitlistMutation = useMutation({
+    mutationFn: async () => {
+      const { error } = await supabase.from('course_waitlist').insert({
+        name,
+        email,
+        course_id: course?.id || null,
+        course_title: course?.title || 'Unknown Course',
+      });
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast({
+        title: "Success!",
+        description: "You've been added to the waitlist. We'll notify you when the course is available.",
+        duration: 5000,
+      });
+      setIsSubmitted(true);
+    },
+    onError: (error) => {
+      console.error('Waitlist error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to join waitlist. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // In a real app, you would send this data to info@shazmeenbank.com
-    console.log("Added to waitlist:", { name, email, course: course?.title, sendTo: "info@shazmeenbank.com" });
-    
-    // Show success message
-    toast({
-      title: "Success!",
-      description: "You've been added to the waitlist. We'll notify you when the course is available.",
-      duration: 5000,
-    });
-    
-    // Set submitted state to show thank you message
-    setIsSubmitted(true);
+    joinWaitlistMutation.mutate();
   };
 
   if (!isOpen) return null;
@@ -109,8 +128,12 @@ const CourseWaitlistPopup = ({ isOpen, onClose, course }: CourseWaitlistPopupPro
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full btn-primary text-lg py-3">
-                    Join Waitlist
+                  <Button 
+                    type="submit" 
+                    className="w-full btn-primary text-lg py-3"
+                    disabled={joinWaitlistMutation.isPending}
+                  >
+                    {joinWaitlistMutation.isPending ? 'Joining...' : 'Join Waitlist'}
                   </Button>
                 </form>
               </>
