@@ -145,6 +145,15 @@ export default {
 					'0%': { opacity: '0.3', transform: 'translateX(0)' },
 					'10%': { opacity: '0.8' },
 					'100%': { opacity: '0.8', transform: 'translateX(-50%)' }
+				},
+				// Marquee animations for podcast image gallery
+				'marquee-left': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-50%)' }
+				},
+				'marquee-right': {
+					'0%': { transform: 'translateX(-50%)' },
+					'100%': { transform: 'translateX(0)' }
 				}
 			},
 			animation: {
@@ -157,7 +166,10 @@ export default {
 				// Updated animation duration from 25s to 60s to make it slower
 				'fade-and-scroll': 'fade-and-scroll 60s linear infinite',
 				// New slower animation with a 90s duration
-				'slow-scroll': 'slow-scroll 90s linear infinite'
+				'slow-scroll': 'slow-scroll 90s linear infinite',
+				// Marquee animations
+				'marquee-left': 'marquee-left 30s linear infinite',
+				'marquee-right': 'marquee-right 30s linear infinite'
 			}
 		}
 	},
