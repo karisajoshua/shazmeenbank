@@ -2,9 +2,63 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { Check, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
+
+const INITIAL_OUTCOMES_COUNT = 3;
+
+const LearningOutcomes = ({ outcomes }: { outcomes: string[] }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const hasMore = outcomes.length > INITIAL_OUTCOMES_COUNT;
+  const displayedOutcomes = isExpanded ? outcomes : outcomes.slice(0, INITIAL_OUTCOMES_COUNT);
+
+  return (
+    <div className="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h3 className="font-bold text-shazmeen-dark mb-4 text-lg flex items-center gap-2">
+        <Sparkles className="w-5 h-5 text-shazmeen-red" />
+        You'll learn to:
+      </h3>
+      <div className="space-y-3">
+        <AnimatePresence initial={false}>
+          {displayedOutcomes.map((outcome: string, idx: number) => (
+            <motion.div 
+              key={idx} 
+              className="flex items-start gap-3"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Check className="w-3 h-3 text-green-600" />
+              </div>
+              <span className="text-gray-700">{outcome}</span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+      {hasMore && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-4 flex items-center gap-2 text-shazmeen-red font-medium hover:text-shazmeen-red/80 transition-colors"
+        >
+          {isExpanded ? (
+            <>
+              <ChevronUp className="w-4 h-4" />
+              Show less
+            </>
+          ) : (
+            <>
+              <ChevronDown className="w-4 h-4" />
+              Show {outcomes.length - INITIAL_OUTCOMES_COUNT} more
+            </>
+          )}
+        </button>
+      )}
+    </div>
+  );
+};
 
 const Courses = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
@@ -135,24 +189,9 @@ const Courses = () => {
                           </div>
                         )}
                         
-                        {/* Learning Outcomes */}
+                        {/* Learning Outcomes - Now collapsible */}
                         {course.learning_outcomes && course.learning_outcomes.length > 0 && (
-                          <div className="bg-gray-50 rounded-2xl p-6 mb-8">
-                            <h3 className="font-bold text-shazmeen-dark mb-4 text-lg flex items-center gap-2">
-                              <Sparkles className="w-5 h-5 text-shazmeen-red" />
-                              You'll learn to:
-                            </h3>
-                            <div className="space-y-3">
-                              {course.learning_outcomes.map((outcome: string, idx: number) => (
-                                <div key={idx} className="flex items-start gap-3">
-                                  <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <Check className="w-3 h-3 text-green-600" />
-                                  </div>
-                                  <span className="text-gray-700">{outcome}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
+                          <LearningOutcomes outcomes={course.learning_outcomes} />
                         )}
                         
                         {/* CTA Text */}

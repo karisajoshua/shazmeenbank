@@ -6,6 +6,7 @@ import FeaturedEpisode from "@/components/podcast/FeaturedEpisode";
 import EpisodeList from "@/components/podcast/EpisodeList";
 import SubscribeSection from "@/components/podcast/SubscribeSection";
 import SocialConnect from "@/components/podcast/SocialConnect";
+import ImageMarquee from "@/components/podcast/ImageMarquee";
 import { PodcastEpisode } from "@/types/podcast";
 
 const Podcast = () => {
@@ -76,6 +77,7 @@ const Podcast = () => {
         />
       )}
       <EpisodeList episodes={episodes} onPlayEpisode={handlePlayEpisode} />
+      <ImageMarquee />
       <SubscribeSection />
       <SocialConnect />
     </div>

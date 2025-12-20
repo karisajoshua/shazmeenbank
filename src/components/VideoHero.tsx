@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Play } from "lucide-react";
+import { Play, Volume2 } from "lucide-react";
 
 interface VideoHeroProps {
   onWaitlistClick: () => void;
@@ -18,30 +18,31 @@ const YOUTUBE_VIDEOS = [
 
 const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true); // Start muted so autoplay works
 
   useEffect(() => {
-    if (!isPlaying) {
+    // Rotate videos every 12 seconds when muted (background mode)
+    if (isMuted) {
       const interval = setInterval(() => {
         setCurrentVideoIndex((prev) => (prev + 1) % YOUTUBE_VIDEOS.length);
       }, 12000);
       return () => clearInterval(interval);
     }
-  }, [isPlaying]);
+  }, [isMuted]);
 
-  const handlePlayClick = () => {
-    setIsPlaying(true);
+  const handleUnmute = () => {
+    setIsMuted(false);
   };
 
   return (
     <section className="relative overflow-hidden h-screen w-full min-h-[100vh]">
-      {/* YouTube Video Background */}
+      {/* YouTube Video Background - Always plays (muted or unmuted) */}
       <div className="absolute inset-0 w-full h-full">
-        <div className={`absolute inset-0 bg-gradient-to-r from-shazmeen-dark/70 via-shazmeen-dark/40 to-transparent z-10 ${isPlaying ? 'pointer-events-none' : ''}`}></div>
+        <div className={`absolute inset-0 bg-gradient-to-r from-shazmeen-dark/80 via-shazmeen-dark/50 to-transparent z-10 ${!isMuted ? 'pointer-events-none' : ''}`}></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
-            key={`${currentVideoIndex}-${isPlaying}`}
-            src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex].id}?autoplay=1&mute=${isPlaying ? '0' : '1'}&controls=${isPlaying ? '1' : '0'}&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex].id}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=${YOUTUBE_VIDEOS[currentVideoIndex].start}`}
+            key={`${currentVideoIndex}-${isMuted}`}
+            src={`https://www.youtube.com/embed/${YOUTUBE_VIDEOS[currentVideoIndex].id}?autoplay=1&mute=${isMuted ? '1' : '0'}&controls=${!isMuted ? '1' : '0'}&showinfo=0&rel=0&loop=1&playlist=${YOUTUBE_VIDEOS[currentVideoIndex].id}&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1&start=${YOUTUBE_VIDEOS[currentVideoIndex].start}`}
             title="Background Video"
             className="absolute inset-0 w-full h-full"
             style={{ 
@@ -60,19 +61,20 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         </div>
       </div>
 
-      {/* Play Button Overlay */}
-      {!isPlaying && (
+      {/* Play with Sound Button - Shows when muted */}
+      {isMuted && (
         <button
-          onClick={handlePlayClick}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 w-20 h-20 md:w-24 md:h-24 bg-shazmeen-red/90 hover:bg-shazmeen-red rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl group"
+          onClick={handleUnmute}
+          className="absolute top-1/2 right-8 md:right-16 transform -translate-y-1/2 z-30 flex items-center gap-3 bg-shazmeen-red/90 hover:bg-shazmeen-red text-white px-5 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-2xl group"
           aria-label="Play video with sound"
         >
-          <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1 group-hover:scale-110 transition-transform" fill="white" />
+          <Volume2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
+          <span className="font-medium hidden md:inline">Watch with Sound</span>
         </button>
       )}
 
-      {/* Content */}
-      {!isPlaying && (
+      {/* Content - Shows when muted (background mode) */}
+      {isMuted && (
         <div className="container-custom relative z-20 h-full flex items-center pt-24">
           <div className="max-w-xl">
             <div className="space-y-4 animate-fade-in bg-shazmeen-dark/60 backdrop-blur-sm p-6 rounded-xl">
