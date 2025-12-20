@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Import images
-import heroBackground from "@/assets/bookings/hero-bg.jpg";
-import secureSessionImg from "@/assets/bookings/secure-self-session.jpg";
-import couplesCoachingImg from "@/assets/bookings/couples-coaching.jpg";
-import resolutionMethodImg from "@/assets/bookings/resolution-method.jpg";
+// Import images from gallery
+import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
+import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
+import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
+
+// Hero background from Supabase
+const heroBackground = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-taibp9.png";
 
 const services = [
   {
@@ -19,7 +21,7 @@ const services = [
     fullDescription: "Through personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
     subtitle: "Book your Secure Self Session—and start coming home to yourself.",
     icon: Heart,
-    image: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765557751118-tpyf5g.png",
+    image: shazmeenHeart,
     accent: "from-rose-500/20 to-amber-500/20",
     features: [
       "Personal healing guidance",
@@ -37,7 +39,7 @@ const services = [
     fullDescription: "We'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
     subtitle: "Book your Couples Coaching Session and start building the relationship you both long to come home to.",
     icon: Users,
-    image: couplesCoachingImg,
+    image: shazmeenMedalTogether,
     accent: "from-purple-500/20 to-pink-500/20",
     features: [
       "Conflict resolution and repair tools",
@@ -56,7 +58,7 @@ const services = [
     subtitle: "Book The Resolution Method and learn how to lead your relationship through repair, not rupture.",
     additionalInfo: "Led by Shazmeen Bank, Certified Conflict-Resolution Facilitator",
     icon: Clock,
-    image: resolutionMethodImg,
+    image: shazmeenMedal,
     accent: "from-teal-500/20 to-emerald-500/20",
     features: [
       "Workbook included",
