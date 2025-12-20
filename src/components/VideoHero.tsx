@@ -18,7 +18,7 @@ const YOUTUBE_VIDEOS = [
 
 const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     if (!isPlaying) {
