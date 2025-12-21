@@ -241,7 +241,7 @@ const Courses = () => {
                   <Button className="btn-primary px-8 py-6 text-lg">Book a 1:1 Session</Button>
                 </a>
                 <a href="/bookings">
-                  <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg">
+                  <Button variant="outline" className="border-2 border-white/60 bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-lg">
                     Book Couples Session
                   </Button>
                 </a>
