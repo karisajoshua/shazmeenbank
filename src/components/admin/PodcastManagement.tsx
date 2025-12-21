@@ -33,16 +33,14 @@ const PodcastManagement = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      {view !== 'list' && (
-        <div className="mb-6">
-          <Button variant="outline" asChild>
-            <Link to="/admin">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
-            </Link>
-          </Button>
-        </div>
-      )}
+      <div className="mb-6">
+        <Button variant="outline" asChild>
+          <Link to="/admin">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Dashboard
+          </Link>
+        </Button>
+      </div>
       
       {view === 'list' ? (
         <PodcastList onEdit={handleEdit} onCreateNew={handleCreateNew} />
