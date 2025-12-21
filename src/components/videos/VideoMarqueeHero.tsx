@@ -138,7 +138,7 @@ const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-2 border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg font-bold backdrop-blur-sm"
+              className="border-2 border-white/40 bg-white/10 text-white hover:bg-white/20 rounded-full px-8 py-6 text-lg font-bold backdrop-blur-sm"
               onClick={() => {
                 document.getElementById('videos-content')?.scrollIntoView({ behavior: 'smooth' });
               }}
