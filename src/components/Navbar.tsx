@@ -67,12 +67,12 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <>
-                <Link to="/dashboard">
+                <Link to={isAdmin ? "/admin" : "/dashboard"}>
                   <Button 
                     variant="outline" 
                     className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
                   >
-                    Dashboard
+                    {isAdmin ? "Admin Dashboard" : "Dashboard"}
                   </Button>
                 </Link>
                 <Button 
@@ -127,8 +127,8 @@ const Navbar = () => {
               <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
                 {user ? (
                   <>
-                    <Link to="/dashboard" className="w-full" onClick={toggleMenu}>
-                      <Button variant="outline" className="border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white w-full rounded-xl px-5 py-3 font-bold">Dashboard</Button>
+                    <Link to={isAdmin ? "/admin" : "/dashboard"} className="w-full" onClick={toggleMenu}>
+                      <Button variant="outline" className="border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white w-full rounded-xl px-5 py-3 font-bold">{isAdmin ? "Admin Dashboard" : "Dashboard"}</Button>
                     </Link>
                     <Button 
                       onClick={handleSignOut}
