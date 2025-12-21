@@ -52,7 +52,7 @@ const PodcastSection = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-shazmeen-dark text-lg px-8 py-4">
+                <Button variant="outline" className="border-white/60 bg-white/10 text-white hover:bg-white hover:text-shazmeen-dark text-lg px-8 py-4">
                   Subscribe on Spotify
                 </Button>
               </a>
