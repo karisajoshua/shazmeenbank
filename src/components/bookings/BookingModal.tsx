@@ -7,9 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar } from '@/components/ui/calendar';
 import { useToast } from '@/hooks/use-toast';
-import { format, isSameDay, startOfDay, addDays } from 'date-fns';
+import { format, isSameDay, startOfDay, parse } from 'date-fns';
 import { ArrowLeft, ArrowRight, Check, Calendar as CalendarIcon, Clock, User, Mail, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AddToCalendar from './AddToCalendar';
 
 type Service = {
   id: number;
@@ -180,6 +181,31 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
               Payment instructions will be sent to <strong>{clientEmail}</strong>.
               Once payment is confirmed, your appointment will be approved.
             </p>
+            
+            {/* Google Calendar / ICS Integration */}
+            {selectedDate && selectedTime && (
+              <div className="mb-6">
+                <p className="text-sm font-medium mb-3">Add to your calendar:</p>
+                <AddToCalendar
+                  title={`Coaching Session: ${service.title}`}
+                  startDate={(() => {
+                    const [hours, minutes] = selectedTime.split(':').map(Number);
+                    const start = new Date(selectedDate);
+                    start.setHours(hours || 0, minutes || 0, 0, 0);
+                    return start;
+                  })()}
+                  endDate={(() => {
+                    const [hours, minutes] = selectedTime.split(':').map(Number);
+                    const end = new Date(selectedDate);
+                    end.setHours((hours || 0) + 1, minutes || 0, 0, 0); // Default 1 hour session
+                    return end;
+                  })()}
+                  description={`Your coaching session with Shazmeen Bank.\n\nNotes: ${notes || 'None'}`}
+                  location="Online via Zoom"
+                />
+              </div>
+            )}
+            
             <Button onClick={handleClose} className="btn-primary">
               Close
             </Button>
