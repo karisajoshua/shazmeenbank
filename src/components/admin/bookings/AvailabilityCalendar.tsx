@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { format, isSameDay, addDays } from 'date-fns';
-import { Plus, X, Clock, Check } from 'lucide-react';
+import { Plus, X, Clock, Check, Pencil } from 'lucide-react';
 
 type AvailabilitySlot = {
   id: string;
@@ -143,6 +143,13 @@ const AvailabilityCalendar = () => {
     }
   };
 
+  // Handle clicking on availability summary card to edit
+  const handleEditFromCard = (slot: AvailabilitySlot) => {
+    const date = new Date(slot.available_date);
+    setSelectedDate(date);
+    setSelectedTimeSlots(slot.time_slots || []);
+  };
+
   // Toggle time slot
   const toggleTimeSlot = (time: string) => {
     setSelectedTimeSlots((prev) =>
@@ -187,6 +194,8 @@ const AvailabilityCalendar = () => {
       )
     : null;
 
+  const isEditing = !!existingSlot;
+
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <Card>
@@ -215,6 +224,10 @@ const AvailabilityCalendar = () => {
             className="rounded-md border"
           />
 
+          <p className="text-xs text-muted-foreground text-center">
+            Highlighted dates have availability set. Click to edit.
+          </p>
+
           <Button variant="outline" className="w-full" onClick={handleQuickAddWeek}>
             <Plus className="mr-2 h-4 w-4" />
             Quick Add Next 7 Weekdays
@@ -224,11 +237,28 @@ const AvailabilityCalendar = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">
-            {selectedDate
-              ? format(selectedDate, 'EEEE, MMMM d, yyyy')
-              : 'Select a date'}
-          </CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-lg">
+              {selectedDate
+                ? format(selectedDate, 'EEEE, MMMM d, yyyy')
+                : 'Select a date'}
+            </CardTitle>
+            {selectedDate && (
+              <Badge variant={isEditing ? 'secondary' : 'outline'}>
+                {isEditing ? (
+                  <>
+                    <Pencil className="mr-1 h-3 w-3" />
+                    Editing
+                  </>
+                ) : (
+                  <>
+                    <Plus className="mr-1 h-3 w-3" />
+                    New
+                  </>
+                )}
+              </Badge>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           {selectedDate ? (
@@ -259,7 +289,7 @@ const AvailabilityCalendar = () => {
                   onClick={handleSave}
                   disabled={upsertMutation.isPending}
                 >
-                  {upsertMutation.isPending ? 'Saving...' : 'Save Availability'}
+                  {upsertMutation.isPending ? 'Saving...' : isEditing ? 'Update Availability' : 'Save Availability'}
                 </Button>
                 {existingSlot && (
                   <Button
@@ -287,6 +317,7 @@ const AvailabilityCalendar = () => {
       <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle className="text-lg">Upcoming Availability</CardTitle>
+          <p className="text-sm text-muted-foreground">Click any date card to edit its time slots</p>
         </CardHeader>
         <CardContent>
           {availability.filter((a) => a.is_available && new Date(a.available_date) >= new Date()).length === 0 ? (
@@ -299,28 +330,37 @@ const AvailabilityCalendar = () => {
                 .filter((a) => a.is_available && new Date(a.available_date) >= new Date())
                 .sort((a, b) => new Date(a.available_date).getTime() - new Date(b.available_date).getTime())
                 .slice(0, 14)
-                .map((slot) => (
-                  <div
-                    key={slot.id}
-                    className="bg-muted rounded-lg p-3 min-w-[140px]"
-                  >
-                    <p className="font-medium text-sm">
-                      {format(new Date(slot.available_date), 'EEE, MMM d')}
-                    </p>
-                    <div className="flex flex-wrap gap-1 mt-2">
-                      {slot.time_slots.slice(0, 3).map((time) => (
-                        <Badge key={time} variant="secondary" className="text-xs">
-                          {time}
-                        </Badge>
-                      ))}
-                      {slot.time_slots.length > 3 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{slot.time_slots.length - 3}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                .map((slot) => {
+                  const isSelected = selectedDate && isSameDay(new Date(slot.available_date), selectedDate);
+                  return (
+                    <button
+                      key={slot.id}
+                      onClick={() => handleEditFromCard(slot)}
+                      className={`bg-muted rounded-lg p-3 min-w-[140px] text-left transition-all hover:ring-2 hover:ring-primary/50 ${
+                        isSelected ? 'ring-2 ring-primary' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="font-medium text-sm">
+                          {format(new Date(slot.available_date), 'EEE, MMM d')}
+                        </p>
+                        <Pencil className="h-3 w-3 text-muted-foreground" />
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {slot.time_slots.slice(0, 3).map((time) => (
+                          <Badge key={time} variant="secondary" className="text-xs">
+                            {time}
+                          </Badge>
+                        ))}
+                        {slot.time_slots.length > 3 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{slot.time_slots.length - 3}
+                          </Badge>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
             </div>
           )}
         </CardContent>

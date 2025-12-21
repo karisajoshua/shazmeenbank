@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -14,9 +15,20 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal, Send, CheckCircle, XCircle, Download } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import { MoreHorizontal, Send, CheckCircle, XCircle, Download, Trash2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
 
@@ -59,6 +71,8 @@ const getStatusBadge = (status: string | null) => {
 const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [bookingToDelete, setBookingToDelete] = useState<Booking | null>(null);
 
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, payment_status }: { id: string; payment_status: string }) => {
@@ -99,6 +113,46 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
       console.error('Update error:', error);
     },
   });
+
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from('bookings')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-bookings'] });
+      toast({ title: 'Booking deleted' });
+      setBookingToDelete(null);
+    },
+    onError: (error) => {
+      toast({
+        title: 'Error',
+        description: 'Failed to delete booking.',
+        variant: 'destructive',
+      });
+      console.error('Delete error:', error);
+    },
+  });
+
+  const handleDeleteClick = (booking: Booking) => {
+    setBookingToDelete(booking);
+    setDeleteDialogOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (bookingToDelete) {
+      deleteMutation.mutate(bookingToDelete.id);
+    }
+    setDeleteDialogOpen(false);
+  };
+
+  const canDelete = (status: string | null) => {
+    return ['rejected', 'cancelled'].includes(status || '');
+  };
 
   const exportToCSV = () => {
     const headers = ['Client Name', 'Email', 'Date', 'Time', 'Status', 'Payment Status', 'Notes', 'Created'];
@@ -239,6 +293,18 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
                         <XCircle className="mr-2 h-4 w-4" />
                         Reject Booking
                       </DropdownMenuItem>
+                      {canDelete(booking.payment_status) && (
+                        <>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem
+                            onClick={() => handleDeleteClick(booking)}
+                            className="text-destructive"
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete Booking
+                          </DropdownMenuItem>
+                        </>
+                      )}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
@@ -247,6 +313,33 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
           </TableBody>
         </Table>
       </div>
+
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Booking</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete this booking for{' '}
+              <strong>{bookingToDelete?.client_name}</strong> on{' '}
+              <strong>
+                {bookingToDelete?.booking_date
+                  ? format(new Date(bookingToDelete.booking_date), 'MMM d, yyyy')
+                  : ''}
+              </strong>
+              ? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
