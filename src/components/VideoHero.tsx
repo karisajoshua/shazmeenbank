@@ -28,9 +28,17 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isAPIReady, setIsAPIReady] = useState(false);
   const [showFallback, setShowFallback] = useState(true);
+
   const playerRef = useRef<YT.Player | null>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
   const rotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Avoid stale closures inside YouTube callbacks
+  const currentVideoIndexRef = useRef(0);
+
+  useEffect(() => {
+    currentVideoIndexRef.current = currentVideoIndex;
+  }, [currentVideoIndex]);
 
   // Load YouTube IFrame API
   useEffect(() => {
@@ -50,6 +58,13 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       const script = document.createElement("script");
       script.src = "https://www.youtube.com/iframe_api";
       script.async = true;
+      script.onload = () => {
+        // Fallback in case the global callback is skipped
+        if (window.YT && window.YT.Player) setIsAPIReady(true);
+      };
+      script.onerror = () => {
+        setShowFallback(true);
+      };
       document.head.appendChild(script);
     }
 
@@ -69,6 +84,9 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
 
     // Create player
     playerRef.current = new window.YT.Player(playerContainerRef.current, {
+      host: "https://www.youtube-nocookie.com",
+      width: "100%",
+      height: "100%",
       videoId: currentVideo.id,
       playerVars: {
         autoplay: 1,
@@ -89,22 +107,47 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       events: {
         onReady: (event: YT.PlayerEvent) => {
           const player = event.target;
+
+          // Some browsers require explicit iframe allowlist for autoplay
+          try {
+            const iframe = player.getIframe();
+            iframe?.setAttribute(
+              "allow",
+              "autoplay; encrypted-media; picture-in-picture"
+            );
+            iframe?.setAttribute("title", "Homepage background video");
+          } catch {
+            // ignore
+          }
+
           player.mute();
           player.playVideo();
-          // Hide fallback after a short delay to ensure video starts
+
+          // Retry (some browsers accept autoplay only after the iframe is fully hydrated)
           setTimeout(() => {
-            setShowFallback(false);
-          }, 1000);
+            try {
+              const state = player.getPlayerState?.();
+              if (state !== window.YT.PlayerState.PLAYING) {
+                player.mute();
+                player.playVideo();
+              }
+            } catch {
+              // ignore
+            }
+          }, 1200);
         },
         onStateChange: (event: YT.OnStateChangeEvent) => {
-          // If video ends or errors, try to play again
-          if (event.data === window.YT.PlayerState.ENDED) {
-            event.target.seekTo(YOUTUBE_VIDEOS[currentVideoIndex].start, true);
-            event.target.playVideo();
-          }
-          // Ensure video stays muted
           if (event.data === window.YT.PlayerState.PLAYING) {
             event.target.mute();
+            setShowFallback(false);
+            return;
+          }
+
+          // If video ends, restart the currently-selected clip from its start time
+          if (event.data === window.YT.PlayerState.ENDED) {
+            const idx = currentVideoIndexRef.current;
+            event.target.seekTo(YOUTUBE_VIDEOS[idx].start, true);
+            event.target.playVideo();
           }
         },
         onError: () => {
@@ -179,17 +222,19 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/80 via-shazmeen-dark/50 to-transparent z-10"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div
+            id="yt-hero-player"
             ref={playerContainerRef}
+            aria-hidden="true"
             className="absolute"
             style={{
-              width: '100vw',
-              height: '56.25vw',
-              minHeight: '100vh',
-              minWidth: '177.78vh',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
+              width: "100vw",
+              height: "56.25vw",
+              minHeight: "100vh",
+              minWidth: "177.78vh",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "none",
             }}
           />
         </div>
