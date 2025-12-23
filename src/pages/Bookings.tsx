@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/bookings/BookingModal";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 // Import images from gallery
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
@@ -97,19 +98,15 @@ const Bookings = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBackground})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/80 via-shazmeen-dark/60 to-shazmeen-dark/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
         
         {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-shazmeen-red/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-32 h-32 bg-[#FD0061]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
         
         <div className="relative container-custom text-center py-32 pt-40">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-shazmeen-red/20 text-shazmeen-red mb-6">
+          <ScrollReveal>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FD0061]/20 text-[#FD0061] mb-6">
               <Sparkles className="w-4 h-4" />
               Begin Your Transformation
             </span>
@@ -121,12 +118,12 @@ const Bookings = () => {
               you're in the right place. These sessions move at your pace—a space for inner child healing, 
               nervous system regulation, and gentle self-discovery.
             </p>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-black">
         <div className="container-custom">
           <div className="space-y-24">
             {services.map((service, index) => {
@@ -135,121 +132,116 @@ const Bookings = () => {
               const isExpanded = expandedService === service.id;
               
               return (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative ${service.isIntensive ? 'pt-8' : ''}`}
-                >
-                  {/* Intensive badge */}
-                  {service.isIntensive && (
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10">
-                      <span className="bg-gradient-to-r from-shazmeen-red to-rose-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
-                        ✨ Signature Program
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-                    {/* Image Section */}
-                    <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500`} />
-                      <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                        <img 
-                          src={service.image} 
-                          alt={service.title}
-                          className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        
-                        {/* Price overlay */}
-                        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                          <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg">
-                            <p className="text-sm text-gray-600">{service.duration}</p>
-                            <p className="text-2xl font-bold text-shazmeen-dark">{service.price}</p>
-                          </div>
-                          <div className="w-14 h-14 bg-shazmeen-red rounded-full flex items-center justify-center shadow-lg">
-                            <IconComponent className="w-7 h-7 text-white" />
+                <ScrollReveal key={service.id} delay={index * 0.1}>
+                  <div className={`relative ${service.isIntensive ? 'pt-8' : ''}`}>
+                    {/* Intensive badge */}
+                    {service.isIntensive && (
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10">
+                        <span className="bg-gradient-to-r from-[#FD0061] to-rose-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                          ✨ Signature Program
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                      {/* Image Section */}
+                      <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500`} />
+                        <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                          <img 
+                            src={service.image} 
+                            alt={service.title}
+                            className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          
+                          {/* Price overlay */}
+                          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                            <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg">
+                              <p className="text-sm text-gray-600">{service.duration}</p>
+                              <p className="text-2xl font-bold text-black">{service.price}</p>
+                            </div>
+                            <div className="w-14 h-14 bg-[#FD0061] rounded-full flex items-center justify-center shadow-lg">
+                              <IconComponent className="w-7 h-7 text-white" />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    
-                    {/* Content Section */}
-                    <div className={`${!isEven ? 'lg:order-1' : ''}`}>
-                      <h2 className="text-3xl md:text-4xl font-bold text-shazmeen-dark mb-4">
-                        {service.title}
-                      </h2>
                       
-                      <p className="text-gray-600 leading-relaxed mb-4">
-                        {service.description}
-                      </p>
-                      
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mb-4"
+                      {/* Content Section */}
+                      <div className={`${!isEven ? 'lg:order-1' : ''}`}>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                          {service.title}
+                        </h2>
+                        
+                        <p className="text-gray-300 leading-relaxed mb-4">
+                          {service.description}
+                        </p>
+                        
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="mb-4"
+                          >
+                            <p className="text-gray-300 leading-relaxed mb-4">
+                              {service.fullDescription}
+                            </p>
+                            {service.additionalInfo && (
+                              <p className="text-[#FD0061] font-medium italic mb-4">
+                                {service.additionalInfo}
+                              </p>
+                            )}
+                          </motion.div>
+                        )}
+                        
+                        <button
+                          onClick={() => setExpandedService(isExpanded ? null : service.id)}
+                          className="text-[#FD0061] font-medium mb-6 hover:underline inline-flex items-center gap-1"
                         >
-                          <p className="text-gray-600 leading-relaxed mb-4">
-                            {service.fullDescription}
-                          </p>
-                          {service.additionalInfo && (
-                            <p className="text-shazmeen-red font-medium italic mb-4">
-                              {service.additionalInfo}
+                          {isExpanded ? 'Show less' : 'Read more'}
+                          <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                        </button>
+                        
+                        <p className="text-white font-semibold italic mb-6 border-l-4 border-[#FD0061] pl-4">
+                          {service.subtitle}
+                        </p>
+                        
+                        {/* Features Grid */}
+                        <div className="bg-zinc-900 rounded-2xl p-6 mb-6 border border-zinc-800">
+                          <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                            <Sparkles className="w-5 h-5 text-[#FD0061]" />
+                            What's Included
+                          </h3>
+                          <div className={`grid ${service.features.length > 6 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'} gap-3`}>
+                            {service.features.slice(0, isExpanded ? undefined : 4).map((feature, idx) => (
+                              <div key={idx} className="flex items-start gap-3">
+                                <div className="w-5 h-5 rounded-full bg-green-900/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                  <Check className="w-3 h-3 text-green-400" />
+                                </div>
+                                <span className="text-gray-300 text-sm">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                          {service.features.length > 4 && !isExpanded && (
+                            <p className="text-sm text-[#FD0061] mt-3">
+                              +{service.features.length - 4} more benefits included
                             </p>
                           )}
-                        </motion.div>
-                      )}
-                      
-                      <button
-                        onClick={() => setExpandedService(isExpanded ? null : service.id)}
-                        className="text-shazmeen-red font-medium mb-6 hover:underline inline-flex items-center gap-1"
-                      >
-                        {isExpanded ? 'Show less' : 'Read more'}
-                        <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
-                      </button>
-                      
-                      <p className="text-shazmeen-dark font-semibold italic mb-6 border-l-4 border-shazmeen-red pl-4">
-                        {service.subtitle}
-                      </p>
-                      
-                      {/* Features Grid */}
-                      <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                        <h3 className="font-semibold text-shazmeen-dark mb-4 flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-shazmeen-red" />
-                          What's Included
-                        </h3>
-                        <div className={`grid ${service.features.length > 6 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'} gap-3`}>
-                          {service.features.slice(0, isExpanded ? undefined : 4).map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-3">
-                              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <Check className="w-3 h-3 text-green-600" />
-                              </div>
-                              <span className="text-gray-700 text-sm">{feature}</span>
-                            </div>
-                          ))}
                         </div>
-                        {service.features.length > 4 && !isExpanded && (
-                          <p className="text-sm text-shazmeen-red mt-3">
-                            +{service.features.length - 4} more benefits included
-                          </p>
-                        )}
+                        
+                        <Button 
+                          className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group"
+                          onClick={() => handleBookService(service)}
+                        >
+                          Book {service.title}
+                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
                       </div>
-                      
-                      <Button 
-                        className="btn-primary px-8 py-6 text-lg group"
-                        onClick={() => handleBookService(service)}
-                      >
-                        Book {service.title}
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Button>
                     </div>
                   </div>
-                </motion.div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -257,19 +249,14 @@ const Bookings = () => {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-shazmeen-dark via-[#1a2d43] to-shazmeen-dark relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-shazmeen-red/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FD0061]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         
         <div className="container-custom relative">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <ScrollReveal>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Ready to Begin Your Healing Journey?
               </h2>
@@ -291,11 +278,11 @@ const Bookings = () => {
               
               <p className="text-sm text-gray-400">
                 Have questions? Email us at{" "}
-                <a href="mailto:shazmeen@shazmeenbank.com" className="text-shazmeen-red hover:underline">
+                <a href="mailto:shazmeen@shazmeenbank.com" className="text-[#FD0061] hover:underline">
                   shazmeen@shazmeenbank.com
                 </a>
               </p>
-            </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

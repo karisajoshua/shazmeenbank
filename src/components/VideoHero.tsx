@@ -1,6 +1,7 @@
 /// <reference types="youtube" />
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 
 interface VideoHeroProps {
   onWaitlistClick?: () => void;
@@ -209,7 +210,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       {/* Fallback Background Image */}
       {showFallback && (
         <div 
-          className="absolute inset-0 w-full h-full bg-shazmeen-dark z-[5]"
+          className="absolute inset-0 w-full h-full bg-black z-[5]"
           style={{
             backgroundImage: `url(https://img.youtube.com/vi/${YOUTUBE_VIDEOS[currentVideoIndex].id}/maxresdefault.jpg)`,
             backgroundSize: 'cover',
@@ -220,7 +221,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
 
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/80 via-shazmeen-dark/50 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div
             id="yt-hero-player"
@@ -241,27 +242,33 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         </div>
       </div>
 
-      {/* Content Overlay - Centered Buttons */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-center">
-        <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+      {/* Content Overlay - Buttons positioned lower */}
+      <div className="relative z-20 h-full flex flex-col items-center justify-end pb-32">
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-16">
           <Link
             to="/bookings"
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+            className="px-10 py-5 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-xl md:text-2xl font-semibold hover:bg-white/20 hover:text-[#FD0061] transition-all duration-300 text-center"
           >
             One on One Coaching
           </Link>
           <Link
             to="/bookings"
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+            className="px-10 py-5 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-xl md:text-2xl font-semibold hover:bg-white/20 hover:text-[#FD0061] transition-all duration-300 text-center"
           >
             Couples Coaching
           </Link>
           <Link
             to="/courses"
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+            className="px-10 py-5 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-xl md:text-2xl font-semibold hover:bg-white/20 hover:text-[#FD0061] transition-all duration-300 text-center"
           >
             Courses & Workbooks
           </Link>
+        </div>
+        
+        {/* Animated scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
+          <span className="text-white/70 text-sm mb-2 tracking-wider uppercase">Scroll for more</span>
+          <ChevronDown className="w-6 h-6 text-white/70" />
         </div>
       </div>
     </section>
