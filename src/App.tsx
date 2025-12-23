@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import ScrollToTop from "@/components/ScrollToTop";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
@@ -37,6 +38,7 @@ function App() {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />

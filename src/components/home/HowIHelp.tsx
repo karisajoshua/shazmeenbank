@@ -46,13 +46,13 @@ const HowIHelp = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-shazmeen-blush/5 to-white overflow-hidden">
+    <section className="section-padding bg-black overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
+          <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-white mb-6">
             Your Path to Healing & Growth
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Whether you're here as a couple wanting to reconnect, navigating anxious attachment, or searching for your North Star again, this is your path to healing.
           </p>
         </div>
@@ -76,22 +76,18 @@ const HowIHelp = () => {
                       alt={area.title}
                       className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500"
                     />
-                    {/* Icon overlay */}
-                    <div className={`absolute bottom-4 ${isEven ? 'right-4' : 'left-4'} w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg`}>
-                      <Icon className={`w-7 h-7 ${area.iconColor}`} />
-                    </div>
                   </div>
                 </div>
                 
                 {/* Content card */}
-                <div className={`relative flex-1 p-8 md:p-10 bg-white rounded-3xl shadow-elegant hover:shadow-premium transition-all duration-500 border border-gray-100 group-hover:-translate-y-1`}>
+                <div className={`relative flex-1 p-8 md:p-10 bg-zinc-900 rounded-3xl shadow-elegant hover:shadow-premium transition-all duration-500 border border-zinc-800 group-hover:-translate-y-1`}>
                   {/* Curved accent line */}
                   <div className={`absolute top-0 ${isEven ? 'left-0 rounded-tl-3xl' : 'right-0 rounded-tr-3xl'} w-24 h-1 bg-gradient-to-r ${area.gradient.replace('/20', '').replace('/10', '')}`} />
                   
-                  <h3 className="text-2xl md:text-3xl font-bold text-shazmeen-dark mb-4 heading-elegant">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 heading-elegant">
                     {area.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg">
+                  <p className="text-gray-300 leading-relaxed text-lg">
                     {area.description}
                   </p>
                   

@@ -1,14 +1,14 @@
 
 import { useState } from "react";
 import VideoHero from "@/components/VideoHero";
+import HeroTextSection from "@/components/home/HeroTextSection";
+import FullWidthCTASections from "@/components/home/FullWidthCTASections";
 import LogoCarousel from "@/components/LogoCarousel";
 import HowIHelp from "@/components/home/HowIHelp";
 import CoursesTransformation from "@/components/home/CoursesTransformation";
 import PodcastSection from "@/components/home/PodcastSection";
 import FreeTools from "@/components/home/FreeTools";
 import NewWayToLove from "@/components/home/NewWayToLove";
-import ExpandedCouplesCoaching from "@/components/home/ExpandedCouplesCoaching";
-import CoachingSection from "@/components/home/CoachingSection";
 import NewsletterReset from "@/components/home/NewsletterReset";
 import ClosingMessage from "@/components/home/ClosingMessage";
 import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
@@ -36,11 +36,14 @@ const Index = () => {
 
   return (
     <>
-      {/* Hero Section with Background Image */}
-      <VideoHero onWaitlistClick={handleWaitlistClick} />
+      {/* Hero Section with Background Video */}
+      <VideoHero />
 
-      {/* Logo Carousel */}
-      <LogoCarousel />
+      {/* Moved Hero Text */}
+      <HeroTextSection />
+
+      {/* Full Width CTA Sections: Podcast, Newsletter, Free Resources */}
+      <FullWidthCTASections onNewsletterClick={handleNewsletterClick} />
 
       {/* Your Path to Healing & Growth Section */}
       <HowIHelp />
@@ -51,23 +54,20 @@ const Index = () => {
       {/* A New Way to Love - Anxious Attachment */}
       <NewWayToLove />
 
-      {/* Expanded Couples Coaching */}
-      <ExpandedCouplesCoaching />
-
       {/* The Love Better Podcast */}
       <PodcastSection />
 
       {/* Free Tools */}
       <FreeTools />
 
-      {/* Enhanced Coaching Section */}
-      <CoachingSection />
-
       {/* Newsletter Reset */}
       <NewsletterReset onNewsletterClick={handleNewsletterClick} />
 
       {/* Closing Message with Social Links */}
       <ClosingMessage />
+
+      {/* Featured In - moved to just above footer */}
+      <LogoCarousel />
 
       {/* Waitlist Popup */}
       <CourseWaitlistPopup

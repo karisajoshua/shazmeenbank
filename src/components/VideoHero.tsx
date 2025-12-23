@@ -1,8 +1,9 @@
 /// <reference types="youtube" />
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 interface VideoHeroProps {
-  onWaitlistClick: () => void;
+  onWaitlistClick?: () => void;
 }
 
 // Media House Videos featuring Shazmeen Bank
@@ -240,22 +241,27 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         </div>
       </div>
 
-      {/* Content Overlay - Always visible */}
-      <div className="container-custom relative z-20 h-full flex items-center pt-24">
-        <div className="max-w-xl">
-          <div className="space-y-4 animate-fade-in bg-shazmeen-dark/60 backdrop-blur-sm p-6 rounded-xl">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight text-shazmeen-white">
-              If you've landed here, you're ready to{" "}
-              <span className="text-shazmeen-blush">heal</span>, take{" "}
-              <span className="text-shazmeen-secondary">responsibility</span> and
-              begin again
-            </h1>
-            <p className="text-base md:text-lg text-shazmeen-gray font-light leading-relaxed">
-              Maybe you're rebuilding after a breakup or divorce, learning to
-              navigate conflict, or carrying the deep wounds of betrayal. This is
-              the place to unpack, understand, and begin again.
-            </p>
-          </div>
+      {/* Content Overlay - Centered Buttons */}
+      <div className="relative z-20 h-full flex flex-col items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+          <Link
+            to="/bookings"
+            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+          >
+            One on One Coaching
+          </Link>
+          <Link
+            to="/bookings"
+            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+          >
+            Couples Coaching
+          </Link>
+          <Link
+            to="/courses"
+            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-lg md:text-xl font-semibold hover:bg-white/20 transition-all duration-300 text-center"
+          >
+            Courses & Workbooks
+          </Link>
         </div>
       </div>
     </section>
