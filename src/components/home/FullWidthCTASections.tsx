@@ -37,7 +37,7 @@ const FullWidthCTASections = ({ onNewsletterClick }: FullWidthCTASectionsProps) 
       {sections.map((section, index) => {
         const content = (
           <div
-            className="relative h-64 md:h-96 w-full overflow-hidden group cursor-pointer"
+            className="relative h-80 md:h-[500px] w-full overflow-hidden group cursor-pointer"
           >
             {/* Background Image */}
             <div
@@ -48,10 +48,10 @@ const FullWidthCTASections = ({ onNewsletterClick }: FullWidthCTASectionsProps) 
             <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-300" />
             {/* Content */}
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 heading-elegant">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 heading-elegant transition-colors duration-300 group-hover:text-[#FD0061]">
                 {section.title}
               </h3>
-              <p className="text-lg md:text-xl text-gray-200">
+              <p className="text-xl md:text-2xl text-gray-200 transition-colors duration-300 group-hover:text-[#FD0061]">
                 {section.subtitle}
               </p>
             </div>

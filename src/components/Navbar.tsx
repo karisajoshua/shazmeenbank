@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import sbLogo from "@/assets/logo/shazmeen-sb-logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,25 +42,24 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-premium py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/60 backdrop-blur-xl shadow-2xl border-b border-white/10 py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo and brand name */}
           <Link to="/" className="flex items-center gap-3">
-            <img alt="Shazmeen Bank Logo" className="h-20 object-contain" src="https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeen_logo-removebg-preview.png" />
-            <span className={`text-2xl font-serif font-bold ${isScrolled ? 'text-shazmeen-dark' : 'text-white'}`}></span>
+            <img alt="Shazmeen Bank Logo" className="h-16 md:h-20 object-contain" src={sbLogo} />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`transition-all duration-300 ${isActive('/') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Home</Link>
-            <Link to="/courses" className={`transition-all duration-300 ${isActive('/courses') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Courses</Link>
-            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Bookings</Link>
-            <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Podcast</Link>
-            <Link to="/videos" className={`transition-all duration-300 ${isActive('/videos') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Videos</Link>
-            <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Blog</Link>
-            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>About</Link>
-            <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-shazmeen-red font-medium' : isScrolled ? 'text-shazmeen-dark hover:text-shazmeen-red' : 'text-white hover:text-shazmeen-red'}`}>Contact</Link>
+            <Link to="/" className={`transition-all duration-300 ${isActive('/') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Home</Link>
+            <Link to="/courses" className={`transition-all duration-300 ${isActive('/courses') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Courses</Link>
+            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Bookings</Link>
+            <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Podcast</Link>
+            <Link to="/videos" className={`transition-all duration-300 ${isActive('/videos') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Videos</Link>
+            <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Blog</Link>
+            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>About</Link>
+            <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Contact</Link>
           </div>
 
           {/* CTA Buttons */}
@@ -70,7 +69,7 @@ const Navbar = () => {
                 <Link to={isAdmin ? "/admin" : "/dashboard"}>
                   <Button 
                     variant="outline" 
-                    className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
+                    className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 rounded-xl px-5 py-3 font-bold"
                   >
                     {isAdmin ? "Admin Dashboard" : "Dashboard"}
                   </Button>
@@ -78,7 +77,7 @@ const Navbar = () => {
                 <Button 
                   onClick={handleSignOut}
                   variant="outline"
-                  className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold flex items-center gap-2`}
+                  className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 rounded-xl px-5 py-3 font-bold flex items-center gap-2"
                 >
                   <LogOut size={16} />
                   Sign Out
@@ -89,13 +88,13 @@ const Navbar = () => {
                 <Link to="/login">
                   <Button 
                     variant="outline" 
-                    className={`${isScrolled ? 'border-shazmeen-dark text-shazmeen-dark bg-transparent hover:bg-shazmeen-dark hover:text-white' : 'border-white text-white bg-white/20 backdrop-blur-sm hover:bg-white hover:text-shazmeen-dark'} transition-all duration-300 rounded-xl px-5 py-3 font-bold`}
+                    className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 rounded-xl px-5 py-3 font-bold"
                   >
                     Login
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button className="bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-5 py-3 font-bold">
+                  <Button className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 transition-all duration-300 rounded-xl px-5 py-3 font-bold">
                     Sign Up
                   </Button>
                 </Link>
@@ -105,7 +104,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className={`${isScrolled ? 'text-shazmeen-dark' : 'text-white'} p-2`}>
+            <button onClick={toggleMenu} className="text-white p-2">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -113,27 +112,27 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden animate-fade-in bg-white py-6 absolute top-full left-0 right-0 shadow-premium">
+          <div className="md:hidden animate-fade-in bg-black/95 backdrop-blur-xl py-6 absolute top-full left-0 right-0 shadow-premium border-t border-white/10">
             <div className="flex flex-col space-y-4 px-4">
-              <Link to="/" className={`px-4 py-2 rounded-md ${isActive('/') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Home</Link>
-              <Link to="/courses" className={`px-4 py-2 rounded-md ${isActive('/courses') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Courses</Link>
-              <Link to="/bookings" className={`px-4 py-2 rounded-md ${isActive('/bookings') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Bookings</Link>
-              <Link to="/podcast" className={`px-4 py-2 rounded-md ${isActive('/podcast') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Podcast</Link>
-              <Link to="/videos" className={`px-4 py-2 rounded-md ${isActive('/videos') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Videos</Link>
-              <Link to="/blog" className={`px-4 py-2 rounded-md ${isActive('/blog') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Blog</Link>
-              <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>About</Link>
-              <Link to="/contact" className={`px-4 py-2 rounded-md ${isActive('/contact') ? 'bg-shazmeen-blush/30 text-shazmeen-red font-medium' : 'text-shazmeen-dark hover:bg-shazmeen-blush/20'}`} onClick={toggleMenu}>Contact</Link>
+              <Link to="/" className={`px-4 py-2 rounded-md ${isActive('/') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Home</Link>
+              <Link to="/courses" className={`px-4 py-2 rounded-md ${isActive('/courses') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Courses</Link>
+              <Link to="/bookings" className={`px-4 py-2 rounded-md ${isActive('/bookings') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Bookings</Link>
+              <Link to="/podcast" className={`px-4 py-2 rounded-md ${isActive('/podcast') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Podcast</Link>
+              <Link to="/videos" className={`px-4 py-2 rounded-md ${isActive('/videos') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Videos</Link>
+              <Link to="/blog" className={`px-4 py-2 rounded-md ${isActive('/blog') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Blog</Link>
+              <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>About</Link>
+              <Link to="/contact" className={`px-4 py-2 rounded-md ${isActive('/contact') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Contact</Link>
               
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-100">
+              <div className="flex flex-col space-y-2 pt-4 border-t border-white/20">
                 {user ? (
                   <>
                     <Link to={isAdmin ? "/admin" : "/dashboard"} className="w-full" onClick={toggleMenu}>
-                      <Button variant="outline" className="border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white w-full rounded-xl px-5 py-3 font-bold">{isAdmin ? "Admin Dashboard" : "Dashboard"}</Button>
+                      <Button variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-black w-full rounded-xl px-5 py-3 font-bold">{isAdmin ? "Admin Dashboard" : "Dashboard"}</Button>
                     </Link>
                     <Button 
                       onClick={handleSignOut}
                       variant="outline" 
-                      className="border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white w-full rounded-xl px-5 py-3 font-bold flex items-center justify-center gap-2"
+                      className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-black w-full rounded-xl px-5 py-3 font-bold flex items-center justify-center gap-2"
                     >
                       <LogOut size={16} />
                       Sign Out
@@ -142,10 +141,10 @@ const Navbar = () => {
                 ) : (
                   <div className="flex space-x-4">
                     <Link to="/login" className="w-1/2">
-                      <Button variant="outline" className="border-shazmeen-dark text-shazmeen-dark hover:bg-shazmeen-dark hover:text-white w-full rounded-xl px-5 py-3 font-bold">Login</Button>
+                      <Button variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-black w-full rounded-xl px-5 py-3 font-bold">Login</Button>
                     </Link>
                     <Link to="/register" className="w-1/2">
-                      <Button className="bg-shazmeen-dark text-white hover:bg-opacity-90 w-full rounded-xl px-5 py-3 font-bold">Sign Up</Button>
+                      <Button className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 w-full rounded-xl px-5 py-3 font-bold">Sign Up</Button>
                     </Link>
                   </div>
                 )}
