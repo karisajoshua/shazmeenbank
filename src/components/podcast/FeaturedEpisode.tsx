@@ -20,10 +20,10 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-black">
       <div className="container-custom">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-premium p-6 md:p-8">
+          <div className="bg-zinc-900 rounded-2xl shadow-premium p-6 md:p-8 border border-zinc-800">
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
                 <img 
@@ -62,18 +62,18 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                 </div>
               </div>
               <div className="md:col-span-2">
-                <span className="text-sm text-gray-500">{new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                <h2 className="text-2xl md:text-3xl font-bold mt-1 font-serif text-shazmeen-dark">
+                <span className="text-sm text-gray-400">{new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <h2 className="text-2xl md:text-3xl font-bold mt-1 font-serif text-white">
                   {episode.title}
                 </h2>
                 <div className="mt-4 prose max-w-none">
-                  <p className="text-gray-700">
+                  <p className="text-gray-300">
                     {episode.description.slice(0, 300)}...
                   </p>
                 </div>
                 <div className="mt-6">
-                  <h4 className="font-medium text-lg">In this episode:</h4>
-                  <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+                  <h4 className="font-medium text-lg text-white">In this episode:</h4>
+                  <ul className="list-disc pl-5 mt-2 text-gray-300 space-y-1">
                     {episode.topics?.map((topic, index) => (
                       <li key={index}>{topic}</li>
                     ))}

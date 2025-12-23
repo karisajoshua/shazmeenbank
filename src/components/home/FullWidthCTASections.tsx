@@ -33,11 +33,11 @@ const FullWidthCTASections = ({ onNewsletterClick }: FullWidthCTASectionsProps) 
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3">
       {sections.map((section, index) => {
         const content = (
           <div
-            className="relative h-64 md:h-80 w-full overflow-hidden group cursor-pointer"
+            className="relative h-64 md:h-96 w-full overflow-hidden group cursor-pointer"
           >
             {/* Background Image */}
             <div

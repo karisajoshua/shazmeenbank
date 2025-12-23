@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import PodcastHero from "@/components/podcast/PodcastHero";
+
 import FeaturedEpisode from "@/components/podcast/FeaturedEpisode";
 import EpisodeList from "@/components/podcast/EpisodeList";
 import SubscribeSection from "@/components/podcast/SubscribeSection";
@@ -47,7 +47,7 @@ const Podcast = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-shazmeen-white">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading episodes...</p>
@@ -58,7 +58,7 @@ const Podcast = () => {
 
   if (!episodes || episodes.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-shazmeen-white">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
           <p className="text-xl text-muted-foreground">No episodes available yet.</p>
         </div>
@@ -67,8 +67,8 @@ const Podcast = () => {
   }
 
   return (
-    <div className="pb-20 bg-shazmeen-white">
-      <PodcastHero />
+    <div className="pb-20 bg-black">
+      <ImageMarquee />
       {selectedEpisode && (
         <FeaturedEpisode 
           episode={selectedEpisode} 
@@ -77,7 +77,6 @@ const Podcast = () => {
         />
       )}
       <EpisodeList episodes={episodes} onPlayEpisode={handlePlayEpisode} />
-      <ImageMarquee />
       <SubscribeSection />
       <SocialConnect />
     </div>

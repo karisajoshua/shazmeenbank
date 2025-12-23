@@ -69,10 +69,10 @@ const LogoCarousel = () => {
   }, []);
 
   return (
-    <div className="bg-zinc-900 py-12 border-y border-zinc-800">
+    <div className="bg-white py-12 border-y border-gray-200">
       <div className="container-custom">
         <div className="text-center mb-8">
-          <p className="text-white text-3xl font-bold">Featured in</p>
+          <p className="text-gray-900 text-3xl font-bold">Featured in</p>
         </div>
       </div>
       
