@@ -46,7 +46,7 @@ const PersonalStory = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
           <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-premium">
             <img 
-              src={shazmeenMedal} 
+              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG" 
               alt="Shazmeen Bank" 
               className="w-full h-full object-cover"
             />
@@ -113,7 +113,7 @@ const PersonalStory = () => {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-premium">
             <img 
-              src={shazmeenMarathon} 
+              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG" 
               alt="Shazmeen Bank" 
               className="w-full h-full object-cover"
             />

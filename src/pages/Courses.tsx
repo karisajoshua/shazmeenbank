@@ -126,7 +126,6 @@ const Courses = () => {
                       <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-start`}>
                         {/* Image Section */}
                         <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
-                          <div className="absolute inset-0 bg-gradient-to-br from-[#FD0061]/20 to-amber-500/20 rounded-3xl transform rotate-2 group-hover:rotate-4 transition-transform duration-500" />
                           <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                             {course.image ? (
                               <img

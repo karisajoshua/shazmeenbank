@@ -64,10 +64,6 @@ const VideoCard = ({ id, title, size = "normal" }: VideoCardProps) => {
           <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-shazmeen-red/30 transition-all duration-300" />
         </div>
 
-        {/* Title */}
-        <h3 className="mt-4 text-sm md:text-base font-medium text-foreground group-hover:text-shazmeen-red transition-colors duration-300 line-clamp-2 leading-relaxed">
-          {title}
-        </h3>
       </motion.div>
 
       {/* Video Modal */}

@@ -11,7 +11,7 @@ interface PodcastEpisodeCardProps {
 const PodcastEpisodeCard = ({ episode, onPlay }: PodcastEpisodeCardProps) => {
   return (
     <Card 
-      className="overflow-hidden transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1 bg-gradient-to-b from-zinc-900 to-black border-zinc-800 cursor-pointer"
+      className="overflow-hidden transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1 bg-gradient-to-b from-zinc-900 to-black border border-transparent hover:border-zinc-600 cursor-pointer"
       onClick={onPlay}
     >
       <div className="aspect-[4/3] overflow-hidden relative">

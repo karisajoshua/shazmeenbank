@@ -54,11 +54,11 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className={`transition-all duration-300 ${isActive('/') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Home</Link>
             <Link to="/courses" className={`transition-all duration-300 ${isActive('/courses') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Courses</Link>
-            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Bookings</Link>
+            <Link to="/bookings" className={`transition-all duration-300 ${isActive('/bookings') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Book Me</Link>
             <Link to="/podcast" className={`transition-all duration-300 ${isActive('/podcast') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Podcast</Link>
             <Link to="/videos" className={`transition-all duration-300 ${isActive('/videos') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Videos</Link>
             <Link to="/blog" className={`transition-all duration-300 ${isActive('/blog') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Blog</Link>
-            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>About</Link>
+            <Link to="/about" className={`transition-all duration-300 ${isActive('/about') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>My Story</Link>
             <Link to="/contact" className={`transition-all duration-300 ${isActive('/contact') ? 'text-[#FD0061] font-medium' : 'text-white hover:text-[#FD0061]'}`}>Contact</Link>
           </div>
 
@@ -116,11 +116,11 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4 px-4">
               <Link to="/" className={`px-4 py-2 rounded-md ${isActive('/') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Home</Link>
               <Link to="/courses" className={`px-4 py-2 rounded-md ${isActive('/courses') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Courses</Link>
-              <Link to="/bookings" className={`px-4 py-2 rounded-md ${isActive('/bookings') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Bookings</Link>
+              <Link to="/bookings" className={`px-4 py-2 rounded-md ${isActive('/bookings') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Book Me</Link>
               <Link to="/podcast" className={`px-4 py-2 rounded-md ${isActive('/podcast') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Podcast</Link>
               <Link to="/videos" className={`px-4 py-2 rounded-md ${isActive('/videos') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Videos</Link>
               <Link to="/blog" className={`px-4 py-2 rounded-md ${isActive('/blog') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Blog</Link>
-              <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>About</Link>
+              <Link to="/about" className={`px-4 py-2 rounded-md ${isActive('/about') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>My Story</Link>
               <Link to="/contact" className={`px-4 py-2 rounded-md ${isActive('/contact') ? 'bg-[#FD0061]/20 text-[#FD0061] font-medium' : 'text-white hover:bg-white/10'}`} onClick={toggleMenu}>Contact</Link>
               
               <div className="flex flex-col space-y-2 pt-4 border-t border-white/20">

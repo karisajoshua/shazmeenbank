@@ -146,7 +146,6 @@ const Bookings = () => {
                     <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                       {/* Image Section */}
                       <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500`} />
                         <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                           <img 
                             src={service.image} 

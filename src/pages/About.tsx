@@ -3,7 +3,6 @@ import Hero from "@/components/about/Hero";
 import PersonalStory from "@/components/about/PersonalStory";
 import LifeGallery from "@/components/about/LifeGallery";
 import CtaSection from "@/components/about/CtaSection";
-import LogoCarousel from "@/components/LogoCarousel";
 
 const About = () => {
   return (
@@ -16,9 +15,6 @@ const About = () => {
 
       {/* Life Beyond Coaching Gallery */}
       <LifeGallery />
-
-      {/* Logo Carousel */}
-      <LogoCarousel />
 
       {/* CTA */}
       <CtaSection />
