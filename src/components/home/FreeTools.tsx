@@ -12,10 +12,9 @@ const FreeTools = () => {
   ];
 
   return (
-    <section className="relative section-padding overflow-hidden">
-      {/* Diagonal Split Background */}
+    <section className="relative section-padding overflow-hidden bg-black">
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-shazmeen-cream via-white to-shazmeen-cream" />
         <div 
           className="absolute top-0 right-0 w-1/2 h-full bg-cover bg-center opacity-20"
           style={{ 
@@ -28,19 +27,19 @@ const FreeTools = () => {
       <div className="relative container-custom">
         <div className="max-w-4xl">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-shazmeen-gold/20 rounded-full flex items-center justify-center">
-              <Download size={24} className="text-shazmeen-gold" />
+            <div className="w-12 h-12 bg-shazmeen-red/20 rounded-full flex items-center justify-center">
+              <Download size={24} className="text-shazmeen-red" />
             </div>
-            <span className="text-shazmeen-dark uppercase tracking-widest text-sm font-semibold">
+            <span className="text-white uppercase tracking-widest text-sm font-semibold">
               Free Resources
             </span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-shazmeen-dark mb-6">
+          <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-white mb-6">
             Free Tools for Growth & Clarity
           </h2>
           
-          <p className="text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl">
+          <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
             Start where you are—with no pressure. These free downloads are created to help you reconnect with yourself, reflect on what you truly need, and take your next step forward.
           </p>
           
@@ -48,10 +47,10 @@ const FreeTools = () => {
             {tools.map((tool, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm"
+                className="flex items-center gap-2 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-zinc-700"
               >
                 <tool.icon size={18} className="text-shazmeen-red" />
-                <span className="text-shazmeen-dark font-medium">{tool.label}</span>
+                <span className="text-white font-medium">{tool.label}</span>
               </div>
             ))}
           </div>
