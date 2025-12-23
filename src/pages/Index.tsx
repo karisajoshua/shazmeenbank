@@ -49,7 +49,7 @@ const Index = () => {
       <HowIHelp />
 
       {/* Courses for Transformation */}
-      <CoursesTransformation onWaitlistClick={handleWaitlistClick} />
+      <CoursesTransformation onWaitlistClick={handleWaitlistClick} onNewsletterClick={handleNewsletterClick} />
 
       {/* A New Way to Love - Anxious Attachment */}
       <NewWayToLove />

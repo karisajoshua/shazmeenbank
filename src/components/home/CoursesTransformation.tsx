@@ -4,16 +4,17 @@ import { Button } from "@/components/ui/button";
 
 interface CoursesTransformationProps {
   onWaitlistClick: () => void;
+  onNewsletterClick: () => void;
 }
 
-const CoursesTransformation = ({ onWaitlistClick }: CoursesTransformationProps) => {
+const CoursesTransformation = ({ onWaitlistClick, onNewsletterClick }: CoursesTransformationProps) => {
   return (
     <section className="section-padding bg-black">
       <div className="container-custom">
         {/* CTA Buttons moved from Hero */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button
-            onClick={onWaitlistClick}
+            onClick={onNewsletterClick}
             className="bg-zinc-900 text-white border border-zinc-700 shadow-xl text-lg w-full sm:w-auto px-8 py-6 rounded-xl font-bold transition-all duration-300 hover:bg-zinc-800"
           >
             Unlearn. Rebuild. Love Better.

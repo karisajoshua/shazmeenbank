@@ -82,12 +82,6 @@ const HowIHelp = () => {
                       {area.description}
                     </p>
                     
-                    {/* Bottom decorative element */}
-                    <div className={`absolute bottom-4 ${isEven ? 'right-4' : 'left-4'} flex gap-1 opacity-30`}>
-                      <div className={`w-2 h-2 rounded-full ${area.iconColor} bg-current`} />
-                      <div className={`w-2 h-2 rounded-full ${area.iconColor} bg-current`} />
-                      <div className={`w-2 h-2 rounded-full ${area.iconColor} bg-current`} />
-                    </div>
                   </div>
                 </div>
               </ScrollReveal>
