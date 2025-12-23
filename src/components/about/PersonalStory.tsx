@@ -6,13 +6,13 @@ import shazmeenMarathon from "@/assets/about/shazmeen-marathon-stats.png";
 
 const PersonalStory = () => {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-black">
       <div className="container-custom">
         {/* Section 1: Introduction & Current Reality */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
           <div>
-            <h2 className="text-3xl font-bold text-shazmeen-dark mb-6 heading-elegant">Hey Friend,</h2>
-            <div className="space-y-4 text-gray-700">
+            <h2 className="text-3xl font-bold text-white mb-6 heading-elegant">Hey Friend,</h2>
+            <div className="space-y-4 text-gray-300">
               <p>
                 Thank you for taking the time out to drop in and learn more about me.
               </p>
@@ -52,8 +52,8 @@ const PersonalStory = () => {
             />
           </div>
           <div className="order-1 md:order-2">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">A Teen Mom</h3>
-            <div className="space-y-4 text-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">A Teen Mom</h3>
+            <div className="space-y-4 text-gray-300">
               <p>
                 My life took a drastic turn at 18. In my last few months of high school, I found out I was pregnant. Coming from a traditional Indian family, an unmarried pregnancy was unacceptable, so within a week I was wed to the baby's father. Suddenly I went from teenager to wife and soon-to-be mother. I was thrust into an entirely new household and culture overnight.
               </p>
@@ -64,7 +64,7 @@ const PersonalStory = () => {
                 And I have to be honest, our 18-year age gap makes us the best of friends. I always say to my son, I gave birth to my best friend. My son has been my PhD. So when asked if I ever studied at a university, I always say, yes, in life and motherhood, and I got a PhD in MH. Great conversation starter when people say "MH?" and I say yes, Motherhood.
               </p>
               
-              <h3 className="text-2xl font-bold text-shazmeen-dark mb-4 mt-8">Losing Myself in an Abusive Marriage</h3>
+              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Losing Myself in an Abusive Marriage</h3>
               <p>
                 Becoming a wife at 18 was anything but a fairytale. I couldn't simply run back home when things got hard. As my relationship with my husband progressed, it grew abusive emotionally and physically. My bright smile faded behind closed doors, and in its place, a perfectionist was born.
               </p>
@@ -81,8 +81,8 @@ const PersonalStory = () => {
         {/* Section 4, 5 & More: Choosing Freedom & Discovering My Calling */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
           <div>
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">Choosing Freedom and a New Path</h3>
-            <div className="space-y-4 text-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">Choosing Freedom and a New Path</h3>
+            <div className="space-y-4 text-gray-300">
               <p>
                 After five years in that marriage, I reached a breaking point. Nothing was working, and I knew I had to make a change for my own peace of mind and for my son's well-being. Walking away was one of the hardest decisions I've ever made. I left my marriage and also stepped back from my burgeoning career in real estate.
               </p>
@@ -93,7 +93,7 @@ const PersonalStory = () => {
                 I remember laying in bed one night, crying, saying to myself there must be so many people out there also hurting, feeling lost and wanting so much more from life. I was inspired in my pain to seek the deeper meaning about what I had grown through. I knew that my story was so much more powerful than I was making it, and I had to find a way to heal. To re-discover myself.
               </p>
               
-              <h3 className="text-2xl font-bold text-shazmeen-dark mb-4 mt-8">Discovering My Calling</h3>
+              <h3 className="text-2xl font-bold text-white mb-4 mt-8">Discovering My Calling</h3>
               <p>
                 My life turned around the day I walked into a bookstore to get a book that would help me turn my life around. And lo and behold, Tony Robbins' Unlimited Power fascinated me. I used all my leftover salary to buy data to watch his videos. I was hungry, and Tony Robbins was filling a gap in my mind and body.
               </p>
@@ -122,8 +122,8 @@ const PersonalStory = () => {
 
         {/* Section 6-10: Continuing the Story */}
         <div className="max-w-4xl mx-auto space-y-12">
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">Learning, Healing, and Growing</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">Learning, Healing, and Growing</h3>
             <p>
               Over the years, I became a Certified Life Coach, Master Hypnosis Practitioner, Master NLP Practitioner, Master Life Coach, Conflict Resolution Facilitator, and Certified Level Three Reiki Practitioner, among other studies I took upon myself.
             </p>
@@ -141,8 +141,8 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">A Second Chance at Love and New Lessons</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">A Second Chance at Love and New Lessons</h3>
             <p>
               Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I remarried the very man I had divorced. On the surface, it felt like the perfect love story, a family reunited. I truly believed that we had both changed and that our happy ending was finally here.
             </p>
@@ -160,8 +160,8 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">No Judgment: Holding Space for Every Story</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">No Judgment: Holding Space for Every Story</h3>
             <p>
               One of the principles I hold dearest is non-judgment. Having lived through betrayal and reconciliation, I have equal compassion for both sides of a painful story. I hold space just as much for the person who cheated on their partner as I do for the one who was betrayed.
             </p>
@@ -179,8 +179,8 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">My Coaching Philosophy: Carrying the Torch Together</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">My Coaching Philosophy: Carrying the Torch Together</h3>
             <p>
               In my work, I don't see myself as a savior. I see myself as a partner in your growth. My approach to coaching is to hold space for you to explore your truth and to hand you the torch so you can light your own way forward.
             </p>
@@ -207,8 +207,8 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">Embracing Change and Feeling the Pain</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">Embracing Change and Feeling the Pain</h3>
             <p>
               As I share this, I am in the midst of a massive life transition of my own. Change is never easy, and I won't pretend it is.
             </p>
@@ -229,8 +229,8 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700">
-            <h3 className="text-2xl font-bold text-shazmeen-dark mb-4">Reaching More People (Radio, TV, and Love Better Podcast)</h3>
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-white mb-4">Reaching More People (Radio, TV, and Love Better Podcast)</h3>
             <p>
               One of my greatest joys has been finding ways to reach people beyond the coaching room.
             </p>
@@ -254,7 +254,7 @@ const PersonalStory = () => {
             </p>
           </div>
 
-          <div className="space-y-4 text-gray-700 text-center">
+          <div className="space-y-4 text-gray-300 text-center">
             <p>
               I want you to know that I'm not just a coach or a conflict resolution practitioner. I'm a woman who has lived through deep pain, struggled, and come out the other side with scars turned into strengths.
             </p>

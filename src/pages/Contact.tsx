@@ -125,23 +125,23 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section-padding bg-shazmeen-white">
+      <section className="section-padding bg-black">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-bold text-shazmeen-dark mb-6">Contact Information</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Contact Information</h2>
               <div className="space-y-6">
                 <div>
-                  <p className="font-semibold text-lg text-shazmeen-dark mb-1">Email Us</p>
+                  <p className="font-semibold text-lg text-white mb-1">Email Us</p>
                   <a href="mailto:shazmeen@shazmeenbank.com" className="text-shazmeen-red hover:underline">
                     shazmeen@shazmeenbank.com
                   </a>
                 </div>
                 
                 <div>
-                  <p className="font-semibold text-lg text-shazmeen-dark mb-1">Office Locations</p>
-                  <address className="not-italic text-gray-700">
+                  <p className="font-semibold text-lg text-white mb-1">Office Locations</p>
+                  <address className="not-italic text-gray-300">
                     Dubai, United Arab Emirates<br />
                     Nairobi, Kenya
                   </address>
@@ -174,27 +174,27 @@ const Contact = () => {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-3xl font-bold text-shazmeen-dark mb-6">Send Us a Message</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                         Your Name
                       </label>
-                      <input id="name" name="name" type="text" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="Enter your name" value={formData.name} onChange={handleChange} />
+                      <input id="name" name="name" type="text" required className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none placeholder:text-gray-500" placeholder="Enter your name" value={formData.name} onChange={handleChange} />
                     </div>
                     
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                         Email Address
                       </label>
-                      <input id="email" name="email" type="email" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
+                      <input id="email" name="email" type="email" required className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none placeholder:text-gray-500" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
                     </div>
                     
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
                         Subject
                       </label>
-                      <select id="subject" name="subject" required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" value={formData.subject} onChange={handleChange}>
+                      <select id="subject" name="subject" required className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" value={formData.subject} onChange={handleChange}>
                         <option value="">Select a subject</option>
                         <option value="Course Inquiry">Course Inquiry</option>
                         <option value="Coaching Session">Coaching Session</option>
@@ -205,10 +205,10 @@ const Contact = () => {
                     </div>
                     
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                         Message
                       </label>
-                      <textarea id="message" name="message" rows={6} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none" placeholder="How can we help you?" value={formData.message} onChange={handleChange}></textarea>
+                      <textarea id="message" name="message" rows={6} required className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none placeholder:text-gray-500" placeholder="How can we help you?" value={formData.message} onChange={handleChange}></textarea>
                     </div>
                     
                     <Button type="submit" className="btn-primary w-full" disabled={isSubmitting}>

@@ -23,9 +23,9 @@ const EpisodeList = ({ episodes, onPlayEpisode }: EpisodeListProps) => {
   };
 
   return (
-    <section id="episodes" className="py-16 bg-white">
+    <section id="episodes" className="py-16 bg-zinc-900">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center font-serif">Latest Episodes</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center font-serif text-white">Latest Episodes</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {episodes.map((episode, index) => (
