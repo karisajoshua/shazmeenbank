@@ -156,9 +156,6 @@ const Bookings = () => {
                               <p className="text-sm text-gray-600">{service.duration}</p>
                               <p className="text-2xl font-bold text-black">{service.price}</p>
                             </div>
-                            <div className="w-14 h-14 bg-[#FD0061] rounded-full flex items-center justify-center shadow-lg">
-                              <IconComponent className="w-7 h-7 text-white" />
-                            </div>
                           </div>
                         </div>
                       </div>
