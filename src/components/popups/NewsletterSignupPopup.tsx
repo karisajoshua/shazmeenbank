@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 type NewsletterSignupPopupProps = {
   isOpen: boolean;
@@ -13,22 +14,49 @@ const NewsletterSignupPopup = ({ isOpen, onClose }: NewsletterSignupPopupProps) 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // TODO: Send newsletter subscription to info@shazmeenbank.com
-    
-    // Show success message
-    toast({
-      title: "Success!",
-      description: "You've been subscribed to our newsletter. Welcome to the community!",
-      duration: 5000,
-    });
-    
-    // Set submitted state to show thank you message
-    setIsSubmitted(true);
+    try {
+      const { error } = await supabase.from('newsletter_subscribers').insert({
+        email,
+        name,
+        source: 'popup',
+      });
+
+      if (error) {
+        if (error.code === '23505') {
+          // Unique constraint violation - email already exists
+          toast({
+            title: "Already subscribed!",
+            description: "This email is already on our newsletter list.",
+            duration: 5000,
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        toast({
+          title: "Success!",
+          description: "You've been subscribed to our newsletter. Welcome to the community!",
+          duration: 5000,
+        });
+        setIsSubmitted(true);
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
@@ -98,8 +126,12 @@ const NewsletterSignupPopup = ({ isOpen, onClose }: NewsletterSignupPopupProps) 
                   />
                 </div>
                 
-                <Button type="submit" className="w-full bg-shazmeen-dark text-white hover:bg-opacity-90 transition-all duration-300 rounded-xl px-6 py-3 font-bold">
-                  Subscribe to Newsletter
+                <Button 
+                  type="submit" 
+                  className="w-full bg-shazmeen-dark text-white hover:bg-opacity-90 transition-all duration-300 rounded-xl px-6 py-3 font-bold"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe to Newsletter"}
                 </Button>
               </form>
             </>

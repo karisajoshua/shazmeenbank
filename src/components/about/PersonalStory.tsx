@@ -120,8 +120,44 @@ const PersonalStory = () => {
           </div>
         </div>
 
-        {/* Section 6-10: Continuing the Story */}
-        <div className="max-w-4xl mx-auto space-y-12">
+        {/* Section 6-10: Continuing the Story - Creative Background Design */}
+        <div className="relative">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Floating gradient orbs */}
+            <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-br from-[#FD0061]/5 to-transparent rounded-full blur-3xl" />
+            <div className="absolute top-[30%] -right-32 w-80 h-80 bg-gradient-to-bl from-amber-500/5 to-transparent rounded-full blur-3xl" />
+            <div className="absolute top-[50%] left-10 w-64 h-64 bg-gradient-to-tr from-rose-500/5 to-transparent rounded-full blur-3xl" />
+            <div className="absolute top-[70%] -right-20 w-72 h-72 bg-gradient-to-tl from-[#FD0061]/5 to-transparent rounded-full blur-3xl" />
+            
+            {/* Subtle decorative lines */}
+            <div className="absolute top-40 left-0 w-32 h-px bg-gradient-to-r from-[#FD0061]/20 to-transparent" />
+            <div className="absolute top-[35%] right-0 w-48 h-px bg-gradient-to-l from-[#FD0061]/20 to-transparent" />
+            <div className="absolute top-[55%] left-0 w-40 h-px bg-gradient-to-r from-amber-500/20 to-transparent" />
+            <div className="absolute top-[75%] right-0 w-36 h-px bg-gradient-to-l from-rose-500/20 to-transparent" />
+            
+            {/* Faded background images with parallax-like positioning */}
+            <div 
+              className="absolute top-10 right-0 w-80 h-96 opacity-[0.04] bg-cover bg-center rounded-3xl transform rotate-3"
+              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)` }}
+            />
+            <div 
+              className="absolute top-[40%] -left-10 w-72 h-80 opacity-[0.04] bg-cover bg-center rounded-3xl transform -rotate-2"
+              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG)` }}
+            />
+            <div 
+              className="absolute top-[65%] right-10 w-64 h-72 opacity-[0.04] bg-cover bg-center rounded-3xl transform rotate-2"
+              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)` }}
+            />
+            
+            {/* Decorative geometric shapes */}
+            <div className="absolute top-[25%] left-20 w-2 h-2 bg-[#FD0061]/20 rounded-full" />
+            <div className="absolute top-[45%] right-32 w-3 h-3 bg-amber-500/20 rounded-full" />
+            <div className="absolute top-[60%] left-16 w-2 h-2 bg-rose-500/20 rounded-full" />
+            <div className="absolute top-[80%] right-24 w-2 h-2 bg-[#FD0061]/20 rounded-full" />
+          </div>
+          
+          <div className="max-w-4xl mx-auto space-y-12 relative z-10">
           <div className="space-y-4 text-gray-300">
             <h3 className="text-2xl font-bold text-white mb-4">Learning, Healing, and Growing</h3>
             <p>
@@ -276,6 +312,7 @@ const PersonalStory = () => {
             <p>
               Thank you for reading my story, and remember, with a little courage and faith, your destiny awaits.
             </p>
+          </div>
           </div>
         </div>
       </div>

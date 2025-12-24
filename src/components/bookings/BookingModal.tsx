@@ -155,9 +155,9 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-zinc-900 border-zinc-800 text-white [&>button]:text-white [&>button]:hover:text-gray-300">
         <DialogHeader>
-          <DialogTitle className="text-xl">
+          <DialogTitle className="text-xl text-white">
             {isSubmitted ? 'Booking Confirmed!' : `Book: ${service.title}`}
           </DialogTitle>
         </DialogHeader>
