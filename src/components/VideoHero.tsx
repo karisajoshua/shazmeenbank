@@ -100,6 +100,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         playlist: currentVideo.id,
         modestbranding: 1,
         iv_load_policy: 3,
+        cc_load_policy: 0,
         disablekb: 1,
         fs: 0,
         playsinline: 1,
@@ -222,6 +223,8 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
+        {/* Top overlay to hide YouTube title */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/90 via-black/60 to-transparent z-10"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div
             id="yt-hero-player"
