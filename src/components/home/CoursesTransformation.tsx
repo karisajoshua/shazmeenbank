@@ -38,12 +38,13 @@ const CoursesTransformation = ({ onWaitlistClick, onNewsletterClick }: CoursesTr
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">
             Go at your own pace with immersive courses designed to help you break old patterns, create healthier relationships, and build a life rooted in self-worth and clarity.
           </p>
-          <Button 
-            onClick={onWaitlistClick}
-            className="btn-primary text-lg px-8 py-4"
-          >
-            View Available Courses
-          </Button>
+          <Link to="/courses">
+            <Button 
+              className="btn-primary text-lg px-8 py-4"
+            >
+              View Available Courses
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

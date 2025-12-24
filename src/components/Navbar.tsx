@@ -84,21 +84,13 @@ const Navbar = () => {
                 </Button>
               </>
             ) : (
-              <>
-                <Link to="/login">
-                  <Button 
-                    variant="outline" 
-                    className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 rounded-xl px-5 py-3 font-bold"
-                  >
-                    Login
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 transition-all duration-300 rounded-xl px-5 py-3 font-bold">
-                    Sign Up
-                  </Button>
-                </Link>
-              </>
+              <Link to="/login">
+                <Button 
+                  className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 transition-all duration-300 rounded-xl px-5 py-3 font-bold"
+                >
+                  Sign In
+                </Button>
+              </Link>
             )}
           </div>
 
@@ -139,14 +131,9 @@ const Navbar = () => {
                     </Button>
                   </>
                 ) : (
-                  <div className="flex space-x-4">
-                    <Link to="/login" className="w-1/2">
-                      <Button variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-black w-full rounded-xl px-5 py-3 font-bold">Login</Button>
-                    </Link>
-                    <Link to="/register" className="w-1/2">
-                      <Button className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 w-full rounded-xl px-5 py-3 font-bold">Sign Up</Button>
-                    </Link>
-                  </div>
+                  <Link to="/login" className="w-full">
+                    <Button className="bg-[#FD0061] text-white hover:bg-[#FD0061]/90 w-full rounded-xl px-5 py-3 font-bold">Sign In</Button>
+                  </Link>
                 )}
               </div>
             </div>
