@@ -27,8 +27,8 @@ const SubscribeSection = () => {
             Follow on your favorite platform and get notified when new episodes drop
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
-            <Button size="lg" className="bg-black hover:bg-opacity-90" asChild>
-              <a href="https://podcasts.apple.com/us/podcast/love-better-live-better/id1234567890" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-[#FA243C] hover:bg-[#fc4d61]" asChild>
+              <a href="https://podcasts.apple.com/us/podcast/love-better-live-better-podcast/id1804503086" target="_blank" rel="noopener noreferrer">
                 Apple Podcasts
               </a>
             </Button>

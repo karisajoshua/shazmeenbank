@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { PodcastEpisode } from "@/types/podcast";
-import { Headphones, Clock, Calendar, X, Youtube } from "lucide-react";
+import { Headphones, Clock, Calendar, Youtube } from "lucide-react";
 
 interface PodcastPopupPlayerProps {
   episode: PodcastEpisode | null;
@@ -15,17 +15,9 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
   
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[900px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[900px] max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-serif">{episode.title}</DialogTitle>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={onClose}
-            className="absolute right-2 top-2"
-          >
-            <X className="h-4 w-4" />
-          </Button>
+          <DialogTitle className="text-2xl font-serif text-gray-900">{episode.title}</DialogTitle>
         </DialogHeader>
         
         <div className="flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-6 pt-4">
@@ -35,7 +27,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             className="w-full md:w-48 h-auto object-cover rounded-md"
           />
           <div className="flex-1 space-y-4">
-            <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <div className="flex items-center space-x-4 text-sm text-gray-600">
               <span className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1" />
                 {new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -47,12 +39,12 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             </div>
             
             <div className="prose max-w-none">
-              <p className="text-base">{episode.description}</p>
+              <p className="text-base text-gray-800">{episode.description}</p>
             </div>
             
             {episode.topics && episode.topics.length > 0 && (
               <div className="pt-2">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Topics Covered:</h3>
+                <h3 className="text-sm font-medium text-gray-800 mb-2">Topics Covered:</h3>
                 <div className="flex flex-wrap gap-2">
                   {episode.topics.map((topic, index) => (
                     <span key={index} className="bg-shazmeen-blush/30 text-shazmeen-red text-xs px-2 py-1 rounded-full">
@@ -64,7 +56,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             )}
             
             <div className="pt-2">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Share this episode:</h3>
+              <h3 className="text-sm font-medium text-gray-800 mb-2">Share this episode:</h3>
               <div className="flex space-x-3">
                 <Button variant="outline" size="sm" asChild>
                   <a href="https://www.facebook.com/profile.php?id=100078764546585" target="_blank" rel="noopener noreferrer">
@@ -97,7 +89,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {episode.spotify_url && (
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-gray-700">Spotify</p>
+                  <p className="text-sm font-medium text-gray-800">Spotify</p>
                   <iframe 
                     src={episode.spotify_url}
                     width="100%"
@@ -113,7 +105,7 @@ const PodcastPopupPlayer = ({ episode, isOpen, onClose }: PodcastPopupPlayerProp
               
               {episode.apple_podcast_url && (
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-gray-700">Apple Podcasts</p>
+                  <p className="text-sm font-medium text-gray-800">Apple Podcasts</p>
                   <iframe 
                     src={episode.apple_podcast_url}
                     width="100%"
