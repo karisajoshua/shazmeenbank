@@ -67,7 +67,7 @@ const Contact = () => {
   return (
     <>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-shazmeen-white py-24 pt-32">
+      <section className="bg-gradient-to-r from-gray-700 to-gray-600 text-shazmeen-white py-24 pt-32">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
