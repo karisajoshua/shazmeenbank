@@ -151,7 +151,7 @@ const AdminDashboard = () => {
           <h1 className="text-4xl font-bold text-foreground mb-2">Admin Dashboard</h1>
           <p className="text-muted-foreground">Manage your website content</p>
         </div>
-        <Button asChild>
+        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
           <Link to="/">
             <TrendingUp className="mr-2 h-4 w-4" />
             View Site
