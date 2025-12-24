@@ -45,12 +45,12 @@ const MarqueeRow = ({ images, direction, duration = 30 }: MarqueeRowProps) => {
         {duplicatedImages.map((img, idx) => (
           <div 
             key={idx} 
-            className="flex-shrink-0 w-56 h-40 md:w-72 md:h-52 rounded-2xl overflow-hidden shadow-lg"
+            className="flex-shrink-0 w-48 h-32 md:w-64 md:h-44 rounded-2xl overflow-hidden shadow-lg"
           >
             <img 
               src={img} 
               alt="" 
-              className="w-full h-full object-contain bg-black hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
         ))}
@@ -78,13 +78,12 @@ const ImageMarquee = () => {
 
       {/* Center overlay content */}
       <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="text-center bg-[#0a0a0a]/90 backdrop-blur-md px-12 py-10 rounded-3xl border border-white/10">
-          <p className="text-sm md:text-base uppercase tracking-[0.3em] text-gray-300 mb-2">The Podcast</p>
-          <h2 className="text-5xl md:text-7xl font-serif font-bold text-white mb-2">
-            LOVE BETTER
+        <div className="text-center bg-[#0a0a0a]/80 backdrop-blur-sm px-12 py-10 rounded-3xl">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+            A Journey of Healing
           </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-6">
-            with Shazmeen Bank
+          <p className="text-gray-400 mb-6 max-w-md mx-auto">
+            Every conversation, every moment of growth captured in this journey.
           </p>
           
           {/* Platform buttons */}

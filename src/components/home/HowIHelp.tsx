@@ -62,13 +62,13 @@ const HowIHelp = () => {
                 <div 
                   className={`relative flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 group`}
                 >
-                  {/* Image Section - Colored, B&W on hover */}
+                  {/* Image Section - B&W with color on hover */}
                   <div className="relative flex-shrink-0 w-full md:w-80 lg:w-96">
                     <div className="relative overflow-hidden rounded-3xl shadow-premium bg-zinc-800">
                       <img 
                         src={area.image} 
                         alt={area.title}
-                        className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-all duration-500 group-hover:grayscale"
+                        className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0"
                       />
                     </div>
                   </div>

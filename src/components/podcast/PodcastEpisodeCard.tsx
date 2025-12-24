@@ -14,14 +14,14 @@ const PodcastEpisodeCard = ({ episode, onPlay }: PodcastEpisodeCardProps) => {
       className="overflow-hidden transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1 bg-gradient-to-b from-zinc-900 to-black border border-transparent hover:border-zinc-600 cursor-pointer"
       onClick={onPlay}
     >
-      <div className="aspect-[4/3] overflow-hidden relative bg-zinc-900">
+      <div className="aspect-[4/3] overflow-hidden relative">
         <img 
           src={episode.image_url || 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=400'} 
           alt={episode.title} 
-          className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
         {/* Black gradient blend overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
       </div>
       <CardHeader className="pb-2">
         <CardDescription className="text-sm text-gray-400">{new Date(episode.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</CardDescription>
