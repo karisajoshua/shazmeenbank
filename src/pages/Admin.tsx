@@ -29,7 +29,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col [&_*]:text-gray-900 [&_label]:text-gray-700 [&_input]:text-gray-900 [&_input]:bg-white [&_input]:border-gray-300 [&_textarea]:text-gray-900 [&_textarea]:bg-white [&_textarea]:border-gray-300 [&_.text-muted-foreground]:text-gray-500 [&_.text-foreground]:text-gray-900 [&_.bg-background]:bg-white [&_.bg-muted]:bg-gray-100 [&_.border]:border-gray-200">
       <div className="flex-grow">
         <Routes>
           <Route index element={<AdminDashboard />} />
@@ -47,10 +47,10 @@ const Admin = () => {
         </Routes>
       </div>
       
-      <footer className="border-t bg-muted/30 py-4 mt-auto">
+      <footer className="border-t border-gray-200 bg-gray-50 py-4 mt-auto">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Powered by <span className="font-semibold text-foreground">Texcortech Systems</span>
+          <p className="text-sm text-gray-500">
+            Powered by <span className="font-semibold text-gray-900">Texcortech Systems</span>
           </p>
         </div>
       </footer>

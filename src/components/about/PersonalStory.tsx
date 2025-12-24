@@ -122,39 +122,76 @@ const PersonalStory = () => {
 
         {/* Section 6-10: Continuing the Story - Creative Background Design */}
         <div className="relative">
-          {/* Decorative Background Elements */}
+          {/* Creative Layered Background with Elegant Visual Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Floating gradient orbs */}
-            <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-br from-[#FD0061]/5 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-[30%] -right-32 w-80 h-80 bg-gradient-to-bl from-amber-500/5 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-[50%] left-10 w-64 h-64 bg-gradient-to-tr from-rose-500/5 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-[70%] -right-20 w-72 h-72 bg-gradient-to-tl from-[#FD0061]/5 to-transparent rounded-full blur-3xl" />
+            {/* Animated gradient mesh background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/50 to-black" />
             
-            {/* Subtle decorative lines */}
-            <div className="absolute top-40 left-0 w-32 h-px bg-gradient-to-r from-[#FD0061]/20 to-transparent" />
-            <div className="absolute top-[35%] right-0 w-48 h-px bg-gradient-to-l from-[#FD0061]/20 to-transparent" />
-            <div className="absolute top-[55%] left-0 w-40 h-px bg-gradient-to-r from-amber-500/20 to-transparent" />
-            <div className="absolute top-[75%] right-0 w-36 h-px bg-gradient-to-l from-rose-500/20 to-transparent" />
+            {/* Large decorative image panels - semi-transparent and elegantly positioned */}
+            <div className="absolute top-0 right-0 w-1/3 h-[600px] overflow-hidden">
+              <div 
+                className="w-full h-full bg-cover bg-center opacity-[0.12] blur-[1px]"
+                style={{ 
+                  backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)`,
+                  maskImage: 'linear-gradient(to left, rgba(0,0,0,0.4), transparent)',
+                  WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.4), transparent)'
+                }}
+              />
+            </div>
             
-            {/* Faded background images with parallax-like positioning */}
-            <div 
-              className="absolute top-10 right-0 w-80 h-96 opacity-[0.04] bg-cover bg-center rounded-3xl transform rotate-3"
-              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)` }}
-            />
-            <div 
-              className="absolute top-[40%] -left-10 w-72 h-80 opacity-[0.04] bg-cover bg-center rounded-3xl transform -rotate-2"
-              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG)` }}
-            />
-            <div 
-              className="absolute top-[65%] right-10 w-64 h-72 opacity-[0.04] bg-cover bg-center rounded-3xl transform rotate-2"
-              style={{ backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)` }}
-            />
+            <div className="absolute top-[30%] left-0 w-1/3 h-[500px] overflow-hidden">
+              <div 
+                className="w-full h-full bg-cover bg-center opacity-[0.12] blur-[1px]"
+                style={{ 
+                  backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG)`,
+                  maskImage: 'linear-gradient(to right, rgba(0,0,0,0.4), transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.4), transparent)'
+                }}
+              />
+            </div>
             
-            {/* Decorative geometric shapes */}
-            <div className="absolute top-[25%] left-20 w-2 h-2 bg-[#FD0061]/20 rounded-full" />
-            <div className="absolute top-[45%] right-32 w-3 h-3 bg-amber-500/20 rounded-full" />
-            <div className="absolute top-[60%] left-16 w-2 h-2 bg-rose-500/20 rounded-full" />
-            <div className="absolute top-[80%] right-24 w-2 h-2 bg-[#FD0061]/20 rounded-full" />
+            <div className="absolute top-[60%] right-0 w-1/4 h-[400px] overflow-hidden">
+              <div 
+                className="w-full h-full bg-cover bg-center opacity-[0.10] blur-[1px]"
+                style={{ 
+                  backgroundImage: `url(${shazmeenMedal})`,
+                  maskImage: 'linear-gradient(to left, rgba(0,0,0,0.3), transparent)',
+                  WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.3), transparent)'
+                }}
+              />
+            </div>
+            
+            {/* Elegant flowing accent lines */}
+            <svg className="absolute top-20 left-0 w-full h-32 opacity-20" preserveAspectRatio="none" viewBox="0 0 1200 100">
+              <path d="M0,50 Q300,0 600,50 T1200,50" stroke="url(#gradient1)" strokeWidth="1" fill="none" />
+              <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="transparent" />
+                  <stop offset="50%" stopColor="#FD0061" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            <svg className="absolute top-[45%] left-0 w-full h-32 opacity-15" preserveAspectRatio="none" viewBox="0 0 1200 100">
+              <path d="M0,50 Q300,100 600,50 T1200,50" stroke="url(#gradient2)" strokeWidth="1" fill="none" />
+              <defs>
+                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="transparent" />
+                  <stop offset="50%" stopColor="#FFB6C1" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            {/* Soft glowing orbs */}
+            <div className="absolute top-[15%] right-[10%] w-64 h-64 bg-[#FD0061]/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '4s' }} />
+            <div className="absolute top-[40%] left-[5%] w-48 h-48 bg-rose-400/8 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+            <div className="absolute top-[70%] right-[15%] w-56 h-56 bg-amber-500/8 rounded-full blur-[90px] animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+            
+            {/* Decorative quote marks */}
+            <div className="absolute top-[25%] left-8 text-[200px] font-serif text-[#FD0061]/5 leading-none select-none">"</div>
+            <div className="absolute top-[55%] right-8 text-[200px] font-serif text-rose-400/5 leading-none select-none rotate-180">"</div>
           </div>
           
           <div className="max-w-4xl mx-auto space-y-12 relative z-10">

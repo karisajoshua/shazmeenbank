@@ -131,82 +131,84 @@ export const BlogForm = ({ postId, onBack, onSuccess }: BlogFormProps) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6 rounded-lg">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" onClick={onBack}>
+        <Button variant="ghost" onClick={onBack} className="text-gray-900 hover:bg-gray-100">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to List
         </Button>
-        <h2 className="text-3xl font-bold text-foreground">
+        <h2 className="text-3xl font-bold text-gray-900">
           {isEditing ? 'Edit Post' : 'Create New Post'}
         </h2>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-3xl">
         <div>
-          <Label htmlFor="title">Title *</Label>
-          <Input id="title" {...register('title')} />
-          {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
+          <Label htmlFor="title" className="text-gray-700 font-medium">Title *</Label>
+          <Input id="title" {...register('title')} className="bg-white border-gray-300 text-gray-900" />
+          {errors.title && <p className="text-sm text-red-600 mt-1">{errors.title.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="slug">Slug *</Label>
-          <Input id="slug" {...register('slug')} />
-          {errors.slug && <p className="text-sm text-destructive mt-1">{errors.slug.message}</p>}
+          <Label htmlFor="slug" className="text-gray-700 font-medium">Slug *</Label>
+          <Input id="slug" {...register('slug')} className="bg-white border-gray-300 text-gray-900" />
+          {errors.slug && <p className="text-sm text-red-600 mt-1">{errors.slug.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="excerpt">Excerpt</Label>
-          <Textarea id="excerpt" {...register('excerpt')} rows={3} />
-          {errors.excerpt && <p className="text-sm text-destructive mt-1">{errors.excerpt.message}</p>}
+          <Label htmlFor="excerpt" className="text-gray-700 font-medium">Excerpt</Label>
+          <Textarea id="excerpt" {...register('excerpt')} rows={3} className="bg-white border-gray-300 text-gray-900" />
+          {errors.excerpt && <p className="text-sm text-red-600 mt-1">{errors.excerpt.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="content">Content *</Label>
+          <Label htmlFor="content" className="text-gray-700 font-medium">Content *</Label>
           <RichTextEditor
             value={watch('content')}
             onChange={(value) => setValue('content', value)}
             placeholder="Write your blog content here..."
           />
-          {errors.content && <p className="text-sm text-destructive mt-1">{errors.content.message}</p>}
+          {errors.content && <p className="text-sm text-red-600 mt-1">{errors.content.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="featured_image">Featured Image URL</Label>
-          <Input id="featured_image" {...register('featured_image')} placeholder="https://..." />
-          {errors.featured_image && <p className="text-sm text-destructive mt-1">{errors.featured_image.message}</p>}
+          <Label htmlFor="featured_image" className="text-gray-700 font-medium">Featured Image URL</Label>
+          <Input id="featured_image" {...register('featured_image')} placeholder="https://..." className="bg-white border-gray-300 text-gray-900" />
+          {errors.featured_image && <p className="text-sm text-red-600 mt-1">{errors.featured_image.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="tags">Tags (comma-separated)</Label>
-          <Input id="tags" {...register('tags')} placeholder="mindset, growth, transformation" />
-          {errors.tags && <p className="text-sm text-destructive mt-1">{errors.tags.message}</p>}
+          <Label htmlFor="tags" className="text-gray-700 font-medium">Tags (comma-separated)</Label>
+          <Input id="tags" {...register('tags')} placeholder="mindset, growth, transformation" className="bg-white border-gray-300 text-gray-900" />
+          {errors.tags && <p className="text-sm text-red-600 mt-1">{errors.tags.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="meta_description">Meta Description (SEO)</Label>
-          <Textarea id="meta_description" {...register('meta_description')} rows={2} />
-          {errors.meta_description && <p className="text-sm text-destructive mt-1">{errors.meta_description.message}</p>}
+          <Label htmlFor="meta_description" className="text-gray-700 font-medium">Meta Description (SEO)</Label>
+          <Textarea id="meta_description" {...register('meta_description')} rows={2} className="bg-white border-gray-300 text-gray-900" />
+          {errors.meta_description && <p className="text-sm text-red-600 mt-1">{errors.meta_description.message}</p>}
         </div>
 
         <div>
-          <Label>Status</Label>
+          <Label className="text-gray-700 font-medium">Status</Label>
           <div className="flex gap-4 mt-2">
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-gray-700">
               <input
                 type="radio"
                 value="draft"
                 {...register('status')}
                 onChange={() => setStatus('draft')}
+                className="text-primary"
               />
               <span>Draft</span>
             </label>
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-gray-700">
               <input
                 type="radio"
                 value="published"
                 {...register('status')}
                 onChange={() => setStatus('published')}
+                className="text-primary"
               />
               <span>Published</span>
             </label>
@@ -217,7 +219,7 @@ export const BlogForm = ({ postId, onBack, onSuccess }: BlogFormProps) => {
           <Button type="submit" disabled={saveMutation.isPending}>
             {saveMutation.isPending ? 'Saving...' : isEditing ? 'Update Post' : 'Create Post'}
           </Button>
-          <Button type="button" variant="outline" onClick={onBack}>
+          <Button type="button" variant="outline" onClick={onBack} className="border-gray-300 text-gray-700 hover:bg-gray-100">
             Cancel
           </Button>
         </div>
