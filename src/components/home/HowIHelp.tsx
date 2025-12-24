@@ -68,7 +68,7 @@ const HowIHelp = () => {
                       <img 
                         src={area.image} 
                         alt={area.title}
-                        className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0"
+                        className="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-all duration-500 filter grayscale-0 group-hover:grayscale"
                       />
                     </div>
                   </div>
