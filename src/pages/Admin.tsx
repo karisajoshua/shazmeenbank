@@ -9,6 +9,8 @@ import WaitlistManagement from '@/components/admin/WaitlistManagement';
 import ServicesManagement from '@/components/admin/ServicesManagement';
 import CoachesManagement from '@/components/admin/CoachesManagement';
 import MediaLibrary from '@/components/admin/MediaLibrary';
+import NewsletterManagement from '@/components/admin/NewsletterManagement';
+import ContactMessagesManagement from '@/components/admin/ContactMessagesManagement';
 import { Loader2 } from 'lucide-react';
 
 const Admin = () => {
@@ -39,6 +41,8 @@ const Admin = () => {
           <Route path="services/*" element={<ServicesManagement />} />
           <Route path="coaches/*" element={<CoachesManagement />} />
           <Route path="media" element={<MediaLibrary />} />
+          <Route path="newsletter" element={<NewsletterManagement />} />
+          <Route path="messages" element={<ContactMessagesManagement />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </div>

@@ -94,11 +94,7 @@ const Bookings = () => {
     <>
       {/* Hero Section with Background */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
+        <div className="absolute inset-0 bg-black" />
         
         {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-[#FD0061]/10 rounded-full blur-3xl" />

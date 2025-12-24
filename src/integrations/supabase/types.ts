@@ -268,6 +268,36 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_read: boolean | null
+          message: string
+          name: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_read?: boolean | null
+          message: string
+          name: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_read?: boolean | null
+          message?: string
+          name?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       course_waitlist: {
         Row: {
           course_id: string | null
@@ -345,6 +375,33 @@ export type Database = {
           title?: string
           total_modules?: number | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean | null
+          name: string | null
+          source: string | null
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          source?: string | null
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          source?: string | null
+          subscribed_at?: string
         }
         Relationships: []
       }

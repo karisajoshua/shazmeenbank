@@ -12,15 +12,11 @@ const ClosingMessage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Image Side */}
             <div className="relative order-2 md:order-1">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-shazmeen-red/10 rounded-3xl transform rotate-3" />
-                <div className="absolute -inset-4 bg-shazmeen-blush/10 rounded-3xl transform -rotate-3" />
-                <img 
-                  src={hostPortrait}
-                  alt="Shazmeen Bank"
-                  className="relative w-full rounded-2xl shadow-2xl object-cover max-h-[500px]"
-                />
-              </div>
+              <img 
+                src={hostPortrait}
+                alt="Shazmeen Bank"
+                className="w-full rounded-2xl shadow-2xl object-cover max-h-[500px]"
+              />
             </div>
             
             {/* Content Side */}

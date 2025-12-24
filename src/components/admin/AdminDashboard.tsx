@@ -11,7 +11,9 @@ import {
   Heart,
   Users,
   TrendingUp,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Mail,
+  MessageSquare
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -22,6 +24,9 @@ const AdminDashboard = () => {
     bookings: 0,
     services: 0,
     coaches: 0,
+    subscribers: 0,
+    messages: 0,
+    unreadMessages: 0,
   });
 
   useEffect(() => {
@@ -29,7 +34,7 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchStats = async () => {
-    const [blogCount, podcastCount, courseCount, bookingCount, serviceCount, coachCount] = 
+    const [blogCount, podcastCount, courseCount, bookingCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount] = 
       await Promise.all([
         supabase.from('blog_posts').select('*', { count: 'exact', head: true }),
         supabase.from('podcast_episodes').select('*', { count: 'exact', head: true }),
@@ -37,6 +42,9 @@ const AdminDashboard = () => {
         supabase.from('bookings').select('*', { count: 'exact', head: true }),
         supabase.from('booking_services').select('*', { count: 'exact', head: true }),
         supabase.from('coaches').select('*', { count: 'exact', head: true }),
+        supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
+        supabase.from('contact_messages').select('*', { count: 'exact', head: true }),
+        supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false),
       ]);
 
     setStats({
@@ -46,6 +54,9 @@ const AdminDashboard = () => {
       bookings: bookingCount.count || 0,
       services: serviceCount.count || 0,
       coaches: coachCount.count || 0,
+      subscribers: subscriberCount.count || 0,
+      messages: messageCount.count || 0,
+      unreadMessages: unreadCount.count || 0,
     });
   };
 
@@ -107,6 +118,23 @@ const AdminDashboard = () => {
       color: 'text-indigo-600 bg-indigo-50'
     },
     { 
+      title: 'Newsletter Subscribers', 
+      count: stats.subscribers, 
+      href: '/admin/newsletter', 
+      icon: Mail,
+      description: 'View and export subscribers',
+      color: 'text-teal-600 bg-teal-50'
+    },
+    { 
+      title: 'Contact Messages', 
+      count: stats.messages, 
+      href: '/admin/messages', 
+      icon: MessageSquare,
+      description: `${stats.unreadMessages} unread messages`,
+      color: 'text-red-600 bg-red-50',
+      badge: stats.unreadMessages > 0 ? stats.unreadMessages : null
+    },
+    { 
       title: 'Media Library', 
       count: null, 
       href: '/admin/media', 
@@ -156,7 +184,12 @@ const AdminDashboard = () => {
         <h2 className="text-2xl font-bold mb-4">Content Management</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {managementCards.map((card) => (
-            <Card key={card.href} className="hover:shadow-lg transition-shadow">
+            <Card key={card.href} className="hover:shadow-lg transition-shadow relative">
+              {card.badge && (
+                <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                  {card.badge}
+                </div>
+              )}
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className={`p-3 rounded-lg ${card.color}`}>

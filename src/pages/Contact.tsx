@@ -28,6 +28,19 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      // Save to database
+      const { error: dbError } = await supabase.from('contact_messages').insert({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      });
+
+      if (dbError) {
+        console.error("Error saving to database:", dbError);
+      }
+
+      // Also send email via edge function
       const { error } = await supabase.functions.invoke("send-contact-email", {
         body: formData,
       });
@@ -87,14 +100,14 @@ const Contact = () => {
                 </svg>
               </a>
               <a
-                href="https://twitter.com/shazmeenbank"
+                href="https://www.threads.net/@shazmeenbank"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:opacity-80 transition-opacity"
-                aria-label="Twitter/X"
+                aria-label="Threads"
               >
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.842-.698 2.082-1.16 3.587-1.335 1.21-.14 2.357-.113 3.402.08-.04-.782-.212-1.39-.504-1.813-.368-.532-.976-.802-1.808-.802h-.04c-1.136.017-1.964.457-2.532 1.345l-1.73-1.076c.82-1.29 2.152-1.999 3.966-2.11l.202-.005c1.608 0 2.87.529 3.752 1.573.736.872 1.14 2.025 1.205 3.432.503.209.96.463 1.363.764 1.08.808 1.834 1.886 2.24 3.205.562 1.826.456 4.168-1.327 5.92-1.758 1.727-4.02 2.477-7.161 2.501zm-1.073-8.457c-.99.057-1.774.326-2.27.78-.36.328-.52.715-.494 1.184.031.562.335.987.88 1.229.612.27 1.39.359 2.194.252 1.152-.153 2.039-.634 2.567-1.394.357-.512.587-1.183.688-2.006-1.057-.2-2.274-.23-3.565-.045z"/>
                 </svg>
               </a>
               <a
