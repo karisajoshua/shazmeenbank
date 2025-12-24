@@ -9,10 +9,10 @@ interface VideoHeroProps {
 
 // Media House Videos featuring Shazmeen Bank
 const YOUTUBE_VIDEOS = [
-  { id: "XfRcyB6_hGA", start: 163 },
+  { id: "PDhK4FqbROE", start: 21 },
   { id: "guHf0pIWXWA", start: 235 },
   { id: "OyK1-tnqOqw", start: 343 },
-  { id: "PDhK4FqbROE", start: 21 },
+  { id: "XfRcyB6_hGA", start: 165 },
   { id: "at3bHuNlBqI", start: 261 },
   { id: "R7AglaXRgWA", start: 627 },
   { id: "ZPcSLA24B6Y", start: 159 },
