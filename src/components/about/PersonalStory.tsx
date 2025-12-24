@@ -120,237 +120,204 @@ const PersonalStory = () => {
           </div>
         </div>
 
-        {/* Section 6-10: Continuing the Story - Creative Background Design */}
-        <div className="relative">
-          {/* Creative Layered Background with Elegant Visual Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Animated gradient mesh background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/50 to-black" />
-            
-            {/* Large decorative image panels - semi-transparent and elegantly positioned */}
-            <div className="absolute top-0 right-0 w-1/3 h-[600px] overflow-hidden">
-              <div 
-                className="w-full h-full bg-cover bg-center opacity-[0.12] blur-[1px]"
-                style={{ 
-                  backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG)`,
-                  maskImage: 'linear-gradient(to left, rgba(0,0,0,0.4), transparent)',
-                  WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.4), transparent)'
-                }}
-              />
+        {/* Section 6: Learning, Healing, and Growing - Clean Redesign */}
+        <div className="py-16 md:py-24 bg-gradient-to-b from-zinc-900 to-black rounded-3xl mb-16">
+          <div className="max-w-6xl mx-auto px-6 md:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Journey of Growth</span>
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif">Learning, Healing, and Growing</h3>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FD0061] to-transparent mx-auto"></div>
             </div>
             
-            <div className="absolute top-[30%] left-0 w-1/3 h-[500px] overflow-hidden">
-              <div 
-                className="w-full h-full bg-cover bg-center opacity-[0.12] blur-[1px]"
-                style={{ 
-                  backgroundImage: `url(https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG)`,
-                  maskImage: 'linear-gradient(to right, rgba(0,0,0,0.4), transparent)',
-                  WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.4), transparent)'
-                }}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+              <div className="space-y-6 text-gray-300">
+                <p>
+                  Over the years, I became a <strong className="text-[#FD0061]">Certified Life Coach</strong>, <strong className="text-[#FD0061]">Master Hypnosis Practitioner</strong>, <strong className="text-[#FD0061]">Master NLP Practitioner</strong>, <strong className="text-[#FD0061]">Master Life Coach</strong>, <strong className="text-[#FD0061]">Conflict Resolution Facilitator</strong>, and <strong className="text-[#FD0061]">Certified Level Three Reiki Practitioner</strong>.
+                </p>
+                <p>
+                  Because I never went to university, I felt like my certifications were never enough. So when I joined the <strong className="text-[#FD0061]">RMT training designed by Tony Robbins</strong>, I did the entire course and made a decision not to certify or collect more certificates, but to take the knowledge and know that my worth did not stem from certifications.
+                </p>
+                <p>
+                  During COVID, I dove deep into understanding <strong className="text-[#FD0061]">attachment theory</strong>, <strong className="text-[#FD0061]">emotional healing</strong>, and the role of our <strong className="text-[#FD0061]">nervous system</strong>. The more I learned about attachment styles, trauma, and the mind-body connection, the more my own wounds began to make sense.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#FD0061]/20 to-rose-500/20 rounded-2xl blur-xl"></div>
+                <img 
+                  src={shazmeenMedal} 
+                  alt="Shazmeen with medal" 
+                  className="relative w-full rounded-2xl shadow-2xl"
+                />
+              </div>
             </div>
             
-            <div className="absolute top-[60%] right-0 w-1/4 h-[400px] overflow-hidden">
-              <div 
-                className="w-full h-full bg-cover bg-center opacity-[0.10] blur-[1px]"
-                style={{ 
-                  backgroundImage: `url(${shazmeenMedal})`,
-                  maskImage: 'linear-gradient(to left, rgba(0,0,0,0.3), transparent)',
-                  WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.3), transparent)'
-                }}
-              />
+            <div className="bg-black/50 border border-[#FD0061]/20 rounded-2xl p-8 md:p-12 mb-20">
+              <p className="text-gray-300 text-lg leading-relaxed">
+                I realized I wasn't crazy or too emotional. I had an <strong className="text-[#FD0061]">anxious attachment style</strong> and a nervous system conditioned by years of walking on eggshells. This insight was <strong className="text-[#FD0061]">life-changing</strong>, and I was eager to help others have the same realizations. With each training I completed, I wasn't just collecting credentials, I was actively <strong className="text-[#FD0061]">transforming my pain into wisdom</strong>.
+              </p>
             </div>
-            
-            {/* Elegant flowing accent lines */}
-            <svg className="absolute top-20 left-0 w-full h-32 opacity-20" preserveAspectRatio="none" viewBox="0 0 1200 100">
-              <path d="M0,50 Q300,0 600,50 T1200,50" stroke="url(#gradient1)" strokeWidth="1" fill="none" />
-              <defs>
-                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="transparent" />
-                  <stop offset="50%" stopColor="#FD0061" />
-                  <stop offset="100%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-            </svg>
-            
-            <svg className="absolute top-[45%] left-0 w-full h-32 opacity-15" preserveAspectRatio="none" viewBox="0 0 1200 100">
-              <path d="M0,50 Q300,100 600,50 T1200,50" stroke="url(#gradient2)" strokeWidth="1" fill="none" />
-              <defs>
-                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="transparent" />
-                  <stop offset="50%" stopColor="#FFB6C1" />
-                  <stop offset="100%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-            </svg>
-            
-            {/* Soft glowing orbs */}
-            <div className="absolute top-[15%] right-[10%] w-64 h-64 bg-[#FD0061]/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute top-[40%] left-[5%] w-48 h-48 bg-rose-400/8 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
-            <div className="absolute top-[70%] right-[15%] w-56 h-56 bg-amber-500/8 rounded-full blur-[90px] animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-            
-            {/* Decorative quote marks */}
-            <div className="absolute top-[25%] left-8 text-[200px] font-serif text-[#FD0061]/5 leading-none select-none">"</div>
-            <div className="absolute top-[55%] right-8 text-[200px] font-serif text-rose-400/5 leading-none select-none rotate-180">"</div>
+          </div>
+        </div>
+
+        {/* Section 7: A Second Chance at Love */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+          <div className="order-2 md:order-1 relative">
+            <div className="absolute -inset-4 bg-gradient-to-l from-rose-500/20 to-[#FD0061]/20 rounded-2xl blur-xl"></div>
+            <img 
+              src={shazmeenMarathon} 
+              alt="Shazmeen marathon" 
+              className="relative w-full rounded-2xl shadow-2xl"
+            />
+          </div>
+          <div className="order-1 md:order-2">
+            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Full Circle</span>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">A Second Chance at Love</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I <strong className="text-[#FD0061]">remarried the very man I had divorced</strong>.
+              </p>
+              <p>
+                And we did share <strong className="text-[#FD0061]">love and forgiveness</strong> in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried.
+              </p>
+              <p>
+                This was a <strong className="text-[#FD0061]">humbling lesson</strong> for me. Healing is not a one-time event. It's a <strong className="text-[#FD0061]">continuous journey</strong>, and without consistent inner work, old habits can return even in a new relationship.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 8: No Judgment - Feature Cards */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">My Approach</span>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">No Judgment: Holding Space for Every Story</h3>
           </div>
           
-          <div className="max-w-4xl mx-auto space-y-12 relative z-10">
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Learning, Healing, and Growing</h3>
-            <p>
-              Over the years, I became a <strong className="text-[#FD0061]/90">Certified Life Coach</strong>, <strong className="text-[#FD0061]/90">Master Hypnosis Practitioner</strong>, <strong className="text-[#FD0061]/90">Master NLP Practitioner</strong>, <strong className="text-[#FD0061]/90">Master Life Coach</strong>, <strong className="text-[#FD0061]/90">Conflict Resolution Facilitator</strong>, and <strong className="text-[#FD0061]/90">Certified Level Three Reiki Practitioner</strong>, among other studies I took upon myself.
-            </p>
-            <p>
-              Because I never went to university, I felt like my certifications were never enough. So when I joined the <strong className="text-[#FD0061]/90">RMT training designed by Tony Robbins</strong>, I did the entire course and made a decision not to certify or collect more certificates, but to take the knowledge and know that my worth did not stem from certifications.
-            </p>
-            <p>
-              During COVID, I dove deep into understanding <strong className="text-[#FD0061]/90">attachment theory</strong>, <strong className="text-[#FD0061]/90">emotional healing</strong>, and the role of our <strong className="text-[#FD0061]/90">nervous system</strong>. The more I learned about attachment styles, trauma, and the mind-body connection, the more my own wounds began to make sense. I realized I wasn't crazy or too emotional. I had an <strong className="text-[#FD0061]/90">anxious attachment style</strong> and a nervous system conditioned by years of walking on eggshells.
-            </p>
-            <p>
-              This insight was <strong className="text-[#FD0061]/90">life-changing</strong>, and I was eager to help others have the same realizations. With each training I completed, I wasn't just collecting credentials, I was actively <strong className="text-[#FD0061]/90">transforming my pain into wisdom</strong>. I was healing myself as I gained tools to heal others.
-            </p>
-            <p>
-              A new life opened up within me, and with each client session, I felt that purpose grow stronger. One client became many, and soon I was working with <strong className="text-[#FD0061]/90">couples</strong> as well, guiding them through conflicts and toward deeper understanding. My passion for this work kept expanding for my own growth, for my clients' growth, and for the children who would grow up in healthier homes because their parents chose to heal.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
+              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">💜</span>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-4">Equal Compassion</h4>
+              <p className="text-gray-400">I hold space just as much for the person who cheated as I do for the one who was betrayed. Everyone involved is hurting.</p>
+            </div>
+            
+            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
+              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">🌱</span>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-4">Safe Space</h4>
+              <p className="text-gray-400">Nothing is too ugly or unforgivable to talk about. I provide a safe space where you can truly be yourself.</p>
+            </div>
+            
+            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
+              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">✨</span>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-4">Healing for All</h4>
+              <p className="text-gray-400">My practice is built on the belief that healing is for everyone, and I am here to facilitate it without judgment.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 9: My Coaching Philosophy */}
+        <div className="bg-gradient-to-r from-[#FD0061]/10 via-black to-rose-500/10 rounded-3xl p-8 md:p-16 mb-24 border border-[#FD0061]/20">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Philosophy</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">Carrying the Torch Together</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl font-bold">❤️</span>
+                </div>
+                <h4 className="text-lg font-bold text-white mb-2">Heart & Body Alignment</h4>
+                <p className="text-gray-400 text-sm">I use body-based techniques like breath and somatic awareness to help release trauma.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl font-bold">🔥</span>
+                </div>
+                <h4 className="text-lg font-bold text-white mb-2">Radical Responsibility</h4>
+                <p className="text-gray-400 text-sm">Blame keeps us stuck, personal responsibility sets us free. Reclaim authorship of your life.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl font-bold">🎯</span>
+                </div>
+                <h4 className="text-lg font-bold text-white mb-2">Personalized Path</h4>
+                <p className="text-gray-400 text-sm">There is no one-size-fits-all. Your journey is uniquely yours, and I honor that.</p>
+              </div>
+            </div>
+            
+            <p className="text-gray-300 text-center text-lg italic">
+              "I don't see myself as a savior. I see myself as a partner in your growth. I'll hand you the torch so you can light your own way forward."
             </p>
           </div>
+        </div>
 
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">A Second Chance at Love and New Lessons</h3>
-            <p>
-              Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I <strong className="text-[#FD0061]/90">remarried the very man I had divorced</strong>. On the surface, it felt like the perfect love story, a family reunited. I truly believed that we had both changed and that our happy ending was finally here.
-            </p>
-            <p>
-              And we did share <strong className="text-[#FD0061]/90">love and forgiveness</strong> in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried, nor addressed the unhealthy patterns that had been ingrained in our relationship.
-            </p>
-            <p>
-              Despite all my knowledge, I found old triggers resurfacing. I still feared <strong className="text-[#FD0061]/90">abandonment</strong> deeply, and he still struggled to express emotion, and so the cycle slowly crept back in.
-            </p>
-            <p>
-              This was a <strong className="text-[#FD0061]/90">humbling lesson</strong> for me. Healing is not a one-time event. It's a <strong className="text-[#FD0061]/90">continuous journey</strong>, and without consistent inner work, old habits can return even in a new relationship.
-            </p>
-            <p>
-              Through this experience, I developed an even deeper commitment to practicing what I preach: <strong className="text-[#FD0061]/90">open communication</strong>, <strong className="text-[#FD0061]/90">boundary-setting</strong>, and <strong className="text-[#FD0061]/90">self-love</strong>. It reminded me that I'm not just a coach guiding others through their struggles; I'm also a woman on my own healing journey, growing through what I go through.
-            </p>
+        {/* Section 10: Embracing Change Quote */}
+        <div className="relative py-16 mb-24">
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <span className="text-[300px] font-serif text-[#FD0061]">"</span>
           </div>
-
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">No Judgment: Holding Space for Every Story</h3>
-            <p>
-              One of the principles I hold dearest is non-judgment. Having lived through betrayal and reconciliation, I have equal compassion for both sides of a painful story. I hold space just as much for the person who cheated on their partner as I do for the one who was betrayed.
-            </p>
-            <p>
-              In my eyes, everyone involved is hurting in some way, and everyone deserves a chance to heal. Shame and blame only keep people stuck. So when I coach, I provide a safe space where nothing is too ugly or unforgivable to talk about.
-            </p>
-            <p>
-              Whether you've been the one causing pain or the one living with hurt, I meet you with the same empathy and understanding. Our stories might be different, but our emotions are universal.
-            </p>
-            <p>
-              I've seen that with the right support, a person who made terrible mistakes can transform and heal, just as someone who was hurt deeply can find forgiveness and move forward.
-            </p>
-            <p>
-              My practice is built on the belief that healing is for everyone, and I am here to facilitate it without casting judgment on how you got to where you are.
-            </p>
-          </div>
-
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">My Coaching Philosophy: Carrying the Torch Together</h3>
-            <p>
-              In my work, I don't see myself as a savior. I see myself as a partner in your growth. My approach to coaching is to hold space for you to explore your truth and to hand you the torch so you can light your own way forward.
-            </p>
-            <p>
-              I'm right there beside you in the dark, but you will source the batteries for that torch to shine.
-            </p>
-            <p>
-              This means I'll guide you, challenge you, and encourage you, but I won't take away your power by doing the work for you.
-            </p>
-            <p>
-              My goal is to enrich your emotional toolkit so that you can handle life's challenges long after our time together. I help you uncover your worth, understand your needs, heal your past, and create the future you truly desire.
-            </p>
-            <p>
-              And I do it all while honoring your unique journey. There is no cookie-cutter formula for transformation. Every individual and couple I work with gets a tailored approach that fits who they are, not who anyone says they should be.
-            </p>
-            <p>
-              <strong className="text-[#FD0061]/90">Heart and Body Alignment:</strong> I believe true healing isn't just an intellectual exercise, it's felt in the body. Our emotions live in our nervous system, so I use body-based techniques like breath, mindfulness, and somatic awareness to help release trauma and anxiety, not just talk about it.
-            </p>
-            <p>
-              <strong className="text-[#FD0061]/90">Radical Responsibility:</strong> I teach that while we can't always control what happened to us, we must take responsibility for our own healing. Blame keeps us stuck, personal responsibility sets us free. I gently guide clients to step out of the victim mindset and reclaim authorship of their lives.
-            </p>
-            <p>
-              <strong className="text-[#FD0061]/90">Personalized Transformation:</strong> There is no one-size-fits-all when it comes to growth. I listen intently to your story and intuition. Together, we find practices and solutions that resonate with you. Whether it's journaling, meditation, tough love talks, or creative expression, your journey is uniquely yours, and I honor that.
-            </p>
-          </div>
-
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Embracing Change and Feeling the Pain</h3>
-            <p>
-              As I share this, I am in the midst of a massive life transition of my own. Change is never easy, and I won't pretend it is.
-            </p>
-            <p>
-              But I am committed to feeling my pain instead of avoiding it. Every day, I choose to face my emotions head-on, just as I encourage my clients to do.
-            </p>
-            <p>
-              I've learned that the only way out of the darkness is through it. Numbing out or running away from discomfort only means carrying it with you longer.
-            </p>
-            <p>
-              So I am leaning into vulnerability, letting myself grieve, learn, and grow from every wave of emotion. This is the real, raw work that I ask of others, and I am walking it with you in real time.
-            </p>
-            <p className="text-shazmeen-red font-serif italic text-xl">
+          <div className="relative max-w-3xl mx-auto text-center">
+            <p className="text-2xl md:text-3xl font-serif text-white mb-6 leading-relaxed">
               "I often say that our wounds are where the light enters us, and I hold that truth close as I navigate this chapter."
             </p>
-            <p>
-              No matter how painful it gets, I trust that on the other side of this, there is growth, tenderness, inspiration, and creation waiting for me. And that makes the journey forward worthwhile.
-            </p>
+            <p className="text-gray-400">No matter how painful it gets, I trust that on the other side of this, there is growth, tenderness, inspiration, and creation waiting for me.</p>
           </div>
+        </div>
 
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Reaching More People (Radio, TV, and Love Better Podcast)</h3>
-            <p>
-              One of my greatest joys has been finding ways to reach people beyond the coaching room.
-            </p>
-            <p>
-              During the COVID era, I felt a calling to support not just those who could afford private coaching, but anyone who needed help.
-            </p>
-            <p>
-              I started sharing my message on radio and television, eventually even hosting my own weekly radio show and appearing on TV regularly to talk about relationships and personal growth.
-            </p>
-            <p>
-              I discovered a whole new audience of people hungry for healing. This inspired me to launch my podcast Love Better, which has become a safe, loving space to discuss the real and raw parts of relationships.
-            </p>
-            <p>
-              Every week on the podcast, I share lessons on attachment styles, communication, and self-love, often drawing from my own experiences. It feels like sitting down with a friend, one who's been through the fire and can help shed light on your path.
-            </p>
-            <p>
-              Through these platforms, I've been able to connect with thousands of individuals around the world. It still amazes me how much people want to grow, to heal, and just need someone to listen and say, I've been there, and there's hope.
-            </p>
-            <p>
-              This work, whether through the airwaves or one-on-one, is my heart's mission. Every story I hear and every soul I meet reinforces why I started this journey in the first place.
-            </p>
+        {/* Section 11: Reaching More People */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+          <div>
+            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Impact</span>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">Reaching More People</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                One of my greatest joys has been finding ways to reach people beyond the coaching room. During the COVID era, I felt a calling to support not just those who could afford private coaching, but anyone who needed help.
+              </p>
+              <p>
+                I started sharing my message on radio and television, eventually even hosting my own weekly radio show and appearing on TV regularly to talk about relationships and personal growth.
+              </p>
+              <p>
+                This inspired me to launch my podcast <strong className="text-[#FD0061]">Love Better</strong>, which has become a safe, loving space to discuss the real and raw parts of relationships.
+              </p>
+            </div>
           </div>
+          <div className="grid grid-cols-2 gap-4">
+            <img 
+              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG" 
+              alt="Shazmeen on media" 
+              className="w-full rounded-xl shadow-lg"
+            />
+            <img 
+              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG" 
+              alt="Shazmeen coaching" 
+              className="w-full rounded-xl shadow-lg mt-8"
+            />
+          </div>
+        </div>
 
-          <div className="space-y-4 text-gray-300 text-center">
-            <p>
-              I want you to know that I'm not just a coach or a conflict resolution practitioner. I'm a woman who has lived through deep pain, struggled, and come out the other side with scars turned into strengths.
-            </p>
-            <p>
-              I have learned that when we are real and authentic, we can create a life we truly deserve to experience.
-            </p>
-            <p className="text-shazmeen-red font-serif italic text-xl">
-              "As Dr. Joe Dispenza says, you cannot have a new reality with the old personality."
-            </p>
-            <p>
-              My purpose is to serve those who are seeking to transform their lives, because I truly believe everyone is capable of change and deserving of love.
-            </p>
-            <p>
-              If my story resonates with you, it's because it's proof that no matter how messy life gets, we can heal and we can grow.
-            </p>
-            <p>
-              I'm dedicating my life to helping others excel in every area of theirs, and I can't wait to meet you and be a part of your journey.
-            </p>
-            <p>
-              Thank you for reading my story, and remember, with a little courage and faith, your destiny awaits.
-            </p>
-          </div>
-          </div>
+        {/* Closing Message */}
+        <div className="text-center max-w-3xl mx-auto py-16 border-t border-zinc-800">
+          <p className="text-gray-300 text-lg mb-6">
+            I'm not just a coach or a conflict resolution practitioner. I'm a woman who has lived through deep pain, struggled, and come out the other side with scars turned into strengths.
+          </p>
+          <p className="text-[#FD0061] font-serif text-2xl mb-6 italic">
+            "As Dr. Joe Dispenza says, you cannot have a new reality with the old personality."
+          </p>
+          <p className="text-gray-300 text-lg mb-8">
+            My purpose is to serve those who are seeking to transform their lives. If my story resonates with you, it's because it's proof that no matter how messy life gets, we can heal and we can grow.
+          </p>
+          <p className="text-white text-xl font-medium">
+            Thank you for reading my story, and remember, with a little courage and faith, your destiny awaits.
+          </p>
         </div>
       </div>
     </section>

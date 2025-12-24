@@ -22,6 +22,7 @@ const AdminDashboard = () => {
     podcasts: 0,
     courses: 0,
     bookings: 0,
+    waitlist: 0,
     services: 0,
     coaches: 0,
     subscribers: 0,
@@ -34,12 +35,13 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchStats = async () => {
-    const [blogCount, podcastCount, courseCount, bookingCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount] = 
+    const [blogCount, podcastCount, courseCount, bookingCount, waitlistCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount] = 
       await Promise.all([
         supabase.from('blog_posts').select('*', { count: 'exact', head: true }),
         supabase.from('podcast_episodes').select('*', { count: 'exact', head: true }),
         supabase.from('courses').select('*', { count: 'exact', head: true }),
         supabase.from('bookings').select('*', { count: 'exact', head: true }),
+        supabase.from('course_waitlist').select('*', { count: 'exact', head: true }),
         supabase.from('booking_services').select('*', { count: 'exact', head: true }),
         supabase.from('coaches').select('*', { count: 'exact', head: true }),
         supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
@@ -52,6 +54,7 @@ const AdminDashboard = () => {
       podcasts: podcastCount.count || 0,
       courses: courseCount.count || 0,
       bookings: bookingCount.count || 0,
+      waitlist: waitlistCount.count || 0,
       services: serviceCount.count || 0,
       coaches: coachCount.count || 0,
       subscribers: subscriberCount.count || 0,
@@ -100,6 +103,14 @@ const AdminDashboard = () => {
       icon: Calendar,
       description: 'View and manage bookings',
       color: 'text-orange-600 bg-orange-50'
+    },
+    { 
+      title: 'Course Waitlist', 
+      count: stats.waitlist, 
+      href: '/admin/waitlist', 
+      icon: Users,
+      description: 'View waitlist signups',
+      color: 'text-amber-600 bg-amber-50'
     },
     { 
       title: 'Services', 

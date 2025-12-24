@@ -12,21 +12,39 @@ interface PodcastEpisodeCardProps {
 const PodcastEpisodeCard = ({ episode, onPlay }: PodcastEpisodeCardProps) => {
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
+    const shareUrl = `${window.location.origin}/podcast#episode-${episode.id}`;
+    const shareText = episode.description || `Check out this podcast episode: ${episode.title}`;
+    
     const shareData = {
       title: episode.title,
-      text: episode.description || `Check out this podcast episode: ${episode.title}`,
-      url: window.location.href,
+      text: shareText,
+      url: shareUrl,
     };
 
-    if (navigator.share) {
-      try {
+    try {
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
-      } catch (err) {
-        // User cancelled or share failed
+        return;
       }
-    } else {
-      // Fallback: copy link to clipboard
-      await navigator.clipboard.writeText(window.location.href);
+    } catch (err) {
+      console.log('Web Share API failed, falling back to clipboard');
+    }
+    
+    // Fallback: copy link to clipboard
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      toast({
+        title: "Link copied!",
+        description: "Episode link has been copied to your clipboard.",
+      });
+    } catch (err) {
+      // Final fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = shareUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
       toast({
         title: "Link copied!",
         description: "Episode link has been copied to your clipboard.",
