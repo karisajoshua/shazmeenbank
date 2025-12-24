@@ -196,45 +196,45 @@ const PersonalStory = () => {
           
           <div className="max-w-4xl mx-auto space-y-12 relative z-10">
           <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">Learning, Healing, and Growing</h3>
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Learning, Healing, and Growing</h3>
             <p>
-              Over the years, I became a Certified Life Coach, Master Hypnosis Practitioner, Master NLP Practitioner, Master Life Coach, Conflict Resolution Facilitator, and Certified Level Three Reiki Practitioner, among other studies I took upon myself.
+              Over the years, I became a <strong className="text-[#FD0061]/90">Certified Life Coach</strong>, <strong className="text-[#FD0061]/90">Master Hypnosis Practitioner</strong>, <strong className="text-[#FD0061]/90">Master NLP Practitioner</strong>, <strong className="text-[#FD0061]/90">Master Life Coach</strong>, <strong className="text-[#FD0061]/90">Conflict Resolution Facilitator</strong>, and <strong className="text-[#FD0061]/90">Certified Level Three Reiki Practitioner</strong>, among other studies I took upon myself.
             </p>
             <p>
-              Because I never went to university, I felt like my certifications were never enough. So when I joined the RMT training designed by Tony Robbins, I did the entire course and made a decision not to certify or collect more certificates, but to take the knowledge and know that my worth did not stem from certifications.
+              Because I never went to university, I felt like my certifications were never enough. So when I joined the <strong className="text-[#FD0061]/90">RMT training designed by Tony Robbins</strong>, I did the entire course and made a decision not to certify or collect more certificates, but to take the knowledge and know that my worth did not stem from certifications.
             </p>
             <p>
-              During COVID, I dove deep into understanding attachment theory, emotional healing, and the role of our nervous system. The more I learned about attachment styles, trauma, and the mind-body connection, the more my own wounds began to make sense. I realized I wasn't crazy or too emotional. I had an anxious attachment style and a nervous system conditioned by years of walking on eggshells.
+              During COVID, I dove deep into understanding <strong className="text-[#FD0061]/90">attachment theory</strong>, <strong className="text-[#FD0061]/90">emotional healing</strong>, and the role of our <strong className="text-[#FD0061]/90">nervous system</strong>. The more I learned about attachment styles, trauma, and the mind-body connection, the more my own wounds began to make sense. I realized I wasn't crazy or too emotional. I had an <strong className="text-[#FD0061]/90">anxious attachment style</strong> and a nervous system conditioned by years of walking on eggshells.
             </p>
             <p>
-              This insight was life-changing, and I was eager to help others have the same realizations. With each training I completed, I wasn't just collecting credentials, I was actively transforming my pain into wisdom. I was healing myself as I gained tools to heal others.
+              This insight was <strong className="text-[#FD0061]/90">life-changing</strong>, and I was eager to help others have the same realizations. With each training I completed, I wasn't just collecting credentials, I was actively <strong className="text-[#FD0061]/90">transforming my pain into wisdom</strong>. I was healing myself as I gained tools to heal others.
             </p>
             <p>
-              A new life opened up within me, and with each client session, I felt that purpose grow stronger. One client became many, and soon I was working with couples as well, guiding them through conflicts and toward deeper understanding. My passion for this work kept expanding for my own growth, for my clients' growth, and for the children who would grow up in healthier homes because their parents chose to heal.
-            </p>
-          </div>
-
-          <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">A Second Chance at Love and New Lessons</h3>
-            <p>
-              Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I remarried the very man I had divorced. On the surface, it felt like the perfect love story, a family reunited. I truly believed that we had both changed and that our happy ending was finally here.
-            </p>
-            <p>
-              And we did share love and forgiveness in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried, nor addressed the unhealthy patterns that had been ingrained in our relationship.
-            </p>
-            <p>
-              Despite all my knowledge, I found old triggers resurfacing. I still feared abandonment deeply, and he still struggled to express emotion, and so the cycle slowly crept back in.
-            </p>
-            <p>
-              This was a humbling lesson for me. Healing is not a one-time event. It's a continuous journey, and without consistent inner work, old habits can return even in a new relationship.
-            </p>
-            <p>
-              Through this experience, I developed an even deeper commitment to practicing what I preach: open communication, boundary-setting, and self-love. It reminded me that I'm not just a coach guiding others through their struggles; I'm also a woman on my own healing journey, growing through what I go through.
+              A new life opened up within me, and with each client session, I felt that purpose grow stronger. One client became many, and soon I was working with <strong className="text-[#FD0061]/90">couples</strong> as well, guiding them through conflicts and toward deeper understanding. My passion for this work kept expanding for my own growth, for my clients' growth, and for the children who would grow up in healthier homes because their parents chose to heal.
             </p>
           </div>
 
           <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">No Judgment: Holding Space for Every Story</h3>
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">A Second Chance at Love and New Lessons</h3>
+            <p>
+              Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I <strong className="text-[#FD0061]/90">remarried the very man I had divorced</strong>. On the surface, it felt like the perfect love story, a family reunited. I truly believed that we had both changed and that our happy ending was finally here.
+            </p>
+            <p>
+              And we did share <strong className="text-[#FD0061]/90">love and forgiveness</strong> in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried, nor addressed the unhealthy patterns that had been ingrained in our relationship.
+            </p>
+            <p>
+              Despite all my knowledge, I found old triggers resurfacing. I still feared <strong className="text-[#FD0061]/90">abandonment</strong> deeply, and he still struggled to express emotion, and so the cycle slowly crept back in.
+            </p>
+            <p>
+              This was a <strong className="text-[#FD0061]/90">humbling lesson</strong> for me. Healing is not a one-time event. It's a <strong className="text-[#FD0061]/90">continuous journey</strong>, and without consistent inner work, old habits can return even in a new relationship.
+            </p>
+            <p>
+              Through this experience, I developed an even deeper commitment to practicing what I preach: <strong className="text-[#FD0061]/90">open communication</strong>, <strong className="text-[#FD0061]/90">boundary-setting</strong>, and <strong className="text-[#FD0061]/90">self-love</strong>. It reminded me that I'm not just a coach guiding others through their struggles; I'm also a woman on my own healing journey, growing through what I go through.
+            </p>
+          </div>
+
+          <div className="space-y-4 text-gray-300">
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">No Judgment: Holding Space for Every Story</h3>
             <p>
               One of the principles I hold dearest is non-judgment. Having lived through betrayal and reconciliation, I have equal compassion for both sides of a painful story. I hold space just as much for the person who cheated on their partner as I do for the one who was betrayed.
             </p>
@@ -253,7 +253,7 @@ const PersonalStory = () => {
           </div>
 
           <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">My Coaching Philosophy: Carrying the Torch Together</h3>
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">My Coaching Philosophy: Carrying the Torch Together</h3>
             <p>
               In my work, I don't see myself as a savior. I see myself as a partner in your growth. My approach to coaching is to hold space for you to explore your truth and to hand you the torch so you can light your own way forward.
             </p>
@@ -270,18 +270,18 @@ const PersonalStory = () => {
               And I do it all while honoring your unique journey. There is no cookie-cutter formula for transformation. Every individual and couple I work with gets a tailored approach that fits who they are, not who anyone says they should be.
             </p>
             <p>
-              <strong>Heart and Body Alignment:</strong> I believe true healing isn't just an intellectual exercise, it's felt in the body. Our emotions live in our nervous system, so I use body-based techniques like breath, mindfulness, and somatic awareness to help release trauma and anxiety, not just talk about it.
+              <strong className="text-[#FD0061]/90">Heart and Body Alignment:</strong> I believe true healing isn't just an intellectual exercise, it's felt in the body. Our emotions live in our nervous system, so I use body-based techniques like breath, mindfulness, and somatic awareness to help release trauma and anxiety, not just talk about it.
             </p>
             <p>
-              <strong>Radical Responsibility:</strong> I teach that while we can't always control what happened to us, we must take responsibility for our own healing. Blame keeps us stuck, personal responsibility sets us free. I gently guide clients to step out of the victim mindset and reclaim authorship of their lives.
+              <strong className="text-[#FD0061]/90">Radical Responsibility:</strong> I teach that while we can't always control what happened to us, we must take responsibility for our own healing. Blame keeps us stuck, personal responsibility sets us free. I gently guide clients to step out of the victim mindset and reclaim authorship of their lives.
             </p>
             <p>
-              <strong>Personalized Transformation:</strong> There is no one-size-fits-all when it comes to growth. I listen intently to your story and intuition. Together, we find practices and solutions that resonate with you. Whether it's journaling, meditation, tough love talks, or creative expression, your journey is uniquely yours, and I honor that.
+              <strong className="text-[#FD0061]/90">Personalized Transformation:</strong> There is no one-size-fits-all when it comes to growth. I listen intently to your story and intuition. Together, we find practices and solutions that resonate with you. Whether it's journaling, meditation, tough love talks, or creative expression, your journey is uniquely yours, and I honor that.
             </p>
           </div>
 
           <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">Embracing Change and Feeling the Pain</h3>
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Embracing Change and Feeling the Pain</h3>
             <p>
               As I share this, I am in the midst of a massive life transition of my own. Change is never easy, and I won't pretend it is.
             </p>
@@ -303,7 +303,7 @@ const PersonalStory = () => {
           </div>
 
           <div className="space-y-4 text-gray-300">
-            <h3 className="text-2xl font-bold text-white mb-4">Reaching More People (Radio, TV, and Love Better Podcast)</h3>
+            <h3 className="text-2xl font-bold text-[#FD0061] mb-4">Reaching More People (Radio, TV, and Love Better Podcast)</h3>
             <p>
               One of my greatest joys has been finding ways to reach people beyond the coaching room.
             </p>
