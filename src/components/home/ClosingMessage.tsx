@@ -49,7 +49,7 @@ const ClosingMessage = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="border-white/30 text-white hover:bg-white hover:text-black flex items-center gap-2" 
+                    className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-black flex items-center gap-2" 
                     asChild
                   >
                     <a href="https://www.instagram.com/shazmeenbank/" target="_blank" rel="noopener noreferrer">
@@ -61,7 +61,7 @@ const ClosingMessage = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="border-white/30 text-white hover:bg-white hover:text-black flex items-center gap-2" 
+                    className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-black flex items-center gap-2" 
                     asChild
                   >
                     <a href="https://www.tiktok.com/@shazmeen_bank" target="_blank" rel="noopener noreferrer">
@@ -74,7 +74,7 @@ const ClosingMessage = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="border-white/30 text-white hover:bg-white hover:text-black flex items-center gap-2"
+                      className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-black flex items-center gap-2"
                     >
                       <Music size={18} />
                       Podcast
