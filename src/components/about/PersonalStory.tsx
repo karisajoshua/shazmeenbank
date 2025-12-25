@@ -120,17 +120,22 @@ const PersonalStory = () => {
           </div>
         </div>
 
-        {/* Section 6: Learning, Healing, and Growing - Clean Redesign */}
-        <div className="py-16 md:py-24 bg-gradient-to-b from-zinc-900 to-black rounded-3xl mb-16">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <div className="text-center mb-16">
+        {/* Section 6: Learning, Healing, and Growing - Background Image Style */}
+        <div className="relative py-20 md:py-32 mb-16 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${shazmeenMedal})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/70" />
+          
+          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
+            <div className="max-w-2xl">
               <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Journey of Growth</span>
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif">Learning, Healing, and Growing</h3>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FD0061] to-transparent mx-auto"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-              <div className="space-y-6 text-gray-300">
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 font-serif">Learning, Healing, and Growing</h3>
+              <div className="w-24 h-1 bg-[#FD0061] mb-10"></div>
+              
+              <div className="space-y-6 text-gray-200 text-lg leading-relaxed">
                 <p>
                   Over the years, I became a <strong className="text-[#FD0061]">Certified Life Coach</strong>, <strong className="text-[#FD0061]">Master Hypnosis Practitioner</strong>, <strong className="text-[#FD0061]">Master NLP Practitioner</strong>, <strong className="text-[#FD0061]">Master Life Coach</strong>, <strong className="text-[#FD0061]">Conflict Resolution Facilitator</strong>, and <strong className="text-[#FD0061]">Certified Level Three Reiki Practitioner</strong>.
                 </p>
@@ -141,47 +146,42 @@ const PersonalStory = () => {
                   During COVID, I dove deep into understanding <strong className="text-[#FD0061]">attachment theory</strong>, <strong className="text-[#FD0061]">emotional healing</strong>, and the role of our <strong className="text-[#FD0061]">nervous system</strong>. The more I learned about attachment styles, trauma, and the mind-body connection, the more my own wounds began to make sense.
                 </p>
               </div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-[#FD0061]/20 to-rose-500/20 rounded-2xl blur-xl"></div>
-                <img 
-                  src={shazmeenMedal} 
-                  alt="Shazmeen with medal" 
-                  className="relative w-full rounded-2xl shadow-2xl"
-                />
+              
+              <div className="mt-12 p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
+                <p className="text-gray-200 text-lg leading-relaxed italic">
+                  I realized I wasn't crazy or too emotional. I had an <strong className="text-[#FD0061]">anxious attachment style</strong> and a nervous system conditioned by years of walking on eggshells. This insight was <strong className="text-[#FD0061]">life-changing</strong>, and I was eager to help others have the same realizations.
+                </p>
               </div>
-            </div>
-            
-            <div className="bg-black/50 border border-[#FD0061]/20 rounded-2xl p-8 md:p-12 mb-20">
-              <p className="text-gray-300 text-lg leading-relaxed">
-                I realized I wasn't crazy or too emotional. I had an <strong className="text-[#FD0061]">anxious attachment style</strong> and a nervous system conditioned by years of walking on eggshells. This insight was <strong className="text-[#FD0061]">life-changing</strong>, and I was eager to help others have the same realizations. With each training I completed, I wasn't just collecting credentials, I was actively <strong className="text-[#FD0061]">transforming my pain into wisdom</strong>.
-              </p>
             </div>
           </div>
         </div>
 
-        {/* Section 7: A Second Chance at Love */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 md:order-1 relative">
-            <div className="absolute -inset-4 bg-gradient-to-l from-rose-500/20 to-[#FD0061]/20 rounded-2xl blur-xl"></div>
-            <img 
-              src={shazmeenMarathon} 
-              alt="Shazmeen marathon" 
-              className="relative w-full rounded-2xl shadow-2xl"
-            />
-          </div>
-          <div className="order-1 md:order-2">
-            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Full Circle</span>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">A Second Chance at Love</h3>
-            <div className="space-y-4 text-gray-300">
-              <p>
-                Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I <strong className="text-[#FD0061]">remarried the very man I had divorced</strong>.
-              </p>
-              <p>
-                And we did share <strong className="text-[#FD0061]">love and forgiveness</strong> in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried.
-              </p>
-              <p>
-                This was a <strong className="text-[#FD0061]">humbling lesson</strong> for me. Healing is not a one-time event. It's a <strong className="text-[#FD0061]">continuous journey</strong>, and without consistent inner work, old habits can return even in a new relationship.
-              </p>
+        {/* Section 7: A Second Chance at Love - Background Image Style */}
+        <div className="relative py-20 md:py-32 mb-24 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${shazmeenMarathon})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/95 to-black/70" />
+          
+          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
+            <div className="max-w-2xl ml-auto text-right md:text-left md:pl-8">
+              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Full Circle</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">A Second Chance at Love</h3>
+              <div className="w-24 h-1 bg-[#FD0061] mb-10 ml-auto md:ml-0"></div>
+              
+              <div className="space-y-6 text-gray-200 text-lg leading-relaxed text-left">
+                <p>
+                  Life has a way of coming full circle. After some time apart, my ex-husband and I found our way back to each other. I <strong className="text-[#FD0061]">remarried the very man I had divorced</strong>.
+                </p>
+                <p>
+                  And we did share <strong className="text-[#FD0061]">love and forgiveness</strong> in our reunion. But I soon learned that simply reconciling doesn't erase the past. I had never fully healed the anxious attachment wounds I carried.
+                </p>
+                <p>
+                  This was a <strong className="text-[#FD0061]">humbling lesson</strong> for me. Healing is not a one-time event. It's a <strong className="text-[#FD0061]">continuous journey</strong>, and without consistent inner work, old habits can return even in a new relationship.
+                </p>
+              </div>
             </div>
           </div>
         </div>
