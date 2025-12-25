@@ -209,10 +209,7 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FD0061]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
+      <section className="py-20 bg-gradient-to-b from-zinc-800 to-black relative overflow-hidden">
         <div className="container-custom relative">
           <div className="text-center max-w-3xl mx-auto">
             <ScrollReveal>
@@ -223,10 +220,10 @@ const Courses = () => {
                 If you're looking for 1:1 support, book a session and let's work together on your journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/bookings">
+                <a href="/bookings?service=1-1">
                   <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg">Book a 1:1 Session</Button>
                 </a>
-                <a href="/bookings">
+                <a href="/bookings?service=couples">
                   <Button variant="outline" className="border-2 border-white/60 bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-lg">
                     Book Couples Session
                   </Button>
