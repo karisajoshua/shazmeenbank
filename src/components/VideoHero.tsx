@@ -1,7 +1,7 @@
 /// <reference types="youtube" />
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+
 
 interface VideoHeroProps {
   onWaitlistClick?: () => void;
@@ -268,11 +268,6 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
           </Link>
         </div>
         
-        {/* Animated scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
-          <span className="text-white/70 text-sm mb-2 tracking-wider uppercase">Scroll for more</span>
-          <ChevronDown className="w-6 h-6 text-white/70" />
-        </div>
       </div>
     </section>
   );

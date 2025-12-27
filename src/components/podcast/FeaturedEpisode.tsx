@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Download, Play, Youtube } from "lucide-react";
+import { Share2, Play, Youtube } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 import PodcastPlayer from "@/components/podcast/PodcastPlayer";
 import PodcastPopupPlayer from "@/components/podcast/PodcastPopupPlayer";
 import { PodcastEpisode } from "@/types/podcast";
@@ -17,6 +18,29 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
 
   const handlePlayClick = () => {
     setIsPopupOpen(true);
+  };
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    const shareData = {
+      title: episode.title,
+      text: `Listen to "${episode.title}" on Love Better Live Better Podcast`,
+      url: shareUrl,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.log('Share cancelled');
+      }
+    } else {
+      await navigator.clipboard.writeText(shareUrl);
+      toast({
+        title: "Link copied!",
+        description: "Episode link has been copied to clipboard",
+      });
+    }
   };
 
   return (
@@ -52,12 +76,13 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                     </Button>
                   </div>
                 )}
-                <div className="mt-3 flex gap-2 justify-between">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Share2 size={16} className="mr-1" /> Share
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Download size={16} className="mr-1" /> Download
+                <div className="mt-3">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-zinc-600 text-zinc-300 hover:bg-zinc-800"
+                    onClick={handleShare}
+                  >
+                    <Share2 size={16} className="mr-2" /> Share
                   </Button>
                 </div>
               </div>

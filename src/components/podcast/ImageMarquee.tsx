@@ -1,5 +1,5 @@
 import React from "react";
-import { Youtube } from "lucide-react";
+import { Youtube, ChevronDown } from "lucide-react";
 
 // Import all available images
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
@@ -119,6 +119,12 @@ const ImageMarquee = () => {
               </svg>
               Apple Podcasts
             </a>
+          </div>
+          
+          {/* Scroll indicator */}
+          <div className="mt-8 flex flex-col items-center animate-bounce">
+            <span className="text-white/70 text-sm mb-2 tracking-wider uppercase">Scroll for more</span>
+            <ChevronDown className="w-6 h-6 text-white/70" />
           </div>
         </div>
       </div>
