@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -16,15 +17,16 @@ const heroBackground = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/obje
 const services = [
   {
     id: 1,
-    title: "Secure Self Session",
+    title: "1:1 Attachment Style Healing",
     price: "$375",
     duration: "60 minutes on Zoom",
     description: "This private 1:1 session is designed for individuals who want to feel grounded, emotionally regulated, and clear in love and in life. Whether you're navigating a relationship, healing from one, or reconnecting with yourself, this session helps you process what's heavy and return to your center with clarity and compassion.",
     fullDescription: "Through personalized guidance, we'll explore your attachment patterns, regulate your nervous system, and begin to rewire the beliefs that keep you stuck in old emotional loops. You'll leave with practical tools and a deeper understanding of what your emotions are trying to tell you—so you can respond, not react, and feel safe in your own body again.",
-    subtitle: "Book your Secure Self Session—and start coming home to yourself.",
+    subtitle: "Book your 1:1 Attachment Style Healing session—and start coming home to yourself.",
     icon: Heart,
     image: shazmeenHeart,
     accent: "from-rose-500/20 to-amber-500/20",
+    ctaText: "Book 1:1 Self Healing",
     features: [
       "Personal healing guidance",
       "Emotional regulation tools", 
@@ -43,6 +45,7 @@ const services = [
     icon: Users,
     image: shazmeenMedalTogether,
     accent: "from-purple-500/20 to-pink-500/20",
+    ctaText: "Book Couples Session",
     features: [
       "Conflict resolution and repair tools",
       "Emotional safety rebuilding techniques",
@@ -62,6 +65,7 @@ const services = [
     icon: Clock,
     image: shazmeenMedal,
     accent: "from-teal-500/20 to-emerald-500/20",
+    ctaText: "Book Resolution Method",
     features: [
       "Workbook included",
       "9 weekly 75-minute coaching sessions",
@@ -81,9 +85,24 @@ const services = [
 ];
 
 const Bookings = () => {
+  const [searchParams] = useSearchParams();
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+
+  // Handle URL service parameter
+  useEffect(() => {
+    const serviceId = searchParams.get('service');
+    if (serviceId) {
+      const serviceNum = parseInt(serviceId, 10);
+      const service = services.find(s => s.id === serviceNum);
+      if (service) {
+        setExpandedService(serviceNum);
+        setSelectedService(service);
+        setBookingModalOpen(true);
+      }
+    }
+  }, [searchParams]);
 
   const handleBookService = (service: typeof services[0]) => {
     setSelectedService(service);
@@ -227,7 +246,7 @@ const Bookings = () => {
                           className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group"
                           onClick={() => handleBookService(service)}
                         >
-                          Book {service.title}
+                          {service.ctaText || `Book ${service.title}`}
                           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </div>

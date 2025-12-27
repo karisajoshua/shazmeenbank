@@ -249,13 +249,13 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
       <div className="relative z-20 h-full flex flex-col items-center justify-end pb-32">
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-16">
           <Link
-            to="/bookings"
+            to="/one-on-one-coaching"
             className="px-10 py-5 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-xl md:text-2xl font-semibold hover:bg-white/20 hover:text-[#FD0061] transition-all duration-300 text-center"
           >
             One on One Coaching
           </Link>
           <Link
-            to="/bookings"
+            to="/couples-coaching"
             className="px-10 py-5 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl text-white text-xl md:text-2xl font-semibold hover:bg-white/20 hover:text-[#FD0061] transition-all duration-300 text-center"
           >
             Couples Coaching
