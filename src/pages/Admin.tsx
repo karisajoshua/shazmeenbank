@@ -11,6 +11,7 @@ import CoachesManagement from '@/components/admin/CoachesManagement';
 import MediaLibrary from '@/components/admin/MediaLibrary';
 import NewsletterManagement from '@/components/admin/NewsletterManagement';
 import ContactMessagesManagement from '@/components/admin/ContactMessagesManagement';
+import FreeResourcesManagement from '@/components/admin/FreeResourcesManagement';
 import { Loader2 } from 'lucide-react';
 
 const Admin = () => {
@@ -43,6 +44,7 @@ const Admin = () => {
           <Route path="media" element={<MediaLibrary />} />
           <Route path="newsletter" element={<NewsletterManagement />} />
           <Route path="messages" element={<ContactMessagesManagement />} />
+          <Route path="resources/*" element={<FreeResourcesManagement />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </div>

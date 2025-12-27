@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Button } from "@/components/ui/button";
+import { Heart } from "lucide-react";
 
 const NewWayToLove = () => {
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Background Image with Overlay - Centered */}
+      {/* Background Image with Overlay - Lowered to show face */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-[center_20%] bg-fixed"
         style={{ backgroundImage: `url(${shazmeenHeart})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/95 via-zinc-900/85 to-zinc-900/95" />
@@ -35,9 +38,21 @@ const NewWayToLove = () => {
                 <p className="mb-4">
                   Maybe you've found yourself calling non-stop when you couldn't reach them, or realizing that over time, you've isolated yourself - making the relationship your whole world.
                 </p>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold mb-8">
                   If this feels familiar, know this: nothing is "wrong" with you. Anxious attachment is not a flaw — it's a pattern that grew out of your early experiences, and it can absolutely be healed.
                 </p>
+                
+                {/* CTA Button */}
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-transparent border-2 border-[#FD0061] text-white hover:bg-[#FD0061] hover:text-white transition-all duration-300 rounded-xl px-10 py-6 font-bold text-lg shadow-[0_0_30px_rgba(253,0,97,0.3)] hover:shadow-[0_0_50px_rgba(253,0,97,0.5)]"
+                >
+                  <Link to="/bookings?service=1">
+                    <Heart className="w-5 h-5 mr-2" />
+                    Book 1:1 Self Healing Session
+                  </Link>
+                </Button>
               </div>
             </ScrollReveal>
             
