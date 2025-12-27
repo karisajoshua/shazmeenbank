@@ -7,10 +7,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar } from '@/components/ui/calendar';
 import { useToast } from '@/hooks/use-toast';
-import { format, isSameDay, startOfDay, parse } from 'date-fns';
-import { ArrowLeft, ArrowRight, Check, Calendar as CalendarIcon, Clock, User, Mail, FileText } from 'lucide-react';
+import { format, isSameDay, startOfDay } from 'date-fns';
+import { ArrowLeft, ArrowRight, Check, Calendar as CalendarIcon, Clock, User, Mail, FileText, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddToCalendar from './AddToCalendar';
+import PayPalButton from './PayPalButton';
 
 type Service = {
   id: number;
@@ -32,7 +33,7 @@ type AvailabilitySlot = {
   time_slots: string[];
 };
 
-const STEPS = ['Select Date & Time', 'Your Information', 'Confirmation'];
+const STEPS = ['Select Date & Time', 'Your Information', 'Payment', 'Confirmation'];
 
 const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
   const [step, setStep] = useState(0);
@@ -42,7 +43,13 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
   const [clientEmail, setClientEmail] = useState('');
   const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [paymentOrderId, setPaymentOrderId] = useState<string>('');
   const { toast } = useToast();
+
+  // Extract numeric price for PayPal
+  const getNumericPrice = (priceString: string): string => {
+    return priceString.replace(/[^0-9.]/g, '');
+  };
 
   // Fetch availability
   const { data: availability = [] } = useQuery({
@@ -63,7 +70,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
 
   // Create booking mutation
   const createBookingMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (paymentId: string) => {
       if (!selectedDate || !selectedTime || !clientName || !clientEmail) {
         throw new Error('Missing required fields');
       }
@@ -73,9 +80,9 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
         booking_time: selectedTime,
         client_name: clientName,
         client_email: clientEmail,
-        notes: notes || null,
+        notes: notes ? `${notes}\n\nPayPal Order ID: ${paymentId}` : `PayPal Order ID: ${paymentId}`,
         status: 'upcoming',
-        payment_status: 'pending',
+        payment_status: 'paid',
         user_id: '00000000-0000-0000-0000-000000000000', // Guest booking placeholder
       });
 
@@ -83,15 +90,16 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
     },
     onSuccess: () => {
       setIsSubmitted(true);
+      setStep(3);
       toast({
-        title: 'Booking submitted!',
-        description: 'You will receive payment instructions shortly.',
+        title: 'Booking confirmed!',
+        description: 'Your payment was successful. See you soon!',
       });
     },
     onError: (error) => {
       toast({
         title: 'Booking failed',
-        description: 'Please try again or contact support.',
+        description: 'Payment was processed but booking failed. Please contact support.',
         variant: 'destructive',
       });
       console.error('Booking error:', error);
@@ -129,11 +137,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
       });
       return;
     }
-    if (step === 1) {
-      createBookingMutation.mutate();
-    } else {
-      setStep((prev) => Math.min(prev + 1, 2));
-    }
+    setStep((prev) => Math.min(prev + 1, 3));
   };
 
   const handleBack = () => {
@@ -148,14 +152,35 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
     setClientEmail('');
     setNotes('');
     setIsSubmitted(false);
+    setPaymentOrderId('');
     onClose();
+  };
+
+  const handlePaymentSuccess = (details: { orderId: string; payerEmail: string; payerName: string }) => {
+    setPaymentOrderId(details.orderId);
+    createBookingMutation.mutate(details.orderId);
+  };
+
+  const handlePaymentError = (error: string) => {
+    toast({
+      title: 'Payment failed',
+      description: error,
+      variant: 'destructive',
+    });
+  };
+
+  const handlePaymentCancel = () => {
+    toast({
+      title: 'Payment cancelled',
+      description: 'You can try again when ready.',
+    });
   };
 
   if (!service) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-zinc-900 border-zinc-800 text-white [&>button]:text-white [&>button]:hover:text-gray-300">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-zinc-900 border-2 border-[#FD0061]/50 text-white shadow-[0_0_60px_rgba(253,0,97,0.3)] [&>button]:text-white [&>button]:hover:text-gray-300">
         <DialogHeader>
           <DialogTitle className="text-xl text-white">
             {isSubmitted ? 'Booking Confirmed!' : `Book: ${service.title}`}
@@ -168,24 +193,23 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
             animate={{ opacity: 1, scale: 1 }}
             className="py-8 text-center"
           >
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Check className="w-8 h-8 text-green-600" />
+            <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-green-500">
+              <Check className="w-8 h-8 text-green-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
-            <p className="text-muted-foreground mb-4">
-              Your booking request for <strong>{service.title}</strong> on{' '}
-              <strong>{selectedDate && format(selectedDate, 'MMMM d, yyyy')}</strong> at{' '}
-              <strong>{selectedTime}</strong> has been submitted.
+            <h3 className="text-xl font-semibold mb-2 text-white">Thank You!</h3>
+            <p className="text-gray-300 mb-4">
+              Your booking for <strong className="text-white">{service.title}</strong> on{' '}
+              <strong className="text-white">{selectedDate && format(selectedDate, 'MMMM d, yyyy')}</strong> at{' '}
+              <strong className="text-white">{selectedTime}</strong> has been confirmed.
             </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              Payment instructions will be sent to <strong>{clientEmail}</strong>.
-              Once payment is confirmed, your appointment will be approved.
+            <p className="text-sm text-gray-400 mb-6">
+              A confirmation email has been sent to <strong className="text-white">{clientEmail}</strong>.
             </p>
             
             {/* Google Calendar / ICS Integration */}
             {selectedDate && selectedTime && (
               <div className="mb-6">
-                <p className="text-sm font-medium mb-3">Add to your calendar:</p>
+                <p className="text-sm font-medium mb-3 text-white">Add to your calendar:</p>
                 <AddToCalendar
                   title={`Coaching Session: ${service.title}`}
                   startDate={(() => {
@@ -197,7 +221,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                   endDate={(() => {
                     const [hours, minutes] = selectedTime.split(':').map(Number);
                     const end = new Date(selectedDate);
-                    end.setHours((hours || 0) + 1, minutes || 0, 0, 0); // Default 1 hour session
+                    end.setHours((hours || 0) + 1, minutes || 0, 0, 0);
                     return end;
                   })()}
                   description={`Your coaching session with Shazmeen Bank.\n\nNotes: ${notes || 'None'}`}
@@ -206,7 +230,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
               </div>
             )}
             
-            <Button onClick={handleClose} className="btn-primary">
+            <Button onClick={handleClose} className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white">
               Close
             </Button>
           </motion.div>
@@ -219,16 +243,16 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                       index <= step
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted text-muted-foreground'
+                        ? 'bg-[#FD0061] text-white'
+                        : 'bg-zinc-700 text-gray-400'
                     }`}
                   >
                     {index + 1}
                   </div>
                   {index < STEPS.length - 1 && (
                     <div
-                      className={`w-12 h-0.5 mx-1 ${
-                        index < step ? 'bg-primary' : 'bg-muted'
+                      className={`w-8 h-0.5 mx-1 ${
+                        index < step ? 'bg-[#FD0061]' : 'bg-zinc-700'
                       }`}
                     />
                   )}
@@ -245,25 +269,25 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                  <div className="bg-muted/50 rounded-lg p-4 flex items-center gap-4">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <CalendarIcon className="w-5 h-5 text-primary" />
+                  <div className="bg-zinc-800 rounded-lg p-4 flex items-center gap-4 border border-zinc-700">
+                    <div className="p-2 bg-[#FD0061]/20 rounded-lg">
+                      <CalendarIcon className="w-5 h-5 text-[#FD0061]" />
                     </div>
                     <div>
-                      <p className="font-medium">{service.title}</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-medium text-white">{service.title}</p>
+                      <p className="text-sm text-gray-400">
                         {service.duration} • {service.price}
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-medium mb-3 flex items-center gap-2">
+                    <h4 className="font-medium mb-3 flex items-center gap-2 text-white">
                       <CalendarIcon className="w-4 h-4" />
                       Select a Date
                     </h4>
                     {availability.length === 0 ? (
-                      <div className="text-center py-8 text-muted-foreground bg-muted/30 rounded-lg">
+                      <div className="text-center py-8 text-gray-400 bg-zinc-800 rounded-lg border border-zinc-700">
                         <p>No available dates at the moment.</p>
                         <p className="text-sm mt-1">Please check back later or contact us directly.</p>
                       </div>
@@ -280,18 +304,18 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                         }}
                         modifiersStyles={{
                           available: {
-                            backgroundColor: 'hsl(var(--primary) / 0.1)',
+                            backgroundColor: 'rgba(253, 0, 97, 0.1)',
                             fontWeight: 'bold',
                           },
                         }}
-                        className="rounded-md border mx-auto"
+                        className="rounded-md border border-zinc-700 mx-auto bg-zinc-800"
                       />
                     )}
                   </div>
 
                   {selectedDate && timeSlots.length > 0 && (
                     <div>
-                      <h4 className="font-medium mb-3 flex items-center gap-2">
+                      <h4 className="font-medium mb-3 flex items-center gap-2 text-white">
                         <Clock className="w-4 h-4" />
                         Select a Time
                       </h4>
@@ -300,7 +324,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                           <Button
                             key={time}
                             variant={selectedTime === time ? 'default' : 'outline'}
-                            className="w-full"
+                            className={`w-full ${selectedTime === time ? 'bg-[#FD0061] hover:bg-[#FD0061]/90' : 'border-zinc-600 text-white hover:bg-zinc-800'}`}
                             onClick={() => setSelectedTime(time)}
                           >
                             {time}
@@ -320,18 +344,18 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-4"
                 >
-                  <div className="bg-muted/50 rounded-lg p-4">
-                    <p className="text-sm text-muted-foreground">
-                      Booking for: <strong>{service.title}</strong>
+                  <div className="bg-zinc-800 rounded-lg p-4 border border-zinc-700">
+                    <p className="text-sm text-gray-400">
+                      Booking for: <strong className="text-white">{service.title}</strong>
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      Date: <strong>{selectedDate && format(selectedDate, 'MMMM d, yyyy')}</strong> at{' '}
-                      <strong>{selectedTime}</strong>
+                    <p className="text-sm text-gray-400">
+                      Date: <strong className="text-white">{selectedDate && format(selectedDate, 'MMMM d, yyyy')}</strong> at{' '}
+                      <strong className="text-white">{selectedTime}</strong>
                     </p>
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2 text-white">
                       <User className="w-4 h-4" />
                       Your Name
                     </label>
@@ -339,11 +363,12 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                       value={clientName}
                       onChange={(e) => setClientName(e.target.value)}
                       placeholder="Enter your full name"
+                      className="bg-zinc-800 border-zinc-700 text-white placeholder:text-gray-500"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2 text-white">
                       <Mail className="w-4 h-4" />
                       Email Address
                     </label>
@@ -352,11 +377,12 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                       value={clientEmail}
                       onChange={(e) => setClientEmail(e.target.value)}
                       placeholder="Enter your email"
+                      className="bg-zinc-800 border-zinc-700 text-white placeholder:text-gray-500"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2 text-white">
                       <FileText className="w-4 h-4" />
                       Notes (Optional)
                     </label>
@@ -365,6 +391,55 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                       onChange={(e) => setNotes(e.target.value)}
                       placeholder="Any specific topics you'd like to discuss?"
                       rows={3}
+                      className="bg-zinc-800 border-zinc-700 text-white placeholder:text-gray-500"
+                    />
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 2 && (
+                <motion.div
+                  key="step-2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-6"
+                >
+                  <div className="bg-zinc-800 rounded-lg p-4 border border-zinc-700">
+                    <div className="flex items-center gap-3 mb-3">
+                      <CreditCard className="w-5 h-5 text-[#FD0061]" />
+                      <h4 className="font-medium text-white">Order Summary</h4>
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between text-gray-400">
+                        <span>Service:</span>
+                        <span className="text-white">{service.title}</span>
+                      </div>
+                      <div className="flex justify-between text-gray-400">
+                        <span>Date:</span>
+                        <span className="text-white">{selectedDate && format(selectedDate, 'MMMM d, yyyy')}</span>
+                      </div>
+                      <div className="flex justify-between text-gray-400">
+                        <span>Time:</span>
+                        <span className="text-white">{selectedTime}</span>
+                      </div>
+                      <div className="border-t border-zinc-700 pt-2 mt-2">
+                        <div className="flex justify-between font-semibold">
+                          <span className="text-white">Total:</span>
+                          <span className="text-[#FD0061] text-lg">{service.price}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-zinc-800 rounded-lg p-4 border border-zinc-700">
+                    <h4 className="font-medium text-white mb-4 text-center">Complete Your Payment</h4>
+                    <PayPalButton
+                      amount={getNumericPrice(service.price)}
+                      description={`${service.title} - ${service.duration}`}
+                      onSuccess={handlePaymentSuccess}
+                      onError={handlePaymentError}
+                      onCancel={handlePaymentCancel}
                     />
                   </div>
                 </motion.div>
@@ -372,27 +447,38 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
             </AnimatePresence>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-6 pt-4 border-t">
-              <Button
-                variant="outline"
-                onClick={step === 0 ? handleClose : handleBack}
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                {step === 0 ? 'Cancel' : 'Back'}
-              </Button>
-              <Button
-                onClick={handleNext}
-                disabled={createBookingMutation.isPending}
-                className="btn-primary"
-              >
-                {createBookingMutation.isPending
-                  ? 'Submitting...'
-                  : step === 1
-                  ? 'Submit Booking'
-                  : 'Continue'}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+            {step < 2 && (
+              <div className="flex justify-between mt-6 pt-4 border-t border-zinc-700">
+                <Button
+                  variant="outline"
+                  onClick={step === 0 ? handleClose : handleBack}
+                  className="border-zinc-600 text-white hover:bg-zinc-800"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  {step === 0 ? 'Cancel' : 'Back'}
+                </Button>
+                <Button
+                  onClick={handleNext}
+                  className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white"
+                >
+                  Continue
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            )}
+
+            {step === 2 && (
+              <div className="flex justify-start mt-6 pt-4 border-t border-zinc-700">
+                <Button
+                  variant="outline"
+                  onClick={handleBack}
+                  className="border-zinc-600 text-white hover:bg-zinc-800"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back
+                </Button>
+              </div>
+            )}
           </>
         )}
       </DialogContent>
