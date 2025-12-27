@@ -13,7 +13,8 @@ import {
   TrendingUp,
   Image as ImageIcon,
   Mail,
-  MessageSquare
+  MessageSquare,
+  Download
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -28,6 +29,7 @@ const AdminDashboard = () => {
     subscribers: 0,
     messages: 0,
     unreadMessages: 0,
+    freeResources: 0,
   });
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchStats = async () => {
-    const [blogCount, podcastCount, courseCount, bookingCount, waitlistCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount] = 
+    const [blogCount, podcastCount, courseCount, bookingCount, waitlistCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount, resourceCount] = 
       await Promise.all([
         supabase.from('blog_posts').select('*', { count: 'exact', head: true }),
         supabase.from('podcast_episodes').select('*', { count: 'exact', head: true }),
@@ -47,6 +49,7 @@ const AdminDashboard = () => {
         supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
         supabase.from('contact_messages').select('*', { count: 'exact', head: true }),
         supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false),
+        supabase.from('free_resources').select('*', { count: 'exact', head: true }),
       ]);
 
     setStats({
@@ -60,6 +63,7 @@ const AdminDashboard = () => {
       subscribers: subscriberCount.count || 0,
       messages: messageCount.count || 0,
       unreadMessages: unreadCount.count || 0,
+      freeResources: resourceCount.count || 0,
     });
   };
 
@@ -68,6 +72,7 @@ const AdminDashboard = () => {
     { title: 'Add Podcast', href: '/admin/podcasts/new', icon: Mic2, color: 'text-purple-600' },
     { title: 'Create Course', href: '/admin/courses/new', icon: GraduationCap, color: 'text-green-600' },
     { title: 'Add Service', href: '/admin/services/new', icon: Heart, color: 'text-pink-600' },
+    { title: 'Add Resource', href: '/admin/resources/new', icon: Download, color: 'text-rose-600' },
     { title: 'Upload Media', href: '/admin/media', icon: ImageIcon, color: 'text-cyan-600' },
   ];
 
@@ -144,6 +149,14 @@ const AdminDashboard = () => {
       description: `${stats.unreadMessages} unread messages`,
       color: 'text-red-600 bg-red-50',
       badge: stats.unreadMessages > 0 ? stats.unreadMessages : null
+    },
+    { 
+      title: 'Free Resources', 
+      count: stats.freeResources, 
+      href: '/admin/resources', 
+      icon: Download,
+      description: 'Manage downloadable resources',
+      color: 'text-rose-600 bg-rose-50'
     },
     { 
       title: 'Media Library', 

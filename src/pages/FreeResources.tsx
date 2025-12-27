@@ -1,31 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, BookOpen, Heart, Brain } from "lucide-react";
+import { Download, BookOpen, Heart, Brain, FileText, Star, Lightbulb, Target, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+
+const iconMap: Record<string, React.ElementType> = {
+  Heart,
+  BookOpen,
+  Brain,
+  Download,
+  FileText,
+  Star,
+  Lightbulb,
+  Target,
+};
+
+interface Resource {
+  id: string;
+  title: string;
+  description: string | null;
+  icon_name: string | null;
+  file_url: string | null;
+}
 
 const FreeResources = () => {
-  const resources = [
+  const [resources, setResources] = useState<Resource[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchResources();
+  }, []);
+
+  const fetchResources = async () => {
+    const { data, error } = await supabase
+      .from("free_resources")
+      .select("*")
+      .eq("status", "published")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching resources:", error);
+      setIsLoading(false);
+      return;
+    }
+
+    setResources(data || []);
+    setIsLoading(false);
+  };
+
+  const handleDownload = async (resource: Resource) => {
+    if (!resource.file_url) {
+      toast.error("No file available for download");
+      return;
+    }
+
+    // Increment download count
+    await supabase
+      .from("free_resources")
+      .update({ download_count: (resource as any).download_count + 1 })
+      .eq("id", resource.id);
+
+    // Open file in new tab
+    window.open(resource.file_url, "_blank");
+  };
+
+  // Fallback resources if none in database
+  const fallbackResources = [
     {
+      id: "1",
       title: "Attachment Style Assessment",
       description: "Discover your attachment style and learn how it impacts your relationships. A comprehensive guide to understanding your patterns.",
-      icon: Heart,
-      downloadUrl: "#"
-    }, {
+      icon_name: "Heart",
+      file_url: "#"
+    },
+    {
+      id: "2",
       title: "Self-Worth Reflection Journal",
       description: "30 powerful prompts to help you reconnect with your inner voice and build unshakeable self-confidence.",
-      icon: BookOpen,
-      downloadUrl: "#"
-    }, {
+      icon_name: "BookOpen",
+      file_url: "#"
+    },
+    {
+      id: "3",
       title: "Boundary Setting Toolkit",
       description: "Scripts, strategies, and exercises to help you set healthy boundaries in all areas of your life.",
-      icon: Brain,
-      downloadUrl: "#"
+      icon_name: "Brain",
+      file_url: "#"
     }
   ];
+
+  const displayResources = resources.length > 0 ? resources : fallbackResources;
 
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-shazmeen-dark to-[#1a2d43] text-white py-20">
+      <section className="bg-[#18181b] text-white py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">
@@ -41,30 +110,39 @@ const FreeResources = () => {
       {/* Resources Section */}
       <section className="section-padding bg-black">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {resources.map((resource, index) => {
-              const IconComponent = resource.icon;
-              return (
-                <div key={index} className="bg-zinc-900 rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300 border border-zinc-800">
-                  <div className="mb-6">
-                    <div className="w-16 h-16 bg-shazmeen-red/20 rounded-full flex items-center justify-center mb-4">
-                      <IconComponent className="w-8 h-8 text-shazmeen-red" />
+          {isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-white" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayResources.map((resource) => {
+                const IconComponent = iconMap[resource.icon_name || "Heart"] || Heart;
+                return (
+                  <div key={resource.id} className="bg-zinc-900 rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300 border border-zinc-800">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-shazmeen-red/20 rounded-full flex items-center justify-center mb-4">
+                        <IconComponent className="w-8 h-8 text-shazmeen-red" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-4">
+                        {resource.title}
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed mb-6">
+                        {resource.description}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      {resource.title}
-                    </h3>
-                    <p className="text-gray-400 leading-relaxed mb-6">
-                      {resource.description}
-                    </p>
+                    <Button 
+                      onClick={() => handleDownload(resource)}
+                      className="w-full bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-6 py-3 font-bold"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Download Free
+                    </Button>
                   </div>
-                  <Button className="w-full bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-6 py-3 font-bold">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download Free
-                  </Button>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

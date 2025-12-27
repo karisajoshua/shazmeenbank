@@ -186,77 +186,88 @@ const PersonalStory = () => {
           </div>
         </div>
 
-        {/* Section 8: No Judgment - Feature Cards */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">My Approach</span>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">No Judgment: Holding Space for Every Story</h3>
-          </div>
+        {/* Section 8: My Approach - Background Image Style */}
+        <div className="relative py-20 md:py-32 mb-16 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${shazmeenHeart})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/70" />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
-              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">💜</span>
+          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
+            <div className="max-w-2xl">
+              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">My Approach</span>
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 font-serif">No Judgment: Holding Space for Every Story</h3>
+              <div className="w-24 h-1 bg-[#FD0061] mb-10"></div>
+              
+              <div className="space-y-6">
+                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-white mb-2">💜 Equal Compassion</h4>
+                  <p className="text-gray-200">I hold space just as much for the person who cheated as I do for the one who was betrayed. Everyone involved is hurting.</p>
+                </div>
+                
+                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-white mb-2">🌱 Safe Space</h4>
+                  <p className="text-gray-200">Nothing is too ugly or unforgivable to talk about. I provide a safe space where you can truly be yourself.</p>
+                </div>
+                
+                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-white mb-2">✨ Healing for All</h4>
+                  <p className="text-gray-200">My practice is built on the belief that healing is for everyone, and I am here to facilitate it without judgment.</p>
+                </div>
               </div>
-              <h4 className="text-xl font-bold text-white mb-4">Equal Compassion</h4>
-              <p className="text-gray-400">I hold space just as much for the person who cheated as I do for the one who was betrayed. Everyone involved is hurting.</p>
-            </div>
-            
-            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
-              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">🌱</span>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-4">Safe Space</h4>
-              <p className="text-gray-400">Nothing is too ugly or unforgivable to talk about. I provide a safe space where you can truly be yourself.</p>
-            </div>
-            
-            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 rounded-2xl p-8 hover:border-[#FD0061]/50 transition-all duration-300">
-              <div className="w-14 h-14 bg-[#FD0061]/10 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-3xl">✨</span>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-4">Healing for All</h4>
-              <p className="text-gray-400">My practice is built on the belief that healing is for everyone, and I am here to facilitate it without judgment.</p>
             </div>
           </div>
         </div>
 
-        {/* Section 9: My Coaching Philosophy */}
-        <div className="bg-gradient-to-r from-[#FD0061]/10 via-black to-rose-500/10 rounded-3xl p-8 md:p-16 mb-24 border border-[#FD0061]/20">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+        {/* Section 9: My Coaching Philosophy - Background Image Style */}
+        <div className="relative py-20 md:py-32 mb-24 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${shazmeenMarathon})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/95 to-black/70" />
+          
+          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
+            <div className="max-w-3xl ml-auto">
               <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Philosophy</span>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">Carrying the Torch Together</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">❤️</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">Carrying the Torch Together</h3>
+              <div className="w-24 h-1 bg-[#FD0061] mb-10"></div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white text-xl">❤️</span>
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Heart & Body Alignment</h4>
+                  <p className="text-gray-300 text-sm">I use body-based techniques like breath and somatic awareness to help release trauma.</p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">Heart & Body Alignment</h4>
-                <p className="text-gray-400 text-sm">I use body-based techniques like breath and somatic awareness to help release trauma.</p>
+                
+                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white text-xl">🔥</span>
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Radical Responsibility</h4>
+                  <p className="text-gray-300 text-sm">Blame keeps us stuck, personal responsibility sets us free. Reclaim authorship of your life.</p>
+                </div>
+                
+                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white text-xl">🎯</span>
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Personalized Path</h4>
+                  <p className="text-gray-300 text-sm">There is no one-size-fits-all. Your journey is uniquely yours, and I honor that.</p>
+                </div>
               </div>
               
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">🔥</span>
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">Radical Responsibility</h4>
-                <p className="text-gray-400 text-sm">Blame keeps us stuck, personal responsibility sets us free. Reclaim authorship of your life.</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">🎯</span>
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">Personalized Path</h4>
-                <p className="text-gray-400 text-sm">There is no one-size-fits-all. Your journey is uniquely yours, and I honor that.</p>
+              <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
+                <p className="text-gray-200 text-lg italic">
+                  "I don't see myself as a savior. I see myself as a partner in your growth. I'll hand you the torch so you can light your own way forward."
+                </p>
               </div>
             </div>
-            
-            <p className="text-gray-300 text-center text-lg italic">
-              "I don't see myself as a savior. I see myself as a partner in your growth. I'll hand you the torch so you can light your own way forward."
-            </p>
           </div>
         </div>
 
