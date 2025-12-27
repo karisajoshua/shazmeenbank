@@ -324,7 +324,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                           <Button
                             key={time}
                             variant={selectedTime === time ? 'default' : 'outline'}
-                            className={`w-full ${selectedTime === time ? 'bg-[#FD0061] hover:bg-[#FD0061]/90' : 'border-zinc-600 text-white hover:bg-zinc-800'}`}
+                            className={`w-full ${selectedTime === time ? 'bg-[#FD0061] hover:bg-[#FD0061]/90' : 'border-zinc-500 bg-zinc-800 text-white hover:bg-zinc-700'}`}
                             onClick={() => setSelectedTime(time)}
                           >
                             {time}
@@ -452,7 +452,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                 <Button
                   variant="outline"
                   onClick={step === 0 ? handleClose : handleBack}
-                  className="border-zinc-600 text-white hover:bg-zinc-800"
+                  className="border-zinc-500 bg-zinc-800 text-white hover:bg-zinc-700"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   {step === 0 ? 'Cancel' : 'Back'}
@@ -472,7 +472,7 @@ const BookingModal = ({ isOpen, onClose, service }: BookingModalProps) => {
                 <Button
                   variant="outline"
                   onClick={handleBack}
-                  className="border-zinc-600 text-white hover:bg-zinc-800"
+                  className="border-zinc-500 bg-zinc-800 text-white hover:bg-zinc-700"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back
