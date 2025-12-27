@@ -79,7 +79,7 @@ const FeaturedEpisode = ({ episode, isPlaying, onTogglePlay }: FeaturedEpisodePr
                 <div className="mt-3">
                   <Button 
                     variant="outline" 
-                    className="w-full border-zinc-600 text-zinc-300 hover:bg-zinc-800"
+                    className="w-full border-zinc-500 bg-zinc-800 text-white hover:bg-zinc-700"
                     onClick={handleShare}
                   >
                     <Share2 size={16} className="mr-2" /> Share
