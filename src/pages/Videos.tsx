@@ -5,129 +5,107 @@ import { motion } from "framer-motion";
 import VideoMarqueeHero from "@/components/videos/VideoMarqueeHero";
 import VideoCategory from "@/components/videos/VideoCategory";
 
+// Helper function to extract YouTube video ID from URL
+const getVideoId = (url: string): string => {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/);
+  return match ? match[1] : "";
+};
+
+// All videos from the user
+const ALL_VIDEOS = [
+  { id: "F2mP7WR_OE8", title: "Being single | Why are people scared of being single?" },
+  { id: "QTd2t69EmJk", title: "Grief management" },
+  { id: "6yT4JiUsqBM", title: "Work: Survive or Thrive" },
+  { id: "MxPBIvHKqn0", title: "The \"Solo-ship\"" },
+  { id: "utgshwR_648", title: "Day Break: Unions of convenience" },
+  { id: "N3jalDLnsZU", title: "Day Break: Who is raising us?" },
+  { id: "jiRr_6S1TFE", title: "Married with 2 kids, Husband cheating and side chick is pregnant, Should I leave" },
+  { id: "GzcxHbcF7GA", title: "Dating for successful women in power | How to balance your power in a relationship" },
+  { id: "ZqBqvye3H_A", title: "A Second Chance At First Love: The Couples Who Married, Divorced Then Remarried" },
+  { id: "R7AglaXRgWA", title: "I divorced my husband and married him again - Shazmeen Bank" },
+  { id: "cIVsH7_UL9c", title: "Why is the husband's mother always the problem!! - Dealing with Mother-in-Laws" },
+  { id: "b1HTpgTWPxs", title: "Signs that you are dating controlling partner | Many see the signs when its too late" },
+  { id: "uTWPhBAijVw", title: "After the honeymoon period, men move to logic | Sometimes men tend to relax" },
+  { id: "at3bHuNlBqI", title: "Young and pregnant at 18, My boyfriend was 11 years older, What Next? Shazmeen Bank story" },
+  { id: "eCiX5xoVjsE", title: "People who jump from relationship to another | They can't be alone - Attachment lovers" },
+  { id: "TNfuKMiGXS8", title: "Marry within my religion? - Dangers of marrying outside your religion" },
+  { id: "MrJ8XN94oz8", title: "People who avoid dating because they have been hurt before" },
+  { id: "9uhTTc9GTr8", title: "This is why Single ladies prefer dating married men" },
+  { id: "3Re8Vo-i1fA", title: "Finding fulfillment before you are 35 | Why many women live to please the society" },
+  { id: "NrRXPRmGpbw", title: "Are you giving too much in your relationship?" },
+  { id: "Y3Lyo7qLx1o", title: "The 5 stages in a dating relationship" },
+  { id: "E3LUlV2QHNQ", title: "Types of cheating" },
+  { id: "ZPcSLA24B6Y", title: "Setting Your Goals Right With Shazmeen Bank" },
+  { id: "hO5xv71M-BY", title: "Cheating In Relationships? Who Do People Cheat?" },
+];
+
 // Organized by category
 const VIDEO_CATEGORIES = [
   {
-    title: "Attachment Styles",
+    title: "Relationships & Dating",
     icon: Heart,
     color: "from-pink-500 to-rose-500",
     layout: "featured" as const,
     videos: [
-      { id: "7OTb61zRoCU", title: "Why You Love the Way You Do - The 4 Attachment Styles Explained" },
-      { id: "dC92wYuBm-A", title: "The Anxious Attachment Cycle: Why You Love Hard and Hurt More" },
-      { id: "XWV0U5N5d7o", title: "The Anxious-Avoidant Trap: The More We Chase Them, The More They Pull Away" },
-      { id: "400fMIvg46g", title: "Why You Give Everything and Still Don't Feel Loved: Anxiously Attached" },
-      { id: "Sx5T9PUpMKk", title: "Anxious Attachment: Why You Love So Hard and Still Feel Unseen" },
-      { id: "Dl4T7RP-Hxk", title: "Anxious Attachment: Why You Panic, Feel Unloved & Overthink" },
-      { id: "yvJPPBibRyM", title: "Anxious Attachment: The Traits, Triggers, and Why You Never Feel Secure" },
-      { id: "U-otUK5_iXM", title: "Why Dismissive Avoidants Shut Down, Pull Away and Struggle to Love" },
-      { id: "9Lmt5ymp1gw", title: "Why Dismissive Avoidants Shut Down, Pull Away and Struggle to Love" },
-      { id: "vvakFsWAgwM", title: "Fearful Avoidant Attachment: Traits, Triggers & Relationship Patterns" },
-      { id: "YHIY6qJrx6w", title: "Fearful Avoidant Attachment: Traits, Triggers & Relationship Patterns" },
-      { id: "kjxfebvvePI", title: "Why You're Drawn to Emotionally Unavailable People" },
-      { id: "EhzPLbSqI3k", title: "Why Does My Partner Always Pull Away in Our Relationship?" },
-      { id: "GQVSIqYtXAI", title: "The Pain of Loving Someone Emotionally Unavailable" },
-      { id: "CwwrdttCDtY", title: "When Your Avoidant Partner's Capacity for Love Isn't Enough for Your Heart" },
+      { id: "GzcxHbcF7GA", title: "Dating for successful women in power | How to balance your power in a relationship" },
+      { id: "ZqBqvye3H_A", title: "A Second Chance At First Love: The Couples Who Married, Divorced Then Remarried" },
+      { id: "R7AglaXRgWA", title: "I divorced my husband and married him again - Shazmeen Bank" },
+      { id: "Y3Lyo7qLx1o", title: "The 5 stages in a dating relationship" },
+      { id: "uTWPhBAijVw", title: "After the honeymoon period, men move to logic | Sometimes men tend to relax" },
+      { id: "NrRXPRmGpbw", title: "Are you giving too much in your relationship?" },
     ]
   },
   {
-    title: "Trauma Bonds & Toxic Relationships",
+    title: "Infidelity & Trust",
     icon: Brain,
     color: "from-purple-500 to-indigo-500",
     layout: "carousel" as const,
     videos: [
-      { id: "hFHDGqV-Jjc", title: "Hooked On Hurt: The Truth About Trauma Bonds & Toxic Love" },
-      { id: "pSgvZwtZ99o", title: "Why Walking Away Feels Impossible: The Hidden Shame Of Toxic Love" },
-      { id: "J_bF1Gdl9Z8", title: "Why You Can't Leave a Toxic Relationship (Even When You Want To)" },
-      { id: "2S5xIbknnw0", title: "Time To Break the Shame That Keeps You Inside a Trauma Bond" },
-      { id: "y0Q3ktvfTME", title: "The Shame That Keeps You Hoping They Will Change: Inside a Trauma Bond" },
-      { id: "BRFLQ49VB0I", title: "Why Leaving a Trauma-Bonded Relationship Hurts So Deeply" },
-      { id: "mMxPrGCIY_4", title: "Why Walking Away from a Trauma-Bonded Relationship Feels Impossible" },
-      { id: "IaBG67Ru2ZI", title: "How to deal with a toxic partner" },
-      { id: "NOZCCpZkgUQ", title: "Stonewalling in Relationships: When Silence Becomes Emotional Abuse" },
+      { id: "jiRr_6S1TFE", title: "Married with 2 kids, Husband cheating and side chick is pregnant, Should I leave" },
+      { id: "E3LUlV2QHNQ", title: "Types of cheating" },
+      { id: "hO5xv71M-BY", title: "Cheating In Relationships? Who Do People Cheat?" },
+      { id: "b1HTpgTWPxs", title: "Signs that you are dating controlling partner | Many see the signs when its too late" },
     ]
   },
   {
-    title: "Infidelity & Betrayal",
-    icon: MessageCircle,
-    color: "from-red-500 to-orange-500",
-    layout: "bento" as const,
-    videos: [
-      { id: "sIPhSjZLSFE", title: "The Moment That Changed Everything: Love, Trust & Secrets" },
-      { id: "fhLGk6U7LM8", title: "Betrayed But Not Broken: Infidelity, Anxious Attachment & the Courage to Walk Away" },
-      { id: "kfExG-vIFGU", title: "Betrayed But Not Broken: Q&A: Infidelity, Anxious Attachment & the Courage to Walk Away" },
-      { id: "P-gZsUzcLx4", title: "What Your Partner Needs After You've Cheated and How to Show Up" },
-      { id: "dUJD9VvwkDs", title: "What Your Partner Needs After You've Cheated and How to Show Up" },
-      { id: "64Wo0t-4lEg", title: "Betrayal & Infidelity Q&A: The Pain, The Healing and The Hard Truths" },
-      { id: "dEKLVr_mpRE", title: "Betrayal & Infidelity Q&A: Why It Hurts So Much and How to Move Forward" },
-      { id: "SOxYKlWskSc", title: "4 stages of an affair" },
-      { id: "FER4YihYtzM", title: "Surviving an affair together" },
-    ]
-  },
-  {
-    title: "Relationship Stages & Growth",
+    title: "Family & Marriage",
     icon: Users,
     color: "from-green-500 to-teal-500",
-    layout: "masonry" as const,
+    layout: "bento" as const,
     videos: [
-      { id: "vaOOXdCWMUU", title: "The 5 Relationship Stages: Why It Feels So Different Now" },
-      { id: "u7Tr3K2ylg0", title: "Attachment Style & Navigating the 5 Relationship Stages" },
-      { id: "tFDMBv4fAH8", title: "5 stages of a relationship | How to navigate them" },
-      { id: "i5LAj8zyVpQ", title: "Do this to make your relationship work" },
-      { id: "cNZIbl-tiNE", title: "Reasons you need to leave or stay" },
-      { id: "Cf4l5t80RTk", title: "How do you tell the right one" },
-      { id: "L8VIUadRKTc", title: "How to identify red flags in a relationship" },
-      { id: "AdXFrQSUYJg", title: "Is It Time to Walk Away or Keep Fighting for This Love?" },
-      { id: "bstdFTZHuco", title: "How to break the anxious-avoidant cycle: Making love work when you trigger each other" },
-      { id: "oaauFVCN4sg", title: "The Push-Pull Trap: How to Heal Anxious & Avoidant Relationships That Trigger You" },
-      { id: "AZgaRjVJICs", title: "How Avoidant Partners Can Love Someone with Anxious Attachment" },
+      { id: "cIVsH7_UL9c", title: "Why is the husband's mother always the problem!! - Dealing with Mother-in-Laws" },
+      { id: "TNfuKMiGXS8", title: "Marry within my religion? - Dangers of marrying outside your religion" },
+      { id: "N3jalDLnsZU", title: "Day Break: Who is raising us?" },
+      { id: "utgshwR_648", title: "Day Break: Unions of convenience" },
     ]
   },
   {
-    title: "Healing & Personal Growth",
+    title: "Being Single & Self-Discovery",
     icon: Sparkles,
     color: "from-amber-500 to-yellow-500",
-    layout: "carousel" as const,
+    layout: "masonry" as const,
     videos: [
-      { id: "M0L-kkP2vas", title: "Letting Go of the Past: Why You Can't Heal Until You Do" },
-      { id: "ZPFf-bCI3Fo", title: "Turn Your Pain into Power" },
-      { id: "00qD_sY3JiU", title: "How To Turn Your Pain into Purpose" },
-      { id: "RHO9n-baFDI", title: "How to handle breakups" },
-      { id: "9mzB7V9128Q", title: "Why This Heartbreak Feels Different: You Broke Long Before It Ended" },
-      { id: "eNPQdAU2STY", title: "Why This Heartbreak Feels Different: You Broke Long Before It Ended" },
-      { id: "Kc7khQ2ebE8", title: "Dealing with grief. Ways of coping with grief and loss" },
-      { id: "reFH02iMzNY", title: "What to do if your own insecurity is ruining your relationships" },
-      { id: "7wB7SAM72jM", title: "Forgiveness | Guided mediation" },
-      { id: "cNdhkirRFbY", title: "Silencing Fear and Reclaiming Confidence Through Hypnosis" },
-      { id: "q7BKRzpUCnM", title: "Building Unbreakable Self-Confidence | Bonus Guided Hypnosis" },
-      { id: "WbpYTq8ixN0", title: "Master your emotions" },
-      { id: "p087XksmXA8", title: "Anger management tips to prevent relationship damage" },
+      { id: "F2mP7WR_OE8", title: "Being single | Why are people scared of being single?" },
+      { id: "MxPBIvHKqn0", title: "The \"Solo-ship\"" },
+      { id: "MrJ8XN94oz8", title: "People who avoid dating because they have been hurt before" },
+      { id: "eCiX5xoVjsE", title: "People who jump from relationship to another | They can't be alone - Attachment lovers" },
+      { id: "9uhTTc9GTr8", title: "This is why Single ladies prefer dating married men" },
     ]
   },
   {
-    title: "Q&A & Life Advice",
+    title: "Life & Personal Growth",
     icon: MessageCircle,
     color: "from-cyan-500 to-blue-500",
     layout: "grid" as const,
     videos: [
-      { id: "l70YwmIbHow", title: "You Asked: Breakups, Hard Times & Finding Yourself Again (Q&A)" },
-      { id: "_a_f9NJ8Ydc", title: "Q&A With Shazmeen Bank: On Breakups, Healing & Finding Yourself" },
-      { id: "IljUY-Pcy5A", title: "How to deal with teenage pregnancy" },
-      { id: "6-qZTFngXn4", title: "Am I weak as man if I show vulnerability" },
-      { id: "_VkNVNBwNT0", title: "Am a guy and I like a woman that is older than, ask Shazmeen" },
-      { id: "SmBaEDKwI98", title: "How do I help a friend who has lost their partner recently" },
-      { id: "3caEIrSMMdk", title: "My boyfriend slapped me. Should I leave or stay?" },
-      { id: "x2nD_ZFGHlk", title: "Benefits of journaling | How to deal with a problem using journal" },
-      { id: "oTW7A4PMO-w", title: "How can one stop having hope that we can still win them back" },
-      { id: "-YScpMaPgbY", title: "I want to quit my job but I don't have an emergency fund. What do I do?" },
-      { id: "k1KCTfYYiVs", title: "How to tell if he is after the money | He only loves me because of my money" },
-      { id: "NRZLGCT-f9s", title: "Making life decisions that matter" },
+      { id: "QTd2t69EmJk", title: "Grief management" },
+      { id: "6yT4JiUsqBM", title: "Work: Survive or Thrive" },
+      { id: "at3bHuNlBqI", title: "Young and pregnant at 18, My boyfriend was 11 years older, What Next? Shazmeen Bank story" },
+      { id: "3Re8Vo-i1fA", title: "Finding fulfillment before you are 35 | Why many women live to please the society" },
+      { id: "ZPcSLA24B6Y", title: "Setting Your Goals Right With Shazmeen Bank" },
     ]
   },
 ];
-
-// Flatten all videos for the marquee
-const ALL_VIDEOS = VIDEO_CATEGORIES.flatMap(cat => cat.videos);
 
 const Videos = () => {
   return (

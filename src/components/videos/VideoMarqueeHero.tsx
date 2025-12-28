@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Youtube, ExternalLink, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -11,6 +11,9 @@ interface Video {
 interface VideoMarqueeHeroProps {
   videos: Video[];
 }
+
+// Background video ID - "Being single | Why are people scared of being single?"
+const BACKGROUND_VIDEO_ID = "F2mP7WR_OE8";
 
 const MarqueeRow = ({ 
   videos, 
@@ -54,6 +57,9 @@ const MarqueeRow = ({
 };
 
 const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
+  const playerRef = useRef<HTMLDivElement>(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
   // Split videos into 4 rows
   const chunkSize = Math.ceil(videos.length / 4);
   const row1 = videos.slice(0, chunkSize);
@@ -61,19 +67,91 @@ const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
   const row3 = videos.slice(chunkSize * 2, chunkSize * 3);
   const row4 = videos.slice(chunkSize * 3);
 
+  useEffect(() => {
+    // Load YouTube IFrame API
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    }
+
+    const initPlayer = () => {
+      if (playerRef.current && window.YT && window.YT.Player) {
+        new window.YT.Player(playerRef.current, {
+          videoId: BACKGROUND_VIDEO_ID,
+          playerVars: {
+            autoplay: 1,
+            mute: 1,
+            controls: 0,
+            showinfo: 0,
+            rel: 0,
+            loop: 1,
+            playlist: BACKGROUND_VIDEO_ID,
+            modestbranding: 1,
+            playsinline: 1,
+            disablekb: 1,
+            fs: 0,
+            iv_load_policy: 3,
+          },
+          events: {
+            onReady: (event: any) => {
+              event.target.playVideo();
+              setIsVideoReady(true);
+            },
+            onStateChange: (event: any) => {
+              if (event.data === window.YT.PlayerState.ENDED) {
+                event.target.playVideo();
+              }
+            },
+          },
+        });
+      }
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer;
+    }
+
+    return () => {
+      window.onYouTubeIframeAPIReady = undefined;
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-shazmeen-dark overflow-hidden flex items-center">
-      {/* Video Marquee Background */}
-      <div className="absolute inset-0 flex flex-col justify-center gap-4 opacity-30">
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div 
+          className={`absolute inset-0 transition-opacity duration-1000 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            transform: 'scale(1.5)',
+            top: '-25%',
+            left: '-25%',
+            width: '150%',
+            height: '150%',
+          }}
+        >
+          <div 
+            ref={playerRef}
+            className="w-full h-full"
+          />
+        </div>
+      </div>
+
+      {/* Fallback: Video Marquee Background (shown while video loads or as backup) */}
+      <div className={`absolute inset-0 flex flex-col justify-center gap-4 transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-30'}`}>
         <MarqueeRow videos={row1} direction="left" duration={80} />
         <MarqueeRow videos={row2} direction="right" duration={90} />
         <MarqueeRow videos={row3} direction="left" duration={70} />
         <MarqueeRow videos={row4} direction="right" duration={85} />
       </div>
 
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark via-shazmeen-dark/80 to-shazmeen-dark pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark via-transparent to-shazmeen-dark pointer-events-none" />
+      {/* Gradient Overlays - Reduced opacity */}
+      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/60 via-shazmeen-dark/40 to-shazmeen-dark/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/50 via-transparent to-shazmeen-dark/50 pointer-events-none" />
       
       {/* Floating Decorative Elements */}
       <motion.div
@@ -103,7 +181,7 @@ const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
             transition={{ delay: 0.2 }}
           >
             <Youtube className="w-4 h-4 text-shazmeen-red" />
-            <span className="text-sm font-medium text-shazmeen-red">60+ Videos</span>
+            <span className="text-sm font-medium text-shazmeen-red">{videos.length}+ Videos</span>
           </motion.div>
 
           {/* Main Title */}
@@ -114,7 +192,7 @@ const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
             Dive into relationship insights, personal stories, and coaching wisdom. 
             Each video is designed to help you heal, grow, and love better.
           </p>
