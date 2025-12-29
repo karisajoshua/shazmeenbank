@@ -40,7 +40,7 @@ const CoursesTransformation = ({ onWaitlistClick, onNewsletterClick }: CoursesTr
           </p>
           <Link to="/courses">
             <Button 
-              className="btn-primary text-lg px-8 py-4"
+              className="bg-transparent text-white text-xl px-10 py-5 border-2 border-shazmeen-red hover:bg-shazmeen-red/10 transition-all duration-300"
             >
               View Available Courses
             </Button>

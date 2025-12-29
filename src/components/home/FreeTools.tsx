@@ -47,16 +47,16 @@ const FreeTools = () => {
             {tools.map((tool, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-2 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-zinc-700"
+                className="flex items-center gap-3 bg-transparent px-5 py-3 rounded-lg border border-zinc-600"
               >
-                <tool.icon size={18} className="text-shazmeen-red" />
-                <span className="text-white font-medium">{tool.label}</span>
+                <tool.icon size={20} className="text-shazmeen-red" />
+                <span className="text-gray-300 font-medium">{tool.label}</span>
               </div>
             ))}
           </div>
           
           <Link to="/free-resources">
-            <Button className="btn-primary text-lg px-8 py-4">
+            <Button className="bg-transparent text-white text-xl px-10 py-5 border-2 border-shazmeen-red hover:bg-shazmeen-red/10 transition-all duration-300">
               Access Free Resources
             </Button>
           </Link>
