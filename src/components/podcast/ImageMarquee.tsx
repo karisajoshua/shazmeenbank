@@ -1,5 +1,6 @@
 import React from "react";
-import { Youtube, ChevronDown } from "lucide-react";
+import { Youtube, ChevronDown, Play } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Import all available images
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
@@ -30,28 +31,32 @@ interface MarqueeRowProps {
   duration?: number;
 }
 
-const MarqueeRow = ({ images, direction, duration = 30 }: MarqueeRowProps) => {
-  // Double the images for seamless loop
-  const duplicatedImages = [...images, ...images];
+const MarqueeRow = ({ images, direction, duration = 60 }: MarqueeRowProps) => {
+  const animationClass = direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
   
   return (
-    <div className="relative overflow-hidden py-2">
+    <div className="flex gap-4 overflow-hidden">
       <div 
-        className={`flex gap-4 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
-        style={{ 
-          animationDuration: `${duration}s`,
-        }}
+        className={`flex gap-4 ${animationClass}`}
+        style={{ animationDuration: `${duration}s` }}
       >
-        {duplicatedImages.map((img, idx) => (
-          <div 
-            key={idx} 
-            className="flex-shrink-0 w-48 h-32 md:w-64 md:h-44 rounded-2xl overflow-hidden shadow-lg"
+        {[...images, ...images].map((img, index) => (
+          <div
+            key={index}
+            className="relative flex-shrink-0 w-64 md:w-80 aspect-video rounded-xl overflow-hidden group"
           >
-            <img 
-              src={img} 
-              alt="" 
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            <img
+              src={img}
+              alt=""
+              className="w-full h-full object-cover"
+              loading="lazy"
             />
+            <div className="absolute inset-0 bg-shazmeen-dark/40 group-hover:bg-shazmeen-dark/20 transition-colors duration-300" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="w-12 h-12 rounded-full bg-shazmeen-red/90 flex items-center justify-center">
+                <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -61,33 +66,65 @@ const MarqueeRow = ({ images, direction, duration = 30 }: MarqueeRowProps) => {
 
 const ImageMarquee = () => {
   return (
-    <section className="relative py-16 bg-[#0a0a0a] overflow-hidden min-h-screen flex items-center">
-      {/* Top gradient fade */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-      
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-
-      {/* Marquee Rows */}
-      <div className="w-full space-y-4">
-        <MarqueeRow images={row1Images} direction="right" duration={35} />
-        <MarqueeRow images={row2Images} direction="left" duration={40} />
-        <MarqueeRow images={row3Images} direction="right" duration={38} />
-        <MarqueeRow images={row4Images} direction="left" duration={32} />
+    <section className="relative min-h-screen bg-shazmeen-dark overflow-hidden flex items-center">
+      {/* Image Marquee Background */}
+      <div className="absolute inset-0 flex flex-col justify-center gap-4 opacity-40">
+        <MarqueeRow images={row1Images} direction="left" duration={80} />
+        <MarqueeRow images={row2Images} direction="right" duration={90} />
+        <MarqueeRow images={row3Images} direction="left" duration={70} />
+        <MarqueeRow images={row4Images} direction="right" duration={85} />
       </div>
 
-      {/* Center overlay content */}
-      <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="text-center bg-[#0a0a0a]/80 backdrop-blur-sm px-12 py-10 rounded-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-            A Journey of Healing
-          </h2>
-          <p className="text-gray-400 mb-6 max-w-md mx-auto">
-            Every conversation, every moment of growth captured in this journey.
-          </p>
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/60 via-shazmeen-dark/40 to-shazmeen-dark/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/50 via-transparent to-shazmeen-dark/50 pointer-events-none" />
+      
+      {/* Floating Decorative Elements */}
+      <motion.div
+        className="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-shazmeen-red/10 blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-10 w-96 h-96 rounded-full bg-shazmeen-blush/10 blur-3xl"
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+
+      {/* Content */}
+      <div className="container-custom relative z-10 py-24">
+        <motion.div 
+          className="text-center max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Badge */}
+          <motion.div
+            className="inline-flex items-center gap-2 bg-shazmeen-red/10 border border-shazmeen-red/20 rounded-full px-5 py-2 mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Play className="w-4 h-4 text-shazmeen-red" />
+            <span className="text-sm font-medium text-shazmeen-red">Love Better Podcast</span>
+          </motion.div>
+
+          {/* Main Title */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+            Listen, Heal &{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-shazmeen-red to-shazmeen-blush">
+              Love Better
+            </span>
+          </h1>
           
-          {/* Platform buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Real conversations about love, heartbreak, and everything in between. 
+            Join me on a journey of healing and self-discovery.
+          </p>
+
+          {/* Platform Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <a 
               href="https://www.youtube.com/channel/UCYYSYmYSMPi8YZ3TjHl4JGg"
               target="_blank"
@@ -120,14 +157,23 @@ const ImageMarquee = () => {
               Apple Podcasts
             </a>
           </div>
-          
-          {/* Scroll indicator */}
-          <div className="mt-8 flex flex-col items-center animate-bounce">
-            <span className="text-white/70 text-sm mb-2 tracking-wider uppercase">Scroll for more</span>
-            <ChevronDown className="w-6 h-6 text-white/70" />
-          </div>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+          <motion.div
+            className="w-1.5 h-1.5 rounded-full bg-white"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };
