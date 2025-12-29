@@ -68,16 +68,12 @@ const ImageMarquee = () => {
   return (
     <section className="relative min-h-screen bg-shazmeen-dark overflow-hidden flex items-center">
       {/* Image Marquee Background */}
-      <div className="absolute inset-0 flex flex-col justify-center gap-4 opacity-40">
+      <div className="absolute inset-0 flex flex-col justify-center gap-4">
         <MarqueeRow images={row1Images} direction="left" duration={80} />
         <MarqueeRow images={row2Images} direction="right" duration={90} />
         <MarqueeRow images={row3Images} direction="left" duration={70} />
         <MarqueeRow images={row4Images} direction="right" duration={85} />
       </div>
-
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/60 via-shazmeen-dark/40 to-shazmeen-dark/70 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/50 via-transparent to-shazmeen-dark/50 pointer-events-none" />
       
       {/* Floating Decorative Elements */}
       <motion.div
