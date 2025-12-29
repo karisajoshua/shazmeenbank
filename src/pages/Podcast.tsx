@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import FeaturedEpisode from "@/components/podcast/FeaturedEpisode";
 import EpisodeList from "@/components/podcast/EpisodeList";
 import SubscribeSection from "@/components/podcast/SubscribeSection";
-import ImageMarquee from "@/components/podcast/ImageMarquee";
+import PodcastVideoHero from "@/components/podcast/PodcastVideoHero";
 import { PodcastEpisode } from "@/types/podcast";
 
 const Podcast = () => {
@@ -67,7 +67,7 @@ const Podcast = () => {
 
   return (
     <div className="pb-20 bg-black">
-      <ImageMarquee />
+      <PodcastVideoHero />
       {selectedEpisode && (
         <FeaturedEpisode 
           episode={selectedEpisode} 
