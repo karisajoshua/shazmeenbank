@@ -151,7 +151,7 @@ const VideoCategory = ({ title, icon: Icon, color, videos, layout, index }: Vide
 
   return (
     <motion.section 
-      className={`py-16 md:py-24 ${isEven ? 'bg-background' : 'bg-muted/30'}`}
+      className="py-16 md:py-24 bg-black"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -168,10 +168,10 @@ const VideoCategory = ({ title, icon: Icon, color, videos, layout, index }: Vide
             <Icon className="w-7 h-7 text-white" />
           </motion.div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-white">
               {title}
             </h2>
-            <p className="text-muted-foreground text-sm">{videos.length} videos</p>
+            <p className="text-gray-400 text-sm">{videos.length} videos</p>
           </div>
         </div>
 
