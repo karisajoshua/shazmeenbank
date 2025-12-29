@@ -94,7 +94,7 @@ const FreeResources = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="bg-[#18181b] text-white py-20">
+      <section className="bg-[#18181b] text-white pt-32 pb-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">
