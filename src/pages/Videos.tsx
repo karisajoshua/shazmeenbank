@@ -182,7 +182,7 @@ const Videos = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-2 border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg font-bold backdrop-blur-sm"
+                  className="border-2 border-white bg-zinc-800 text-white hover:bg-zinc-700 rounded-full px-8 py-6 text-lg font-bold"
                 >
                   Explore Courses
                 </Button>
