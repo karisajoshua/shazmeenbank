@@ -58,7 +58,7 @@ const CommentForm = ({ postId }: CommentFormProps) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="bg-background border-border"
+          className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground"
         />
         <Input
           type="email"
@@ -66,7 +66,7 @@ const CommentForm = ({ postId }: CommentFormProps) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="bg-background border-border"
+          className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground"
         />
       </div>
       <Textarea
@@ -75,7 +75,7 @@ const CommentForm = ({ postId }: CommentFormProps) => {
         onChange={(e) => setContent(e.target.value)}
         required
         rows={4}
-        className="bg-background border-border"
+        className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground"
       />
       <Button 
         type="submit" 
