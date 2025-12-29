@@ -155,9 +155,9 @@ const ResourceForm = () => {
   return (
     <div className="container mx-auto py-8 px-4">
       <Button
-        variant="ghost"
+        variant="outline"
         onClick={() => navigate("/admin/resources")}
-        className="mb-6"
+        className="mb-6 bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Resources

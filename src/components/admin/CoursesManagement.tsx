@@ -34,7 +34,7 @@ const CoursesManagement = () => {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-6">
-        <Button variant="outline" asChild>
+        <Button variant="outline" asChild className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300">
           <Link to="/admin">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Dashboard

@@ -3,6 +3,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Table,
   TableBody,
@@ -28,6 +30,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { MoreHorizontal, Send, CheckCircle, XCircle, Download, Trash2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
@@ -73,9 +83,12 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
   const queryClient = useQueryClient();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [bookingToDelete, setBookingToDelete] = useState<Booking | null>(null);
+  const [approveDialogOpen, setApproveDialogOpen] = useState(false);
+  const [bookingToApprove, setBookingToApprove] = useState<Booking | null>(null);
+  const [paymentAmount, setPaymentAmount] = useState('');
 
   const updateStatusMutation = useMutation({
-    mutationFn: async ({ id, payment_status }: { id: string; payment_status: string }) => {
+    mutationFn: async ({ id, payment_status, payment_amount }: { id: string; payment_status: string; payment_amount?: number }) => {
       const updateData: Record<string, unknown> = { payment_status };
       
       if (payment_status === 'payment_instructions_sent') {
@@ -83,6 +96,9 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
       } else if (payment_status === 'approved') {
         updateData.approved_at = new Date().toISOString();
         updateData.status = 'upcoming';
+        if (payment_amount !== undefined) {
+          updateData.payment_amount = payment_amount;
+        }
       } else if (payment_status === 'rejected') {
         updateData.rejected_at = new Date().toISOString();
         updateData.status = 'cancelled';
@@ -97,6 +113,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
     },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['admin-bookings'] });
+      queryClient.invalidateQueries({ queryKey: ['revenue-bookings'] });
       const action = variables.payment_status === 'payment_instructions_sent' 
         ? 'Payment instructions sent'
         : variables.payment_status === 'approved'
@@ -150,6 +167,26 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
     setDeleteDialogOpen(false);
   };
 
+  const handleApproveClick = (booking: Booking) => {
+    setBookingToApprove(booking);
+    setPaymentAmount('');
+    setApproveDialogOpen(true);
+  };
+
+  const confirmApprove = () => {
+    if (bookingToApprove) {
+      const amount = parseFloat(paymentAmount);
+      updateStatusMutation.mutate({
+        id: bookingToApprove.id,
+        payment_status: 'approved',
+        payment_amount: isNaN(amount) ? undefined : amount,
+      });
+    }
+    setApproveDialogOpen(false);
+    setBookingToApprove(null);
+    setPaymentAmount('');
+  };
+
   const canDelete = (status: string | null) => {
     return ['rejected', 'cancelled'].includes(status || '');
   };
@@ -186,7 +223,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
 
   if (isLoading) {
     return (
-      <div className="text-center py-8 text-muted-foreground">
+      <div className="text-center py-8 text-gray-500">
         Loading bookings...
       </div>
     );
@@ -194,7 +231,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
 
   if (bookings.length === 0) {
     return (
-      <div className="text-center py-8 text-muted-foreground">
+      <div className="text-center py-8 text-gray-500">
         No booking requests yet.
       </div>
     );
@@ -203,21 +240,21 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
-        <Button variant="outline" onClick={exportToCSV}>
+        <Button variant="outline" onClick={exportToCSV} className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300">
           <Download className="mr-2 h-4 w-4" />
           Export CSV
         </Button>
       </div>
 
-      <div className="rounded-md border overflow-hidden">
+      <div className="rounded-md border border-gray-200 overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Client</TableHead>
-              <TableHead>Date & Time</TableHead>
-              <TableHead>Payment Status</TableHead>
-              <TableHead>Notes</TableHead>
-              <TableHead className="w-[100px]">Actions</TableHead>
+            <TableRow className="bg-gray-50">
+              <TableHead className="text-gray-700">Client</TableHead>
+              <TableHead className="text-gray-700">Date & Time</TableHead>
+              <TableHead className="text-gray-700">Payment Status</TableHead>
+              <TableHead className="text-gray-700">Notes</TableHead>
+              <TableHead className="w-[100px] text-gray-700">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -225,7 +262,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
               <TableRow key={booking.id}>
                 <TableCell>
                   <div>
-                    <p className="font-medium">{booking.client_name || 'N/A'}</p>
+                    <p className="font-medium text-gray-900">{booking.client_name || 'N/A'}</p>
                     <a
                       href={`mailto:${booking.client_email}`}
                       className="text-sm text-primary hover:underline"
@@ -236,26 +273,26 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
                 </TableCell>
                 <TableCell>
                   <div>
-                    <p className="font-medium">
+                    <p className="font-medium text-gray-900">
                       {format(new Date(booking.booking_date), 'MMM d, yyyy')}
                     </p>
-                    <p className="text-sm text-muted-foreground">{booking.booking_time}</p>
+                    <p className="text-sm text-gray-500">{booking.booking_time}</p>
                   </div>
                 </TableCell>
                 <TableCell>{getStatusBadge(booking.payment_status)}</TableCell>
                 <TableCell className="max-w-[200px]">
-                  <p className="text-sm text-muted-foreground truncate">
+                  <p className="text-sm text-gray-500 truncate">
                     {booking.notes || '-'}
                   </p>
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-gray-900">
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
+                    <DropdownMenuContent align="end" className="bg-white border-gray-200">
                       <DropdownMenuItem
                         onClick={() =>
                           updateStatusMutation.mutate({
@@ -264,18 +301,15 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
                           })
                         }
                         disabled={booking.payment_status !== 'pending'}
+                        className="text-gray-700 hover:bg-gray-100"
                       >
                         <Send className="mr-2 h-4 w-4" />
                         Send Payment Instructions
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={() =>
-                          updateStatusMutation.mutate({
-                            id: booking.id,
-                            payment_status: 'approved',
-                          })
-                        }
+                        onClick={() => handleApproveClick(booking)}
                         disabled={!['payment_instructions_sent', 'paid'].includes(booking.payment_status || '')}
+                        className="text-gray-700 hover:bg-gray-100"
                       >
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
                         Approve Booking
@@ -288,7 +322,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
                           })
                         }
                         disabled={['approved', 'rejected', 'cancelled'].includes(booking.payment_status || '')}
-                        className="text-destructive"
+                        className="text-red-600 hover:bg-red-50"
                       >
                         <XCircle className="mr-2 h-4 w-4" />
                         Reject Booking
@@ -298,7 +332,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
                           <DropdownMenuSeparator />
                           <DropdownMenuItem
                             onClick={() => handleDeleteClick(booking)}
-                            className="text-destructive"
+                            className="text-red-600 hover:bg-red-50"
                           >
                             <Trash2 className="mr-2 h-4 w-4" />
                             Delete Booking
@@ -314,14 +348,15 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
         </Table>
       </div>
 
+      {/* Delete Confirmation Dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-white">
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Booking</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle className="text-gray-900">Delete Booking</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-500">
               Are you sure you want to delete this booking for{' '}
-              <strong>{bookingToDelete?.client_name}</strong> on{' '}
-              <strong>
+              <strong className="text-gray-900">{bookingToDelete?.client_name}</strong> on{' '}
+              <strong className="text-gray-900">
                 {bookingToDelete?.booking_date
                   ? format(new Date(bookingToDelete.booking_date), 'MMM d, yyyy')
                   : ''}
@@ -330,7 +365,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300">Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
@@ -340,6 +375,41 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Approve Booking Dialog with Payment Amount */}
+      <Dialog open={approveDialogOpen} onOpenChange={setApproveDialogOpen}>
+        <DialogContent className="bg-white">
+          <DialogHeader>
+            <DialogTitle className="text-gray-900">Approve Booking</DialogTitle>
+            <DialogDescription className="text-gray-500">
+              Enter the payment amount received for this booking (optional but recommended for revenue tracking).
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <Label htmlFor="payment-amount" className="text-gray-700">Payment Amount ($)</Label>
+            <Input
+              id="payment-amount"
+              type="number"
+              placeholder="0.00"
+              value={paymentAmount}
+              onChange={(e) => setPaymentAmount(e.target.value)}
+              className="mt-2 bg-white text-gray-900 border-gray-300"
+            />
+          </div>
+          <DialogFooter>
+            <Button 
+              variant="outline" 
+              onClick={() => setApproveDialogOpen(false)}
+              className="bg-white text-gray-900 hover:bg-gray-100 border-gray-300"
+            >
+              Cancel
+            </Button>
+            <Button onClick={confirmApprove} className="bg-green-600 hover:bg-green-700 text-white">
+              Approve Booking
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

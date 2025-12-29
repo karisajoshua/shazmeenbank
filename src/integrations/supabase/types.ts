@@ -125,6 +125,7 @@ export type Database = {
           duration: number | null
           id: string
           notes: string | null
+          payment_amount: number | null
           payment_instructions_sent_at: string | null
           payment_status: Database["public"]["Enums"]["payment_status"] | null
           rejected_at: string | null
@@ -145,6 +146,7 @@ export type Database = {
           duration?: number | null
           id?: string
           notes?: string | null
+          payment_amount?: number | null
           payment_instructions_sent_at?: string | null
           payment_status?: Database["public"]["Enums"]["payment_status"] | null
           rejected_at?: string | null
@@ -165,6 +167,7 @@ export type Database = {
           duration?: number | null
           id?: string
           notes?: string | null
+          payment_amount?: number | null
           payment_instructions_sent_at?: string | null
           payment_status?: Database["public"]["Enums"]["payment_status"] | null
           rejected_at?: string | null
