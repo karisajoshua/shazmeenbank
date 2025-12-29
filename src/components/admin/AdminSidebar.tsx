@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Sidebar,
   SidebarContent,
@@ -19,7 +19,6 @@ import {
   GraduationCap,
   Gift,
   Calendar,
-  Clock,
   Briefcase,
   Users,
   Mail,
@@ -29,8 +28,11 @@ import {
   Image,
   ExternalLink,
   ChevronRight,
+  LogOut,
+  MessageCircle,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/hooks/useAuth';
 
 const menuSections = [
   {
@@ -44,6 +46,7 @@ const menuSections = [
     label: 'Content',
     items: [
       { title: 'Blog Posts', url: '/admin/blog', icon: FileText },
+      { title: 'Comments', url: '/admin/comments', icon: MessageCircle },
       { title: 'Podcasts', url: '/admin/podcasts', icon: Mic },
       { title: 'Courses', url: '/admin/courses', icon: GraduationCap },
       { title: 'Free Resources', url: '/admin/resources', icon: Gift },
@@ -75,7 +78,9 @@ const menuSections = [
 
 const AdminSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { state } = useSidebar();
+  const { signOut } = useAuth();
   const collapsed = state === 'collapsed';
 
   const isActive = (url: string, exact?: boolean) => {
@@ -83,6 +88,11 @@ const AdminSidebar = () => {
       return location.pathname === url;
     }
     return location.pathname.startsWith(url);
+  };
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate('/');
   };
 
   return (
@@ -142,10 +152,9 @@ const AdminSidebar = () => {
         ))}
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-gray-200 p-4">
+      <SidebarFooter className="border-t border-gray-200 p-4 space-y-2">
         <Link
           to="/"
-          target="_blank"
           className={cn(
             'flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors',
             collapsed && 'justify-center'
@@ -154,6 +163,16 @@ const AdminSidebar = () => {
           <ExternalLink className="h-4 w-4" />
           {!collapsed && <span>View Site</span>}
         </Link>
+        <button
+          onClick={handleLogout}
+          className={cn(
+            'flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors w-full',
+            collapsed && 'justify-center'
+          )}
+        >
+          <LogOut className="h-4 w-4" />
+          {!collapsed && <span>Logout</span>}
+        </button>
       </SidebarFooter>
     </Sidebar>
   );

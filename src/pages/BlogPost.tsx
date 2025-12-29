@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import DOMPurify from 'dompurify';
+import CommentForm from '@/components/blog/CommentForm';
+import CommentList from '@/components/blog/CommentList';
 
 const estimateReadTime = (content: string): number => {
   const wordsPerMinute = 200;
@@ -123,7 +125,7 @@ const BlogPost = () => {
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
             />
 
-            <div className="pt-8 border-t flex justify-between items-center">
+            <div className="pt-8 border-t border-border flex justify-between items-center">
               <Button onClick={handleShare} variant="outline" className="gap-2">
                 <Share2 className="h-4 w-4" />
                 Share
@@ -131,6 +133,12 @@ const BlogPost = () => {
               <Button asChild>
                 <Link to="/blog">Read More Articles</Link>
               </Button>
+            </div>
+
+            {/* Comments Section */}
+            <div className="pt-8 border-t border-border space-y-8">
+              <CommentList postId={post.id} />
+              <CommentForm postId={post.id} />
             </div>
           </div>
         </div>
