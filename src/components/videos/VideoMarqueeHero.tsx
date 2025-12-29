@@ -71,9 +71,9 @@ const VideoMarqueeHero = ({ videos }: VideoMarqueeHeroProps) => {
         <MarqueeRow videos={row4} direction="right" duration={85} />
       </div>
 
-      {/* Gradient Overlays - Reduced opacity */}
-      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/60 via-shazmeen-dark/40 to-shazmeen-dark/70 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/50 via-transparent to-shazmeen-dark/50 pointer-events-none" />
+      {/* Gradient Overlays - Low opacity for better background visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-shazmeen-dark/30 via-shazmeen-dark/20 to-shazmeen-dark/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark/25 via-transparent to-shazmeen-dark/25 pointer-events-none" />
       
       {/* Floating Decorative Elements */}
       <motion.div
