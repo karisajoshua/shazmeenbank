@@ -109,7 +109,7 @@ const PodcastVideoHero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 py-24">
         <motion.div 
-          className="text-center max-w-4xl mx-auto bg-black/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10"
+          className="text-center max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
