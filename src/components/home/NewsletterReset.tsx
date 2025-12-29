@@ -40,9 +40,9 @@ const NewsletterReset = ({ onNewsletterClick }: NewsletterResetProps) => {
           
           <Button 
             onClick={onNewsletterClick} 
-            className="bg-white text-shazmeen-dark hover:bg-shazmeen-cream text-lg px-8 py-4 flex items-center gap-2 mx-auto"
+            className="group bg-white text-shazmeen-dark hover:bg-shazmeen-cream text-lg px-8 py-4 flex items-center gap-2 mx-auto"
           >
-            <Heart size={20} />
+            <Heart size={20} className="transition-colors duration-300 group-hover:text-shazmeen-red" />
             Subscribe to Newsletter
           </Button>
           
