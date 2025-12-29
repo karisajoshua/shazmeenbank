@@ -119,7 +119,7 @@ const Videos = () => {
       <VideoMarqueeHero videos={ALL_VIDEOS} />
 
       {/* Video Categories */}
-      <div id="videos-content">
+      <div id="videos-content" className="bg-black">
         {VIDEO_CATEGORIES.map((category, index) => (
           <VideoCategory
             key={category.title}
