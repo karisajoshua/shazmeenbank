@@ -13,7 +13,7 @@ interface VideoMarqueeHeroProps {
 }
 
 // Background video ID - "Being single | Why are people scared of being single?"
-const BACKGROUND_VIDEO_ID = "k_BYMAZk1aPH5tKN";
+const BACKGROUND_VIDEO_ID = "F2mP7WR_OE8";
 
 const MarqueeRow = ({ 
   videos, 
