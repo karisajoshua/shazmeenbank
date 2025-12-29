@@ -10,11 +10,11 @@ import {
   Calendar, 
   Heart,
   Users,
-  TrendingUp,
   Image as ImageIcon,
   Mail,
   MessageSquare,
-  Download
+  Download,
+  DollarSign
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -30,6 +30,7 @@ const AdminDashboard = () => {
     messages: 0,
     unreadMessages: 0,
     freeResources: 0,
+    totalRevenue: 0,
   });
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchStats = async () => {
-    const [blogCount, podcastCount, courseCount, bookingCount, waitlistCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount, resourceCount] = 
+    const [blogCount, podcastCount, courseCount, bookingCount, waitlistCount, serviceCount, coachCount, subscriberCount, messageCount, unreadCount, resourceCount, revenueData] = 
       await Promise.all([
         supabase.from('blog_posts').select('*', { count: 'exact', head: true }),
         supabase.from('podcast_episodes').select('*', { count: 'exact', head: true }),
@@ -50,7 +51,10 @@ const AdminDashboard = () => {
         supabase.from('contact_messages').select('*', { count: 'exact', head: true }),
         supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false),
         supabase.from('free_resources').select('*', { count: 'exact', head: true }),
+        supabase.from('bookings').select('payment_amount').eq('payment_status', 'approved').not('payment_amount', 'is', null),
       ]);
+
+    const totalRevenue = (revenueData.data || []).reduce((sum, b) => sum + (b.payment_amount || 0), 0);
 
     setStats({
       blogPosts: blogCount.count || 0,
@@ -64,6 +68,7 @@ const AdminDashboard = () => {
       messages: messageCount.count || 0,
       unreadMessages: unreadCount.count || 0,
       freeResources: resourceCount.count || 0,
+      totalRevenue,
     });
   };
 
@@ -170,33 +175,45 @@ const AdminDashboard = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-4xl font-bold text-foreground mb-2">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Manage your website content</p>
-        </div>
-        <Button asChild className="bg-white text-black hover:bg-white/90">
-          <Link to="/">
-            <TrendingUp className="mr-2 h-4 w-4" />
-            View Site
-          </Link>
-        </Button>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+        <p className="text-gray-500">Manage your website content and track performance</p>
       </div>
+
+      {/* Revenue Summary Card */}
+      <Card className="mb-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white border-0">
+        <CardContent className="pt-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-purple-100 mb-1">Total Revenue</p>
+              <p className="text-4xl font-bold">
+                ${stats.totalRevenue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              </p>
+            </div>
+            <Link to="/admin/revenue">
+              <Button variant="secondary" className="bg-white/20 text-white hover:bg-white/30 border-0">
+                <DollarSign className="mr-2 h-4 w-4" />
+                View Details
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Quick Actions */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {quickActions.map((action) => (
             <Button 
               key={action.href}
               asChild 
               variant="outline" 
-              className="h-24 flex-col gap-2"
+              className="h-24 flex-col gap-2 bg-white text-gray-900 hover:bg-gray-50 border-gray-200"
             >
               <Link to={action.href}>
                 <action.icon className={`h-6 w-6 ${action.color}`} />
-                <span>{action.title}</span>
+                <span className="text-sm text-center">{action.title}</span>
               </Link>
             </Button>
           ))}
@@ -205,10 +222,10 @@ const AdminDashboard = () => {
 
       {/* Management Cards */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Content Management</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Content Management</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {managementCards.map((card) => (
-            <Card key={card.href} className="hover:shadow-lg transition-shadow relative">
+            <Card key={card.href} className="hover:shadow-lg transition-shadow relative bg-white border-gray-200">
               {card.badge && (
                 <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
                   {card.badge}
@@ -220,14 +237,14 @@ const AdminDashboard = () => {
                     <card.icon className="h-6 w-6" />
                   </div>
                   {card.count !== null && (
-                    <span className="text-3xl font-bold">{card.count}</span>
+                    <span className="text-3xl font-bold text-gray-900">{card.count}</span>
                   )}
                 </div>
-                <CardTitle className="mt-4">{card.title}</CardTitle>
-                <CardDescription>{card.description}</CardDescription>
+                <CardTitle className="mt-4 text-gray-900">{card.title}</CardTitle>
+                <CardDescription className="text-gray-500">{card.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full bg-white text-gray-900 hover:bg-gray-50 border-gray-300">
                   <Link to={card.href}>
                     {card.title === 'Media Library' ? 'Open Media Library' : `Manage ${card.title}`}
                   </Link>
