@@ -1,5 +1,5 @@
 import React from "react";
-import { Youtube, Play } from "lucide-react";
+import { Youtube, Play, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Video {
@@ -109,7 +109,7 @@ const PodcastVideoHero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 py-24">
         <motion.div 
-          className="text-center max-w-4xl mx-auto"
+          className="text-center max-w-4xl mx-auto bg-black/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -139,7 +139,7 @@ const PodcastVideoHero = () => {
           </p>
 
           {/* Platform Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
               href="https://www.youtube.com/channel/UCYYSYmYSMPi8YZ3TjHl4JGg"
               target="_blank"
@@ -172,23 +172,18 @@ const PodcastVideoHero = () => {
               Apple Podcasts
             </a>
           </div>
+
+          {/* Scroll to read more */}
+          <motion.div 
+            className="flex flex-col items-center gap-2 pt-4"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-white/60 text-sm uppercase tracking-widest">Scroll to read more</span>
+            <ChevronDown className="w-6 h-6 text-white/60" />
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-          <motion.div
-            className="w-1.5 h-1.5 rounded-full bg-white"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };
