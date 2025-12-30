@@ -8,13 +8,27 @@ interface VideoCardProps {
   size?: "normal" | "featured" | "large";
 }
 
+// YouTube thumbnail quality options (in order of preference)
+const THUMBNAIL_QUALITIES = ["maxresdefault", "sddefault", "hqdefault", "mqdefault"];
+
 const VideoCard = ({ id, title, size = "normal" }: VideoCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [imageError, setImageError] = useState(false);
+  const [qualityIndex, setQualityIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const thumbnailUrl = imageError 
-    ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
-    : `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+  const thumbnailUrl = `https://img.youtube.com/vi/${id}/${THUMBNAIL_QUALITIES[qualityIndex]}.jpg`;
+
+  const handleImageError = () => {
+    if (qualityIndex < THUMBNAIL_QUALITIES.length - 1) {
+      setQualityIndex(prev => prev + 1);
+    } else {
+      setIsLoading(false);
+    }
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
 
   const sizeClasses = {
     normal: "aspect-video",
@@ -31,39 +45,39 @@ const VideoCard = ({ id, title, size = "normal" }: VideoCardProps) => {
         transition={{ duration: 0.2 }}
         onClick={() => setIsPlaying(true)}
       >
-        <div className={`relative overflow-hidden rounded-2xl ${sizeClasses[size]} bg-shazmeen-dark/10`}>
+        <div className={`relative overflow-hidden rounded-2xl ${sizeClasses[size]} bg-zinc-900`}>
+          {/* Loading Skeleton */}
+          {isLoading && (
+            <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+          )}
+          
           {/* Thumbnail */}
           <img
             src={thumbnailUrl}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImageError(true)}
+            className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            onError={handleImageError}
+            onLoad={handleImageLoad}
             loading="lazy"
           />
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-shazmeen-dark/90 via-shazmeen-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
           
           {/* Play Button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-shazmeen-red/90 flex items-center justify-center shadow-2xl group-hover:bg-shazmeen-red transition-colors duration-300"
+              className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-shazmeen-red/90 flex items-center justify-center shadow-2xl group-hover:bg-shazmeen-red transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Play className="w-7 h-7 md:w-8 md:h-8 text-white fill-white ml-1" />
+              <Play className="w-6 h-6 md:w-7 md:h-7 text-white fill-white ml-1" />
             </motion.div>
-          </div>
-
-          {/* Glow Effect on Hover */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-t from-shazmeen-red/20 to-transparent" />
           </div>
 
           {/* Border Glow */}
           <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-shazmeen-red/30 transition-all duration-300" />
         </div>
-
       </motion.div>
 
       {/* Video Modal */}
@@ -77,7 +91,7 @@ const VideoCard = ({ id, title, size = "normal" }: VideoCardProps) => {
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-shazmeen-dark/95 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/95 backdrop-blur-sm"
               onClick={() => setIsPlaying(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -39,7 +39,7 @@ const ALL_VIDEOS = [
   { id: "hO5xv71M-BY", title: "Cheating In Relationships? Who Do People Cheat?" },
 ];
 
-// Organized by category
+// Organized by category with simplified layouts
 const VIDEO_CATEGORIES = [
   {
     title: "Relationships & Dating",
@@ -47,11 +47,11 @@ const VIDEO_CATEGORIES = [
     color: "from-pink-500 to-rose-500",
     layout: "featured" as const,
     videos: [
-      { id: "GzcxHbcF7GA", title: "Dating for successful women in power | How to balance your power in a relationship" },
-      { id: "ZqBqvye3H_A", title: "A Second Chance At First Love: The Couples Who Married, Divorced Then Remarried" },
-      { id: "R7AglaXRgWA", title: "I divorced my husband and married him again - Shazmeen Bank" },
+      { id: "GzcxHbcF7GA", title: "Dating for successful women in power" },
+      { id: "ZqBqvye3H_A", title: "A Second Chance At First Love" },
+      { id: "R7AglaXRgWA", title: "I divorced my husband and married him again" },
       { id: "Y3Lyo7qLx1o", title: "The 5 stages in a dating relationship" },
-      { id: "uTWPhBAijVw", title: "After the honeymoon period, men move to logic | Sometimes men tend to relax" },
+      { id: "uTWPhBAijVw", title: "After the honeymoon period" },
       { id: "NrRXPRmGpbw", title: "Are you giving too much in your relationship?" },
     ]
   },
@@ -59,22 +59,22 @@ const VIDEO_CATEGORIES = [
     title: "Infidelity & Trust",
     icon: Brain,
     color: "from-purple-500 to-indigo-500",
-    layout: "carousel" as const,
+    layout: "grid" as const,
     videos: [
-      { id: "jiRr_6S1TFE", title: "Married with 2 kids, Husband cheating and side chick is pregnant, Should I leave" },
+      { id: "jiRr_6S1TFE", title: "Husband cheating - Should I leave" },
       { id: "E3LUlV2QHNQ", title: "Types of cheating" },
-      { id: "hO5xv71M-BY", title: "Cheating In Relationships? Who Do People Cheat?" },
-      { id: "b1HTpgTWPxs", title: "Signs that you are dating controlling partner | Many see the signs when its too late" },
+      { id: "hO5xv71M-BY", title: "Why Do People Cheat?" },
+      { id: "b1HTpgTWPxs", title: "Signs of a controlling partner" },
     ]
   },
   {
     title: "Family & Marriage",
     icon: Users,
     color: "from-green-500 to-teal-500",
-    layout: "bento" as const,
+    layout: "featured" as const,
     videos: [
-      { id: "cIVsH7_UL9c", title: "Why is the husband's mother always the problem!! - Dealing with Mother-in-Laws" },
-      { id: "TNfuKMiGXS8", title: "Marry within my religion? - Dangers of marrying outside your religion" },
+      { id: "cIVsH7_UL9c", title: "Dealing with Mother-in-Laws" },
+      { id: "TNfuKMiGXS8", title: "Marrying outside your religion" },
       { id: "N3jalDLnsZU", title: "Day Break: Who is raising us?" },
       { id: "utgshwR_648", title: "Day Break: Unions of convenience" },
     ]
@@ -83,26 +83,26 @@ const VIDEO_CATEGORIES = [
     title: "Being Single & Self-Discovery",
     icon: Sparkles,
     color: "from-amber-500 to-yellow-500",
-    layout: "masonry" as const,
+    layout: "grid" as const,
     videos: [
-      { id: "F2mP7WR_OE8", title: "Being single | Why are people scared of being single?" },
-      { id: "MxPBIvHKqn0", title: "The \"Solo-ship\"" },
-      { id: "MrJ8XN94oz8", title: "People who avoid dating because they have been hurt before" },
-      { id: "eCiX5xoVjsE", title: "People who jump from relationship to another | They can't be alone - Attachment lovers" },
-      { id: "9uhTTc9GTr8", title: "This is why Single ladies prefer dating married men" },
+      { id: "F2mP7WR_OE8", title: "Why are people scared of being single?" },
+      { id: "MxPBIvHKqn0", title: "The Solo-ship" },
+      { id: "MrJ8XN94oz8", title: "Avoiding dating because of past hurt" },
+      { id: "eCiX5xoVjsE", title: "People who jump from relationship to another" },
+      { id: "9uhTTc9GTr8", title: "Why Single ladies prefer married men" },
     ]
   },
   {
     title: "Life & Personal Growth",
     icon: MessageCircle,
     color: "from-cyan-500 to-blue-500",
-    layout: "grid" as const,
+    layout: "featured" as const,
     videos: [
       { id: "QTd2t69EmJk", title: "Grief management" },
       { id: "6yT4JiUsqBM", title: "Work: Survive or Thrive" },
-      { id: "at3bHuNlBqI", title: "Young and pregnant at 18, My boyfriend was 11 years older, What Next? Shazmeen Bank story" },
-      { id: "3Re8Vo-i1fA", title: "Finding fulfillment before you are 35 | Why many women live to please the society" },
-      { id: "ZPcSLA24B6Y", title: "Setting Your Goals Right With Shazmeen Bank" },
+      { id: "at3bHuNlBqI", title: "Young and pregnant at 18" },
+      { id: "3Re8Vo-i1fA", title: "Finding fulfillment before 35" },
+      { id: "ZPcSLA24B6Y", title: "Setting Your Goals Right" },
     ]
   },
 ];
