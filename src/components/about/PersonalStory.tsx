@@ -186,149 +186,167 @@ const PersonalStory = () => {
           </div>
         </div>
 
-        {/* Section 8: My Approach - Background Image Style */}
-        <div className="relative py-20 md:py-32 mb-16 overflow-hidden">
-          {/* Background Image with Overlay */}
+        {/* Unified "My Approach & Philosophy" Section */}
+        <div className="relative overflow-hidden">
+          {/* Subtle background with single image */}
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
             style={{ backgroundImage: `url(${shazmeenHeart})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/95 to-black" />
           
-          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-            <div className="max-w-2xl">
-              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">My Approach</span>
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 font-serif">No Judgment: Holding Space for Every Story</h3>
-              <div className="w-24 h-1 bg-[#FD0061] mb-10"></div>
-              
-              <div className="space-y-6">
-                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-white mb-2">💜 Equal Compassion</h4>
-                  <p className="text-gray-200">I hold space just as much for the person who cheated as I do for the one who was betrayed. Everyone involved is hurting.</p>
-                </div>
-                
-                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-white mb-2">🌱 Safe Space</h4>
-                  <p className="text-gray-200">Nothing is too ugly or unforgivable to talk about. I provide a safe space where you can truly be yourself.</p>
-                </div>
-                
-                <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-white mb-2">✨ Healing for All</h4>
-                  <p className="text-gray-200">My practice is built on the belief that healing is for everyone, and I am here to facilitate it without judgment.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 9: My Coaching Philosophy - Background Image Style */}
-        <div className="relative py-20 md:py-32 mb-24 overflow-hidden">
-          {/* Background Image with Overlay */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed"
-            style={{ backgroundImage: `url(${shazmeenMarathon})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/95 to-black/70" />
+          {/* Left accent line connecting all sections */}
+          <div className="absolute left-8 md:left-16 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#FD0061]/40 to-transparent hidden md:block" />
           
-          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-            <div className="max-w-3xl ml-auto">
-              <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Philosophy</span>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">Carrying the Torch Together</h3>
-              <div className="w-24 h-1 bg-[#FD0061] mb-10"></div>
+          <div className="relative z-10 py-20 md:py-24">
+            <div className="max-w-5xl mx-auto px-6 md:px-12">
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white text-xl">❤️</span>
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Heart & Body Alignment</h4>
-                  <p className="text-gray-300 text-sm">I use body-based techniques like breath and somatic awareness to help release trauma.</p>
-                </div>
+              {/* Section Header */}
+              <div className="text-center mb-16">
+                <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">My Approach & Philosophy</span>
+                <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif">The Heart of My Practice</h3>
+                <div className="w-24 h-1 bg-[#FD0061] mx-auto"></div>
+              </div>
+              
+              {/* No Judgment Section */}
+              <div className="mb-12 md:mb-16 relative pl-0 md:pl-8">
+                <div className="absolute left-0 top-0 w-3 h-3 rounded-full bg-[#FD0061] hidden md:block" style={{ marginLeft: '-22px' }} />
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-6 font-serif">No Judgment: Holding Space for Every Story</h4>
                 
-                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white text-xl">🔥</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mb-4">
+                      <span className="text-white text-lg">💜</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Equal Compassion</h5>
+                    <p className="text-gray-300 text-sm">I hold space just as much for the person who cheated as I do for the one who was betrayed. Everyone involved is hurting.</p>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Radical Responsibility</h4>
-                  <p className="text-gray-300 text-sm">Blame keeps us stuck, personal responsibility sets us free. Reclaim authorship of your life.</p>
-                </div>
-                
-                <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-[#FD0061]/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white text-xl">🎯</span>
+                  
+                  <div className="p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mb-4">
+                      <span className="text-white text-lg">🌱</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Safe Space</h5>
+                    <p className="text-gray-300 text-sm">Nothing is too ugly or unforgivable to talk about. I provide a safe space where you can truly be yourself.</p>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Personalized Path</h4>
-                  <p className="text-gray-300 text-sm">There is no one-size-fits-all. Your journey is uniquely yours, and I honor that.</p>
+                  
+                  <div className="p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mb-4">
+                      <span className="text-white text-lg">✨</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Healing for All</h5>
+                    <p className="text-gray-300 text-sm">My practice is built on the belief that healing is for everyone, and I am here to facilitate it without judgment.</p>
+                  </div>
                 </div>
               </div>
               
-              <div className="p-6 border-l-4 border-[#FD0061] bg-black/40 backdrop-blur-sm">
-                <p className="text-gray-200 text-lg italic">
-                  "I don't see myself as a savior. I see myself as a partner in your growth. I'll hand you the torch so you can light your own way forward."
-                </p>
+              {/* Philosophy Section */}
+              <div className="mb-12 md:mb-16 relative pl-0 md:pl-8">
+                <div className="absolute left-0 top-0 w-3 h-3 rounded-full bg-[#FD0061] hidden md:block" style={{ marginLeft: '-22px' }} />
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-6 font-serif">Carrying the Torch Together</h4>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-xl">❤️</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Heart & Body Alignment</h5>
+                    <p className="text-gray-300 text-sm">I use body-based techniques like breath and somatic awareness to help release trauma.</p>
+                  </div>
+                  
+                  <div className="text-center p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-xl">🔥</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Radical Responsibility</h5>
+                    <p className="text-gray-300 text-sm">Blame keeps us stuck, personal responsibility sets us free. Reclaim authorship of your life.</p>
+                  </div>
+                  
+                  <div className="text-center p-6 bg-zinc-900/60 backdrop-blur-sm rounded-xl border border-[#FD0061]/20 hover:border-[#FD0061]/40 transition-colors">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#FD0061] to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-xl">🎯</span>
+                    </div>
+                    <h5 className="text-lg font-bold text-white mb-2">Personalized Path</h5>
+                    <p className="text-gray-300 text-sm">There is no one-size-fits-all. Your journey is uniquely yours, and I honor that.</p>
+                  </div>
+                </div>
+                
+                <div className="p-6 border-l-4 border-[#FD0061] bg-zinc-900/40 backdrop-blur-sm rounded-r-xl">
+                  <p className="text-gray-200 text-lg italic">
+                    "I don't see myself as a savior. I see myself as a partner in your growth. I'll hand you the torch so you can light your own way forward."
+                  </p>
+                </div>
               </div>
+              
+              {/* Embracing Change Quote */}
+              <div className="mb-12 md:mb-16 relative pl-0 md:pl-8">
+                <div className="absolute left-0 top-0 w-3 h-3 rounded-full bg-[#FD0061] hidden md:block" style={{ marginLeft: '-22px' }} />
+                <div className="relative py-8">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-5">
+                    <span className="text-[200px] font-serif text-[#FD0061]">"</span>
+                  </div>
+                  <div className="relative text-center max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl font-serif text-white mb-4 leading-relaxed">
+                      "I often say that our wounds are where the light enters us, and I hold that truth close as I navigate this chapter."
+                    </p>
+                    <p className="text-gray-400">No matter how painful it gets, I trust that on the other side of this, there is growth, tenderness, inspiration, and creation waiting for me.</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Reaching More People */}
+              <div className="mb-12 md:mb-16 relative pl-0 md:pl-8">
+                <div className="absolute left-0 top-0 w-3 h-3 rounded-full bg-[#FD0061] hidden md:block" style={{ marginLeft: '-22px' }} />
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-6 font-serif">Reaching More People</h4>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-4 text-gray-300">
+                    <p>
+                      One of my greatest joys has been finding ways to reach people beyond the coaching room. During the COVID era, I felt a calling to support not just those who could afford private coaching, but anyone who needed help.
+                    </p>
+                    <p>
+                      I started sharing my message on radio and television, eventually even hosting my own weekly radio show and appearing on TV regularly to talk about relationships and personal growth.
+                    </p>
+                    <p>
+                      This inspired me to launch my podcast <strong className="text-[#FD0061]">Love Better</strong>, which has become a safe, loving space to discuss the real and raw parts of relationships.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <img 
+                      src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG" 
+                      alt="Shazmeen on media" 
+                      className="w-full rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
+                    />
+                    <img 
+                      src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG" 
+                      alt="Shazmeen coaching" 
+                      className="w-full rounded-xl shadow-lg mt-8 hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Closing Message */}
+              <div className="relative pl-0 md:pl-8 pt-8 border-t border-zinc-700/50">
+                <div className="absolute left-0 top-8 w-3 h-3 rounded-full bg-[#FD0061] hidden md:block" style={{ marginLeft: '-22px' }} />
+                <div className="text-center max-w-2xl mx-auto">
+                  <p className="text-gray-300 text-lg mb-6">
+                    I'm not just a coach or a conflict resolution practitioner. I'm a woman who has lived through deep pain, struggled, and come out the other side with scars turned into strengths.
+                  </p>
+                  <p className="text-[#FD0061] font-serif text-xl md:text-2xl mb-6 italic">
+                    "As Dr. Joe Dispenza says, you cannot have a new reality with the old personality."
+                  </p>
+                  <p className="text-gray-300 text-lg mb-8">
+                    My purpose is to serve those who are seeking to transform their lives. If my story resonates with you, it's because it's proof that no matter how messy life gets, we can heal and we can grow.
+                  </p>
+                  <p className="text-white text-xl font-medium">
+                    Thank you for reading my story, and remember, with a little courage and faith, your destiny awaits.
+                  </p>
+                </div>
+              </div>
+              
             </div>
           </div>
-        </div>
-
-        {/* Section 10: Embracing Change Quote */}
-        <div className="relative py-16 mb-24">
-          <div className="absolute inset-0 flex items-center justify-center opacity-5">
-            <span className="text-[300px] font-serif text-[#FD0061]">"</span>
-          </div>
-          <div className="relative max-w-3xl mx-auto text-center">
-            <p className="text-2xl md:text-3xl font-serif text-white mb-6 leading-relaxed">
-              "I often say that our wounds are where the light enters us, and I hold that truth close as I navigate this chapter."
-            </p>
-            <p className="text-gray-400">No matter how painful it gets, I trust that on the other side of this, there is growth, tenderness, inspiration, and creation waiting for me.</p>
-          </div>
-        </div>
-
-        {/* Section 11: Reaching More People */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-          <div>
-            <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Impact</span>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">Reaching More People</h3>
-            <div className="space-y-4 text-gray-300">
-              <p>
-                One of my greatest joys has been finding ways to reach people beyond the coaching room. During the COVID era, I felt a calling to support not just those who could afford private coaching, but anyone who needed help.
-              </p>
-              <p>
-                I started sharing my message on radio and television, eventually even hosting my own weekly radio show and appearing on TV regularly to talk about relationships and personal growth.
-              </p>
-              <p>
-                This inspired me to launch my podcast <strong className="text-[#FD0061]">Love Better</strong>, which has become a safe, loving space to discuss the real and raw parts of relationships.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img 
-              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG" 
-              alt="Shazmeen on media" 
-              className="w-full rounded-xl shadow-lg"
-            />
-            <img 
-              src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG" 
-              alt="Shazmeen coaching" 
-              className="w-full rounded-xl shadow-lg mt-8"
-            />
-          </div>
-        </div>
-
-        {/* Closing Message */}
-        <div className="text-center max-w-3xl mx-auto py-16 border-t border-zinc-800">
-          <p className="text-gray-300 text-lg mb-6">
-            I'm not just a coach or a conflict resolution practitioner. I'm a woman who has lived through deep pain, struggled, and come out the other side with scars turned into strengths.
-          </p>
-          <p className="text-[#FD0061] font-serif text-2xl mb-6 italic">
-            "As Dr. Joe Dispenza says, you cannot have a new reality with the old personality."
-          </p>
-          <p className="text-gray-300 text-lg mb-8">
-            My purpose is to serve those who are seeking to transform their lives. If my story resonates with you, it's because it's proof that no matter how messy life gets, we can heal and we can grow.
-          </p>
-          <p className="text-white text-xl font-medium">
-            Thank you for reading my story, and remember, with a little courage and faith, your destiny awaits.
-          </p>
         </div>
       </div>
     </section>
