@@ -12,7 +12,7 @@ const NewsletterReset = ({ onNewsletterClick }: NewsletterResetProps) => {
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-[center_30%]"
         style={{ backgroundImage: `url(${newsletterBgImage})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark via-shazmeen-dark/95 to-shazmeen-dark/80" />
