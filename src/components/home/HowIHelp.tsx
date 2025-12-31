@@ -3,10 +3,10 @@ import { Heart, Brain, Compass, Star } from "lucide-react";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-// Storage bucket images for coaching sections
-const healingAnxiousImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-taibp9.png";
-const breakupHealingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG";
-const lifeCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG";
+// Storage bucket images for coaching sections (dark background versions)
+const healingAnxiousImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371978-qwapsn.png";
+const breakupHealingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371978-yck9lk.png";
+const lifeCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-i3zif.png";
 
 const HowIHelp = () => {
   const helpAreas = [
