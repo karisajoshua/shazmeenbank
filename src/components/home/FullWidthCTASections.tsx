@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import podcastCover from "@/assets/podcast/love-better-cover.jpg";
 
-const newsletterImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765557751120-s0ecbx.png";
-const freeResourcesImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-iadsk.png";
+const newsletterImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-jno8pb.png";
+const freeResourcesImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-3lar4n.png";
 
 interface FullWidthCTASectionsProps {
   onNewsletterClick: () => void;
