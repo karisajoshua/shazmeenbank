@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Download, BookOpen, Heart, Sparkles } from "lucide-react";
-import marathonFinish from "@/assets/podcast/marathon-finish.png";
+const freeToolsImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371978-5ww6g1.png";
 
 const FreeTools = () => {
   const tools = [
@@ -18,7 +18,7 @@ const FreeTools = () => {
         <div 
           className="absolute top-0 right-0 w-1/2 h-full bg-cover bg-center opacity-20"
           style={{ 
-            backgroundImage: `url(${marathonFinish})`,
+            backgroundImage: `url(${freeToolsImage})`,
             clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0% 100%)'
           }}
         />
