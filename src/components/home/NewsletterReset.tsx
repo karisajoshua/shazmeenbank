@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Heart } from "lucide-react";
-import marathonMedals from "@/assets/podcast/marathon-medals.png";
+const newsletterBgImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371976-8yv6ho.png";
 
 interface NewsletterResetProps {
   onNewsletterClick: () => void;
@@ -13,7 +13,7 @@ const NewsletterReset = ({ onNewsletterClick }: NewsletterResetProps) => {
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${marathonMedals})` }}
+        style={{ backgroundImage: `url(${newsletterBgImage})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-shazmeen-dark via-shazmeen-dark/95 to-shazmeen-dark/80" />
       
