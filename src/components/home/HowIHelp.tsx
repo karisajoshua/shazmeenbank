@@ -1,10 +1,12 @@
 import React from "react";
 import { Heart, Brain, Compass, Star } from "lucide-react";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
-import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
-import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
-import shazmeenMarathon from "@/assets/about/shazmeen-marathon-stats.png";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+
+// Storage bucket images for coaching sections
+const healingAnxiousImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-taibp9.png";
+const breakupHealingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG";
+const lifeCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG";
 
 const HowIHelp = () => {
   const helpAreas = [
@@ -20,21 +22,21 @@ const HowIHelp = () => {
       description: "If you feel stuck in overthinking, people-pleasing, or fearing abandonment, this work will help you find your center again. You'll learn how to hold space for your emotions without being overwhelmed by them, heal your core wounds, and feel safe in your own body. I'll guide you in building boundaries that honor your needs and stepping into your voice with strength and compassion.",
       icon: Brain,
       iconColor: "text-violet-500",
-      image: shazmeenMedalTogether,
+      image: healingAnxiousImage,
     },
     {
       title: "Healing Through Breakup or Divorce",
       description: "Ending a relationship can feel like losing the ground beneath you. The sadness, shame, and grief can sit heavy for a long time. Together, we'll create space for you to process your pain with compassion and care. I'll help you validate your emotions, honor your sorrow, and slowly rebuild your life piece by piece as you begin creating a new world around yourself.",
       icon: Compass,
       iconColor: "text-amber-500",
-      image: shazmeenMedal,
+      image: breakupHealingImage,
     },
     {
       title: "Life Coaching: Finding Your North Star",
       description: "As your life coach, I'll help you realign with what truly matters to you and guide you back to your sense of purpose. Whether it's reclaiming your self-worth, following through on the goals you've been putting off, or rediscovering your voice outside of relationships, this is about reconnecting with your inner compass and taking steps to bring that vision to life.",
       icon: Star,
       iconColor: "text-emerald-500",
-      image: shazmeenMarathon,
+      image: lifeCoachingImage,
     }
   ];
 

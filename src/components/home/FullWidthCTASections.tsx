@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import podcastCover from "@/assets/podcast/love-better-cover.jpg";
-import marathonFinish from "@/assets/podcast/marathon-finish.png";
-import marathonMedals from "@/assets/podcast/marathon-medals.png";
+
+const newsletterImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765557751120-s0ecbx.png";
+const freeResourcesImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-iadsk.png";
 
 interface FullWidthCTASectionsProps {
   onNewsletterClick: () => void;
@@ -19,14 +20,14 @@ const FullWidthCTASections = ({ onNewsletterClick }: FullWidthCTASectionsProps) 
     {
       title: "Join the Newsletter",
       subtitle: "Weekly insights on relationships & self-worth",
-      image: marathonFinish,
+      image: newsletterImage,
       href: "#",
       isLink: false,
     },
     {
       title: "Free Resources",
       subtitle: "Workbooks, guides & healing prompts",
-      image: marathonMedals,
+      image: freeResourcesImage,
       href: "/free-resources",
       isLink: true,
     },
