@@ -179,7 +179,7 @@ const CouplesCoaching = () => {
                     9 weekly 75-minute sessions • Workbook included • $3,375
                   </p>
                   <Link to="/bookings?service=3">
-                    <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                    <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white">
                       Learn About Resolution Method
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
