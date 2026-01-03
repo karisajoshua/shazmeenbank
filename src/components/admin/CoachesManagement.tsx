@@ -14,12 +14,12 @@ const CoachesManagement = () => {
           </Link>
         </Button>
       </div>
-      <Card>
+      <Card className="bg-white">
         <CardHeader>
-          <CardTitle>Coaches Management</CardTitle>
+          <CardTitle className="text-gray-900">Coaches Management</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>Coaches management coming soon...</p>
+          <p className="text-gray-600">Coaches management coming soon...</p>
         </CardContent>
       </Card>
     </div>

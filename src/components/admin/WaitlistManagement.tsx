@@ -124,7 +124,7 @@ const WaitlistManagement = () => {
         </Button>
       </div>
 
-      <Card>
+      <Card className="bg-white">
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -132,8 +132,8 @@ const WaitlistManagement = () => {
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <CardTitle>Course Waitlist</CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">
+                <CardTitle className="text-gray-900">Course Waitlist</CardTitle>
+                <p className="text-sm text-gray-600 mt-1">
                   {waitlistEntries.length} people interested in courses
                 </p>
               </div>
@@ -158,11 +158,11 @@ const WaitlistManagement = () => {
           </div>
 
           {isLoading ? (
-            <div className="text-center py-8 text-muted-foreground">
+            <div className="text-center py-8 text-gray-600">
               Loading waitlist...
             </div>
           ) : filteredEntries.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
+            <div className="text-center py-8 text-gray-600">
               {searchTerm ? 'No entries match your search.' : 'No waitlist entries yet.'}
             </div>
           ) : (
@@ -180,7 +180,7 @@ const WaitlistManagement = () => {
                 <TableBody>
                   {filteredEntries.map((entry) => (
                     <TableRow key={entry.id}>
-                      <TableCell className="font-medium">{entry.name}</TableCell>
+                      <TableCell className="font-medium text-gray-900">{entry.name}</TableCell>
                       <TableCell>
                         <a
                           href={`mailto:${entry.email}`}
@@ -189,8 +189,8 @@ const WaitlistManagement = () => {
                           {entry.email}
                         </a>
                       </TableCell>
-                      <TableCell>{entry.course_title}</TableCell>
-                      <TableCell>
+                      <TableCell className="text-gray-700">{entry.course_title}</TableCell>
+                      <TableCell className="text-gray-700">
                         {format(new Date(entry.created_at), 'MMM d, yyyy')}
                       </TableCell>
                       <TableCell>
