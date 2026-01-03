@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const NewsletterPopup = () => {
   const [open, setOpen] = useState(false);
@@ -43,12 +42,7 @@ const NewsletterPopup = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="bg-white p-0 overflow-hidden max-w-md w-[90vw] rounded-xl border-none shadow-premium">
-        <DialogClose className="absolute right-4 top-4 rounded-full p-1 text-shazmeen-dark hover:bg-shazmeen-gray/20 z-10">
-          <X className="h-4 w-4" />
-          <span className="sr-only">Close</span>
-        </DialogClose>
-        
+      <DialogContent className="bg-white p-0 overflow-hidden max-w-md w-[90vw] rounded-xl border-none shadow-premium [&>button]:text-shazmeen-dark [&>button]:hover:bg-shazmeen-gray/20 [&>button]:rounded-full">
         <div className="bg-gradient-soft p-6 pt-12 pb-8">
           <DialogHeader className="text-center">
             <DialogTitle className="text-2xl md:text-3xl heading-elegant font-bold text-shazmeen-dark mb-2">
