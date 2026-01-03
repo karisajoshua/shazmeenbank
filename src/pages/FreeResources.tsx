@@ -119,8 +119,8 @@ const FreeResources = () => {
               {displayResources.map((resource) => {
                 const IconComponent = iconMap[resource.icon_name || "Heart"] || Heart;
                 return (
-                  <div key={resource.id} className="bg-zinc-900 rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300 border border-zinc-800">
-                    <div className="mb-6">
+                  <div key={resource.id} className="bg-zinc-900 rounded-xl shadow-premium p-8 hover:shadow-premium-hover transition-all duration-300 border border-zinc-800 flex flex-col h-full">
+                    <div className="flex-grow">
                       <div className="w-16 h-16 bg-shazmeen-red/20 rounded-full flex items-center justify-center mb-4">
                         <IconComponent className="w-8 h-8 text-shazmeen-red" />
                       </div>
@@ -133,7 +133,7 @@ const FreeResources = () => {
                     </div>
                     <Button 
                       onClick={() => handleDownload(resource)}
-                      className="w-full bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-6 py-3 font-bold"
+                      className="w-full bg-shazmeen-red text-white hover:bg-shazmeen-red/90 transition-all duration-300 rounded-xl px-6 py-3 font-bold mt-auto"
                     >
                       <Download className="w-4 h-4 mr-2" />
                       Download Free
