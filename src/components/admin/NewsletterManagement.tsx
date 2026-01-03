@@ -83,8 +83,8 @@ const NewsletterManagement = () => {
           </Link>
         </Button>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold">Newsletter Subscribers</h1>
-          <p className="text-muted-foreground">Manage your newsletter subscribers</p>
+          <h1 className="text-3xl font-bold text-gray-900">Newsletter Subscribers</h1>
+          <p className="text-gray-600">Manage your newsletter subscribers</p>
         </div>
         <Button onClick={exportToCSV} variant="outline">
           <Download className="h-4 w-4 mr-2" />
@@ -92,18 +92,18 @@ const NewsletterManagement = () => {
         </Button>
       </div>
 
-      <Card>
+      <Card className="bg-white">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-gray-900">
             <Mail className="h-5 w-5" />
             All Subscribers ({subscribers.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <p className="text-center py-8 text-muted-foreground">Loading...</p>
+            <p className="text-center py-8 text-gray-600">Loading...</p>
           ) : subscribers.length === 0 ? (
-            <p className="text-center py-8 text-muted-foreground">No subscribers yet</p>
+            <p className="text-center py-8 text-gray-600">No subscribers yet</p>
           ) : (
             <Table>
               <TableHeader>
@@ -119,12 +119,12 @@ const NewsletterManagement = () => {
               <TableBody>
                 {subscribers.map((subscriber) => (
                   <TableRow key={subscriber.id}>
-                    <TableCell className="font-medium">{subscriber.name || '-'}</TableCell>
-                    <TableCell>{subscriber.email}</TableCell>
-                    <TableCell>
+                    <TableCell className="font-medium text-gray-900">{subscriber.name || '-'}</TableCell>
+                    <TableCell className="text-gray-700">{subscriber.email}</TableCell>
+                    <TableCell className="text-gray-700">
                       <Badge variant="secondary">{subscriber.source || 'unknown'}</Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="text-gray-700">
                       {format(new Date(subscriber.subscribed_at), 'MMM d, yyyy')}
                     </TableCell>
                     <TableCell>

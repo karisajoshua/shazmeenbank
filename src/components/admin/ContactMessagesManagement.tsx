@@ -87,8 +87,8 @@ const ContactMessagesManagement = () => {
           </Link>
         </Button>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold">Contact Messages</h1>
-          <p className="text-muted-foreground">View and manage contact form submissions</p>
+          <h1 className="text-3xl font-bold text-gray-900">Contact Messages</h1>
+          <p className="text-gray-600">View and manage contact form submissions</p>
         </div>
         {unreadCount > 0 && (
           <Badge variant="destructive" className="text-lg px-3 py-1">
@@ -97,18 +97,18 @@ const ContactMessagesManagement = () => {
         )}
       </div>
 
-      <Card>
+      <Card className="bg-white">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-gray-900">
             <MessageSquare className="h-5 w-5" />
             All Messages ({messages.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <p className="text-center py-8 text-muted-foreground">Loading...</p>
+            <p className="text-center py-8 text-gray-600">Loading...</p>
           ) : messages.length === 0 ? (
-            <p className="text-center py-8 text-muted-foreground">No messages yet</p>
+            <p className="text-center py-8 text-gray-600">No messages yet</p>
           ) : (
             <Table>
               <TableHeader>
@@ -131,10 +131,10 @@ const ContactMessagesManagement = () => {
                         <Badge variant="destructive" className="text-xs">New</Badge>
                       )}
                     </TableCell>
-                    <TableCell className="font-medium">{message.name}</TableCell>
-                    <TableCell>{message.email}</TableCell>
-                    <TableCell>{message.subject}</TableCell>
-                    <TableCell>
+                    <TableCell className="font-medium text-gray-900">{message.name}</TableCell>
+                    <TableCell className="text-gray-700">{message.email}</TableCell>
+                    <TableCell className="text-gray-700">{message.subject}</TableCell>
+                    <TableCell className="text-gray-700">
                       {format(new Date(message.created_at), 'MMM d, yyyy HH:mm')}
                     </TableCell>
                     <TableCell className="text-right space-x-2">
