@@ -8,8 +8,10 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 // Import images from gallery
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
-import couplesCoachingImage from "@/assets/bookings/couples-coaching.jpg";
-import resolutionMethodImage from "@/assets/bookings/resolution-method.jpg";
+
+// Shazmeen's authentic photos from storage
+const couplesCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG";
+const resolutionMethodImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-he7v0l.png";
 
 // Hero background from Supabase
 const heroBackground = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-taibp9.png";
