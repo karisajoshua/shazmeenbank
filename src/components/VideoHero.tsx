@@ -33,7 +33,7 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
 
   const playerRef = useRef<YT.Player | null>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
-  const rotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const rotationIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Avoid stale closures inside YouTube callbacks
   const currentVideoIndexRef = useRef(0);
