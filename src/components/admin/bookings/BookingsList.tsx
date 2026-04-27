@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import type { TablesUpdate } from '@/integrations/supabase/types';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -89,7 +90,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
 
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, payment_status, payment_amount }: { id: string; payment_status: string; payment_amount?: number }) => {
-      const updateData: Record<string, any> = { payment_status };
+      const updateData: TablesUpdate<'bookings'> = { payment_status: payment_status as TablesUpdate<'bookings'>['payment_status'] };
       
       if (payment_status === 'payment_instructions_sent') {
         updateData.payment_instructions_sent_at = new Date().toISOString();
