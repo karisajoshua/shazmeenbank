@@ -89,7 +89,7 @@ const BookingsList = ({ bookings, isLoading }: BookingsListProps) => {
 
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, payment_status, payment_amount }: { id: string; payment_status: string; payment_amount?: number }) => {
-      const updateData: Record<string, unknown> = { payment_status };
+      const updateData: Record<string, any> = { payment_status };
       
       if (payment_status === 'payment_instructions_sent') {
         updateData.payment_instructions_sent_at = new Date().toISOString();
