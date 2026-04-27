@@ -8,8 +8,8 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 // Import images from gallery
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
-import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
-import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
+import couplesCoachingImage from "@/assets/bookings/couples-coaching.jpg";
+import resolutionMethodImage from "@/assets/bookings/resolution-method.jpg";
 
 // Hero background from Supabase
 const heroBackground = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1765556247954-taibp9.png";
@@ -43,7 +43,7 @@ const services = [
     fullDescription: "We'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
     subtitle: "Book your Couples Coaching Session and start building the relationship you both long to come home to.",
     icon: Users,
-    image: shazmeenMedalTogether,
+    image: couplesCoachingImage,
     accent: "from-purple-500/20 to-pink-500/20",
     ctaText: "Book Couples Session",
     features: [
@@ -63,7 +63,7 @@ const services = [
     subtitle: "Book The Resolution Method and learn how to lead your relationship through repair, not rupture.",
     additionalInfo: "Led by Shazmeen Bank, Certified Conflict-Resolution Facilitator",
     icon: Clock,
-    image: shazmeenMedal,
+    image: resolutionMethodImage,
     accent: "from-teal-500/20 to-emerald-500/20",
     ctaText: "Book Resolution Method",
     features: [
