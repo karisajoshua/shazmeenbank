@@ -242,6 +242,13 @@ const CouplesCoaching = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <TidyCalModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        serviceKey="couples"
+        priceLabel="$510"
+      />
     </>
   );
 };
