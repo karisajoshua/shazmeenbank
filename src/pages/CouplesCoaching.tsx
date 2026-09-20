@@ -36,12 +36,13 @@ const CouplesCoaching = () => {
               understanding and empathy. Learn to lead with compassion.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/bookings?service=2">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group">
-                  Book Couples Session
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setBookingOpen(true)}
+                className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group"
+              >
+                Book Couples Session
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
             <p className="mt-6 text-gray-300">
               75-minute session • $510 • On Zoom
