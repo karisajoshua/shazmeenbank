@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Heart, Sparkles, Shield, Brain, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import TidyCalModal from "@/components/bookings/TidyCalModal";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
 
 const OneOnOneCoaching = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <>
       {/* Hero Section */}
@@ -33,12 +36,13 @@ const OneOnOneCoaching = () => {
               and build the emotional freedom you deserve.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/bookings?service=1">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group">
-                  Book 1:1 Self Healing
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setBookingOpen(true)}
+                className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group"
+              >
+                Book 1:1 Self Healing
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
             <p className="mt-6 text-gray-300">
               60-minute session • $375 • On Zoom

@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import TidyCalModal from "@/components/bookings/TidyCalModal";
 import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
 import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
 
 const CouplesCoaching = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <>
       {/* Hero Section */}
@@ -33,12 +37,13 @@ const CouplesCoaching = () => {
               understanding and empathy. Learn to lead with compassion.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/bookings?service=2">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group">
-                  Book Couples Session
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setBookingOpen(true)}
+                className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg group"
+              >
+                Book Couples Session
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
             <p className="mt-6 text-gray-300">
               75-minute session • $510 • On Zoom
@@ -223,12 +228,13 @@ const CouplesCoaching = () => {
                 These sessions aren't about who's right or wrong; they're about learning to lead 
                 with compassion while still holding your boundaries and voice.
               </p>
-              <Link to="/bookings?service=2">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group">
-                  Book Couples Session
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setBookingOpen(true)}
+                className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group"
+              >
+                Book Couples Session
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <p className="mt-6 text-gray-400">
                 75 minutes • $510 • Conducted on Zoom
               </p>
@@ -236,6 +242,13 @@ const CouplesCoaching = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <TidyCalModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        serviceKey="couples"
+        priceLabel="$510"
+      />
     </>
   );
 };

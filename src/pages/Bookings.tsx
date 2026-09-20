@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import BookingModal from "@/components/bookings/BookingModal";
+import TidyCalModal from "@/components/bookings/TidyCalModal";
+import { serviceIdToTidyCalKey } from "@/config/tidycal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 // Import images from gallery
@@ -88,7 +89,6 @@ const services = [
 
 const Bookings = () => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
@@ -108,15 +108,8 @@ const Bookings = () => {
   }, [searchParams]);
 
   const handleBookService = (service: typeof services[0]) => {
-    // Redirect to landing pages for 1:1 and Couples, open modal for Resolution Method
-    if (service.id === 1) {
-      navigate('/one-on-one-coaching');
-    } else if (service.id === 2) {
-      navigate('/couples-coaching');
-    } else {
-      setSelectedService(service);
-      setBookingModalOpen(true);
-    }
+    setSelectedService(service);
+    setBookingModalOpen(true);
   };
 
   return (
@@ -308,11 +301,12 @@ const Bookings = () => {
         </div>
       </section>
 
-      {/* Booking Modal */}
-      <BookingModal 
+      {/* TidyCal Booking Modal */}
+      <TidyCalModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
-        service={selectedService}
+        serviceKey={selectedService ? serviceIdToTidyCalKey[selectedService.id] ?? null : null}
+        priceLabel={selectedService?.price}
       />
     </>
   );
