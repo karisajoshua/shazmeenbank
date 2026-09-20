@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
