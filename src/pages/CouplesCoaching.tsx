@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import TidyCalModal from "@/components/bookings/TidyCalModal";
 import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
 import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
 
 const CouplesCoaching = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <>
       {/* Hero Section */}
