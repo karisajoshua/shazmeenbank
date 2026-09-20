@@ -227,12 +227,13 @@ const CouplesCoaching = () => {
                 These sessions aren't about who's right or wrong; they're about learning to lead 
                 with compassion while still holding your boundaries and voice.
               </p>
-              <Link to="/bookings?service=2">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group">
-                  Book Couples Session
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setBookingOpen(true)}
+                className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group"
+              >
+                Book Couples Session
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <p className="mt-6 text-gray-400">
                 75 minutes • $510 • Conducted on Zoom
               </p>
