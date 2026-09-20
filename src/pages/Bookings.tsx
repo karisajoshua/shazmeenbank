@@ -301,11 +301,12 @@ const Bookings = () => {
         </div>
       </section>
 
-      {/* Booking Modal */}
-      <BookingModal 
+      {/* TidyCal Booking Modal */}
+      <TidyCalModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
-        service={selectedService}
+        serviceKey={selectedService ? serviceIdToTidyCalKey[selectedService.id] ?? null : null}
+        priceLabel={selectedService?.price}
       />
     </>
   );
