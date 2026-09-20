@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Users, Heart, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import BookingModal from "@/components/bookings/BookingModal";
+import TidyCalModal from "@/components/bookings/TidyCalModal";
+import { serviceIdToTidyCalKey } from "@/config/tidycal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 // Import images from gallery
