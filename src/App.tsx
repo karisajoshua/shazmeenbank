@@ -10,6 +10,8 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
 import Bookings from "./pages/Bookings";
+import BookingConfirmation from "./pages/BookingConfirmation";
+import BookingHelp from "./pages/BookingHelp";
 import OneOnOneCoaching from "./pages/OneOnOneCoaching";
 import CouplesCoaching from "./pages/CouplesCoaching";
 import Podcast from "./pages/Podcast";
@@ -46,6 +48,8 @@ function App() {
                 <Route index element={<Index />} />
                 <Route path="courses" element={<Courses />} />
                 <Route path="bookings" element={<Bookings />} />
+                <Route path="booking-confirmation" element={<BookingConfirmation />} />
+                <Route path="booking-help" element={<BookingHelp />} />
                 <Route path="one-on-one-coaching" element={<OneOnOneCoaching />} />
                 <Route path="couples-coaching" element={<CouplesCoaching />} />
                 <Route path="podcast" element={<Podcast />} />
