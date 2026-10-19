@@ -89,10 +89,11 @@ const MyBookings = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-shazmeen-dark">My Bookings</h1>
         <Button className="btn-primary">Book New Session</Button>
       </div>
+      <p className="text-sm text-gray-500 mb-8">New sessions are scheduled and paid through TidyCal. The sessions listed here are from our previous booking system.</p>
       
       {/* Tabs */}
       <div className="flex mb-8 border-b border-gray-200">
