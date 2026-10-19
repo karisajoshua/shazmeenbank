@@ -103,6 +103,7 @@ const BookingsManagement = () => {
       <Card>
         <CardHeader>
           <CardTitle>Booking Management</CardTitle>
+          <p className="text-sm text-muted-foreground">New sessions are scheduled and paid through TidyCal. The records below are historical bookings from the previous system.</p>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>

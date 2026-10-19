@@ -195,12 +195,10 @@ const OneOnOneCoaching = () => {
               <p className="text-gray-300 text-lg mb-8">
                 Book your 1:1 Attachment Style Healing session and start coming home to yourself.
               </p>
-              <Link to="/bookings?service=1">
-                <Button className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group">
-                  Book 1:1 Self Healing
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button onClick={() => setBookingOpen(true)} className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-10 py-6 text-xl group">
+                Book 1:1 Self Healing
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <p className="mt-6 text-gray-400">
                 60 minutes • $375 • Conducted on Zoom
               </p>
@@ -208,6 +206,13 @@ const OneOnOneCoaching = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <TidyCalModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        serviceKey="one-on-one"
+        priceLabel="$375"
+      />
     </>
   );
 };
