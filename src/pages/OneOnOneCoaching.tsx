@@ -206,6 +206,13 @@ const OneOnOneCoaching = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <TidyCalModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        serviceKey="one-on-one"
+        priceLabel="$375"
+      />
     </>
   );
 };
