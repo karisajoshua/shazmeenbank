@@ -1,8 +1,8 @@
 // TidyCal booking configuration
 //
-// Replace each `path` with the part of your TidyCal link that comes after
-// tidycal.com/ — e.g. for https://tidycal.com/shazmeenbank/1-1-session
-// the path is "shazmeenbank/1-1-session".
+// Each `path` is the verified owner-provided part of the TidyCal link after
+// tidycal.com/ — e.g. for https://tidycal.com/shazmeen/1-1-session
+// the path is "shazmeen/1-1-session".
 // Prices are set inside TidyCal, which also collects payment at booking time.
 
 export const TIDYCAL_BASE_URL = "https://tidycal.com";
@@ -14,15 +14,15 @@ export const tidyCalBookings: Record<
   { path: string; title: string }
 > = {
   "one-on-one": {
-    path: "shazmeenbank/1-1-attachment-style-healing",
+    path: "shazmeen/1-1-attachment-style-healing",
     title: "1:1 Attachment Style Healing",
   },
   couples: {
-    path: "shazmeenbank/couples-coaching",
+    path: "shazmeen/couples-coaching",
     title: "Couples Coaching",
   },
   "resolution-method": {
-    path: "shazmeenbank/the-resolution-method",
+    path: "shazmeen/the-resolution-method-9-week-couples-transformation-program",
     title: "The Resolution Method",
   },
 };
