@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useState, useEffect, createContext, useContext, Context, ReactNode } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,12 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const authContextRegistry = globalThis as typeof globalThis & {
+  __shazmeenAuthContext?: Context<AuthContextType | undefined>;
+};
+
+const AuthContext = authContextRegistry.__shazmeenAuthContext ??
+  (authContextRegistry.__shazmeenAuthContext = createContext<AuthContextType | undefined>(undefined));
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
