@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import TidyCalModal from "@/components/bookings/TidyCalModal";
-import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
+import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching.png.asset.json";
 import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
 
 const CouplesCoaching = () => {
@@ -16,7 +16,7 @@ const CouplesCoaching = () => {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src={shazmeenMedalTogether}
+            src={couplesCoachingPhoto.url}
             alt="Couples Coaching"
             className="w-full h-full object-cover"
           />

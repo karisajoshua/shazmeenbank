@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import shazmeenMedalTogether from "@/assets/about/shazmeen-medal-together.png";
+import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching.png.asset.json";
 
 const ExpandedCouplesCoaching = () => {
   return (
@@ -17,7 +17,7 @@ const ExpandedCouplesCoaching = () => {
         <div className="max-w-6xl mx-auto mb-16">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <img 
-              src={shazmeenMedalTogether} 
+              src={couplesCoachingPhoto.url} 
               alt="Couples connection"
               className="w-full h-[400px] object-cover"
             />
