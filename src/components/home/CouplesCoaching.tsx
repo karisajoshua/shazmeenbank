@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching.png.asset.json";
 const CouplesCoaching = () => {
   return <section className="section-padding bg-white">
       <div className="container-custom">
@@ -19,7 +20,7 @@ const CouplesCoaching = () => {
             </Link>
           </div>
           <div className="lg:order-first">
-            <img alt="Couples coaching session" className="w-full h-80 object-cover rounded-xl shadow-premium" src="https://loqubmypggsmkuwjomvb.supabase.co/storage/v1/object/public/shazmeen//shaz.jpeg" />
+            <img alt="Shazmeen Bank" className="w-full h-80 object-cover rounded-xl shadow-premium" src={couplesCoachingPhoto.url} />
           </div>
         </div>
       </div>
