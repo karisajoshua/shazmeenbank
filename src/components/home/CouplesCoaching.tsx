@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching-portrait.png.asset.json";
+const couplesCoachingPhotoUrl = new URL(couplesCoachingPhoto.url, "https://shazmeenbank.lovable.app").href;
 const CouplesCoaching = () => {
   return <section className="section-padding bg-white">
       <div className="container-custom">
@@ -20,7 +21,7 @@ const CouplesCoaching = () => {
             </Link>
           </div>
           <div className="lg:order-first">
-            <img alt="Shazmeen portrait for Couples Coaching" className="w-full h-80 object-cover rounded-xl shadow-premium" src={couplesCoachingPhoto.url} />
+            <img alt="Shazmeen portrait for Couples Coaching" className="w-full h-80 object-cover rounded-xl shadow-premium" src={couplesCoachingPhotoUrl} />
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "l
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import TidyCalModal from "@/components/bookings/TidyCalModal";
 import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching-portrait.png.asset.json";
+const couplesCoachingPhotoUrl = new URL(couplesCoachingPhoto.url, "https://shazmeenbank.lovable.app").href;
 
 const CouplesCoaching = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -15,7 +16,7 @@ const CouplesCoaching = () => {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src={couplesCoachingPhoto.url}
+            src={couplesCoachingPhotoUrl}
             alt="Couples Coaching"
             className="w-full h-full object-cover"
           />
@@ -148,7 +149,7 @@ const CouplesCoaching = () => {
             <ScrollReveal delay={0.2}>
               <div className="relative">
                 <img 
-                  src={couplesCoachingPhoto.url}
+                  src={couplesCoachingPhotoUrl}
                   alt="Couples healing"
                   className="rounded-3xl shadow-2xl w-full"
                 />
