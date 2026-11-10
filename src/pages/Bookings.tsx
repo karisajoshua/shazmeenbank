@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import TidyCalModal from "@/components/bookings/TidyCalModal";
 import { serviceIdToTidyCalKey } from "@/config/tidycal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import couplesCoachingImage from "@/assets/shazmeen-couples-coaching-portrait.png.asset.json";
 
 // Import images from gallery
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 
 // Shazmeen's authentic photos from storage
-const couplesCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG";
 const resolutionMethodImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-he7v0l.png";
 
 // Hero background from Supabase
@@ -46,7 +46,7 @@ const services = [
     fullDescription: "We'll explore your attachment styles, communication patterns, and the unspoken needs driving your reactions. You'll learn how to pause reactivity, repair after conflict, and create space for vulnerability—so you can feel seen, heard, and secure again. These sessions aren't about who's right or wrong; they're about learning to lead with compassion while still holding your boundaries and voice.",
     subtitle: "Book your Couples Coaching Session and start building the relationship you both long to come home to.",
     icon: Users,
-    image: couplesCoachingImage,
+    image: couplesCoachingImage.url,
     accent: "from-purple-500/20 to-pink-500/20",
     ctaText: "Book Couples Session",
     features: [

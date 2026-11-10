@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Users, Heart, Shield, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import TidyCalModal from "@/components/bookings/TidyCalModal";
-const couplesCoachingPhoto = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG";
-import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
+import couplesCoachingPhoto from "@/assets/shazmeen-couples-coaching-portrait.png.asset.json";
 
 const CouplesCoaching = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -16,7 +15,7 @@ const CouplesCoaching = () => {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src={couplesCoachingPhoto}
+            src={couplesCoachingPhoto.url}
             alt="Couples Coaching"
             className="w-full h-full object-cover"
           />
@@ -149,7 +148,7 @@ const CouplesCoaching = () => {
             <ScrollReveal delay={0.2}>
               <div className="relative">
                 <img 
-                  src={shazmeenMedal}
+                  src={couplesCoachingPhoto.url}
                   alt="Couples healing"
                   className="rounded-3xl shadow-2xl w-full"
                 />
