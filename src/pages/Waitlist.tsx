@@ -73,7 +73,7 @@ const Waitlist = () => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                        className="w-full bg-white p-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-lg focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                         placeholder="Enter your name"
                         required
                       />
@@ -88,7 +88,7 @@ const Waitlist = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                        className="w-full bg-white p-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-lg focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                         placeholder="Enter your email"
                         required
                       />

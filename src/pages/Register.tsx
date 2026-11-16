@@ -83,7 +83,7 @@ const Register = () => {
                 type="text"
                 autoComplete="name"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                className="w-full bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
@@ -100,7 +100,7 @@ const Register = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                className="w-full bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                 placeholder="Email address"
                 value={formData.email}
                 onChange={handleChange}
@@ -117,7 +117,7 @@ const Register = () => {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                className="w-full bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                 placeholder="Password (min. 8 characters)"
                 value={formData.password}
                 onChange={handleChange}
@@ -134,7 +134,7 @@ const Register = () => {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
+                className="w-full bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 border border-gray-300 rounded-xl focus:ring-2 focus:ring-shazmeen-red focus:outline-none"
                 placeholder="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
