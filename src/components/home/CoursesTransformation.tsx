@@ -1,3 +1,4 @@
+import { useSiteContent } from '@/lib/siteContent';
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ interface CoursesTransformationProps {
 }
 
 const CoursesTransformation = ({ onWaitlistClick, onNewsletterClick }: CoursesTransformationProps) => {
+ const content = useSiteContent('home','courses-transformation');
   return (
     <section className="section-padding bg-black">
       <div className="container-custom">
