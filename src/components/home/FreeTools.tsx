@@ -1,10 +1,12 @@
 import React from "react";
+import { useSiteContent } from "@/lib/siteContent";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Download, BookOpen, Heart, Sparkles } from "lucide-react";
 const freeToolsImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371978-5ww6g1.png";
 
 const FreeTools = () => {
+  const content = useSiteContent("home","free-tools");
   const tools = [
     { icon: BookOpen, label: "Workbooks" },
     { icon: Heart, label: "Self-Care Guides" },
@@ -18,7 +20,7 @@ const FreeTools = () => {
         <div 
           className="absolute top-0 right-0 w-1/2 h-full bg-cover bg-center opacity-20"
           style={{ 
-            backgroundImage: `url(${freeToolsImage})`,
+            backgroundImage: `url(${content.image_url || freeToolsImage})`,
             clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0% 100%)'
           }}
         />
@@ -36,11 +38,11 @@ const FreeTools = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-white mb-6">
-            Free Tools for Growth & Clarity
+            {content.heading || "Free Tools for Growth & Clarity"}
           </h2>
           
           <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
-            Start where you are—with no pressure. These free downloads are created to help you reconnect with yourself, reflect on what you truly need, and take your next step forward.
+            {content.body || "Start where you are—with no pressure. These free downloads are created to help you reconnect with yourself, reflect on what you truly need, and take your next step forward."}
           </p>
           
           <div className="flex flex-wrap gap-4 mb-10">
@@ -57,7 +59,7 @@ const FreeTools = () => {
           
           <Link to="/free-resources">
             <Button className="bg-transparent text-white text-xl px-10 py-5 border-2 border-shazmeen-red hover:bg-shazmeen-red/10 transition-all duration-300">
-              Access Free Resources
+              {content.button_label || "Access Free Resources"}
             </Button>
           </Link>
         </div>
