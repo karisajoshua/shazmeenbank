@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import MyCourses from "../components/dashboard/MyCourses";
+import CoursePlayer from "../components/dashboard/CoursePlayer";
 import MyBookings from "../components/dashboard/MyBookings";
 import NewsletterPreferences from "../components/dashboard/NewsletterPreferences";
 import DashboardHome from "../components/dashboard/DashboardHome";
@@ -251,6 +252,7 @@ const Dashboard = () => {
           <Routes>
             <Route index element={<DashboardHome />} />
             <Route path="courses" element={<MyCourses />} />
+            <Route path="courses/:courseId" element={<CoursePlayer />} />
             <Route path="bookings" element={<MyBookings />} />
             <Route path="newsletter" element={<NewsletterPreferences />} />
           </Routes>
