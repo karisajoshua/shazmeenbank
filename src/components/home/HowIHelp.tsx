@@ -1,4 +1,5 @@
 import React from "react";
+import { useSiteContent } from "@/lib/siteContent";
 import { Heart, Brain, Compass, Star } from "lucide-react";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -9,6 +10,7 @@ const breakupHealingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1
 const lifeCoachingImage = "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766874371977-i3zif.png";
 
 const HowIHelp = () => {
+  const content = useSiteContent("home","how-i-help");
   const helpAreas = [
     {
       title: "For Couples: From Conflict to Connection",
@@ -46,10 +48,10 @@ const HowIHelp = () => {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl heading-elegant font-bold text-white mb-6">
-              Your Path to Healing & Growth
+              {content.heading || "Your Path to Healing & Growth"}
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Whether you're here as a couple wanting to reconnect, navigating anxious attachment, or searching for your North Star again, this is your path to healing.
+              {content.body || "Whether you're here as a couple wanting to reconnect, navigating anxious attachment, or searching for your North Star again, this is your path to healing."}
             </p>
           </div>
         </ScrollReveal>
