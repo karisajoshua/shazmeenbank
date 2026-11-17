@@ -53,11 +53,11 @@ const TidyCalModal = ({ isOpen, onClose, serviceKey, priceLabel }: TidyCalModalP
               Can’t find a time that suits you?
             </DialogTitle>
             <DialogDescription className="text-base leading-relaxed text-gray-300 pt-2">
-              Send me an email at{" "}
-              <a className="text-[#FD0061] hover:underline break-all" href={emailUrl}>
+              <span className="block">Send me an email at</span>
+              <a className="block whitespace-nowrap text-[clamp(0.75rem,3.2vw,1rem)] font-medium text-[#FD0061] hover:underline" href={emailUrl}>
                 shazmeen@shazmeenbank.com
-              </a>{" "}
-              and we’ll find a time that works for you.
+              </a>
+              <span className="block">and we’ll find a time that works for you.</span>
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col sm:flex-row gap-3 mt-4">
@@ -66,7 +66,7 @@ const TidyCalModal = ({ isOpen, onClose, serviceKey, priceLabel }: TidyCalModalP
                 <Mail className="w-4 h-4 mr-2" /> Email Shazmeen
               </a>
             </Button>
-            <Button variant="outline" className="border-zinc-600 text-white hover:bg-zinc-800 flex-1" onClick={() => setShowSchedulingHelp(false)}>
+            <Button variant="outline" className="border-zinc-600 bg-zinc-800 text-white hover:bg-zinc-700 hover:text-white flex-1" onClick={() => setShowSchedulingHelp(false)}>
               No thanks
             </Button>
           </div>
