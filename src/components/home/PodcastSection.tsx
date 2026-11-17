@@ -1,3 +1,4 @@
+import { useSiteContent } from '@/lib/siteContent';
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Headphones, Play } from "lucide-react";
 import podcastCover from "@/assets/podcast/love-better-cover.jpg";
 
 const PodcastSection = () => {
+ const content = useSiteContent('home','podcast');
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Split Background */}
