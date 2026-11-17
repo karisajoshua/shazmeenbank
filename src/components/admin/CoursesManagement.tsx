@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CourseList } from './courses/CourseList';
 import { CourseForm } from './courses/CourseForm';
+import { CourseContentEditor } from './courses/CourseContentEditor';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
-type View = 'list' | 'create' | 'edit';
+type View = 'list' | 'create' | 'edit' | 'content';
 
 const CoursesManagement = () => {
   const [view, setView] = useState<View>('list');
@@ -14,6 +15,11 @@ const CoursesManagement = () => {
   const handleEdit = (id: string) => {
     setEditingCourseId(id);
     setView('edit');
+  };
+
+  const handleContent = (id: string) => {
+    setEditingCourseId(id);
+    setView('content');
   };
 
   const handleCreateNew = () => {
@@ -42,8 +48,10 @@ const CoursesManagement = () => {
         </Button>
       </div>
       
-      {view === 'list' ? (
-        <CourseList onEdit={handleEdit} onCreateNew={handleCreateNew} />
+      {view === 'content' && editingCourseId ? (
+        <CourseContentEditor courseId={editingCourseId} onBack={handleBack} />
+      ) : view === 'list' ? (
+        <CourseList onEdit={handleEdit} onCreateNew={handleCreateNew} onManageContent={handleContent} />
       ) : (
         <CourseForm
           courseId={editingCourseId}
