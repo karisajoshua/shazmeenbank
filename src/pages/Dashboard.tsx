@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Link, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import MyCourses from "../components/dashboard/MyCourses";
+import CoursePlayer from "../components/dashboard/CoursePlayer";
 import MyBookings from "../components/dashboard/MyBookings";
-import SavedPodcasts from "../components/dashboard/SavedPodcasts";
 import NewsletterPreferences from "../components/dashboard/NewsletterPreferences";
 import DashboardHome from "../components/dashboard/DashboardHome";
 import { Menu, Loader2 } from "lucide-react";
@@ -136,19 +136,6 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/podcasts"
-                  className={`block px-4 py-2 ${
-                    isActiveRoute("/dashboard/podcasts")
-                      ? "bg-shazmeen-blush text-shazmeen-dark font-semibold"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
-                  onClick={closeSidebar}
-                >
-                  Saved Podcasts
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/dashboard/newsletter"
                   className={`block px-4 py-2 ${
                     isActiveRoute("/dashboard/newsletter")
@@ -236,18 +223,6 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/podcasts"
-                  className={`block px-4 py-3 rounded-lg ${
-                    isActiveRoute("/dashboard/podcasts")
-                      ? "bg-shazmeen-blush text-shazmeen-dark font-semibold"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  Saved Podcasts
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/dashboard/newsletter"
                   className={`block px-4 py-3 rounded-lg ${
                     isActiveRoute("/dashboard/newsletter")
@@ -277,8 +252,8 @@ const Dashboard = () => {
           <Routes>
             <Route index element={<DashboardHome />} />
             <Route path="courses" element={<MyCourses />} />
+            <Route path="courses/:courseId" element={<CoursePlayer />} />
             <Route path="bookings" element={<MyBookings />} />
-            <Route path="podcasts" element={<SavedPodcasts />} />
             <Route path="newsletter" element={<NewsletterPreferences />} />
           </Routes>
         </main>

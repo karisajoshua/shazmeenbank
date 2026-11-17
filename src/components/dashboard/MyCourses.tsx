@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -127,7 +128,7 @@ const MyCourses = () => {
                 ? "Browse our course catalog to find your next learning journey" 
                 : "Complete a course to see it here"}
             </p>
-            <Button className="btn-primary">Browse Courses</Button>
+            <Button asChild className="btn-primary"><Link to="/courses">Browse Courses</Link></Button>
           </div>
         ) : (
           filteredCourses.map(enrollment => (
@@ -170,11 +171,11 @@ const MyCourses = () => {
                   
                   <div className="flex space-x-3">
                     {enrollment.status === "active" ? (
-                      <Button className="btn-primary">Continue Course</Button>
+                      <Button asChild className="btn-primary"><Link to={`/dashboard/courses/${enrollment.course_id}`}>Continue Course</Link></Button>
                     ) : (
-                      <Button className="btn-primary">View Certificate</Button>
+                      <Button asChild className="btn-primary"><Link to={`/dashboard/courses/${enrollment.course_id}`}>Review Course</Link></Button>
                     )}
-                    <Button variant="outline" className="btn-outline">View Details</Button>
+                    <Button asChild variant="outline" className="border-gray-300 bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900"><Link to={`/dashboard/courses/${enrollment.course_id}`}>View Lessons</Link></Button>
                   </div>
                 </div>
               </div>
@@ -183,57 +184,6 @@ const MyCourses = () => {
         )}
       </div>
       
-      {/* Course Recommendations */}
-      <div className="mt-12">
-        <h2 className="text-2xl font-bold text-shazmeen-dark mb-6">Recommended For You</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="h-40 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt="Course recommendation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="font-bold text-shazmeen-dark mb-2">Effective Communication</h3>
-              <p className="text-sm text-gray-600 mb-4">Master the art of clear and impactful communication.</p>
-              <Button className="w-full btn-primary">Learn More</Button>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="h-40 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1168&q=80"
-                alt="Course recommendation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="font-bold text-shazmeen-dark mb-2">Team Management</h3>
-              <p className="text-sm text-gray-600 mb-4">Build and lead high-performing teams effectively.</p>
-              <Button className="w-full btn-primary">Learn More</Button>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="h-40 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt="Course recommendation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="font-bold text-shazmeen-dark mb-2">Digital Marketing</h3>
-              <p className="text-sm text-gray-600 mb-4">Learn strategies to grow your business online.</p>
-              <Button className="w-full btn-primary">Learn More</Button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
