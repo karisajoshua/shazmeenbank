@@ -1,4 +1,5 @@
 import React from "react";
+import { useSiteContent } from "@/lib/siteContent";
 import { Link } from "react-router-dom";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -6,12 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 
 const NewWayToLove = () => {
+  const content = useSiteContent("home","new-way-to-love");
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
       {/* Background Image with Overlay - Lowered to show face */}
       <div 
         className="absolute inset-0 bg-cover bg-[center_20%] bg-fixed"
-        style={{ backgroundImage: `url(${shazmeenHeart})` }}
+        style={{ backgroundImage: `url(${content.image_url || shazmeenHeart})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/95 via-zinc-900/85 to-zinc-900/95" />
       
@@ -19,10 +21,10 @@ const NewWayToLove = () => {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl heading-elegant font-bold text-white mb-8">
-              A New Way to Love
+              {content.heading || "A New Way to Love"}
             </h2>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-10">
-              You don't have to chase, overthink, or abandon yourself anymore. Here, you'll learn to regulate your emotions, embrace your sensitivity, and show up secure in love.
+              {content.body || "You don't have to chase, overthink, or abandon yourself anymore. Here, you'll learn to regulate your emotions, embrace your sensitivity, and show up secure in love."}
             </p>
           </ScrollReveal>
           
@@ -50,7 +52,7 @@ const NewWayToLove = () => {
                 >
                   <Link to="/bookings?service=1">
                     <Heart className="w-5 h-5 mr-2" />
-                    Book 1:1 Self Healing Session
+                    {content.button_label || "Book 1:1 Self Healing Session"}
                   </Link>
                 </Button>
               </div>
