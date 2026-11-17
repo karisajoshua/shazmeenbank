@@ -225,6 +225,8 @@ const VideoHero = ({ onWaitlistClick }: VideoHeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
         {/* Top overlay to hide YouTube title */}
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/90 via-black/60 to-transparent z-10"></div>
+        {/* Hide captions burned into the video; keep the hero actions above this mask. */}
+        <div className="absolute bottom-0 left-0 right-0 h-[18%] bg-black z-10 pointer-events-none"></div>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div
             id="yt-hero-player"
