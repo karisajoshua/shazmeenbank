@@ -1,14 +1,15 @@
+import { useSiteContent } from '@/lib/siteContent';
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 const MediaFeatures = () => {
+ const content = useSiteContent("about","media");
   return <section className="section-padding bg-shazmeen-white">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">Media Appearances</h2>
+          <h2 className="text-3xl font-bold text-shazmeen-dark mb-4">{content.heading || "Media Appearances"}</h2>
           <p className="text-gray-700 max-w-3xl mx-auto">
-            Shazmeen Bank has been featured on numerous television shows, radio programs, and media outlets,
-            sharing insights on personal growth, relationships, and mindset transformation.
+            {content.body || "Shazmeen Bank has been featured on numerous television shows, radio programs, and media outlets, sharing insights on personal growth, relationships, and mindset transformation."}
           </p>
         </div>
         
@@ -41,7 +42,7 @@ const MediaFeatures = () => {
         </div>
         
         <div className="text-center">
-          <Button className="btn-primary">Watch Media Appearances</Button>
+          <Button className="btn-primary">{content.button_label || "Watch Media Appearances"}</Button>
         </div>
       </div>
     </section>;
