@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CourseList } from './courses/CourseList';
 import { CourseForm } from './courses/CourseForm';
 import { CourseContentEditor } from './courses/CourseContentEditor';
@@ -9,27 +9,33 @@ import { ArrowLeft } from 'lucide-react';
 type View = 'list' | 'create' | 'edit' | 'content';
 
 const CoursesManagement = () => {
-  const [view, setView] = useState<View>('list');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [view, setView] = useState<View>(location.pathname.endsWith('/new') ? 'create' : 'list');
   const [editingCourseId, setEditingCourseId] = useState<string | undefined>();
 
   const handleEdit = (id: string) => {
     setEditingCourseId(id);
     setView('edit');
+    navigate('/admin/courses');
   };
 
   const handleContent = (id: string) => {
     setEditingCourseId(id);
     setView('content');
+    navigate('/admin/courses');
   };
 
   const handleCreateNew = () => {
     setEditingCourseId(undefined);
     setView('create');
+    navigate('/admin/courses/new');
   };
 
   const handleBack = () => {
     setView('list');
     setEditingCourseId(undefined);
+    navigate('/admin/courses');
   };
 
   const handleSuccess = () => {
