@@ -72,7 +72,7 @@ export const CourseList = ({ onEdit, onCreateNew, onManageContent }: CourseListP
       <Card>
         <CardHeader>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <CardTitle>Courses Management</CardTitle>
+            <div><CardTitle>Courses Management</CardTitle><p className="mt-2 text-sm text-gray-600">Create a course first, then select <strong>Modules</strong> beside it to add lessons, Vimeo or Loom videos, workbooks and slides.</p></div>
             <Button onClick={onCreateNew}>
               <Plus className="mr-2 h-4 w-4" />
               Create New Course
@@ -130,7 +130,7 @@ export const CourseList = ({ onEdit, onCreateNew, onManageContent }: CourseListP
                         {course.created_at ? format(new Date(course.created_at), 'MMM d, yyyy') : 'N/A'}
                       </TableCell>
                       <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
+                        <div className="flex flex-wrap justify-end gap-2">
                           <Button variant="outline" size="sm" className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900" onClick={() => onManageContent(course.id)}><BookOpen className="mr-2 h-4 w-4" /> Modules</Button>
                           <Button
                             aria-label="Edit course"
