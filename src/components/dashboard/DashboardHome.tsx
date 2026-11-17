@@ -165,7 +165,6 @@ const DashboardHome = () => {
           <div className="text-3xl font-bold text-shazmeen-dark">{stats.upcomingBookings}</div>
           <div className="text-gray-600 text-sm">Upcoming Bookings</div>
         </div>
-        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -190,7 +189,7 @@ const DashboardHome = () => {
                   <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
                     <div className="bg-shazmeen-red h-2.5 rounded-full" style={{ width: `${course.progress}%` }}></div>
                   </div>
-                  <Button className="w-full btn-primary">Continue Course</Button>
+                  <Button asChild className="w-full btn-primary"><Link to="/dashboard/courses">Continue Learning</Link></Button>
                 </div>
               ))}
             </div>
