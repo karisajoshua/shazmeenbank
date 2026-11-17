@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Check, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import CourseWaitlistPopup from "@/components/popups/CourseWaitlistPopup";
+import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const INITIAL_OUTCOMES_COUNT = 3;
@@ -62,8 +62,6 @@ const LearningOutcomes = ({ outcomes }: { outcomes: string[] }) => {
 };
 
 const Courses = () => {
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState<any>(null);
 
   const { data: courses, isLoading } = useQuery({
     queryKey: ['published-courses'],
@@ -78,11 +76,6 @@ const Courses = () => {
       return data;
     },
   });
-
-  const handleEnrollClick = (course: any) => {
-    setSelectedCourse(course);
-    setIsWaitlistOpen(true);
-  };
 
   return (
     <>
@@ -191,12 +184,7 @@ const Courses = () => {
                             </p>
                           )}
                           
-                          <Button 
-                            className="bg-[#FD0061] hover:bg-[#FD0061]/90 text-white px-8 py-6 text-lg"
-                            onClick={() => handleEnrollClick(course)}
-                          >
-                            Get Notified
-                          </Button>
+                          <Button asChild className="bg-[#FD0061] hover:bg-[#D00050] text-white px-8 py-6 text-lg"><Link to={`/courses/${course.id}/checkout`}>Buy Course</Link></Button>
                         </div>
                       </div>
                     </div>
@@ -234,14 +222,6 @@ const Courses = () => {
         </div>
       </section>
 
-      {/* Course Waitlist Popup */}
-      {isWaitlistOpen && (
-        <CourseWaitlistPopup 
-          isOpen={isWaitlistOpen} 
-          onClose={() => setIsWaitlistOpen(false)} 
-          course={selectedCourse}
-        />
-      )}
     </>
   );
 };
