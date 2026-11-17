@@ -67,15 +67,15 @@ const LogoCarousel = () => {
     let active = true;
     supabase.storage.from('admin-media').list('', {limit: 1000}).then(({data,error}) => {
       if (!active || error || !data) return;
-      const matches = data.filter(file => /\\.(png|jpe?g|webp|svg)$/i.test(file.name) && /(bbc|choice|citizen|ebru|engage|k24|ktn|nrg|ntv|star|switch|tuko|logo|featured)/i.test(file.name));
-      if (matches.length) setGalleryLogos(matches.map(file => ({name:file.name.replace(/\\.[^.]+$/,''),logo:supabase.storage.from('admin-media').getPublicUrl(file.name).data.publicUrl})));
+      const matches = data.filter(file => /\.(png|jpe?g|webp|svg)$/i.test(file.name) && /(bbc|choice|citizen|ebru|engage|k24|ktn|nrg|ntv|star|switch|tuko|logo|featured)/i.test(file.name));
+      if (matches.length) setGalleryLogos(matches.map(file => ({name:file.name.replace(/\.[^.]+$/,''),logo:supabase.storage.from('admin-media').getPublicUrl(file.name).data.publicUrl})));
     });
     return () => { active = false; };
   }, []);
   let configuredLogos: {name:string;logo:string}[] = [];
   try {
     const parsed = JSON.parse(content.image_url || '[]');
-    if (Array.isArray(parsed)) configuredLogos = parsed.filter((item): item is {name:string;logo:string} => typeof item?.name === 'string' && typeof item?.logo === 'string' && /^https:\\/\\//.test(item.logo));
+    if (Array.isArray(parsed)) configuredLogos = parsed.filter((item): item is {name:string;logo:string} => typeof item?.name === 'string' && typeof item?.logo === 'string' && /^https:\/\//.test(item.logo));
   } catch { /* use gallery or original logos */ }
   const logos = configuredLogos.length ? configuredLogos : galleryLogos.length ? galleryLogos : featuredLogos;
 
@@ -117,7 +117,10 @@ const LogoCarousel = () => {
           }
           
           .animate-super-slow-scroll {
-            animation: super-slow-scroll 35s linear infinite;\n          }\n          @media (prefers-reduced-motion: reduce) {\n            .animate-super-slow-scroll { animation: none; }
+            animation: super-slow-scroll 35s linear infinite;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-super-slow-scroll { animation: none; }
           }
         `}
       </style>
