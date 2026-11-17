@@ -1,3 +1,4 @@
+import { useSiteContent } from '@/lib/siteContent';
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
@@ -43,6 +44,7 @@ const CourseCard = ({
 };
 
 const CoursesPreview = () => {
+ const content = useSiteContent("home","courses-preview");
   const { data: courses, isLoading } = useQuery({
     queryKey: ['published-courses-preview'],
     queryFn: async () => {
@@ -79,12 +81,12 @@ const CoursesPreview = () => {
       <div className="container-custom">
         <div className="flex flex-col md:flex-row justify-between items-center mb-16">
           <div>
-            <h2 className="text-3xl md:text-4xl heading-elegant font-bold text-shazmeen-dark mb-2">Courses Coming Soon</h2>
-            <p className="text-xl text-gray-600">Self-paced programs built for real transformation.</p>
+            <h2 className="text-3xl md:text-4xl heading-elegant font-bold text-shazmeen-dark mb-2">{content.heading || "Courses Coming Soon"}</h2>
+            <p className="text-xl text-gray-600">{content.body || "Self-paced programs built for real transformation."}</p>
             <div className="w-20 h-1 bg-shazmeen-red mt-4 hidden md:block"></div>
           </div>
           <Link to="/courses" className="mt-6 md:mt-0">
-            <Button className="btn-primary">View All Courses</Button>
+            <Button className="btn-primary">{content.button_label || "View All Courses"}</Button>
           </Link>
         </div>
 
