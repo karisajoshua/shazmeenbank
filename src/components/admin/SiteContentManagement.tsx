@@ -7,6 +7,8 @@ const db = supabase as any;
 const sections = [
  ['home','intro','Homepage — Introduction'],
  ['about','hero','About — Hero'],
+ ['about','cta','About — Call to Action'],
+ ['home','closing','Homepage — Closing Message'],
  ['contact','hero','Contact — Hero'],
  ['contact','details','Contact — Details'],
 ] as const;
