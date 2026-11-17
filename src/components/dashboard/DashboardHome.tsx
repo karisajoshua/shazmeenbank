@@ -9,7 +9,6 @@ interface Stats {
   activeCourses: number;
   completedCourses: number;
   upcomingBookings: number;
-  savedPodcasts: number;
 }
 
 interface Course {
@@ -37,7 +36,6 @@ const DashboardHome = () => {
     activeCourses: 0,
     completedCourses: 0,
     upcomingBookings: 0,
-    savedPodcasts: 0
   });
   const [activeCourses, setActiveCourses] = useState<Course[]>([]);
   const [upcomingBookings, setUpcomingBookings] = useState<UpcomingBooking[]>([]);
@@ -71,7 +69,6 @@ const DashboardHome = () => {
         activeCourses: activeCourseCount,
         completedCourses: completedCourseCount,
         upcomingBookings: upcomingBookingCount,
-        savedPodcasts: 0
       });
 
       // Fetch active courses with details
@@ -155,7 +152,7 @@ const DashboardHome = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-sm">
           <div className="text-3xl font-bold text-shazmeen-dark">{stats.activeCourses}</div>
           <div className="text-gray-600 text-sm">Active Courses</div>
@@ -168,9 +165,6 @@ const DashboardHome = () => {
           <div className="text-3xl font-bold text-shazmeen-dark">{stats.upcomingBookings}</div>
           <div className="text-gray-600 text-sm">Upcoming Bookings</div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-sm">
-          <div className="text-3xl font-bold text-shazmeen-dark">{stats.savedPodcasts}</div>
-          <div className="text-gray-600 text-sm">Saved Podcasts</div>
         </div>
       </div>
 
