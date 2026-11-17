@@ -1,3 +1,4 @@
+import { useSiteContent } from '@/lib/siteContent';
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -5,6 +6,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 
 const Contact = () => {
+  const heroContent = useSiteContent('contact','hero');
+  const detailsContent = useSiteContent('contact','details');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -70,9 +73,9 @@ const Contact = () => {
       <section className="bg-gradient-to-r from-[#000000] to-[#1a1a1d] text-shazmeen-white py-24 pt-32">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{heroContent.heading || "Get in Touch"}</h1>
             <p className="text-xl text-shazmeen-gray mb-8">
-              Have questions or want to learn more? We're here to help!
+              {heroContent.body || "Have questions or want to learn more? We're here to help!"}
             </p>
             
             {/* Social Icons */}
@@ -143,7 +146,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Contact Information</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">{detailsContent.heading || "Contact Information"}</h2>
               <div className="space-y-6">
                 <div>
                   <p className="font-semibold text-lg text-white mb-1">Email Us</p>
