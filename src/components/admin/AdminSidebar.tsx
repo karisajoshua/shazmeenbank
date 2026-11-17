@@ -45,6 +45,7 @@ const menuSections = [
   {
     label: 'Content',
     items: [
+      { title: 'Website Pages', url: '/admin/site-content', icon: FileText },
       { title: 'Blog Posts', url: '/admin/blog', icon: FileText },
       { title: 'Comments', url: '/admin/comments', icon: MessageCircle },
       { title: 'Podcasts', url: '/admin/podcasts', icon: Mic },
