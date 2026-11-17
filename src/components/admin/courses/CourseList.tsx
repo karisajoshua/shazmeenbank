@@ -20,16 +20,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Pencil, Trash2, Plus, Search } from 'lucide-react';
+import { Pencil, Trash2, Plus, Search, BookOpen } from 'lucide-react';
 import { DeleteCourseDialog } from './DeleteCourseDialog';
 import { format } from 'date-fns';
 
 interface CourseListProps {
   onEdit: (id: string) => void;
   onCreateNew: () => void;
+  onManageContent: (id: string) => void;
 }
 
-export const CourseList = ({ onEdit, onCreateNew }: CourseListProps) => {
+export const CourseList = ({ onEdit, onCreateNew, onManageContent }: CourseListProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -130,7 +131,9 @@ export const CourseList = ({ onEdit, onCreateNew }: CourseListProps) => {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
+                          <Button variant="outline" size="sm" className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900" onClick={() => onManageContent(course.id)}><BookOpen className="mr-2 h-4 w-4" /> Modules</Button>
                           <Button
+                            aria-label="Edit course"
                             variant="ghost"
                             size="icon"
                             onClick={() => onEdit(course.id)}
