@@ -15,6 +15,7 @@ import ContactMessagesManagement from '@/components/admin/ContactMessagesManagem
 import FreeResourcesManagement from '@/components/admin/FreeResourcesManagement';
 import RevenueOverview from '@/components/admin/RevenueOverview';
 import CommentsManagement from '@/components/admin/CommentsManagement';
+import SiteContentManagement from '@/components/admin/SiteContentManagement';
 import { Loader2 } from 'lucide-react';
 
 const Admin = () => {
@@ -36,6 +37,7 @@ const Admin = () => {
     <AdminLayout>
       <Routes>
         <Route index element={<AdminDashboard />} />
+        <Route path="site-content" element={<SiteContentManagement />} />
         <Route path="blog/*" element={<BlogManagement />} />
         <Route path="comments" element={<CommentsManagement />} />
         <Route path="podcasts/*" element={<PodcastManagement />} />
