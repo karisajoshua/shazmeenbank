@@ -6,6 +6,9 @@ import type { SiteContent } from '@/lib/siteContent';
 const db = supabase as any;
 const sections = [
  ['home','intro','Homepage — Introduction'],
+ ['home','coaching-cta','Homepage — Coaching CTA'],
+ ['home','courses-preview','Homepage — Courses Preview'],
+ ['about','media','About — Media Appearances'],
  ['home','how-i-help','Homepage — How I Help'],
  ['home','new-way-to-love','Homepage — A New Way to Love'],
  ['home','free-tools','Homepage — Free Tools'],
@@ -17,6 +20,9 @@ const sections = [
  ['contact','details','Contact — Details'],
 ] as const;
 const defaultContent: Record<string, SiteContent> = {
+ 'home:coaching-cta': {heading:'Ready for personalized guidance?',body:'Book a 1:1 coaching session with me to get tailored advice for your unique situation.',button_label:'Book Your Session Now',button_url:'/bookings',image_url:'https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen//shazmeenBank3.jpg'},
+ 'home:courses-preview': {heading:'Courses Coming Soon',body:'Self-paced programs built for real transformation.',button_label:'View All Courses'},
+ 'about:media': {heading:'Media Appearances',body:'Shazmeen Bank has been featured on numerous television shows, radio programs, and media outlets, sharing insights on personal growth, relationships, and mindset transformation.',button_label:'Watch Media Appearances'},
  'home:intro': {heading:"If you've landed here, you're ready to heal, take responsibility and begin again",body:"Whether you're navigating anxious attachment, healing from heartbreak, or trying to reconnect with your partner—this is a safe space to unlearn old patterns, rebuild your sense of self, and step into relationships that truly honor you."},
  'home:how-i-help': {heading:"Your Path to Healing & Growth",body:"Whether you're here as a couple wanting to reconnect, navigating anxious attachment, or searching for your North Star again, this is your path to healing."},
  'home:new-way-to-love': {heading:"A New Way to Love",body:"You don't have to chase, overthink, or abandon yourself anymore. Here, you'll learn to regulate your emotions, embrace your sensitivity, and show up secure in love.",button_label:"Book 1:1 Self Healing Session",image_url:""},
@@ -29,6 +35,9 @@ const defaultContent: Record<string, SiteContent> = {
  'contact:details': {heading:"Contact Information"}
 };
 const supportedFields: Record<string, (keyof SiteContent)[]> = {
+ 'home:coaching-cta':['heading','body','image_url','button_label','button_url'],
+ 'home:courses-preview':['heading','body','button_label'],
+ 'about:media':['heading','body','button_label'],
  'home:intro':['heading','body'],
  'home:how-i-help':['heading','body'],
  'home:new-way-to-love':['heading','body','image_url','button_label'],
