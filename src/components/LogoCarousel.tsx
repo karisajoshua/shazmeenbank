@@ -1,83 +1,33 @@
-import { supabase } from '@/integrations/supabase/client';
 import { useSiteContent } from '@/lib/siteContent';
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const LogoCarousel = () => {
  const content = useSiteContent('home','featured-in');
-  const [galleryLogos, setGalleryLogos] = useState<{name:string;logo:string}[]>([]);
 
-  // Real featured platform logos from Supabase
+
+  // Verified gallery URLs supplied by the site owner, in their requested order.
   const featuredLogos = [
-    {
-      name: "BBC",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/bbc.jpg"
-    },
-    {
-      name: "Choice",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/choice.jpg"
-    },
-    {
-      name: "Citizen",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/citizen.jpg"
-    },
-    {
-      name: "Ebru",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ebru.jpg"
-    },
-    {
-      name: "Engage",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/engage.png"
-    },
-    {
-      name: "K24",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/k24.jpg"
-    },
-    {
-      name: "KTN",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ktn.jpg"
-    },
-    {
-      name: "NRG Radio",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/nrgRadio.jpg"
-    },
-    {
-      name: "NRG Vent",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/nrgVent.jpg"
-    },
-    {
-      name: "NTV",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/ntv.jpg"
-    },
-    {
-      name: "Star",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/star.jpg"
-    },
-    {
-      name: "Switch",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/switch.jpg"
-    },
-    {
-      name: "Tuko",
-      logo: "https://bkjmzbdrgwbgaotweauh.supabase.co/storage/v1/object/public/shazmeen/Featured%20logos/tuko.png"
-    }
+    { name: "Featured media logo 1", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-zpfva.png" },
+    { name: "Featured media logo 2", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984800-j6nvn8.jpg" },
+    { name: "Featured media logo 3", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-r9oatj.jpg" },
+    { name: "Featured media logo 4", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984800-dxksbl.jpg" },
+    { name: "Featured media logo 5", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984800-8w2mi8.png" },
+    { name: "Featured media logo 6", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-cuigj7.jpg" },
+    { name: "Featured media logo 7", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984800-iw9hg.jpg" },
+    { name: "Featured media logo 8", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-r61kk.jpg" },
+    { name: "Featured media logo 9", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-s7kxdg.jpg" },
+    { name: "Featured media logo 10", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-7zptv.jpg" },
+    { name: "Featured media logo 11", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984799-jtqp5p.jpg" },
+    { name: "Featured media logo 12", logo: "https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1764884984800-8on9i88.jpg" }
   ];
 
-  useEffect(() => {
-    let active = true;
-    supabase.storage.from('admin-media').list('', {limit: 1000}).then(({data,error}) => {
-      if (!active || error || !data) return;
-      const matches = data.filter(file => /\.(png|jpe?g|webp|svg)$/i.test(file.name) && /(bbc|choice|citizen|ebru|engage|k24|ktn|nrg|ntv|star|switch|tuko|logo|featured)/i.test(file.name));
-      if (matches.length) setGalleryLogos(matches.map(file => ({name:file.name.replace(/\.[^.]+$/,''),logo:supabase.storage.from('admin-media').getPublicUrl(file.name).data.publicUrl})));
-    });
-    return () => { active = false; };
-  }, []);
   let configuredLogos: {name:string;logo:string}[] = [];
   try {
     const parsed = JSON.parse(content.image_url || '[]');
     if (Array.isArray(parsed)) configuredLogos = parsed.filter((item): item is {name:string;logo:string} => typeof item?.name === 'string' && typeof item?.logo === 'string' && /^https:\/\//.test(item.logo));
   } catch { /* use gallery or original logos */ }
-  const logos = configuredLogos.length ? configuredLogos : galleryLogos.length ? galleryLogos : featuredLogos;
+  const logos = configuredLogos.length ? configuredLogos : featuredLogos;
 
   return (
     <div className="bg-white py-12 border-y border-gray-200">
