@@ -1,15 +1,32 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import shazmeenHeart from "@/assets/about/shazmeen-heart.png";
 import shazmeenMedal from "@/assets/about/shazmeen-medal.png";
 import shazmeenMarathon from "@/assets/about/shazmeen-marathon-stats.png";
 
 const PersonalStory = () => {
+  const storyRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const root = storyRef.current;
+    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const elements = Array.from(root.querySelectorAll<HTMLElement>(".story-chapter h2, .story-chapter h3, .story-chapter h4, .story-chapter p, .story-chapter img, .story-chapter .story-visual"));
+    elements.forEach((element) => element.classList.add("story-reveal"));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle("story-visible", entry.isIntersecting));
+    }, { rootMargin: "-6% 0px -8% 0px", threshold: 0.08 });
+    elements.forEach((element) => observer.observe(element));
+    return () => {
+      observer.disconnect();
+      elements.forEach((element) => element.classList.remove("story-reveal", "story-visible"));
+    };
+  }, []);
+
   return (
-    <section className="section-padding bg-black">
+    <section ref={storyRef} className="section-padding bg-black story-timeline">
       <div className="container-custom">
         {/* Section 1: Introduction & Current Reality */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
+        <div className="story-chapter grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start mb-20 md:mb-32">
           <div>
             <h2 className="text-3xl font-bold text-white mb-6 heading-elegant">Hey Friend,</h2>
             <div className="space-y-4 text-gray-300">
@@ -33,7 +50,7 @@ const PersonalStory = () => {
               </p>
             </div>
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-premium">
+          <div className="story-visual rounded-2xl overflow-hidden shadow-premium md:sticky md:top-28">
             <img 
               src={shazmeenHeart} 
               alt="Shazmeen Bank" 
@@ -44,14 +61,14 @@ const PersonalStory = () => {
 
         {/* Section 2 & 3: A Teen Mom & Losing Myself */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16">
-          <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-premium">
+          <div className="story-visual rounded-2xl overflow-hidden shadow-premium md:order-2 md:sticky md:top-28">
             <img 
               src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-7wt064.JPG" 
               alt="Shazmeen Bank" 
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="order-1 md:order-2">
+          <div className="md:order-1">
             <h3 className="text-2xl font-bold text-white mb-4">A Teen Mom</h3>
             <div className="space-y-4 text-gray-300">
               <p>
@@ -111,7 +128,7 @@ const PersonalStory = () => {
               </p>
             </div>
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-premium">
+          <div className="story-visual rounded-2xl overflow-hidden shadow-premium md:sticky md:top-28">
             <img 
               src="https://hxmnbsirehwbicpjmenj.supabase.co/storage/v1/object/public/admin-media/1766522428561-c4m1zp.JPG" 
               alt="Shazmeen Bank" 
@@ -121,7 +138,7 @@ const PersonalStory = () => {
         </div>
 
         {/* Section 6: Learning, Healing, and Growing - Background Image Style */}
-        <div className="relative py-20 md:py-32 mb-16 overflow-hidden">
+        <div className="story-chapter relative py-20 md:py-32 mb-16 overflow-hidden">
           {/* Background Image with Overlay */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -157,7 +174,7 @@ const PersonalStory = () => {
         </div>
 
         {/* Section 7: A Second Chance at Love - Background Image Style */}
-        <div className="relative py-20 md:py-32 mb-24 overflow-hidden">
+        <div className="story-chapter relative py-20 md:py-32 mb-24 overflow-hidden">
           {/* Background Image with Overlay */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -166,7 +183,7 @@ const PersonalStory = () => {
           <div className="absolute inset-0 bg-gradient-to-l from-black via-black/95 to-black/70" />
           
           <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-            <div className="max-w-2xl ml-auto text-right md:text-left md:pl-8">
+            <div className="max-w-2xl text-left">
               <span className="text-[#FD0061] text-sm font-medium tracking-widest uppercase mb-4 block">Full Circle</span>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 font-serif">A Second Chance at Love</h3>
               <div className="w-24 h-1 bg-[#FD0061] mb-10 ml-auto md:ml-0"></div>
@@ -187,7 +204,7 @@ const PersonalStory = () => {
         </div>
 
         {/* Unified "My Approach & Philosophy" Section */}
-        <div className="relative overflow-hidden">
+        <div className="story-chapter relative overflow-hidden">
           {/* Subtle background with single image */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
@@ -290,6 +307,20 @@ const PersonalStory = () => {
           </div>
         </div>
       </div>
+      <style>{`
+        .story-timeline .story-chapter { position: relative; }
+        .story-timeline .story-reveal {
+          opacity: 0;
+          transform: translate3d(0, 32px, 0);
+          transition: opacity 700ms ease, transform 800ms cubic-bezier(.2,.7,.2,1);
+          will-change: opacity, transform;
+        }
+        .story-timeline .story-reveal.story-visible { opacity: 1; transform: translate3d(0,0,0); }
+        .story-timeline .story-chapter img { max-height: 75vh; object-fit: cover; }
+        @media (prefers-reduced-motion: reduce) {
+          .story-timeline .story-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+      `}</style>
     </section>
   );
 };
