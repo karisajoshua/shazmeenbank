@@ -6,6 +6,10 @@ import type { SiteContent } from '@/lib/siteContent';
 const db = supabase as any;
 const sections = [
  ['home','intro','Homepage — Introduction'],
+ ['home','how-i-help','Homepage — How I Help'],
+ ['home','new-way-to-love','Homepage — A New Way to Love'],
+ ['home','free-tools','Homepage — Free Tools'],
+ ['home','newsletter','Homepage — Newsletter'],
  ['about','hero','About — Hero'],
  ['about','cta','About — Call to Action'],
  ['home','closing','Homepage — Closing Message'],
