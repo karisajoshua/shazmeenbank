@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
+import CourseCheckout from "./pages/CourseCheckout";
 import Bookings from "./pages/Bookings";
 import BookingConfirmation from "./pages/BookingConfirmation";
 import BookingHelp from "./pages/BookingHelp";
@@ -47,6 +48,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
                 <Route path="courses" element={<Courses />} />
+                <Route path="courses/:courseId/checkout" element={<CourseCheckout />} />
                 <Route path="bookings" element={<Bookings />} />
                 <Route path="booking-confirmation" element={<BookingConfirmation />} />
                 <Route path="booking-help" element={<BookingHelp />} />
