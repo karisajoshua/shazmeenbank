@@ -1,7 +1,9 @@
+import { useSiteContent } from '@/lib/siteContent';
 
 import React, { useEffect, useState } from "react";
 
 const LogoCarousel = () => {
+ const content = useSiteContent('home','featured-in');
   const [isVisible, setIsVisible] = useState(false);
 
   // Real featured platform logos from Supabase
@@ -72,7 +74,7 @@ const LogoCarousel = () => {
     <div className="bg-white py-12 border-y border-gray-200">
       <div className="container-custom">
         <div className="text-center mb-8">
-          <p className="text-gray-900 text-3xl font-bold">Featured in</p>
+          <p className="text-gray-900 text-3xl font-bold">{content.heading || "Featured in"}</p>
         </div>
       </div>
       
