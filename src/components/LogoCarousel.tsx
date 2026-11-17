@@ -1,10 +1,11 @@
+import { supabase } from '@/integrations/supabase/client';
 import { useSiteContent } from '@/lib/siteContent';
 
 import React, { useEffect, useState } from "react";
 
 const LogoCarousel = () => {
  const content = useSiteContent('home','featured-in');
-  const [isVisible, setIsVisible] = useState(false);
+  const [galleryLogos, setGalleryLogos] = useState<{name:string;logo:string}[]>([]);
 
   // Real featured platform logos from Supabase
   const featuredLogos = [
@@ -63,12 +64,20 @@ const LogoCarousel = () => {
   ];
 
   useEffect(() => {
-    // Show logos after a short delay for better visual effect
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 500);
-    return () => clearTimeout(timer);
+    let active = true;
+    supabase.storage.from('admin-media').list('', {limit: 1000}).then(({data,error}) => {
+      if (!active || error || !data) return;
+      const matches = data.filter(file => /\\.(png|jpe?g|webp|svg)$/i.test(file.name) && /(bbc|choice|citizen|ebru|engage|k24|ktn|nrg|ntv|star|switch|tuko|logo|featured)/i.test(file.name));
+      if (matches.length) setGalleryLogos(matches.map(file => ({name:file.name.replace(/\\.[^.]+$/,''),logo:supabase.storage.from('admin-media').getPublicUrl(file.name).data.publicUrl})));
+    });
+    return () => { active = false; };
   }, []);
+  let configuredLogos: {name:string;logo:string}[] = [];
+  try {
+    const parsed = JSON.parse(content.image_url || '[]');
+    if (Array.isArray(parsed)) configuredLogos = parsed.filter((item): item is {name:string;logo:string} => typeof item?.name === 'string' && typeof item?.logo === 'string' && /^https:\\/\\//.test(item.logo));
+  } catch { /* use gallery or original logos */ }
+  const logos = configuredLogos.length ? configuredLogos : galleryLogos.length ? galleryLogos : featuredLogos;
 
   return (
     <div className="bg-white py-12 border-y border-gray-200">
@@ -79,14 +88,14 @@ const LogoCarousel = () => {
       </div>
       
       <div className="overflow-hidden relative">
-        <div className={`flex transition-opacity duration-1000 ${isVisible ? 'opacity-100 animate-super-slow-scroll' : 'opacity-0'}`}>
+        <div className="flex animate-super-slow-scroll">
           {/* Triple the logos to create seamless loop with better spacing */}
-          {[...featuredLogos, ...featuredLogos, ...featuredLogos].map((logo, index) => (
+          {[...logos, ...logos, ...logos].map((logo, index) => (
             <div key={index} className="mx-12 flex-shrink-0">
               <img 
                 src={logo.logo} 
                 alt={`${logo.name} Logo`} 
-                className="h-16 object-contain" 
+                className="h-16 w-auto object-contain" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} 
                 style={{
                   maxWidth: "180px"
                 }} 
@@ -108,7 +117,7 @@ const LogoCarousel = () => {
           }
           
           .animate-super-slow-scroll {
-            animation: super-slow-scroll 20s linear infinite;
+            animation: super-slow-scroll 35s linear infinite;\n          }\n          @media (prefers-reduced-motion: reduce) {\n            .animate-super-slow-scroll { animation: none; }
           }
         `}
       </style>
