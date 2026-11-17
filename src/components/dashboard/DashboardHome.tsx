@@ -13,6 +13,7 @@ interface Stats {
 
 interface Course {
   id: string;
+  course_id: string;
   title: string;
   progress: number;
   modules_completed: number;
@@ -76,6 +77,7 @@ const DashboardHome = () => {
         .from('user_courses')
         .select(`
           id,
+          course_id,
           progress,
           modules_completed,
           courses (
@@ -91,6 +93,7 @@ const DashboardHome = () => {
       if (coursesData) {
         const formattedCourses = coursesData.map(uc => ({
           id: uc.id,
+          course_id: uc.course_id || '',
           title: (uc.courses as any)?.title || 'Untitled Course',
           progress: uc.progress || 0,
           modules_completed: uc.modules_completed || 0,
@@ -189,7 +192,7 @@ const DashboardHome = () => {
                   <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
                     <div className="bg-shazmeen-red h-2.5 rounded-full" style={{ width: `${course.progress}%` }}></div>
                   </div>
-                  <Button asChild className="w-full btn-primary"><Link to="/dashboard/courses">Continue Learning</Link></Button>
+                  <Button asChild className="w-full btn-primary"><Link to={`/dashboard/courses/${course.course_id}`}>Continue Learning</Link></Button>
                 </div>
               ))}
             </div>
