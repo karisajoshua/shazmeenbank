@@ -67,7 +67,7 @@ const LogoCarousel = () => {
           }
           
           .animate-super-slow-scroll {
-            animation: super-slow-scroll 35s linear infinite;
+            animation: super-slow-scroll 25s linear infinite;
           }
           @media (prefers-reduced-motion: reduce) {
             .animate-super-slow-scroll { animation: none; }
